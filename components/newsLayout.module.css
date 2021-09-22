@@ -1,6 +1,5 @@
 .footer {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  padding: 0px 3%;
 }
 
 .wrapper {

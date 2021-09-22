@@ -5,6 +5,7 @@ import style from './newsLayout.module.css';
 import Link from 'next/link';
 import { FaSearch } from 'react-icons/fa';
 import { FiMenu } from 'react-icons/fi';
+import { IoMdPerson } from 'react-icons/io';
 import NavList, { NavListProps } from './navList';
 import List from './list';
 
@@ -45,7 +46,7 @@ const NewsLayout = ({ seo, children }: Props) => {
       {/* header 1 only seen in desktop */}
       <div className={style.siteHeader}>
         <div className={style.topNav}>
-          <div className='hidden xl:flex items-center'>
+          <div className='flex items-center'>
             <div className='mr-3 py-2 pr-2'>
               <FiMenu />
             </div>
@@ -53,23 +54,36 @@ const NewsLayout = ({ seo, children }: Props) => {
               <FaSearch />
             </div>
           </div>
-          <div className=' justify-self-center hidden xl:flex'>
-            <div className='w-80 flex justify-between'>
-              <Link href='/news'>
-                <a className='px-2 py-1 hover:focus:bg-gray-100 rounded-md'>
-                  U.S
-                </a>
-              </Link>
-              <Link href='/news/international'>
-                <a className='px-2 py-1'>INTERNATIONAL</a>
-              </Link>
-              <Link href='/news/canada'>
-                <a className='px-2 py-1'>CANADA</a>
-              </Link>
+          <div>
+            <h1 className='font-bold block xl:hidden text-3xl text-center font-serif'>
+              The Nathan Times
+            </h1>
+            <div className=' justify-self-center hidden xl:flex'>
+              <div className='w-80 flex justify-between'>
+                <Link href='/news'>
+                  <a className='px-2 py-1 news-nav-link'>U.S</a>
+                </Link>
+                <Link href='/news/international'>
+                  <a className='px-2 py-1 news-nav-link'>INTERNATIONAL</a>
+                </Link>
+                <Link href='/news/canada'>
+                  <a className='px-2 py-1 news-nav-link'>CANADA</a>
+                </Link>
+              </div>
             </div>
           </div>
-          <div className='hidden xl:flex'>
-            <div className='btn-blue ml-auto'>login</div>
+
+          <div>
+            <div className='hidden xl:flex'>
+              <div className='btn-blue ml-auto'>login</div>
+            </div>
+            <div className='flex xl:hidden justify-end'>
+              <Link href='profile'>
+                <a className='news-nav-link px-2 py-1'>
+                  <IoMdPerson size={25} className='' />
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -84,9 +98,11 @@ const NewsLayout = ({ seo, children }: Props) => {
             </div>
           </div>
 
-          <h1 className='font-bold text-6xl  text-center'>The Nathan Times</h1>
-          <div className='flex flex-col text-right justify-around'>
-            <div>
+          <h1 className='font-bold hidden xl:block  xl:text-6xl text-center font-serif'>
+            The Nathan Times
+          </h1>
+          <div className=''>
+            <div className='hidden xl:flex flex-col text-right justify-around'>
               <div className='font-bold text-sm'>72° F73° 54°</div>
               <div className='text-sm'>Nasdaq +1.05%</div>
             </div>
@@ -100,7 +116,7 @@ const NewsLayout = ({ seo, children }: Props) => {
               renderItem={([text, url]) => (
                 <li key={url}>
                   <Link href={url} key={text}>
-                    <a className='px-2 py-2'>{text}</a>
+                    <a className='px-1 py-2 news-nav-link'>{text}</a>
                   </Link>
                 </li>
               )}
@@ -111,7 +127,7 @@ const NewsLayout = ({ seo, children }: Props) => {
       {/* body with news content */}
       {children}
       {/* footer */}
-      <div>footer here</div>
+      <div className={style.footer}>footer here</div>
     </div>
   );
 };
