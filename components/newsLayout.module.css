@@ -1,0 +1,16 @@
+.footer {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+}
+
+.wrapper {
+  background-color: darkgray;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+}
+
+.titleHeader {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
