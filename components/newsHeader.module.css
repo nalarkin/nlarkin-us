@@ -1,0 +1,38 @@
+.siteHeader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* background-color: aqua; */
+
+  margin: 0 auto;
+  /* padding: 0 3%; */
+}
+
+.topNav {
+  padding: 4px 15px 8px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.middleNav {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  /* display: flex; */
+}
+
+/* .bottomNav {
+  padding: 8px 60px;
+  display: flex;
+  width: 100%;
+  border-bottom: 4px double #000;
+  border-top: 1px solid #ebebeb;
+} */
+.bottomNav {
+  padding: 8px 60px;
+  display: flex;
+  width: 100%;
+  border-bottom: 4px double #000;
+  border-top: 1px solid #ebebeb;
+}

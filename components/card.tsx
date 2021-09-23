@@ -21,7 +21,6 @@ const Card = ({ text, href = '/', btnText = 'no text given', Icon }: Props) => (
         </Link>
       </div>
     </div>
-    ;
   </div>
 );
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { NextPage } from 'next';
 import Layout from '../../components/layout';
+import NewsLayout from '../../components/newsLayout';
+import NewsBody from '../../components/newsBody';
 
 const NewsSEO = {
   description:
@@ -11,9 +13,9 @@ const NewsSEO = {
 const News: NextPage = () => {
   return (
     <div>
-      <Layout seo={NewsSEO}>
-        <div className='text-center'>This is where I would put the news</div>
-      </Layout>
+      <NewsLayout seo={NewsSEO}>
+        <NewsBody />
+      </NewsLayout>
     </div>
   );
 };
