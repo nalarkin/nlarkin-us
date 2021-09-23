@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
-import style from './layout.module.css';
+import style from './layouts/layout.module.css';
 import { IconType } from 'react-icons';
 
 type Props = {

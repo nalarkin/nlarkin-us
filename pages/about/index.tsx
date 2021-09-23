@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../../components/layout';
+import Layout from '../../components/layouts/layout';
 
 const AboutSEO = {
   description: 'I created this website to do x, y, and z....',

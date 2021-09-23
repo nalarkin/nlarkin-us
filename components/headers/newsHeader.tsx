@@ -4,9 +4,9 @@ import { ImSearch } from 'react-icons/im';
 import { FiMenu } from 'react-icons/fi';
 import style from './newsHeader.module.css';
 import { IoMdPerson } from 'react-icons/io';
-import List from './list';
-import { headerCategoryLinks } from '../links';
-import NewsButton from './newsButton';
+import List from '../list';
+import { headerCategoryLinks } from '../../links';
+import NewsButton from '../newsButton';
 
 const CurrentDate = () => {
   return (

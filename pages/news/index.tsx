@@ -1,7 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
-import Layout from '../../components/layout';
-import NewsLayout from '../../components/newsLayout';
+import Layout from '../../components/layouts/layout';
+import NewsLayout from '../../components/layouts/newsLayout';
 import NewsBody from '../../components/newsBody';
 import Disclaimer from '../../components/disclaimer';
 
