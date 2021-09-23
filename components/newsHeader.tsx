@@ -1,34 +1,18 @@
 import Link from 'next/link';
 import React from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { ImSearch } from 'react-icons/im';
 import { FiMenu } from 'react-icons/fi';
 import style from './newsHeader.module.css';
 import { IoMdPerson } from 'react-icons/io';
 import List from './list';
+import { headerCategoryLinks } from '../links';
+import NewsButton from './newsButton';
 
-type links = [string, string];
-
-const headerCategories: links[] = [
-  ['World', '/world'],
-  ['U.S.', '/'],
-  ['Politics', '/politics'],
-  ['N.Y.', '/ny'],
-  ['Business', '/business'],
-  ['Opinion', '/opinion'],
-  ['Tech', '/tech'],
-  ['Science', '/science'],
-  ['Health', '/health'],
-  ['Sports', '/sports'],
-  ['Arts', '/arts'],
-  ['Books', '/books'],
-  ['Business', '/business'],
-  ['Style', '/style'],
-  ['Food', '/food'],
-  ['Travel', '/travel'],
-  ['T Magazine', '/t-magazine'],
-  ['Real Estate', '/real-estate'],
-  ['Video', '/video'],
-];
+const CurrentDate = () => {
+  return (
+    <div className=' font-bold text-xs '>Wednesday, September 22, 2021</div>
+  );
+};
 
 /** View transforms between screensize xl and lg */
 const TopNavigationBar = () => {
@@ -37,10 +21,10 @@ const TopNavigationBar = () => {
       <div className={style.topNav}>
         <div className='flex items-center'>
           <div className='mr-3 py-2 pr-2'>
-            <FiMenu />
+            <FiMenu size={18} />
           </div>
           <div className='mr-3 hidden xl:flex p-2'>
-            <FaSearch />
+            <ImSearch size={15} />
           </div>
         </div>
         <div>
@@ -50,13 +34,13 @@ const TopNavigationBar = () => {
           <div className=' justify-self-center hidden xl:flex'>
             <div className='w-80 flex justify-between'>
               <Link href='/news'>
-                <a className='px-2 py-1 news-nav-link'>U.S</a>
+                <a className='px-2 py-1 news-nav-link text-xs'>U.S</a>
               </Link>
               <Link href='/news/international'>
-                <a className='px-2 py-1 news-nav-link'>INTERNATIONAL</a>
+                <a className='px-2 py-1 news-nav-link text-xs'>INTERNATIONAL</a>
               </Link>
               <Link href='/news/canada'>
-                <a className='px-2 py-1 news-nav-link'>CANADA</a>
+                <a className='px-2 py-1 news-nav-link text-xs'>CANADA</a>
               </Link>
             </div>
           </div>
@@ -64,7 +48,9 @@ const TopNavigationBar = () => {
 
         <div>
           <div className='hidden xl:flex'>
-            <div className='btn-blue ml-auto'>login</div>
+            <NewsButton>
+              <div className='ml-auto text-xs font-bold'>log in</div>
+            </NewsButton>
           </div>
           <div className='flex xl:hidden justify-end'>
             <Link href='profile'>
@@ -87,15 +73,13 @@ const MiddleNavigationBar = () => {
     <>
       <div className={style.middleNav}>
         <div className='flex flex-col'>
-          <div className=' flex flex-col'>
-            <div className=' font-bold text-sm '>
-              Wednesday, September 22, 2021
-            </div>
-            <div className=' '>Today’s Paper</div>
+          <div className=' hidden xl:flex flex-col '>
+            <CurrentDate />
+            <div className='text-xs '>Today’s Paper</div>
           </div>
         </div>
 
-        <h1 className='font-bold hidden xl:block  xl:text-6xl text-center font-serif'>
+        <h1 className='font-bold hidden xl:block  xl:text-5xl text-center font-serif'>
           The Nathan Times
         </h1>
         <div className=''>
@@ -112,19 +96,26 @@ const MiddleNavigationBar = () => {
 const BottomNavigationBar = () => {
   return (
     <>
-      <div className={style.bottomNav}>
-        <ul className='hidden xl:flex flex-row text-sm justify-between w-full'>
-          <List
-            items={headerCategories}
-            renderItem={([text, url]) => (
-              <li key={url}>
-                <Link href={url} key={text}>
-                  <a className='px-1 py-2 news-nav-link'>{text}</a>
-                </Link>
-              </li>
-            )}
-          />
-        </ul>
+      <div>
+        <div className='hidden xl:flex'>
+          <div className={style.bottomNav}>
+            <ul className='hidden xl:flex flex-row text-sm justify-between w-full'>
+              <List
+                items={headerCategoryLinks}
+                renderItem={([text, url]) => (
+                  <li key={url}>
+                    <Link href={url} key={text}>
+                      <a className='px-1 py-2 news-nav-link'>{text}</a>
+                    </Link>
+                  </li>
+                )}
+              />
+            </ul>
+          </div>
+        </div>
+        <div className='flex xl:hidden justify-center border-t-2 border-b-2 border-gray-200 border-solid py-3'>
+          <CurrentDate />
+        </div>
       </div>
     </>
   );
