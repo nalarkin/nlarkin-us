@@ -1,4 +1,5 @@
 import React from 'react';
+import Disclaimer from './disclaimer';
 import style from './newsBody.module.css';
 
 const NewsBody = () => {
@@ -7,6 +8,7 @@ const NewsBody = () => {
       <div>story one</div>
       <div>story 2</div>
       <div>story 3</div>
+      <Disclaimer />
     </main>
   );
 };

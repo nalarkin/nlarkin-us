@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import Layout from '../../components/layout';
 import NewsLayout from '../../components/newsLayout';
 import NewsBody from '../../components/newsBody';
+import Disclaimer from '../../components/disclaimer';
 
 const NewsSEO = {
   description:
