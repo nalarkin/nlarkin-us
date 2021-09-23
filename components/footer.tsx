@@ -14,16 +14,15 @@ const FooterUpper = () => {
       <div className={style.containers}>
         <div className='flex flex-col w-full   justify-center items-center flex-wrap'>
           <div className='flex text-center w-max text-xs text-gray-800 '></div>
-          <div className='flex flex-row justify-between flex-wrap items-baseline text-gray-600 w-full'>
+          <div className='flex flex-row justify-between flex-wrap items-baseline text-gray-600 w-full mb-3'>
             <List
               items={allFooterTopNavLinks}
               renderItem={({ name, categoryLinks }) => (
-                <div>
+                <div key={name}>
+                  <div className='font-bold uppercase text-xs text-gray-900 mb-2 mt-5'>
+                    {name && name}
+                  </div>
                   <ul>
-                    <div className='font-bold uppercase text-xs text-gray-900 mb-2 mt-5'>
-                      {name && name}
-                    </div>
-
                     <List
                       items={categoryLinks}
                       renderItem={([text, url]) => (
