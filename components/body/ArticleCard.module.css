@@ -1,0 +1,5 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
+}

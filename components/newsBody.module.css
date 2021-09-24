@@ -1,5 +1,11 @@
 .content {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
   /* padding: 0 3%; */
+}
+
+.opinionBlock {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 }

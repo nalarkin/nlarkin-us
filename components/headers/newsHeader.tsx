@@ -28,11 +28,11 @@ const TopNavigationBar = () => {
           </div>
         </div>
         <div>
-          <h1 className='font-bold block xl:hidden text-3xl text-center font-serif'>
+          <h1 className='font-bold block xl:hidden text-3xl text-center '>
             The Nathan Times
           </h1>
           <div className=' justify-self-center hidden xl:flex'>
-            <div className='w-80 flex justify-between'>
+            <div className='w-80 flex justify-between font-sans'>
               <Link href='/news'>
                 <a className='px-2 py-1 news-nav-link text-xs'>U.S</a>
               </Link>
@@ -99,13 +99,15 @@ const BottomNavigationBar = () => {
       <div>
         <div className='hidden xl:flex'>
           <div className={style.bottomNav}>
-            <ul className='hidden xl:flex flex-row text-sm justify-between w-full'>
+            <ul className='hidden xl:flex flex-row  justify-between w-full '>
               <List
                 items={headerCategoryLinks}
                 renderItem={([text, url]) => (
                   <li key={url}>
                     <Link href={url} key={text}>
-                      <a className='px-1 py-2 news-nav-link'>{text}</a>
+                      <a className='px-1 py-2 news-nav-link text-xxxs'>
+                        {text}
+                      </a>
                     </Link>
                   </li>
                 )}

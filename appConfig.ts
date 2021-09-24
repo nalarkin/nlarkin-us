@@ -20,3 +20,9 @@ export const SEO = {
     cardType: 'summary_large_image',
   },
 };
+
+/**
+ * FONT FAMILY FOR SERIF
+ * font-family: Georgia, ui-serif, Cambria, "Times New Roman", Times, serif;
+ *
+ */
