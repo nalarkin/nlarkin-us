@@ -5,3 +5,11 @@ export type Article = {
   contentHtml: string;
   date: string;
 };
+
+export type Author = {
+  id: string;
+  name: {
+    first: string;
+    last: string;
+  };
+};
