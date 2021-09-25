@@ -1,6 +1,8 @@
 ---
 title: 'Aliens Agree to Peace Deal'
 date: '2020-01-02'
+authorId: 'susan-williams'
+description: 'Why make peace with those green things anyway? What is our president thinking?.'
 ---
 
 We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.

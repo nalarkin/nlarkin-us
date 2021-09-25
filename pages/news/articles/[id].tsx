@@ -60,7 +60,6 @@ const NewsSEO = {
 };
 
 const ArticlePage = ({ data, errors }: Props) => {
-  console.log(JSON.stringify(data));
   return (
     <div>
       <NewsLayout seo={NewsSEO}>
@@ -70,7 +69,7 @@ const ArticlePage = ({ data, errors }: Props) => {
             <Date dateString={data ? data.date : ''} />{' '}
           </div>
           <div
-            className='bg-blue-500'
+            className='font-serif'
             dangerouslySetInnerHTML={{ __html: data ? data.contentHtml : '' }}
           />
         </div>

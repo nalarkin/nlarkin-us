@@ -2,6 +2,7 @@
 title: 'The World is Flat!'
 date: '2020-01-01'
 authorId: 'will-smith'
+description: 'The science is out there people! You just need to look at these youtube videos as prooof.'
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
