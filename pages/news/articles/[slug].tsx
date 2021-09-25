@@ -40,9 +40,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  console.log(`params are: ${JSON.stringify(params)}`);
   const queryParams = { slug: params.slug };
-  console.log(queryParams);
   const article = await getClient(preview).fetch(articleQuery, queryParams);
 
   return {

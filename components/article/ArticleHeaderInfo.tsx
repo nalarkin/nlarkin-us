@@ -16,7 +16,7 @@ const ArticleHeaderInfo = ({ authors, date }: Props) => {
     return (
       <div>
         and
-        <Link href={authors[1].slug}>
+        <Link href={`/news/authors/${authors[1].slug}`}>
           <a className='underline hover:no-underline focus:no-underline'>
             {authors[1].name}
           </a>
@@ -29,7 +29,7 @@ const ArticleHeaderInfo = ({ authors, date }: Props) => {
     <div>
       <div className='font-bold'>
         {`By `}
-        <Link href={authors[0].slug}>
+        <Link href={`/news/authors/${authors[0].slug}`}>
           <a className='underline hover:no-underline focus:no-underline'>
             {authors[0].name}
           </a>

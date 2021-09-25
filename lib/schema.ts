@@ -1,3 +1,12 @@
+/** Generated from
+ * https://www.npmjs.com/package/sanity-codegen
+ */
+
+/**
+ * useful typing in typescript
+ * https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys
+ */
+
 import type {
   SanityReference,
   SanityKeyedReference,

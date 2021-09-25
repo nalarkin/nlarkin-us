@@ -23,7 +23,6 @@ const serializers = {
 
 
 export default function ArticleBody({ text }) {
-  console.log(`text is ${JSON.stringify(text)}`)
   return (
     <div className=''>
       {/* <PortableText blocks={content} /> */}
