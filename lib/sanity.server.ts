@@ -3,6 +3,7 @@
  * utilities we use on the client side, we are able to tree-shake (remove)
  * code that is not used on the client side.
  */
+import type * as Schema from './schema';
 import { createClient } from 'next-sanity';
 import { sanityConfig } from './config';
 

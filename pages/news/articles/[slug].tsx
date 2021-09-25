@@ -24,6 +24,10 @@ import { usePreviewSubscription, PortableText } from '../../../lib/sanity';
 import { useRouter } from 'next/router';
 import { groq } from 'next-sanity';
 import ArticleBody from '../../../components/body/ArticleBody';
+import ArticleHeader from '../../../components/article/ArticleHeader';
+import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
+import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
+import style from './article.module.css';
 
 type Props = {
   data: {
@@ -76,16 +80,21 @@ const ArticlePage = ({ data }) => {
   if (!router.isFallback && !data.article?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  // const { title } = data.article;
-  const { title } = article;
-
-  // const { title, body } = article;
+  const { title, text, authors, date } = article;
   return (
     <div>
       <NewsLayout seo={NewsSEO}>
-        <div className='flex flex-col bg-green-500'>
+        <div className='flex flex-col '>
+          {/* optional hero here with title over image */}
+
           <h1 className='text-xl font-bold mt-5 mb-5'>{title}</h1>
-          <ArticleBody content={article.content} />
+          <ArticleHeader authors={authors} />
+          <div className={style.body}>
+            <ArticleHeaderSocial />
+            <ArticleHeaderInfo authors={authors} date={date} />
+            <ArticleBody text={text} />
+          </div>
+
           {/* <div>author: {data?.authorId}</div>
           <div>
             <Date dateString={data ? data.date : ''} />{' '}
