@@ -10,9 +10,11 @@
     "deploy": "next build && next export"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^3.0.0",
     "date-fns": "^2.24.0",
     "gray-matter": "^4.0.3",
     "next": "11.1.2",
+    "next-sanity": "^0.4.0",
     "next-seo": "^4.28.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",

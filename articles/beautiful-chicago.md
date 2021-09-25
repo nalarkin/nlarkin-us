@@ -21,12 +21,6 @@ As Mary stepped outside and Warwick came closer, she could see the open glint in
 
 Warwick gazed with the affection of 2151 spiteful rabblesnatching rats. He said, in hushed tones, "I love you and I want a kiss."
 
-
-
-
-
-
-
 Mary looked back, even more jumpy and still fingering the damp hat. "Warwick, get out of my house," she replied.
 
 They looked at each other with unstable feelings, like two evil, envious elephants gyrating at a very grateful Halloween party, which had jazz music playing in the background and two greedy uncles boating to the beat.
