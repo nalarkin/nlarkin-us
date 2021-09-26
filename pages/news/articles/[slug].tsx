@@ -100,6 +100,7 @@ const ArticlePage = ({ data }) => {
             <ArticleHeaderInfo authors={authors} date={date} />
             <ArticleBody text={text} />
           </div>
+          <Disclaimer />
 
           {/* <div>author: {data?.authorId}</div>
           <div>

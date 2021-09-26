@@ -21,17 +21,16 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const queryParams = { slug: params?.slug };
-  const sectionArticles = await getClient(preview).fetch(
+  const { title, articles } = await getClient(preview).fetch(
     sectionArticlesQuery,
     queryParams
   );
-
   return {
     props: {
       preview,
       data: {
-        sectionArticles,
-        slug: params?.slug,
+        articles: articles,
+        title: title,
       },
     },
   };
@@ -50,31 +49,30 @@ const NewsCategoryMain = ({ data, preview }: Props) => {
   // if (data) {
   //   shuffle(data);
   // }
+  const { articles, title } = data;
 
   const handleNoArticles = () => {
     return (
       <div className='flex text-center mx-auto normal-case'>
-        {`There are currently no articles in this cateogry "${data.slug}"`}
+        {`There are currently no articles in this cateogry "${title}"`}
       </div>
     );
   };
-
-  const { sectionArticles } = data;
 
   return (
     <NewsLayout seo={{ title: '', description: 'all world news in 1 place' }}>
       <div className='flex flex-col mt-4 capitalize'>
         {/* <h1 className='font-bold text-5xl'>{section}</h1> */}
         <div className='flex flex-row flex-wrap '>
-          {sectionArticles.length === 0
+          {articles.length === 0
             ? handleNoArticles()
-            : sectionArticles.map((article) => {
+            : articles.map((article) => {
                 return (
                   <div className='flex flex-row flex-wrap ' key={article._id}>
                     <ArticleCard
                       description={article.excerpt}
                       imageId=''
-                      title={article.title}
+                      title={title}
                       slug={article.slug}
                     />
                   </div>

@@ -14,13 +14,17 @@ const articleFields = `
 
 //   "author": author->{name, picture},
 
-/** Get all slugs for all sections / categories. Returns string[ ] */
+/** Get all slugs for all sections / categories.
+ * @returns  string[ ]
+ */
 export const sectionSlugsQuery = groq`
 *[_type == "section" && defined(slug.current)][].slug.current
 `;
 export type sectionSlugsResult = Array<string>;
 
-/** Get all slugs for all articles. Returns string[ ] */
+/** Get all slugs for all articles.
+ * @returns Returns string[ ]
+ */
 export const articleSlugsQuery = groq`
 *[_type == "article" && defined(slug.current)][].slug.current`;
 export type articleSlugsResult = Array<string>;
@@ -28,21 +32,21 @@ export type articleSlugsResult = Array<string>;
 
 // This shoudl work, but params are causing an issue
 export const articleQuery = groq`
-  *[_type == "article" && slug.current == $slug][0] {
-    text,
-  ${articleFields}
-}
-`;
+    *[_type == "article" && slug.current == $slug][0] {
+      text,
+      ${articleFields}
+    }
+  `;
 export type articleQueryResult = Pick<
   Schema.Article,
   '_id' | 'date' | 'excerpt' | 'image' | 'slug' | 'title'
 > & { authors: Schema.Author };
 
 export const articleQueryAll = groq`
-*[_type == "article"] {
-  text
-${articleFields}
-}`;
+  *[_type == "article"] {
+    text
+    ${articleFields}
+  }`;
 export type articleResultAll = Array<
   Pick<
     Schema.Article,
@@ -50,8 +54,16 @@ export type articleResultAll = Array<
   > & { authors: Schema.Author }
 >;
 
+// export const sectionArticlesQuery = groq`
+// *[_type == 'article' && references(*[_type == "section" && slug.current == $slug][0]._id)][] {
+//   ${articleFields}
+// }
+// `;
+
 export const sectionArticlesQuery = groq`
-*[_type == 'article' && references(*[_type == "section" && slug.current == $slug][0]._id)][] {
-  ${articleFields}
-}
-`;
+*[ _type == "section" && slug.current == $slug ]{
+  title,
+  "articles": *[ _type == "article" && references(^._id)] {
+    ${articleFields}
+  }
+}[0]`;
