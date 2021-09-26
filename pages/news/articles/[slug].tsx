@@ -29,6 +29,14 @@ import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial
 import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
 import style from './article.module.css';
 
+/**
+ * Fake data generator
+ * https://www.plot-generator.org.uk/fairytale/
+ *
+ * Headline generator
+ * https://www.plot-generator.org.uk/headlines/
+ */
+
 type Props = {
   data: {
     article: object;
@@ -85,7 +93,7 @@ const ArticlePage = ({ data }) => {
         <div className='flex flex-col '>
           {/* optional hero here with title over image */}
 
-          <h1 className='text-xl font-bold mt-5 mb-5'>{title}</h1>
+          <h1 className='text-xl font-bold mt-5 mb-5 mx-auto'>{title}</h1>
           <ArticleHeader authors={authors} />
           <div className={style.body}>
             <ArticleHeaderSocial />

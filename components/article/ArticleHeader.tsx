@@ -8,11 +8,11 @@ type Props = {
   }[];
 };
 
-/** TODO: The name below should be for the photographer of the hero image, not the author of the article */
+/** TODO: The name below should be for the photographer of the hero image, not the author of the */
 const ArticleHeader = ({ authors }: Props) => {
   return (
     <div className='flex flex-col '>
-      <div className='mb-10'>
+      <div className='mb-10 mx-auto'>
         <div className={style.author}>
           {' '}
           {authors.map((author) => (

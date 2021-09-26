@@ -3,14 +3,12 @@ import groq from 'groq';
 
 const articleFields = `
   _id,
-  name,
   title,
   date,
   excerpt,
   image,
   "slug": slug.current,
   authors[]-> {name, "slug": slug.current}
-
 `;
 // 	authors[]-> {name, "slug": slug.current}
 
@@ -52,15 +50,8 @@ export type articleResultAll = Array<
   > & { authors: Schema.Author }
 >;
 
-// export type articleQuery = Array<Pick<Schema.Article, 'title'>, 'author'>;
-// export const articleQuery = `
-// {
-//   "article": *[_type == "article" && slug.current == $slug] | [0] {
-//     content,
-//     ${articleFields}
-//   },
-//   "moreArticles": *[_type == "article" && slug.current != $slug] | order(date desc) | [0...2] {
-//     content,
-//     ${articleFields}
-//   }
-// }`;
+export const sectionArticlesQuery = groq`
+*[_type == 'article' && references(*[_type == "section" && slug.current == $slug][0]._id)][] {
+  ${articleFields}
+}
+`;

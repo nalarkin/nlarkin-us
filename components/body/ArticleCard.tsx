@@ -7,22 +7,20 @@ type ArticleCardProps = {
   description: string;
   author: string;
   imageId: string;
-  id: string;
+  slug: string;
 };
 
 const ArticleCard = ({
   title,
   description,
-  author,
   imageId,
-  id,
+  slug,
 }: ArticleCardProps) => {
   return (
-    <Link href={`/news/articles/${id}`}>
+    <Link href={`/news/articles/${slug}`}>
       <a>
-        <article className='flex flex-col '>
+        <article className='flex flex-col pr-4 '>
           <h3 className='font-bold mb-2 font-serif'>{title}</h3>
-          <div className='text-xs'>{author}</div>
           <div className='text-gray-700 font-serif'>{description}</div>
         </article>
       </a>
