@@ -13,6 +13,7 @@ import {
 import Disclaimer from '../../../components/disclaimer';
 import LatestList from '../../../components/sections/latest/LatestList';
 
+
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
@@ -27,6 +28,10 @@ export const getStaticProps: GetStaticProps = async ({
         articles: articles,
         title: title,
       },
+      // data:  {
+      //   articles: articles,
+      //   title: title,
+      // },
     },
   };
 };
@@ -65,7 +70,9 @@ const NewsCategoryMain = ({
   return (
     <NewsLayout seo={{ title: '', description: 'all world news in 1 place' }}>
       <div className='flex flex-col mt-4 capitalize'>
+
         <div className='text-3xl font-bold'> {title}</div>
+
         <div className='flex flex-row flex-wrap '>
           {articles.length === 0
             ? handleNoArticles()

@@ -76,6 +76,7 @@ export type SectionArticlesResponse = {
       Schema.Article,
       '_id' | 'authors' | 'date' | 'excerpt' | 'image' | 'title'
     > & { slug: string; authors: Array<Schema.Author> }
+
   >;
   title: string;
 };
