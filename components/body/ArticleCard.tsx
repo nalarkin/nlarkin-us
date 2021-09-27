@@ -1,19 +1,32 @@
 import React from 'react';
 import style from './ArticleCard.module.css';
+import Link from 'next/link';
+import { ImageBuilder } from '../ImageBuilder';
+import * as Schema from '../../lib/schema';
 
-const ArticleCard = () => {
+type ArticleCardProps = {
+  title: string;
+  description: string;
+  author: string;
+  image: Schema.ArticleImage;
+  slug: string;
+};
+
+const ArticleCard = ({ title, description, image, slug }: ArticleCardProps) => {
   return (
-    <article className='flex flex-col '>
-      <h3 className='font-bold mb-2 font-serif'>
-        The World is Flat!! Says the scientist in the Loony Bin
-      </h3>
-      <div className='text-gray-700 font-serif'>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
-        aliquid modi minus natus deleniti dignissimos incidunt nostrum velit ex
-        amet sed maxime, autem tenetur nam temporibus debitis voluptatum enim
-        sit.
-      </div>
-    </article>
+    <Link href={`/news/articles/${slug}`}>
+      <a className='flex flex-row  align-items-center'>
+        <article className='flex flex-col pr-4 '>
+          <h3 className='font-bold mb-2 font-serif'>{title}</h3>
+          <div className='text-gray-700 font-serif'>{description}</div>
+        </article>
+        <div className='flex w-64 pr-4'>
+          <div className='block w-full my-auto'>
+            <ImageBuilder image={image} />
+          </div>
+        </div>
+      </a>
+    </Link>
   );
 };
 
