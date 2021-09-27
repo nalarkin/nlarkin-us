@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import React from 'react';
-import List from './list';
+import List from '../list';
 import style from './footer.module.css';
 import { FooterLinkBottom, FooterLinkTop } from './footerLink';
-import { footerBottomLinks, allFooterTopNavLinks } from '../links';
+import { footerBottomLinks, allFooterTopNavLinks } from '../../links';
 
 // { name: 'Subscribe', categoryLinks: footerSubscribeLinksTop },
 // { name: '', categoryLinks: footerSubscribeLinksBottom },

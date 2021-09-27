@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { v4 as uuidv4 } from 'uuid';
 
 export type NavListProps = {
   values: [string, string][];
@@ -8,9 +9,9 @@ export type NavListProps = {
 const NavList = ({ values }: NavListProps) => {
   return (
     <>
-      <ul>
+      <ul className=''>
         {...values.map(([text, url]) => {
-          <li key={url}>
+          <li key={uuidv4()}>
             <Link href={url}>
               <a>{text}</a>
             </Link>

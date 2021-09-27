@@ -7,7 +7,7 @@ import { BsPersonLinesFill } from 'react-icons/bs';
 import { Button } from '../components/generic';
 
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/layouts/layout';
 import Card from '../components/card';
 import SEO from '../components/seo';
 

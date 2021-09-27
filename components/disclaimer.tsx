@@ -2,21 +2,48 @@ import React, { useState } from 'react';
 import style from './disclaimer.module.css';
 import cn from 'classnames';
 import NewsButton from './newsButton';
+import Cookies from 'js-cookie';
 
 const Disclaimer = () => {
-  const [isDissmissed, dismissMessage] = useState<boolean>(false);
-
-  const handleClick = () => {
-    dismissMessage(true);
+  const getDismissalStatus = () => {
+    const cookieIsPresent = Cookies.get('disclaimerDismissed');
+    // console.log(`cookieIsPresent: ${cookieIsPresent}`);
+    if (cookieIsPresent) {
+      return true;
+    }
+    return false;
   };
 
+  const [isDismissed, dismissMessage] = useState<boolean>(getDismissalStatus());
+
+  const handleClick = () => {
+    Cookies.set('disclaimerDismissed', 'true', { sameSite: 'strict' });
+    // console.log(`isDismissed: ${isDismissed}`);
+    dismissMessage(getDismissalStatus());
+  };
+
+  if (isDismissed) {
+    return <div></div>;
+  }
   const dismissClass = cn([
-    { hidden: isDissmissed, 'bg-blue-500': true, 'border-2': true },
+    'flex',
+    'flex-col',
+    'justify-center',
+    'items-center',
+    'border-2',
+    'border-black',
+    'p-1',
+    'shadow-xl',
+    'bg-white',
+    'mx-10',
+    'w-60',
+    'lg:w-96',
   ]);
+
   return (
-    <div className={dismissClass}>
+    <div className={isDismissed ? `hidden` : ''}>
       <div className={style.alert}>
-        <div className='flex flex-col justify-center items-center border-2 border-black p-1 shadow-xl bg-white mx-10 w-60 lg:w-96'>
+        <div className={dismissClass}>
           <div className='flex flex-col text-center gap-y-5 '>
             <div>Disclaimer</div>
             <div className=' '>
