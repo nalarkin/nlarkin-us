@@ -5,10 +5,10 @@ import Date from '../Date';
 
 type Props = {
   authors: {
-    name: string;
+    name?: string;
     slug: string;
   }[];
-  date: string;
+  date?: string;
 };
 
 const ArticleHeaderInfo = ({ authors, date }: Props) => {

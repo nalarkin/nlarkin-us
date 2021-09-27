@@ -4,7 +4,6 @@ import Layout from '../../components/layouts/layout';
 import NewsLayout from '../../components/layouts/newsLayout';
 import NewsBody from '../../components/newsBody';
 import Disclaimer from '../../components/disclaimer';
-import style from './index.module.css';
 import CookieNotice from '../../components/disclaimer/CookieNotice';
 
 const NewsSEO = {

@@ -8,7 +8,7 @@ type ArticleCardProps = {
   title: string;
   description: string;
   author: string;
-  image: Schema.ArticleImage;
+  image: Schema.ArticleImage | undefined;
   slug: string;
 };
 

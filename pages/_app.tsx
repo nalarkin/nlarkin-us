@@ -6,13 +6,13 @@ import TagManager, { TagManagerArgs } from 'react-gtm-module';
 import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const tagManagerArgs: TagManagerArgs = {
-    gtmId: 'GTM-TNXSPX5',
-  };
-  useEffect(() => {
-    TagManager.initialize(tagManagerArgs);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // const tagManagerArgs: TagManagerArgs = {
+  //   gtmId: 'GTM-TNXSPX5',
+  // };
+  // useEffect(() => {
+  //   TagManager.initialize(tagManagerArgs);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   return (
     <>
       <DefaultSeo {...SEO} />
