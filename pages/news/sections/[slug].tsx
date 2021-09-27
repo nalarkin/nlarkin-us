@@ -1,38 +1,35 @@
-// @ts-nocheck
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { getSortedArticlesData } from '../../../lib/articles';
 import { Article } from '../../../interfaces';
 import ArticleCard from '../../../components/body/ArticleCard';
 import NewsLayout from '../../../components/layouts/newsLayout';
 import { shuffle } from '../../../lib/utils';
-import { getAllSectionsIds } from '../../../lib/sections';
 import { getClient } from '../../../lib/sanity.server';
-import { sectionSlugsQuery, sectionArticlesQuery } from '../../../lib/queries';
+import {
+  sectionSlugsQuery,
+  sectionArticlesQuery,
+  SectionArticlesResponse,
+} from '../../../lib/queries';
 import Disclaimer from '../../../components/disclaimer';
-
-type Props = {
-  data: Article[] | null;
-  error: string;
-  section: string;
-};
 
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
   const queryParams = { slug: params?.slug };
-  const { title, articles } = await getClient(preview).fetch(
-    sectionArticlesQuery,
-    queryParams
-  );
+  const { title, articles } = await getClient(
+    preview
+  ).fetch<SectionArticlesResponse>(sectionArticlesQuery, queryParams);
   return {
     props: {
-      preview,
       data: {
         articles: articles,
         title: title,
       },
+      // data:  {
+      //   articles: articles,
+      //   title: title,
+      // },
     },
   };
 };
@@ -42,14 +39,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getClient(false).fetch(sectionSlugsQuery);
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 };
 
-const NewsCategoryMain = ({ data, preview }: Props) => {
+const NewsCategoryMain = ({
+  data,
+}: {
+  data: SectionArticlesResponse | undefined;
+}) => {
   // if (data) {
   //   shuffle(data);
   // }
+  if (data === undefined) {
+    return <div></div>;
+  }
+  // console.log(`data: ${JSON.stringify(data)}`);
   const { articles, title } = data;
 
   const handleNoArticles = () => {
@@ -63,7 +68,6 @@ const NewsCategoryMain = ({ data, preview }: Props) => {
   return (
     <NewsLayout seo={{ title: '', description: 'all world news in 1 place' }}>
       <div className='flex flex-col mt-4 capitalize'>
-        {/* <h1 className='font-bold text-5xl'>{section}</h1> */}
         <div className='flex flex-row flex-wrap '>
           {articles.length === 0
             ? handleNoArticles()
@@ -71,27 +75,15 @@ const NewsCategoryMain = ({ data, preview }: Props) => {
                 return (
                   <div className='flex flex-row flex-wrap ' key={article._id}>
                     <ArticleCard
-                      description={article.excerpt}
+                      description={article.excerpt ?? ''}
                       image={article.image}
                       title={title}
                       slug={article.slug}
+                      author={''}
                     />
                   </div>
                 );
               })}
-          {/*data?.map((article: Article) => {
-            return (
-              <div className='' key={article.id}>
-                <ArticleCard
-                  author={article.authorId}
-                  description={article.description}
-                  imageId=''
-                  title={article.title}
-                  id={article.id}
-                />
-              </div>
-            );
-          })} */}
         </div>
         <Disclaimer />
       </div>
