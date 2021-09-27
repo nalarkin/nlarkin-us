@@ -9,6 +9,7 @@ import { shuffle } from '../../../lib/utils';
 import { getAllSectionsIds } from '../../../lib/sections';
 import { getClient } from '../../../lib/sanity.server';
 import { sectionSlugsQuery, sectionArticlesQuery } from '../../../lib/queries';
+import Disclaimer from '../../../components/disclaimer';
 
 type Props = {
   data: Article[] | null;
@@ -71,7 +72,7 @@ const NewsCategoryMain = ({ data, preview }: Props) => {
                   <div className='flex flex-row flex-wrap ' key={article._id}>
                     <ArticleCard
                       description={article.excerpt}
-                      imageId=''
+                      image={article.image}
                       title={title}
                       slug={article.slug}
                     />
@@ -92,6 +93,7 @@ const NewsCategoryMain = ({ data, preview }: Props) => {
             );
           })} */}
         </div>
+        <Disclaimer />
       </div>
     </NewsLayout>
   );

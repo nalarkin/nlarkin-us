@@ -53,7 +53,7 @@ const TopNavigationBar = () => {
             </NewsButton>
           </div>
           <div className='flex xl:hidden justify-end'>
-            <Link href='profile'>
+            <Link href='/news/profile'>
               <a className='news-nav-link px-2 py-1'>
                 <IoMdPerson size={25} className='' />
               </a>

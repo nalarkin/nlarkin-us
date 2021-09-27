@@ -20,7 +20,7 @@ const News: NextPage = () => {
       <NewsLayout seo={NewsSEO}>
         <NewsBody />
       </NewsLayout>
-      <CookieNotice />
+      {/* <CookieNotice /> */}
     </div>
   );
 };

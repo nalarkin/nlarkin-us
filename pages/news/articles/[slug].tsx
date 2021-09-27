@@ -20,7 +20,12 @@ import Date from '../../../components/Date';
 import { getClient, sanityClient } from '../../../lib/sanity.server';
 import { articleQuery, articleSlugsQuery } from '../../../lib/queries';
 import ErrorPage from 'next/error';
-import { usePreviewSubscription, PortableText } from '../../../lib/sanity';
+import {
+  usePreviewSubscription,
+  PortableText,
+  urlForImage,
+  SanityImage,
+} from '../../../lib/sanity';
 import { useRouter } from 'next/router';
 import { groq } from 'next-sanity';
 import ArticleBody from '../../../components/body/ArticleBody';
@@ -28,6 +33,7 @@ import ArticleHeader from '../../../components/article/ArticleHeader';
 import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
 import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
 import style from './article.module.css';
+import { ImageBuilder } from '../../../components/ImageBuilder';
 
 /**
  * Fake data generator
@@ -86,13 +92,19 @@ const ArticlePage = ({ data }) => {
   if (!router.isFallback && !data.article?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  const { title, text, authors, date } = article;
+  const { title, text, authors, date, image } = article;
+
+  // console.log(`imageRefWithSize: ${imageRefWithSize}`);
+  // console.log(`imageWidth: ${imageWidth} imageHeight: ${imageHeight}`);
+  // console.log(`imageRefWithSize: ${JSON.stringify(image)}`);
   return (
     <div>
       <NewsLayout seo={NewsSEO}>
         <div className='flex flex-col '>
           {/* optional hero here with title over image */}
-
+          <div className={style.image}>
+            <ImageBuilder image={image} />
+          </div>
           <h1 className='text-xl font-bold mt-5 mb-5 mx-auto'>{title}</h1>
           <ArticleHeader authors={authors} />
           <div className={style.body}>

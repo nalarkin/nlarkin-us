@@ -9,11 +9,12 @@ import { sanityConfig } from './config';
 
 // Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient(sanityConfig);
+// export const sanityClient = createClient<Schema.Article>(sanityConfig);
 
 // Set up a preview client with serverless authentication for drafts
 export const previewClient = createClient({
   ...sanityConfig,
-  useCdn: false,
+  useCdn: true,
   // token: process.env.SANITY_API_TOKEN,
 });
 

@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 const Disclaimer = () => {
   const getDismissalStatus = () => {
     const cookieIsPresent = Cookies.get('disclaimerDismissed');
-    console.log(`cookieIsPresent: ${cookieIsPresent}`);
+    // console.log(`cookieIsPresent: ${cookieIsPresent}`);
     if (cookieIsPresent) {
       return true;
     }
@@ -18,7 +18,7 @@ const Disclaimer = () => {
 
   const handleClick = () => {
     Cookies.set('disclaimerDismissed', 'true', { sameSite: 'strict' });
-    console.log(`isDismissed: ${isDismissed}`);
+    // console.log(`isDismissed: ${isDismissed}`);
     dismissMessage(getDismissalStatus());
   };
 
@@ -50,7 +50,6 @@ const Disclaimer = () => {
               This site is purely for educational purposes. This site has no
               affilitiation with the NYT.
             </div>
-            <div>{JSON.stringify(dismissClass)}</div>
             <div> I am making this to learn Next.js.</div>
           </div>
           <button

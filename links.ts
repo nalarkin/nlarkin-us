@@ -17,7 +17,6 @@ export const headerCategoryLinks: SiteLink[] = [
   ['Sports', '/news/sections/sports'],
   ['Arts', '/news/sections/arts'],
   ['Books', '/news/sections/books'],
-  ['Business', '/news/sections/business'],
   ['Style', '/news/sections/style'],
   ['Food', '/news/sections/food'],
   ['Travel', '/news/sections/travel'],

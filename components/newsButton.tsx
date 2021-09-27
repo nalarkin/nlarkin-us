@@ -20,7 +20,7 @@ const NewsButton = ({
     'font-semibold',
     'rounded-sm',
     'shadow-md',
-    `hover:${hoverColor}`,
+    `hover:bg-blue-700`,
     'focus:outline-none',
     'focus:ring-2',
     'focus:ring-blue-400',

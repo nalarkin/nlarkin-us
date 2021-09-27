@@ -55,21 +55,29 @@ export interface Article extends SanityDocument {
 
   /**
    * Title — `string`
+   *
+   *
    */
   title?: string;
 
   /**
    * Excerpt — `string`
+   *
+   *
    */
   excerpt?: string;
 
   /**
-   * Content — `blockContent`
+   * Text — `array`
+   *
+   *
    */
-  content?: BlockContent;
+  text?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Date — `datetime`
+   *
+   *
    */
   date?: string;
 
@@ -82,11 +90,15 @@ export interface Article extends SanityDocument {
 
   /**
    * Slug — `slug`
+   *
+   *
    */
   slug?: { _type: 'slug'; current: string };
 
   /**
    * Cover Image — `image`
+   *
+   *
    */
   coverImage?: {
     _type: 'image';
@@ -101,48 +113,71 @@ export interface Article extends SanityDocument {
    * Publish one or more authors and set a reference to them here.
    */
   authors?: Array<SanityKeyedReference<Author>>;
+
+  /**
+   * Sections — `array`
+   *
+   * Publish one or more sections and set a reference to them here.
+   */
+  sections?: Array<SanityKeyedReference<Section>>;
 }
 
 /**
  * author
+ *
+ *
  */
 export interface Author extends SanityDocument {
   _type: 'author';
 
   /**
    * Name — `string`
+   *
+   *
    */
   name?: string;
 
   /**
    * Picture — `articleImage`
+   *
+   *
    */
   picture?: ArticleImage;
 
   /**
    * Slug — `slug`
+   *
+   *
    */
   slug?: { _type: 'slug'; current: string };
 }
 
 /**
  * Section
+ *
+ *
  */
 export interface Section extends SanityDocument {
   _type: 'section';
 
   /**
    * Title — `string`
+   *
+   *
    */
   title?: string;
 
   /**
    * Slug — `slug`
+   *
+   *
    */
   slug?: { _type: 'slug'; current: string };
 
   /**
    * Related sections — `array`
+   *
+   *
    */
   relatedSections?: Array<SanityKeyedReference<Section>>;
 }
@@ -155,6 +190,8 @@ export type ArticleImage = {
 
   /**
    * Caption — `string`
+   *
+   *
    */
   caption?: string;
 
@@ -165,15 +202,5 @@ export type ArticleImage = {
    */
   alt?: string;
 };
-
-export type BlockContent = Array<
-  | SanityKeyed<SanityBlock>
-  | SanityKeyed<{
-      _type: 'image';
-      asset: SanityReference<SanityImageAsset>;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
-    }>
->;
 
 export type Documents = Article | Author | Section;
