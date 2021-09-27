@@ -1,5 +1,19 @@
 .card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(200px, 400px) minmax(200px, 400px);
   font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
+  padding-bottom: 16px;
+}
+.largeCard {
+  display: grid;
+  grid-template-columns: minmax(200px, 400px) minmax(200px, 400px);
+  font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
+  padding-bottom: 16px;
+}
+
+.smallCard {
+  display: grid;
+  grid-template-columns: minmax(100px, 200px) minmax(100px, 200px);
+  font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
+  padding-bottom: 16px;
 }

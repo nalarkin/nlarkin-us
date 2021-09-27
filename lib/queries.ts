@@ -75,7 +75,7 @@ export type SectionArticlesResponse = {
     Pick<
       Schema.Article,
       '_id' | 'authors' | 'date' | 'excerpt' | 'image' | 'title'
-    > & { slug: string }
+    > & { slug: string; authors: Array<Schema.Author> }
   >;
   title: string;
 };
