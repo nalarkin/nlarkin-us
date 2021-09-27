@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import React from 'react';
 import {
   NextPage,
@@ -10,30 +8,23 @@ import {
 import Layout from '../../../components/layouts/layout';
 import NewsLayout from '../../../components/layouts/newsLayout';
 import Disclaimer from '../../../components/disclaimer';
-import {
-  getAllArticlesIds,
-  getArticleData,
-  getSortedArticlesData,
-} from '../../../lib/articles';
-import { Article } from '../../../interfaces';
-import Date from '../../../components/Date';
 import { getClient, sanityClient } from '../../../lib/sanity.server';
-import { articleQuery, articleSlugsQuery } from '../../../lib/queries';
-import ErrorPage from 'next/error';
 import {
-  usePreviewSubscription,
-  PortableText,
-  urlForImage,
-  SanityImage,
-} from '../../../lib/sanity';
+  articleQuery,
+  ArticleQueryResult,
+  articleSlugsQuery,
+  getArticleData,
+  getArticleSlugs,
+} from '../../../lib/queries';
+import ErrorPage from 'next/error';
 import { useRouter } from 'next/router';
-import { groq } from 'next-sanity';
 import ArticleBody from '../../../components/body/ArticleBody';
 import ArticleHeader from '../../../components/article/ArticleHeader';
 import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
 import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
-import style from './article.module.css';
+import style from '../../../styles/article.module.css';
 import { ImageBuilder } from '../../../components/ImageBuilder';
+import { ArticleSlugsResult } from '../../../lib/queries';
 
 /**
  * Fake data generator
@@ -43,36 +34,56 @@ import { ImageBuilder } from '../../../components/ImageBuilder';
  * https://www.plot-generator.org.uk/headlines/
  */
 
-type Props = {
-  data: {
-    article: object;
-    moreArticles: object[];
-  };
-  errors?: string;
-};
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const queryParams = { slug: params.slug };
-  const article = await getClient(preview).fetch(articleQuery, queryParams);
+  let slug = params?.slug;
+  if (Array.isArray(slug)) {
+    slug = slug[0] ?? '';
+  }
+  if (slug === undefined) {
+    slug = '';
+  }
+  const queryParams = { slug: slug };
+
+  const result = await getClient(preview).fetch<ArticleQueryResult>(
+    articleQuery,
+    queryParams
+  );
+  // console.log(`slug: ${slug}  result: ${JSON.stringify(result)}`);
+
+  // const result = await getArticleData(slug);
 
   return {
     props: {
       preview,
-      data: {
-        article,
-      },
+      data: result,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // const paths = await sanityClient.fetch(articleSlugsQuery);
-  const paths = await getClient().fetch(articleSlugsQuery);
+  // const paths = await getArticleSlugs();
+  const paths = await getClient(false).fetch<ArticleSlugsResult | undefined>(
+    articleSlugsQuery
+  );
+  // console.log(`paths: ${paths.toString()}`);
+  // if (paths === undefined) {
+  //   return {
+  //     paths: {},
+  //     fallback: true,
+  //   };
+  // }
+  if (paths === null) {
+    throw Error('paths was null');
+  } else if (paths === undefined) {
+    throw Error('paths was undefined');
+  }
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 };
 
@@ -82,21 +93,17 @@ const NewsSEO = {
   title: "Nathan's News",
 };
 
-const ArticlePage = ({ data }) => {
-  const router = useRouter();
-  const { data: article } = usePreviewSubscription(articleQuery, {
-    params: { slug: data.article?.slug },
-    initialData: data.article,
-    enabled: data.preview && data.article?.slug,
-  });
-  if (!router.isFallback && !data.article?.slug) {
-    return <ErrorPage statusCode={404} />;
+export default function ArticlePage({
+  data,
+  preview = false,
+}: {
+  data: ArticleQueryResult | undefined;
+  preview: boolean;
+}) {
+  if (data === undefined) {
+    return <div></div>;
   }
-  const { title, text, authors, date, image } = article;
-
-  // console.log(`imageRefWithSize: ${imageRefWithSize}`);
-  // console.log(`imageWidth: ${imageWidth} imageHeight: ${imageHeight}`);
-  // console.log(`imageRefWithSize: ${JSON.stringify(image)}`);
+  const { title, text, authors, date, image } = data;
   return (
     <div>
       <NewsLayout seo={NewsSEO}>
@@ -113,19 +120,8 @@ const ArticlePage = ({ data }) => {
             <ArticleBody text={text} />
           </div>
           <Disclaimer />
-
-          {/* <div>author: {data?.authorId}</div>
-          <div>
-            <Date dateString={data ? data.date : ''} />{' '}
-          </div>
-          <div
-            className='font-serif'
-            dangerouslySetInnerHTML={{ __html: data ? data.contentHtml : '' }}
-          /> */}
         </div>
       </NewsLayout>
     </div>
   );
-};
-
-export default ArticlePage;
+}
