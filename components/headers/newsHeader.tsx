@@ -7,6 +7,7 @@ import { IoMdPerson } from 'react-icons/io';
 import { List } from '../list';
 import { headerCategoryLinks } from '../../links';
 import NewsButton from '../newsButton';
+import Menu from '../menu/Menu';
 
 const CurrentDate = () => {
   return (
@@ -20,15 +21,15 @@ const TopNavigationBar = () => {
     <>
       <div className={style.topNav}>
         <div className='flex items-center'>
-          <div className='mr-3 py-2 pr-2'>
-            <FiMenu size={18} />
+          <div className=''>
+            <Menu />
           </div>
           <div className='mr-3 hidden xl:flex p-2'>
             <ImSearch size={15} />
           </div>
         </div>
         <div>
-          <h1 className='font-bold block xl:hidden text-3xl text-center '>
+          <h1 className='font-bold block text-xl md:text-2xl  xl:hidden xl:text-3xl text-center '>
             The Nathan Times
           </h1>
           <div className=' justify-self-center hidden xl:flex'>

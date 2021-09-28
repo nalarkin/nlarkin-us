@@ -26,7 +26,7 @@ const ArticleCard = ({ title, description, image, slug }: ArticleCardProps) => {
         </article>
         <div className={style.image}>
           {/* <div className='flex pr-4'> */}
-          <div className='block w-full my-auto'>
+          <div className='block w-full my-auto '>
             <ImageBuilder image={image} />
           </div>
         </div>

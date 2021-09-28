@@ -31,6 +31,7 @@ const LatestList = ({ articles }: Props) => {
                   title={article.title}
                   slug={article.slug}
                   authors={article.authors}
+                  date={article.date}
                 />
               </div>
             </div>
