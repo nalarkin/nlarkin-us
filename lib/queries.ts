@@ -10,7 +10,7 @@ const articleFields = `
   excerpt,
   image,
   "slug": slug.current,
-  authors[]-> {name, "slug": slug.current}
+  authors[]-> {name, "slug": slug.current, picture}
 `;
 // 	authors[]-> {name, "slug": slug.current}
 
@@ -52,7 +52,7 @@ export const articleQueryAll = groq`
   }`;
 export type ArticleResultAll = Array<
   Pick<Schema.Article, '_id' | 'date' | 'excerpt' | 'image' | 'title'> & {
-    authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
+    authors: Array<Pick<Schema.Author, 'name' | 'picture'> & { slug: string }>;
     slug: string;
   }
 >;

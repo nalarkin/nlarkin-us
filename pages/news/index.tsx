@@ -2,7 +2,7 @@ import React from 'react';
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
 import Layout from '../../components/layouts/layout';
 import NewsLayout from '../../components/layouts/newsLayout';
-import NewsBody from '../../components/newsBody';
+import NewsBody from '../../components/body/newsBody';
 import Disclaimer from '../../components/disclaimer';
 import CookieNotice from '../../components/disclaimer/CookieNotice';
 import {
@@ -76,8 +76,8 @@ const NewsHome = ({ data }: Props) => {
       <NewsLayout seo={NewsSEO}>
         {/* <div>home</div> */}
         {/* <div className='flex flex-row'></div> */}
-        <NewsBody>
-          <div className='flex flex-wrap'>
+        <NewsBody opinionArticles={data}>
+          <div className='flex flex-wrap w-full'>
             <HomeBuilder articles={data} />
           </div>
         </NewsBody>

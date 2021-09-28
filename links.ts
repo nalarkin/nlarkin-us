@@ -26,12 +26,12 @@ export const headerCategoryLinks: Array<SiteLink> = [
 ];
 
 export const footerNewsLinks: SiteLink[] = [
-  ['Home Page', '/news/sections/home-page'],
+  ['Home Page', '/news/'],
   ['World', '/news/sections/world'],
   ['Coronavirus', '/news/sections/coronavirus'],
-  ['U.S.', '/news/sections/us'],
-  ['Politics', '/news/sections/politics'],
-  ['New York', '/news/sections/new-york'],
+  ['U.S.', '/news/sections/u-s'],
+  ['Politics', '/news/sections/u-s-politics'],
+  ['New York', '/news/sections/n-y'],
   ['Business', '/news/sections/business'],
   ['Tech', '/news/sections/tech'],
   ['Science', '/news/sections/science'],

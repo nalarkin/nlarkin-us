@@ -4,9 +4,10 @@ import * as Schema from '../lib/schema';
 
 type Props = {
   image?: Schema.ArticleImage;
+  classes?: string;
 };
 
-export const ImageBuilder = ({ image }: Props) => {
+export const ImageBuilder = ({ image, classes = '' }: Props) => {
   const imageSizeRegex = /-([\d]{3,})x([\d]{3,})-/;
   const imageRefWithSize = image?.asset._ref;
   if (imageRefWithSize === undefined) {
@@ -46,6 +47,7 @@ export const ImageBuilder = ({ image }: Props) => {
       layout='responsive'
       width={imageWidth}
       height={imageHeight}
+      className={classes}
     />
   );
 };
