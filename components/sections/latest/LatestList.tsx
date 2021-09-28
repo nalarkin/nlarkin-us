@@ -9,7 +9,10 @@ type Props = {
     Pick<
       Schema.Article,
       '_id' | 'authors' | 'date' | 'excerpt' | 'image' | 'title'
-    > & { slug: string; authors: Array<Schema.Author> }
+    > & {
+      slug: string;
+      authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
+    }
   >;
 };
 
@@ -28,6 +31,7 @@ const LatestList = ({ articles }: Props) => {
                   title={article.title}
                   slug={article.slug}
                   authors={article.authors}
+                  date={article.date}
                 />
               </div>
             </div>

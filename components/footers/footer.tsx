@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import List from '../list';
+import { List } from '../list';
 import style from './footer.module.css';
 import { FooterLinkBottom, FooterLinkTop } from './footerLink';
 import { footerBottomLinks, allFooterTopNavLinks } from '../../links';
@@ -80,7 +80,7 @@ const FooterHeader = () => {
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className='hidden lg:block'>
       <FooterHeader /> <FooterUpper /> <FooterLower />
     </footer>
   );

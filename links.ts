@@ -4,7 +4,7 @@ type FooterCategory = {
   categoryLinks: SiteLink[];
 };
 
-export const headerCategoryLinks: SiteLink[] = [
+export const headerCategoryLinks: Array<SiteLink> = [
   ['World', '/news/sections/world'],
   ['U.S.', '/news/sections/u-s'],
   ['Politics', '/news/sections/u-s-politics'],

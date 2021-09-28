@@ -2,7 +2,7 @@ interface Props<T> {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
 }
-function List<T>(props: Props<T>) {
+export function List<T>(props: Props<T>) {
   const { items, renderItem } = props;
   // You can use type T in List function scope.
   // const [state, setState] = React.useState<T[]>([]);
@@ -15,5 +15,3 @@ function List<T>(props: Props<T>) {
     </>
   );
 }
-
-export default List;

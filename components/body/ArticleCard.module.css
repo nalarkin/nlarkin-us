@@ -1,4 +1,54 @@
-.card {
+.smallCard {
+  display: flex;
+  font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
+  border-top: 1px solid #e2e2e2;
+}
+
+@media (min-width: 900px) {
+  .smallCard {
+    flex-direction: row;
+    padding-bottom: 16px;
+    max-width: 800px;
+    padding-top: 19px;
+  }
+
+  .image {
+    display: flex;
+    padding: 0px 16px;
+    flex: 1;
+    order: 2;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    order: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .smallCard {
+    flex-direction: column;
+    padding: 21px 0px 19px;
+    border-top: 1px solid #e2e2e2;
+  }
+  .image {
+    order: -1;
+    display: flex;
+    padding-right: 16px;
+    flex: 1;
+    padding-bottom: 19px;
+  }
+  .text {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+}
+
+/* .card {
   display: grid;
   grid-template-columns: minmax(200px, 400px) minmax(200px, 400px);
   font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
@@ -9,11 +59,4 @@
   grid-template-columns: minmax(200px, 400px) minmax(200px, 400px);
   font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
   padding-bottom: 16px;
-}
-
-.smallCard {
-  display: grid;
-  grid-template-columns: minmax(100px, 200px) minmax(100px, 200px);
-  font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
-  padding-bottom: 16px;
-}
+} */

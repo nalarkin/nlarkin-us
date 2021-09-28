@@ -5,6 +5,7 @@ import Link from 'next/link';
 import NewsHeader from '../headers/newsHeader';
 import Footer from '../footers/footer';
 import { NextSeo } from 'next-seo';
+import SmallFooter from '../footers/SmallFooter';
 
 type Props = {
   seo: SEOProps;
@@ -20,6 +21,7 @@ const NewsLayout = ({ seo, children }: Props) => {
       <NewsHeader />
       {children}
       <Footer />
+      <SmallFooter />
     </div>
   );
 };

@@ -4,9 +4,10 @@ import { ImSearch } from 'react-icons/im';
 import { FiMenu } from 'react-icons/fi';
 import style from './newsHeader.module.css';
 import { IoMdPerson } from 'react-icons/io';
-import List from '../list';
+import { List } from '../list';
 import { headerCategoryLinks } from '../../links';
 import NewsButton from '../newsButton';
+import Menu from '../menu/Menu';
 
 const CurrentDate = () => {
   return (
@@ -20,15 +21,15 @@ const TopNavigationBar = () => {
     <>
       <div className={style.topNav}>
         <div className='flex items-center'>
-          <div className='mr-3 py-2 pr-2'>
-            <FiMenu size={18} />
+          <div className=''>
+            <Menu />
           </div>
           <div className='mr-3 hidden xl:flex p-2'>
             <ImSearch size={15} />
           </div>
         </div>
         <div>
-          <h1 className='font-bold block xl:hidden text-3xl text-center '>
+          <h1 className='font-bold block text-xl md:text-2xl  xl:hidden xl:text-3xl text-center '>
             The Nathan Times
           </h1>
           <div className=' justify-self-center hidden xl:flex'>
@@ -78,10 +79,14 @@ const MiddleNavigationBar = () => {
             <div className='text-xs '>Today’s Paper</div>
           </div>
         </div>
+        <Link href='/news'>
+          <a>
+            <h1 className='font-bold hidden xl:block  xl:text-5xl text-center font-serif'>
+              The Nathan Times
+            </h1>
+          </a>
+        </Link>
 
-        <h1 className='font-bold hidden xl:block  xl:text-5xl text-center font-serif'>
-          The Nathan Times
-        </h1>
         <div className=''>
           <div className='hidden xl:flex flex-col text-right justify-around'>
             <div className='font-bold text-sm'>72° F73° 54°</div>
@@ -102,15 +107,17 @@ const BottomNavigationBar = () => {
             <ul className='hidden xl:flex flex-row  justify-between w-full '>
               <List
                 items={headerCategoryLinks}
-                renderItem={([text, url]) => (
-                  <li key={url}>
-                    <Link href={url} key={text}>
-                      <a className='px-1 py-2 news-nav-link text-xxxs'>
-                        {text}
-                      </a>
-                    </Link>
-                  </li>
-                )}
+                renderItem={([text, url]): JSX.Element => {
+                  return (
+                    <li key={url}>
+                      <Link href={url} key={text}>
+                        <a className='px-1 py-2 news-nav-link text-xxxs'>
+                          {text}
+                        </a>
+                      </Link>
+                    </li>
+                  );
+                }}
               />
             </ul>
           </div>
