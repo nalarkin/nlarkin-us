@@ -8,10 +8,15 @@ import { List } from '../list';
 import { headerCategoryLinks } from '../../links';
 import NewsButton from '../newsButton';
 import Menu from '../menu/Menu';
+import DateComponent from '../Date';
 
 const CurrentDate = () => {
+  const currentDate = new Date();
+
   return (
-    <div className=' font-bold text-xs '>Wednesday, September 22, 2021</div>
+    <div className=' font-bold text-xs '>
+      <DateComponent dateString={currentDate.toISOString()} />
+    </div>
   );
 };
 
