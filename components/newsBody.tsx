@@ -5,18 +5,23 @@ import NewsHero from './body/NewsHero';
 import ArticleCardLarge from './body/ArticleCardLarge';
 import OpinionColumn from './body/OpinionColumn';
 
-const NewsBody = () => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const NewsBody = ({ children }: Props) => {
   return (
     <main className={style.content}>
-      <NewsHero />
+      {/* <NewsHero /> */}
+      {children}
+
       <div className={style.opinionBlock}>
-        <div className='flex flex-row pr-4'>
+        {/* <div className='flex flex-row pr-4'>
           <ArticleCardLarge />
-        </div>
+        </div> */}
         <OpinionColumn />
       </div>
-      <div>story 2</div>
-      <div>story 3</div>
+
       <Disclaimer />
     </main>
   );

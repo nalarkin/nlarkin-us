@@ -4,7 +4,7 @@ import { ImSearch } from 'react-icons/im';
 import { FiMenu } from 'react-icons/fi';
 import style from './newsHeader.module.css';
 import { IoMdPerson } from 'react-icons/io';
-import List from '../list';
+import { List } from '../list';
 import { headerCategoryLinks } from '../../links';
 import NewsButton from '../newsButton';
 
@@ -78,10 +78,14 @@ const MiddleNavigationBar = () => {
             <div className='text-xs '>Today’s Paper</div>
           </div>
         </div>
+        <Link href='/news'>
+          <a>
+            <h1 className='font-bold hidden xl:block  xl:text-5xl text-center font-serif'>
+              The Nathan Times
+            </h1>
+          </a>
+        </Link>
 
-        <h1 className='font-bold hidden xl:block  xl:text-5xl text-center font-serif'>
-          The Nathan Times
-        </h1>
         <div className=''>
           <div className='hidden xl:flex flex-col text-right justify-around'>
             <div className='font-bold text-sm'>72° F73° 54°</div>
@@ -102,15 +106,17 @@ const BottomNavigationBar = () => {
             <ul className='hidden xl:flex flex-row  justify-between w-full '>
               <List
                 items={headerCategoryLinks}
-                renderItem={([text, url]) => (
-                  <li key={url}>
-                    <Link href={url} key={text}>
-                      <a className='px-1 py-2 news-nav-link text-xxxs'>
-                        {text}
-                      </a>
-                    </Link>
-                  </li>
-                )}
+                renderItem={([text, url]): JSX.Element => {
+                  return (
+                    <li key={url}>
+                      <Link href={url} key={text}>
+                        <a className='px-1 py-2 news-nav-link text-xxxs'>
+                          {text}
+                        </a>
+                      </Link>
+                    </li>
+                  );
+                }}
               />
             </ul>
           </div>

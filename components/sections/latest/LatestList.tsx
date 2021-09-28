@@ -9,7 +9,10 @@ type Props = {
     Pick<
       Schema.Article,
       '_id' | 'authors' | 'date' | 'excerpt' | 'image' | 'title'
-    > & { slug: string; authors: Array<Schema.Author> }
+    > & {
+      slug: string;
+      authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
+    }
   >;
 };
 

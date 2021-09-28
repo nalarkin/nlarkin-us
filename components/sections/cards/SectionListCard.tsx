@@ -7,7 +7,7 @@ import * as Schema from '../../../lib/schema';
 type ArticleCardProps = {
   title?: string;
   description: string;
-  authors: Array<Schema.Author>;
+  authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
   image: Schema.ArticleImage | undefined;
   slug: string;
 };

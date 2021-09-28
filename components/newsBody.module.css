@@ -1,6 +1,6 @@
 .content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 20px;
   /* padding: 0 3%; */
 }

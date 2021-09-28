@@ -13,8 +13,6 @@ import {
   articleQuery,
   ArticleQueryResult,
   articleSlugsQuery,
-  getArticleData,
-  getArticleSlugs,
 } from '../../../lib/queries';
 import ErrorPage from 'next/error';
 import { useRouter } from 'next/router';
