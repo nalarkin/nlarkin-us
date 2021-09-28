@@ -1,5 +1,7 @@
 import React from 'react';
 import OpinionCard from './OpinionCard';
+import { ArticleResultAll } from '../../lib/queries';
+import { List } from '../list';
 
 const OpinionHeader = () => {
   return (
@@ -9,16 +11,35 @@ const OpinionHeader = () => {
   );
 };
 
-const OpinionColumn = () => {
+type OpinionProps = {
+  articles: ArticleResultAll | undefined;
+};
+
+const OpinionColumn = ({ articles }: OpinionProps) => {
+  if (articles === undefined) {
+    return <div></div>;
+  }
+
   return (
     <div className='flex flex-col  pl-4 border-l-2 border-gray-200 '>
       <OpinionHeader />
       <div className='flex flex-col divide-y-2 '>
-        <OpinionCard />
-        <OpinionCard />
-        <OpinionCard />
-        <OpinionCard />
-        <OpinionCard />
+        <List
+          items={articles}
+          renderItem={(item) => {
+            return (
+              <div className='w-full ' key={item._id}>
+                <OpinionCard
+                  title={item.title}
+                  // excerpt={item.excerpt}
+                  authors={item.authors}
+                  date={item.date}
+                  slug={item.slug}
+                />
+              </div>
+            );
+          }}
+        />
       </div>
     </div>
   );
