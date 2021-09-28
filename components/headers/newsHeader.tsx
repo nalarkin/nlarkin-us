@@ -34,7 +34,7 @@ const TopNavigationBar = () => {
           </div>
         </div>
         <div>
-          <h1 className='font-bold block text-xl md:text-2xl  xl:hidden xl:text-3xl text-center '>
+          <h1 className='font-bold block text-xl md:text-2xl  xl:hidden xl:text-3xl text-center font-serif'>
             The Nathan Times
           </h1>
           <div className=' justify-self-center hidden xl:flex'>

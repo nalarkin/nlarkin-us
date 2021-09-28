@@ -7,12 +7,16 @@ import classNames from 'classnames';
 type Props = {
   text: string;
   url: string;
+  onClick: () => void;
 };
 
-const FooterLink = ({ text, url }: Props) => {
+const FooterLink = ({ text, url, onClick }: Props) => {
   return (
     <Link href={url} key={text}>
-      <a className=' text-sm  flex hover:underline focus:underline text-black '>
+      <a
+        onClick={() => onClick()}
+        className=' text-sm  flex hover:underline focus:underline text-black '
+      >
         {text}
       </a>
     </Link>
@@ -38,6 +42,10 @@ const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
     { 'text-gray-400': isOpen },
   ]);
 
+  const closeAfterClick = () => {
+    setOpenStatus(false);
+  };
+
   return (
     <div className='flex flex-col w-full'>
       <button onClick={() => setOpenStatus(!isOpen)} className={categoryClass}>
@@ -49,7 +57,7 @@ const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
             items={categoryLinks}
             renderItem={([text, url]) => (
               <li key={url} className='w-6/12 '>
-                <FooterLink text={text} url={url} />
+                <FooterLink text={text} url={url} onClick={closeAfterClick} />
               </li>
             )}
           />
