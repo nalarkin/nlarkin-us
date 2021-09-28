@@ -80,7 +80,7 @@ const FooterHeader = () => {
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className='hidden lg:block'>
       <FooterHeader /> <FooterUpper /> <FooterLower />
     </footer>
   );
