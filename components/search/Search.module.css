@@ -27,19 +27,20 @@
   width: 100%;
   border-radius: 2px;
   align-items: center;
+  font-size: 0.7em;
 }
 
 .clear {
   padding: 10px 10px;
   position: absolute;
   right: 0px;
-  top: 6px;
+  top: 8px;
   background: transparent;
   cursor: pointer;
   text-transform: uppercase;
   border: 0px none;
   color: rgb(179, 179, 179);
-  font-size: 12px;
+  font-size: 0.9em;
 }
 
 .clear:disabled {

@@ -57,7 +57,7 @@ const MobileMenu = () => {
                         <li key={url} className='list-none font-sans '>
                           <Link href={url} key={text}>
                             <a
-                              className=' py-1 flex hover:bg-gray-100 '
+                              className={style.sectionLink}
                               onClick={() => handleClick()}
                             >
                               {text}
