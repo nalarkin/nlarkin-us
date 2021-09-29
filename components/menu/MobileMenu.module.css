@@ -30,6 +30,15 @@
   padding: 20px 20% 0px;
 }
 
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04rem;
+  line-height: 23px;
+  padding: 22px 0px 12px;
+  text-transform: capitalize;
+}
+
 .navBar {
   display: flex;
   justify-content: center;
@@ -61,21 +70,6 @@
   right: 17px;
   padding: 10px;
 }
-/* 
-.btn {
-  animation: rotate 1s linear;
-  transform: rotate(90deg);
-} */
-
-/* @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(90deg);
-  }
-} */
 
 @keyframes slidein {
   from {
@@ -84,7 +78,6 @@
   }
 
   to {
-    /* margin-left: 50%; */
     left: 0px;
 
     animation-play-state: paused;

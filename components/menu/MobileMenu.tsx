@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { GrClose } from 'react-icons/gr';
+import SearchBar from '../search/SearchBar';
 
 const MobileMenu = () => {
   const [isActive, setMenu] = useState<boolean>(false);
@@ -42,12 +43,13 @@ const MobileMenu = () => {
           </div>
         </div>
         <div className={style.container}>
+          <SearchBar />
           <List
             items={allFooterTopNavLinks}
             renderItem={({ name, categoryLinks }): JSX.Element => {
               return (
                 <div className='flex flex-col w-full'>
-                  <div className='font-bold text-lg'> {name}</div>
+                  <div className={style.sectionTitle}> {name}</div>
                   <ul className={style.sectionGrid}>
                     <List
                       items={categoryLinks}
