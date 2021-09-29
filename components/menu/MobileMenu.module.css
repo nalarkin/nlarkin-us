@@ -1,0 +1,85 @@
+.menu {
+  animation-duration: 0.4s;
+  animation-name: slidein;
+  animation-iteration-count: initial;
+  position: fixed;
+  z-index: 70;
+  padding: 10px 18px;
+  /* background-color: rgb(202, 202, 202); */
+  width: 100%;
+
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 4px 0px 6px 1px;
+
+  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+  border-radius: 3px;
+  border-right: 1px solid rgb(204, 204, 204);
+}
+
+.btn {
+  transform: rotate(-90deg);
+  transition: all 0.4s ease-in-out;
+}
+
+.container {
+  border-top: 1px solid rgb(235, 235, 235);
+  padding: 20px 20% 0px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04rem;
+  line-height: 23px;
+  padding: 22px 0px 12px;
+  text-transform: capitalize;
+}
+
+.navBar {
+  display: flex;
+  justify-content: center;
+}
+
+.sectionGrid {
+  display: grid;
+  padding: 0px 0px 19px;
+  /* columns: 2 auto; */
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 34px;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: rgb(51, 51, 51);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.title {
+  /* display: flex; */
+  font-weight: bold;
+  font-size: 30px;
+  height: 47px;
+}
+
+.exit {
+  position: absolute;
+  top: 8px;
+  right: 17px;
+  padding: 10px;
+}
+
+@keyframes slidein {
+  from {
+    left: -200px;
+    width: 0%;
+  }
+
+  to {
+    left: 0px;
+
+    animation-play-state: paused;
+  }
+}
