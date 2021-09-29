@@ -9,6 +9,7 @@ import { headerCategoryLinks } from '../../links';
 import NewsButton from '../newsButton';
 import Menu from '../menu/Menu';
 import DateComponent from '../Date';
+import MobileMenu from '../menu/MobileMenu';
 
 const CurrentDate = () => {
   const currentDate = new Date();
@@ -28,6 +29,7 @@ const TopNavigationBar = () => {
         <div className='flex items-center'>
           <div className=''>
             <Menu />
+            <MobileMenu />
           </div>
           <div className='mr-3 hidden xl:flex p-2'>
             <ImSearch size={15} />
