@@ -1,0 +1,6 @@
+@media (min-width: 880px) {
+  .container {
+    border-right: 1px solid #C7C7C7;
+    padding-right: 15px;
+  }
+}

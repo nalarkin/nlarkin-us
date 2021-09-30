@@ -36,12 +36,16 @@ const TopNavigationBar = () => {
           </div>
         </div>
         <div>
-          <h1 className='font-bold block text-xl md:text-2xl  xl:hidden xl:text-3xl text-center font-serif'>
-            The Nathan Times
-          </h1>
+          <Link href='/news'>
+            <a>
+              <h1 className='font-bold block text-xl md:text-2xl  xl:hidden xl:text-3xl text-center font-serif'>
+                The Nathan Times
+              </h1>
+            </a>
+          </Link>
           <div className=' justify-self-center hidden xl:flex'>
             <div className='w-80 flex justify-between font-sans'>
-              <Link href='/news'>
+              <Link href='/news/u-s'>
                 <a className='px-2 py-1 news-nav-link text-xs'>U.S</a>
               </Link>
               <Link href='/news/international'>

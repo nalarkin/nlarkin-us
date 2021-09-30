@@ -6,12 +6,10 @@
 - Create Section Header Card with a specific layout
 - add tiles with different sizes for the home page and section pages.
 - add valid links to header and footer
-- mobile view menu needs to be different than desktop version
 - Probably add OAuth (github/social sign in) because it's fairly simple and useful to have.
 - Idk if NYT has 'author' pages which are dedicated for each author, but I could make that if they do.
 - add search feature. Can use fuze fuzzy search or anglio
-
-
+- update mobile view links to shorter names to match the shorter names in NYT
 
 ## Boilerplate Generated During create is below
 

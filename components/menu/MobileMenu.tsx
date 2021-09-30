@@ -77,7 +77,7 @@ const MobileMenu = () => {
   );
 
   return (
-    <div className='flex xl:hidden'>
+    <div className='flex lg:hidden'>
       {isActive ? content : null}
       {button}
     </div>

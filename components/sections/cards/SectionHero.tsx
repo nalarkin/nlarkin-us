@@ -2,6 +2,20 @@ import React from 'react';
 import style from './SectionHero.module.css';
 import * as Schema from '../../../lib/schema';
 import { ImageBuilder } from '../../ImageBuilder';
+import Link from 'next/link';
+
+type ArticleWrapperProps = {
+  slug: string;
+  children: React.ReactNode;
+};
+
+const ArticleLinkWrapper = ({ slug, children }: ArticleWrapperProps) => {
+  return (
+    <Link href={`/news/articles/${slug}`}>
+      <a className={style.articleLink}>{children}</a>
+    </Link>
+  );
+};
 
 type Props = {
   articles?: Array<
@@ -29,13 +43,17 @@ const HeroTile = ({ article }: CardProps) => {
   return (
     // <div className={style.hero}>
     <>
-      <div className={style.heroContent}>
-        <div className='font-semibold my-2'>{article.title}</div>
-        <div>{article.excerpt}</div>
-      </div>
-      <div className={style.heroImage}>
-        {' '}
-        <ImageBuilder image={article.image} />
+      <div className={style.heroGrid}>
+        <div className={style.heroText}>
+          <ArticleLinkWrapper slug={article.slug}>
+            <div className={style.heroTitle}>{article.title}</div>
+            <div className={style.excerpt}>{article.excerpt}</div>
+          </ArticleLinkWrapper>
+        </div>
+        <div className={style.heroImage}>
+          {' '}
+          <ImageBuilder image={article.image} />
+        </div>
       </div>
     </>
   );
@@ -45,7 +63,9 @@ const SecondTile = ({ article }: CardProps) => {
   return (
     <div className={style.tile}>
       <div className={style.second}>
-        <div className='font-semibold'> {article.title}</div>
+        <ArticleLinkWrapper slug={article.slug}>
+          <div className={style.articleTile}> {article.title}</div>
+        </ArticleLinkWrapper>
       </div>
     </div>
   );
@@ -54,18 +74,24 @@ const ThirdTile = ({ article }: CardProps) => {
   return (
     <div className={style.tile}>
       <div className={style.third}>
-        <div className='font-semibold mb-2 block'>{article.title}</div>
+        <ArticleLinkWrapper slug={article.slug}>
+          <div className={style.articleTile}>{article.title}</div>
+        </ArticleLinkWrapper>
       </div>
     </div>
   );
 };
 const FourthChild = ({ article }: CardProps) => {
   return (
-    <div className={style.tile}>
-      <div className={style.fourth}>
-        <div className='font-semibold mb-2'>{article.title}</div>
-      </div>
+    // <div className={style.tile}>
+    <div className={style.fourth}>
+      <ArticleLinkWrapper slug={article.slug}>
+        <div className={style.articleTile}>{article.title}</div>
+        <div className={style.excerpt}>{article.excerpt}</div>
+      </ArticleLinkWrapper>
     </div>
+
+    // </div>
   );
 };
 

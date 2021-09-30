@@ -63,7 +63,7 @@ const Menu = () => {
   );
 
   return (
-    <div className='hidden xl:flex'>
+    <div className='hidden lg:flex'>
       {isActive ? content : null}
       {button}
     </div>
