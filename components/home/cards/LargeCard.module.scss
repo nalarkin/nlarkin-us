@@ -1,0 +1,74 @@
+@import 'styles/variables';
+
+.container {
+  padding-bottom: 32px;
+  font-family: $font-serif;
+}
+
+.articleLink:hover {
+  @include link-hover();
+}
+
+.title {
+  font-weight: bold;
+}
+
+.excerpt {
+  padding-top: 8px;
+  color: $excerpt-color;
+}
+.container:not(:first-child)::before {
+  content: '';
+  display: block;
+  border-bottom: 1px solid #121212;
+  margin-bottom: 20px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 880px) {
+  .card {
+    @include flex-col();
+  }
+
+  .image {
+    padding: 10px 0px 0px;
+  }
+
+  .title {
+    font-size: 2rem;
+    line-height: 2.3125rem;
+    font-weight: 200;
+    letter-spacing: 0.2px;
+  }
+
+  .excerpt {
+    font-size: 1rem;
+    letter-spacing: normal;
+    line-height: 1.375rem;
+  }
+}
+
+@media (min-width: 880px) {
+  .card {
+    @include grid();
+  }
+
+  .image {
+    position: relative;
+    grid-column: span 8;
+  }
+
+  .text {
+    position: relative;
+    grid-column: span 6;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .excerpt {
+    padding-top: 8px;
+  }
+}
