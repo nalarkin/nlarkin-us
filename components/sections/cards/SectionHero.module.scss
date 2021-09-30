@@ -1,13 +1,23 @@
-@import 'styles/variables';
+@import 'styles/news';
+// @import '../../../styles/news';
 
 .excerpt {
   font-size: 0.8rem;
   padding-top: 8px;
   color: $excerpt-color;
+  @include media('<phone') {
+    font-size: 1rem;
+    letter-spacing: normal;
+    line-height: 1.375rem;
+  }
 }
 
 .outerContainer {
   font-family: $font-serif;
+  padding: 0px 0px 40px;
+  @include media('>laptop') {
+    padding: 0px 0px 32px;
+  }
 }
 
 .heroTitle,
@@ -19,75 +29,67 @@
 }
 
 .articleLink:hover {
-  @include link-hover();
+  @include link-hover;
 }
-/* .container {
-  padding-bottom: 36px;
-} */
 
-/* .hero::after {
-  content: '';
-  display: block;
-  border-bottom: 1px solid #DEDEDE;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  clear: both;
-  grid-column: 1/-1;
-} */
-
-/* .fourth:not(:first-child)::before {
-  display: grid;
-  content: '';
-  height: 100%;
-  position: absolute;
-  left: -16px;
-  border-left: 1px solid #dedede;
-} */
-@media (max-width: 760px) {
-  .heroTitle {
+.heroTitle {
+  @include media('<tablet') {
     font-size: 1.875rem;
     line-height: 2.0625rem;
     font-weight: 700;
     letter-spacing: 0.2px;
   }
+}
 
-  .excerpt {
-    font-size: 1rem;
-    letter-spacing: normal;
-    line-height: 1.375rem;
-  }
-
-  .articleTitle {
+.articleTitle {
+  @include media('<tablet') {
     font-size: 1.3125rem;
     line-height: 1.4375rem;
     font-weight: 700;
     letter-spacing: 0.2px;
   }
+}
 
-  .hero,
-  .heroContent,
-  .tile {
-    @include flex-col();
+.heroImage {
+  position: relative;
+  display: block;
+  @include media('<tablet') {
+    padding: 15px 0px;
+  }
+  @include media('>tablet') {
+    grid-column: span 8;
+  }
+}
+
+.container {
+  @include media('>tablet') {
+    @include grid;
   }
 
-  .heroGrid {
-    @include flex-col();
+  @include media('>laptop') {
+    @include grid($columns: 20);
+  }
+}
+
+.heroGrid {
+  @include media('<tablet') {
+    @include flex-col;
     padding-bottom: 15px;
   }
+}
 
+.hero,
+.heroContent,
+.tile {
+  @include media('<tablet') {
+    @include flex-col;
+  }
+}
+
+@media (max-width: $size-tablet) {
   .heroText {
     display: flex;
     width: 100%;
-  }
-
-  .heroImage {
-    position: relative;
-    display: block;
-    padding: 15px 0px;
-  }
-
-  .outerContainer {
-    padding: 0px 0px 40px;
   }
 
   .tile,
@@ -101,12 +103,8 @@
   }
 }
 
-@media (min-width: 760px) {
-  .container {
-    @include grid();
-  }
-
-  .hero::after {
+.hero::after {
+  @include media('>tablet') {
     content: '';
     display: block;
     border-bottom: 1px solid #dedede;
@@ -114,8 +112,10 @@
     margin-bottom: 0px;
     grid-column: 1/-1;
   }
+}
 
-  .fourth:not(:first-child)::before {
+.fourth:not(:first-child)::before {
+  @include media('>tablet') {
     display: grid;
     content: '';
     height: 100%;
@@ -123,30 +123,22 @@
     left: -16px;
     border-left: 1px solid #dedede;
   }
+}
 
+@media (min-width: $size-tablet) {
   .hero {
     display: grid;
     grid-column: span 14;
   }
 
   .heroGrid {
-    @include grid();
+    @include grid;
   }
 
   .heroText {
     display: block;
     width: 100%;
     grid-column: span 6;
-  }
-
-  .heroImage {
-    position: relative;
-    display: block;
-    grid-column: span 8;
-  }
-
-  .outerContainer {
-    padding: 0px 0px 40px;
   }
 
   .groupTwo {
@@ -187,7 +179,7 @@
   }
 }
 
-@media (min-width: 1070px) {
+@media (min-width: $size-laptop) {
   .hero {
     display: grid;
     grid-column: span 12;
@@ -202,20 +194,6 @@
 
   .heroGrid {
     @include grid(12);
-  }
-
-  .heroImage {
-    position: relative;
-    display: block;
-    grid-column: span 8;
-  }
-
-  .container {
-    @include grid($columns: 20);
-  }
-
-  .outerContainer {
-    padding: 0px 0px 32px;
   }
 
   .groupTwo {
