@@ -2,6 +2,7 @@
 
 ## TODO:
 
+- Add initialization to search page based on query params. Can't figure out how to intiailze useState with query params, could maybe just declare use state before memo, then call change function with useCallback hook?
 - Home page mobile view, make opinion cards lay in column instead of it's own column
 - Create Section Header Card with a specific layout
 - add tiles with different sizes for the home page and section pages.
