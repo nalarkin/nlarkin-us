@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './SectionHero.module.css';
+import style from './SectionHero.module.scss';
 import * as Schema from '../../../lib/schema';
 import { ImageBuilder } from '../../ImageBuilder';
 import Link from 'next/link';

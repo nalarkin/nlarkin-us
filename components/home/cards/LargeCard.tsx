@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './LargeCard.module.css';
+import style from './LargeCard.module.scss';
 import Link from 'next/link';
 import { ImageBuilder } from '../../ImageBuilder';
 import * as Schema from '../../../lib/schema';
