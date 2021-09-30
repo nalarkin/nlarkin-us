@@ -2,6 +2,7 @@ import React from 'react';
 import OpinionCard from './OpinionCard';
 import { ArticleResultAll } from '../../lib/queries';
 import { List } from '../list';
+import style from './OpinionColumn.module.css';
 
 const OpinionHeader = () => {
   return (
@@ -21,7 +22,7 @@ const OpinionColumn = ({ articles }: OpinionProps) => {
   }
 
   return (
-    <div className='flex flex-col  pl-4 border-l-2 border-gray-200 '>
+    <div className={style.container}>
       <OpinionHeader />
       <div className='flex flex-col divide-y-2 '>
         <List

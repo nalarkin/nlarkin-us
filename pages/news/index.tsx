@@ -15,6 +15,10 @@ import { getClient } from '../../lib/sanity.server';
 import { ArticleResultAll } from '../../lib/queries';
 import { List } from '../../components/list';
 import ArticleCard from '../../components/body/ArticleCard';
+import LargeArticleCard from '../../components/home/cards/LargeCard';
+import style from './index.module.css';
+import { shuffle } from '../../lib/utils';
+import LargeCardCaption from '../../components/home/cards/LargeCardCaption';
 
 const NewsSEO = {
   description:
@@ -41,27 +45,43 @@ const HomeBuilder = ({
   if (articles === undefined) {
     return <div></div>;
   }
-  let i = 0;
-
   return (
-    <>
+    // <>
+    <div className={style.container}>
       <List
         items={articles}
         renderItem={(article) => {
+          // if (
+          //   article !== undefined &&
+          //   article.image !== undefined &&
+          //   article.image.caption !== undefined
+          // ) {
+          //   return (
+          //     <LargeCardCaption
+          //       authors={article.authors}
+          //       excerpt={article.excerpt ?? ''}
+          //       image={article.image}
+          //       slug={article.slug}
+          //       title={article.title}
+          //       key={article._id}
+          //     />
+          //   );
+          // }
+
           return (
-            <div key={article._id}>
-              <ArticleCard
-                authors={article.authors}
-                description={article.excerpt ?? ''}
-                image={article.image}
-                slug={article.slug}
-                title={article.title}
-              />
-            </div>
+            <LargeArticleCard
+              authors={article.authors}
+              excerpt={article.excerpt ?? ''}
+              image={article.image}
+              slug={article.slug}
+              title={article.title}
+              key={article._id}
+            />
           );
         }}
       />
-    </>
+      {/* </> */}
+    </div>
   );
 };
 
@@ -77,9 +97,7 @@ const NewsHome = ({ data }: Props) => {
         {/* <div>home</div> */}
         {/* <div className='flex flex-row'></div> */}
         <NewsBody opinionArticles={data}>
-          <div className='flex flex-wrap w-full'>
-            <HomeBuilder articles={data} />
-          </div>
+          <HomeBuilder articles={data} />
         </NewsBody>
       </NewsLayout>
       {/* <CookieNotice /> */}

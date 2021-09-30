@@ -9,6 +9,7 @@ import { headerCategoryLinks } from '../../links';
 import NewsButton from '../newsButton';
 import Menu from '../menu/Menu';
 import DateComponent from '../Date';
+import MobileMenu from '../menu/MobileMenu';
 
 const CurrentDate = () => {
   const currentDate = new Date();
@@ -28,18 +29,23 @@ const TopNavigationBar = () => {
         <div className='flex items-center'>
           <div className=''>
             <Menu />
+            <MobileMenu />
           </div>
           <div className='mr-3 hidden xl:flex p-2'>
             <ImSearch size={15} />
           </div>
         </div>
         <div>
-          <h1 className='font-bold block text-xl md:text-2xl  xl:hidden xl:text-3xl text-center '>
-            The Nathan Times
-          </h1>
+          <Link href='/news'>
+            <a>
+              <h1 className='font-bold block text-xl md:text-2xl  xl:hidden xl:text-3xl text-center font-serif'>
+                The Nathan Times
+              </h1>
+            </a>
+          </Link>
           <div className=' justify-self-center hidden xl:flex'>
             <div className='w-80 flex justify-between font-sans'>
-              <Link href='/news'>
+              <Link href='/news/u-s'>
                 <a className='px-2 py-1 news-nav-link text-xs'>U.S</a>
               </Link>
               <Link href='/news/international'>
