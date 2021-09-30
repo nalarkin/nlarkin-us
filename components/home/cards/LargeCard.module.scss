@@ -28,8 +28,7 @@
 
 @media (max-width: 880px) {
   .card {
-    display: flex;
-    flex-direction: column;
+    @include flex-col();
   }
 
   .image {
@@ -52,7 +51,7 @@
 
 @media (min-width: 880px) {
   .card {
-    @include grid($columns: 14, $gap: 31px);
+    @include grid();
   }
 
   .image {

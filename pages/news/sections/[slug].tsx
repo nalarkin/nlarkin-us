@@ -13,6 +13,7 @@ import {
 import Disclaimer from '../../../components/disclaimer';
 import LatestList from '../../../components/sections/latest/LatestList';
 import SectionHero from '../../../components/sections/cards/SectionHero';
+import LargeArticleCard from 'components/home/cards/LargeCard';
 
 export const getStaticProps: GetStaticProps = async ({
   params,
@@ -72,20 +73,21 @@ const NewsCategoryMain = ({
       <div className='flex flex-col mt-4 capitalize'>
         {/* <div className='text-3xl font-bold'> {title}</div> */}
         <SectionHero articles={articles} />
-        <div className='flex flex-row flex-wrap '>
+        <div className='flex flex-row flex-wrap w-3/4 mx-auto '>
           {articles.length === 0
             ? handleNoArticles()
             : articles.map((article) => {
                 return (
-                  <div className='flex flex-row flex-wrap ' key={article._id}>
-                    <ArticleCard
-                      description={article.excerpt ?? ''}
-                      image={article.image}
-                      title={article.title}
-                      slug={article.slug}
-                      authors={article.authors}
-                    />
-                  </div>
+                  // <div className='flex flex-row flex-wrap  ' key={article._id}>
+                  <LargeArticleCard
+                    excerpt={article.excerpt ?? ''}
+                    image={article.image}
+                    title={article.title}
+                    slug={article.slug}
+                    authors={article.authors}
+                    key={article._id}
+                  />
+                  // </div>
                 );
               })}
         </div>
