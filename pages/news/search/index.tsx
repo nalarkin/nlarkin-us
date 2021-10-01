@@ -3,9 +3,11 @@ import { articleQueryAll, ArticleResultAll } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+import MinimalHeader from 'components/headers/MinimalHeader';
 
 import React, { useRef, useState } from 'react';
-import { useEffect } from 'react';
+import SearchBody from 'components/search/SearchBody';
+import { Article } from 'interfaces';
 
 type ResultProp = {}[];
 
@@ -24,11 +26,12 @@ type SearchProps = {
   data: ArticleResultAll;
 };
 
-const Search = ({ data }: SearchProps) => {
-  const router = useRouter();
+type ResultInitial = undefined | Fuse.FuseResult<ArticleResultAll>;
+
+export default function Search({ data }: SearchProps) {
+  const { query } = useRouter();
   // const myIndex = Fuse.createIndex(['title', 'author.firstName'], mockData);
-  let initialParams = '';
-  const options = {
+  const options: Fuse.IFuseOptions<Article> = {
     // isCaseSensitive: false,
     includeScore: true,
     // shouldSort: true,
@@ -44,238 +47,22 @@ const Search = ({ data }: SearchProps) => {
     keys: ['title', 'excerpt', 'authors.name'],
   };
   const fuse = new Fuse(data, options);
+  const { text } = query;
+  if (text) {
+    const initial = text;
+    const initialResult = fuse.search(text as string);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    changeText(e.target.value);
-  };
-
-  const initial = useRef('');
-  const initialResult = useRef([]);
-
-  useEffect(() => {
-    const params = router.query;
-    if (typeof params.text === 'string') {
-      initial.current = params.text;
-      // @ts-ignore
-      initialResult.current = fuse.search(params.text);
-    }
-    // initiateSearch();
-    console.log(params);
-  }, [router.query]);
-  const [result, changeResult] = useState<ResultProp>(initialResult.current);
-  const [text, changeText] = useState(initial.current);
-
-  const initiateSearch = () => {
-    changeResult(fuse.search(text));
-  };
-
-  if (data === undefined) {
-    return <div></div>;
+    return (
+      <div>
+        <MinimalHeader />
+        <SearchBody
+          query={initial.toString()}
+          fuse={fuse}
+          initialResult={initialResult}
+        />
+      </div>
+    );
   }
 
-  const writeToFile = () => {
-    // fs.writeFile('fuse-index.json', JSON.stringify(myIndex.toJSON()));
-    // console.log(JSON.stringify(myIndex.toJSON()));
-    console.log(data);
-  };
-
-  return (
-    <div className=''>
-      <div className=''>
-        <input
-          className=''
-          type='text'
-          placeholder='SEARCH'
-          value={text}
-          onChange={handleChange}
-        />
-        <button
-          className=''
-          onClick={() => {
-            changeText('');
-          }}
-        >
-          CLEAR
-        </button>
-      </div>
-      <button onClick={() => initiateSearch()}>Search for Articles</button>
-      {/* <div>
-        {data.map((val, idx) => (
-          <div key={idx}>{JSON.stringify(val)}</div>
-        ))}
-      </div> */}
-      <div>
-        {result.map((val, idx) => (
-          <div key={idx}>{JSON.stringify(val)}</div>
-        ))}
-      </div>
-      {/* {JSON.stringify(data)}; */}
-    </div>
-  );
-};
-
-const mockData = [
-  {
-    title: "Old Man's War",
-    author: {
-      firstName: 'John',
-      lastName: 'Scalzi',
-    },
-  },
-  {
-    title: 'The Lock Artist',
-    author: {
-      firstName: 'Steve',
-      lastName: 'Hamilton',
-    },
-  },
-  {
-    title: 'HTML5',
-    author: {
-      firstName: 'Remy',
-      lastName: 'Sharp',
-    },
-  },
-  {
-    title: 'Right Ho Jeeves',
-    author: {
-      firstName: 'P.D',
-      lastName: 'Woodhouse',
-    },
-  },
-  {
-    title: 'The Code of the Wooster',
-    author: {
-      firstName: 'P.D',
-      lastName: 'Woodhouse',
-    },
-  },
-  {
-    title: 'Thank You Jeeves',
-    author: {
-      firstName: 'P.D',
-      lastName: 'Woodhouse',
-    },
-  },
-  {
-    title: 'The DaVinci Code',
-    author: {
-      firstName: 'Dan',
-      lastName: 'Brown',
-    },
-  },
-  {
-    title: 'Angels & Demons',
-    author: {
-      firstName: 'Dan',
-      lastName: 'Brown',
-    },
-  },
-  {
-    title: 'The Silmarillion',
-    author: {
-      firstName: 'J.R.R',
-      lastName: 'Tolkien',
-    },
-  },
-  {
-    title: 'Syrup',
-    author: {
-      firstName: 'Max',
-      lastName: 'Barry',
-    },
-  },
-  {
-    title: 'The Lost Symbol',
-    author: {
-      firstName: 'Dan',
-      lastName: 'Brown',
-    },
-  },
-  {
-    title: 'The Book of Lies',
-    author: {
-      firstName: 'Brad',
-      lastName: 'Meltzer',
-    },
-  },
-  {
-    title: 'Lamb',
-    author: {
-      firstName: 'Christopher',
-      lastName: 'Moore',
-    },
-  },
-  {
-    title: 'Fool',
-    author: {
-      firstName: 'Christopher',
-      lastName: 'Moore',
-    },
-  },
-  {
-    title: 'Incompetence',
-    author: {
-      firstName: 'Rob',
-      lastName: 'Grant',
-    },
-  },
-  {
-    title: 'Fat',
-    author: {
-      firstName: 'Rob',
-      lastName: 'Grant',
-    },
-  },
-  {
-    title: 'Colony',
-    author: {
-      firstName: 'Rob',
-      lastName: 'Grant',
-    },
-  },
-  {
-    title: 'Backwards, Red Dwarf',
-    author: {
-      firstName: 'Rob',
-      lastName: 'Grant',
-    },
-  },
-  {
-    title: 'The Grand Design',
-    author: {
-      firstName: 'Stephen',
-      lastName: 'Hawking',
-    },
-  },
-  {
-    title: 'The Book of Samson',
-    author: {
-      firstName: 'David',
-      lastName: 'Maine',
-    },
-  },
-  {
-    title: 'The Preservationist',
-    author: {
-      firstName: 'David',
-      lastName: 'Maine',
-    },
-  },
-  {
-    title: 'Fallen',
-    author: {
-      firstName: 'David',
-      lastName: 'Maine',
-    },
-  },
-  {
-    title: 'Monster 1959',
-    author: {
-      firstName: 'David',
-      lastName: 'Maine',
-    },
-  },
-];
-
-export default Search;
+  return <div>Not found or loading</div>;
+}

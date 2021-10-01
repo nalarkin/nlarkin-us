@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import style from './Search.module.scss';
+import { ImSearch } from 'react-icons/im';
 
 const SearchBar = () => {
   const [text, changeText] = useState('');
@@ -25,7 +26,6 @@ const SearchBar = () => {
           value={text}
           onChange={handleChange}
         />
-        {/* <input className={style.clear} type='reset' placeholder='CLEAR'></input> */}
         <button
           className={style.clear}
           onClick={() => {

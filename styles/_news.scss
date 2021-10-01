@@ -21,9 +21,18 @@ $size-desktop: 1200px;
   column-gap: $gap;
 }
 
+@mixin grid-span($n: 4) {
+  display: grid;
+  grid-column: span $n;
+}
+
 @mixin flex-col() {
   display: flex;
   flex-direction: column;
+}
+@mixin flex-row() {
+  display: flex;
+  flex-direction: row;
 }
 
 @mixin sticky-position {

@@ -1,0 +1,79 @@
+@import 'styles/news';
+
+$side-group-span: 5;
+
+.siteHeader {
+  @include flex-row;
+  // flex: 1 1 auto;
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.headerContainer {
+  padding: 4px 15px 2px;
+  max-width: 1605px;
+  @include grid(14, 0);
+  margin: 0px auto;
+  align-items: center;
+  width: 100%;
+}
+
+.searchBtn {
+  margin: auto 0px;
+  padding: 10px;
+  @include media('<laptop') {
+    display: none;
+  }
+}
+
+.menuBtn {
+  padding: 5px;
+  align-items: center;
+}
+
+.leftBtnGroup {
+  @include flex-row;
+
+  grid-column: span $side-group-span - 1;
+  @include media('>laptop') {
+    grid-column: span $side-group-span;
+  }
+  background-color: green;
+}
+
+.title {
+  @include flex-row;
+  justify-content: center;
+  font-size: 22px;
+  font-family: $font-serif;
+  font-weight: 600;
+  grid-column: span 14 - ($side-group-span * 2) + 2;
+
+  @include media('>laptop') {
+    grid-column: span 14 - $side-group-span * 2;
+
+    font-size: 26px;
+  }
+}
+
+.rightBtnGroup {
+  grid-column: span $side-group-span - 1;
+  @include flex-row;
+  margin-left: auto;
+  @include media('>laptop') {
+    grid-column: span $side-group-span;
+  }
+}
+.login {
+  @include media('<laptop') {
+    display: none;
+  }
+}
+
+.profile {
+  padding: 4px;
+  @include media('>laptop') {
+    display: none;
+  }
+}

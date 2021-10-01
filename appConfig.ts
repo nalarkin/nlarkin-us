@@ -14,7 +14,7 @@ export const SEO = {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.nlarkin.us',
-    site_name: "Nathan Larkin's personal Site",
+    site_name: "Nathan Larkin's personal site",
   },
   twitter: {
     cardType: 'summary_large_image',
