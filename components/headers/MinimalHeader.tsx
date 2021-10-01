@@ -13,7 +13,11 @@ import MobileMenu from '../menu/MobileMenu';
 import SearchBar from 'components/search/SearchBar';
 import classNames from 'classnames';
 
-const NavigationBar = () => {
+type NavProps = {
+  submit?: () => void;
+};
+
+const NavigationBar = ({ submit }: NavProps) => {
   const [searchIsOpen, changeSearchStatus] = useState(false);
   const btnClass = classNames([
     style.searchBtn,
@@ -37,7 +41,7 @@ const NavigationBar = () => {
           </div>
         </button>
         <div className={style.searchBar}>
-          {searchIsOpen ? <SearchBar /> : null}
+          {searchIsOpen ? <SearchBar submit={submit} /> : null}
         </div>
       </div>
       <div className={style.title}>
@@ -66,11 +70,11 @@ const NavigationBar = () => {
   );
 };
 
-const MinimalHeader = () => {
+const MinimalHeader = ({ submit }: NavProps) => {
   return (
     <>
       <div className={style.siteHeader}>
-        <NavigationBar />
+        <NavigationBar submit={submit} />
       </div>
     </>
   );

@@ -1,10 +1,11 @@
 import { ArticleResultAll } from 'lib/queries';
 import ResultTile from './ResultTile';
 import Fuse from 'fuse.js';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import style from './SearchBody.module.scss';
 import { ImSearch } from 'react-icons/im';
 import { Article } from 'interfaces';
+import { useEffect } from 'react';
 
 type BodyProps = {
   query?: string;
@@ -24,19 +25,31 @@ export default function SearchBody({
     useState<Fuse.FuseResult<Article>[]>(initialResult);
   const [text, changeText] = useState(query);
   const [sortMethod, changeSortMethod] = useState<SortMethod>('relevance');
-  /**
-   * TODO: Add date range, section filtering.
-   */
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    changeText(e.target.value);
-  };
-
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const result = fuse.search(text);
     changeResult(result);
   };
 
+  const initialLoad = useCallback(
+    (query: string) => {
+      const result = fuse.search(query);
+      changeResult(result);
+    },
+    [fuse]
+  );
+
+  useEffect(() => {
+    changeText(query);
+    initialLoad(query);
+  }, [query, initialLoad]);
+
+  /**
+   * TODO: Add date range, section filtering.
+   */
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    changeText(e.target.value);
+  };
   return (
     <div>
       <div className={style.background}>
@@ -44,22 +57,20 @@ export default function SearchBody({
           <div
             className={style.resultCount}
           >{`Showing ${result.length} results for:`}</div>
-          <div className={style.searchBar}>
+          <form className={style.searchBar} onSubmit={handleSubmit}>
             <div className={style.input}>
               <input
                 className={style.textInput}
                 type='text'
-                placeholder='SEARCH'
+                placeholder='search'
                 value={text}
                 onChange={handleChange}
               />
-              <button className={style.btn} onClick={() => handleSubmit()}>
-                <div className={style.btn}>
-                  <ImSearch size={25} />
-                </div>
+              <button type='submit' className={style.btn}>
+                <ImSearch size={20} />
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <div className={style.container}>

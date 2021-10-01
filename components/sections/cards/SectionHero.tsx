@@ -3,6 +3,7 @@ import style from './SectionHero.module.scss';
 import * as Schema from '../../../lib/schema';
 import { ImageBuilder } from '../../ImageBuilder';
 import Link from 'next/link';
+import { Article } from 'interfaces';
 
 type ArticleWrapperProps = {
   slug: string;
@@ -18,25 +19,11 @@ const ArticleLinkWrapper = ({ slug, children }: ArticleWrapperProps) => {
 };
 
 type Props = {
-  articles?: Array<
-    Pick<
-      Schema.Article,
-      '_id' | 'authors' | 'date' | 'excerpt' | 'image' | 'title'
-    > & {
-      slug: string;
-      authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
-    }
-  >;
+  articles?: Article[];
 };
 
 type CardProps = {
-  article: Pick<
-    Schema.Article,
-    '_id' | 'authors' | 'date' | 'excerpt' | 'image' | 'title'
-  > & {
-    slug: string;
-    authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
-  };
+  article: Article;
 };
 
 const HeroTile = ({ article }: CardProps) => {
