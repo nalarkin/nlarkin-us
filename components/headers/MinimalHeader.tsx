@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { ImSearch } from 'react-icons/im';
 import { FiMenu } from 'react-icons/fi';
 import style from './MinimalHeader.module.scss';
@@ -10,19 +10,17 @@ import NewsButton from '../newsButton';
 import Menu from '../menu/Menu';
 import DateComponent from '../Date';
 import MobileMenu from '../menu/MobileMenu';
+import SearchBar from 'components/search/SearchBar';
+import classNames from 'classnames';
 
-const CurrentDate = () => {
-  const currentDate = new Date();
-
-  return (
-    <div className=''>
-      <DateComponent dateString={currentDate.toISOString()} />
-    </div>
-  );
-};
-
-/** View transforms between screensize xl and lg */
 const NavigationBar = () => {
+  const [searchIsOpen, changeSearchStatus] = useState(false);
+  const btnClass = classNames([
+    style.searchBtn,
+    { [style.activeMod]: searchIsOpen },
+    { [style.inactiveMod]: !searchIsOpen },
+  ]);
+
   return (
     <div className={style.headerContainer}>
       <div className={style.leftBtnGroup}>
@@ -30,8 +28,16 @@ const NavigationBar = () => {
           <Menu />
           <MobileMenu />
         </div>
-        <div className={style.searchBtn}>
-          <ImSearch size={15} />
+        <button
+          className={btnClass}
+          onClick={() => changeSearchStatus(!searchIsOpen)}
+        >
+          <div className={style.searchIcon}>
+            <ImSearch size={15} />
+          </div>
+        </button>
+        <div className={style.searchBar}>
+          {searchIsOpen ? <SearchBar /> : null}
         </div>
       </div>
       <div className={style.title}>
