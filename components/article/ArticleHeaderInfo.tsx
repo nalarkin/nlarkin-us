@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { parseISO } from 'date-fns';
-import Date from '../Date';
+import Date from '../shared/Date';
 import * as Schema from '../../lib/schema';
-import { ImageBuilder } from '../ImageBuilder';
+import { ImageBuilder } from '../shared/ImageBuilder';
 
 type Props = {
   authors: (Pick<Schema.Author, 'name' | 'picture'> & { slug: string })[];

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './ArticleCard.module.css';
 import Link from 'next/link';
-import { ImageBuilder } from '../ImageBuilder';
+import { ImageBuilder } from '../shared/ImageBuilder';
 import * as Schema from '../../lib/schema';
 import cn from 'classnames';
 

@@ -1,19 +1,19 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { Article } from '../../../interfaces';
-import ArticleCard from '../../../components/body/ArticleCard';
-import NewsLayout from '../../../components/layouts/newsLayout';
-import { shuffle } from '../../../lib/utils';
-import { getClient } from '../../../lib/sanity.server';
+import { Article } from 'interfaces';
+import ArticleCard from 'components/body/ArticleCard';
+import NewsLayout from 'components/layouts/newsLayout';
+import { shuffle } from 'lib/utils';
+import { getClient } from 'lib/sanity.server';
 import style from './[slug].module.scss';
 import {
   sectionSlugsQuery,
   sectionArticlesQuery,
   SectionArticlesResponse,
-} from '../../../lib/queries';
-import Disclaimer from '../../../components/disclaimer';
-import LatestList from '../../../components/sections/latest/LatestList';
-import SectionHero from '../../../components/sections/cards/SectionHero';
+} from 'lib/queries';
+import Disclaimer from 'components/disclaimer/disclaimer';
+import LatestList from 'components/sections/latest/LatestList';
+import SectionHero from 'components/sections/cards/SectionHero';
 import LargeArticleCard from 'components/home/cards/LargeCard';
 import SectionLayout from 'components/layouts/SectionLayout';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Disclaimer from '../disclaimer';
+import Disclaimer from '../disclaimer/disclaimer';
 import style from './newsBody.module.scss';
 import NewsHero from './NewsHero';
 import ArticleCardLarge from './ArticleCardLarge';

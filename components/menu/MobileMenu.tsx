@@ -3,7 +3,7 @@ import { FiMenu } from 'react-icons/fi';
 import style from './MobileMenu.module.scss';
 import classNames from 'classnames';
 import { headerCategoryLinks, allFooterTopNavLinks } from '../../links';
-import { List } from '../list';
+import { List } from '../shared/list';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';

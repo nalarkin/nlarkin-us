@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './SectionListCard.module.scss';
 import Link from 'next/link';
-import { ImageBuilder } from '../../ImageBuilder';
+import { ImageBuilder } from '../../shared/ImageBuilder';
 import * as Schema from '../../../lib/schema';
-import Date from '../../../components/Date';
+import Date from '../../shared/Date';
 
 type ArticleCardProps = {
   title?: string;

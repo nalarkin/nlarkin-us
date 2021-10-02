@@ -46,3 +46,6 @@ export function formatAuthors<T>(
 export const getAuthorName = (
   currentAuthor: Pick<Schema.Author, 'name'>
 ): string => currentAuthor.name ?? '';
+
+export const buildArticleSlug = (slug: string) => `/news/articles/${slug}`;
+export const buildSectionSlug = (slug: string) => `/news/sections/${slug}`;

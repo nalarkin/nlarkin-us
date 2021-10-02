@@ -1,7 +1,7 @@
 import React from 'react';
 import OpinionCard from './OpinionCard';
 import { ArticleResultAll } from '../../lib/queries';
-import { List } from '../list';
+import { List } from '../shared/list';
 import style from './OpinionColumn.module.css';
 
 const OpinionHeader = () => {

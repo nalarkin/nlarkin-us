@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './disclaimer.module.css';
 import cn from 'classnames';
-import NewsButton from './newsButton';
+import NewsButton from '../shared/newsButton';
 import Cookies from 'js-cookie';
 
 const Disclaimer = () => {

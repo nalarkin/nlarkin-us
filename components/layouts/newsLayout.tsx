@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import SEO, { SEOProps } from '../seo';
+import SEO, { SEOProps } from '../shared/seo';
 import style from './newsLayout.module.css';
 import Link from 'next/link';
 import MainNewsHeader from '../headers/MainNewsHeader';

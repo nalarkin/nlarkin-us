@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Schema from '../../lib/schema';
-import { ImageBuilder } from '../ImageBuilder';
+import { ImageBuilder } from '../shared/ImageBuilder';
 import classNames from 'classnames';
 import Link from 'next/link';
 

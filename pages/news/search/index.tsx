@@ -8,7 +8,7 @@ import MinimalHeader from 'components/headers/MinimalHeader';
 import React, { useRef, useState } from 'react';
 import SearchBody from 'components/search/SearchBody';
 import { Article } from 'interfaces';
-import { Spinner } from '../../../components/Spinner';
+import { Spinner } from '../../../components/shared/Spinner';
 import { useEffect } from 'react';
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {

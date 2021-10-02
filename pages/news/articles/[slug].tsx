@@ -7,7 +7,7 @@ import {
 } from 'next';
 import Layout from '../../../components/layouts/layout';
 import NewsLayout from '../../../components/layouts/newsLayout';
-import Disclaimer from '../../../components/disclaimer';
+import Disclaimer from '../../../components/disclaimer/disclaimer';
 import { getClient, sanityClient } from '../../../lib/sanity.server';
 import {
   articleQuery,
@@ -21,7 +21,7 @@ import ArticleHeader from '../../../components/article/ArticleHeader';
 import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
 import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
 import style from '../../../styles/article.module.css';
-import { ImageBuilder } from '../../../components/ImageBuilder';
+import { ImageBuilder } from '../../../components/shared/ImageBuilder';
 import { ArticleSlugsResult } from '../../../lib/queries';
 
 /**

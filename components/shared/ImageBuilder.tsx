@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { urlForImage } from '../lib/sanity';
-import * as Schema from '../lib/schema';
+import { urlForImage } from '../../lib/sanity';
+import * as Schema from '../../lib/schema';
 
 type Props = {
   image?: Schema.ArticleImage;

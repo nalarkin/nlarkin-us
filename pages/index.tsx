@@ -4,22 +4,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaRegNewspaper } from 'react-icons/fa';
 import { BsPersonLinesFill } from 'react-icons/bs';
-import { Button } from '../components/generic';
+import { Button } from '../components/shared/generic';
 
 import React from 'react';
 import Layout from '../components/layouts/layout';
-import Card from '../components/card';
-import SEO from '../components/seo';
+import SEO from '../components/shared/seo';
 
 const HomeContents = () => {
   return (
     <div className='flex justify-center items-center flex-col md:flex-row'>
-      <Card
+      {/* <Card
         text='Would you like to see my resume?'
         btnText='Resume'
         href='/resume'
       />
-      <Card text='Want to see the news?' btnText='news' href='/news' />
+      <Card text='Want to see the news?' btnText='news' href='/news' /> */}
     </div>
   );
 };

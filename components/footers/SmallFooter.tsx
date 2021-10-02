@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { footerBottomLinks, allFooterTopNavLinks, SiteLink } from '../../links';
-import { List } from '../list';
+import { List } from '../shared/list';
 import classNames from 'classnames';
 
 type Props = {

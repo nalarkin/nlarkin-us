@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './SectionHero.module.scss';
 import * as Schema from '../../../lib/schema';
-import { ImageBuilder } from '../../ImageBuilder';
+import { ImageBuilder } from '../../shared/ImageBuilder';
 import Link from 'next/link';
 import { Article } from 'interfaces';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './CookieNotice.module.css';
-import NewsButton from '../newsButton';
+import NewsButton from '../shared/newsButton';
 
 const CookieNotice = () => {
   return (
