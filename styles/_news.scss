@@ -72,3 +72,48 @@ $size-desktop: 1200px;
     @content;
   }
 }
+
+@function translate-border-color($c) {
+  $dark-color: #121212;
+  $light-color: #dedede;
+  $condMap: (
+    'light': #{$light-color},
+    'dark': #{$dark-color},
+  );
+  @return map-get($condMap, $c);
+}
+
+@mixin divider-section($side: 'left', $color: 'light') {
+  content: '';
+  @if $side == 'left' {
+    height: 100%;
+    position: absolute;
+    left: -16px;
+    border-left: 1px solid translate-border-color($color);
+  } @else if $side == 'right' {
+    height: 100%;
+    position: absolute;
+    right: -16px;
+    border-#{$side}: 1px solid translate-border-color($color);
+  } @else if $side == 'top' {
+    border-bottom: 1px solid translate-border-color($color);
+    margin-bottom: 15px;
+    margin-top: 15px;
+
+    display: block;
+  } @else if $side == 'bottom' {
+    border-bottom: 1px solid translate-border-color($color);
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    display: block;
+  } @else {
+    @error "Unknown side #{$side}.";
+  }
+}
+
+@mixin divider-item($side: 'right', $color: 'light') {
+  margin-#{$side}: 16px;
+  padding-#{$side}: 16px;
+  border-#{$side}: 1px solid translate-border-color($color);
+}

@@ -20,7 +20,7 @@ type Props = {
 const ImageTile = ({ item }: { item: Article }) => {
   const { title, image, authors, slug } = item;
   return (
-    <div className={style.itemContainer}>
+    <div className={style.itemColumnContainer}>
       <div className={style.imageContainer}>
         <Link href={buildArticleSlug(slug)}>
           <a>
@@ -57,7 +57,7 @@ const ImageRow = ({ articles }: Props) => {
   }
   return (
     <section className={style.container}>
-      <div className={style.category}>Section Category Here</div>
+      <div className={style.categoryHeader}>Section Category Here</div>
       <div className={style.listWrapper}>
         <List
           items={articles}

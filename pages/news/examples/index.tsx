@@ -11,6 +11,7 @@ import style from './index.module.scss';
 import { shuffle } from 'lib/utils';
 import LargeCardCaption from 'components/home/cards/LargeCardCaption';
 import ImageRow from 'components/tiles/ImageRow';
+import HeroTwoRows from 'components/tiles/HeroTwoRows';
 import SectionLayout from 'components/layouts/SectionLayout';
 import type { Article } from 'interfaces';
 
@@ -43,7 +44,7 @@ type Props = {
 };
 
 const ExamplePage = ({ data }: Props) => {
-  // let content: string | JSX.Element = '';
+  let content: string | JSX.Element = '';
   if (data !== undefined && data.length > 4) {
     const example = data.slice(3);
     console.log(example);
@@ -67,6 +68,12 @@ const ExamplePage = ({ data }: Props) => {
             title={item.title}
           />
         ),
+      },
+      {
+        name: 'HeroTwoRows',
+        articleCount: 5,
+        items: data.slice(3),
+        renderItem: (item) => <HeroTwoRows articles={item} />,
       },
     ];
 
