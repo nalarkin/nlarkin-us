@@ -9,12 +9,13 @@ $side-group-span: 5;
   background-color: white;
   margin: auto;
   padding: 0 3%;
-  max-width: 1200px;
+  // max-width: 1200px;
+  border-bottom: 1px solid #e2e2e2;
 }
 
 .headerContainer {
   padding: 4px 15px 2px;
-  max-width: 1605px;
+  max-width: 1200px;
   position: relative;
   @include flex-row;
   margin: 0px auto;

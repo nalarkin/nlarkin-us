@@ -15,6 +15,7 @@ import Disclaimer from '../../../components/disclaimer';
 import LatestList from '../../../components/sections/latest/LatestList';
 import SectionHero from '../../../components/sections/cards/SectionHero';
 import LargeArticleCard from 'components/home/cards/LargeCard';
+import SectionLayout from 'components/layouts/SectionLayout';
 
 export const getStaticProps: GetStaticProps = async ({
   params,
@@ -70,7 +71,9 @@ const NewsCategoryMain = ({
   };
 
   return (
-    <NewsLayout seo={{ title: '', description: 'all world news in 1 place' }}>
+    <SectionLayout
+      seo={{ title: '', description: 'all world news in 1 place' }}
+    >
       <div className='flex flex-col pt-7'>
         {/* <div className='text-3xl font-bold'> {title}</div> */}
         <SectionHero articles={articles} />
@@ -95,7 +98,7 @@ const NewsCategoryMain = ({
         <LatestList articles={articles} />
         <Disclaimer />
       </div>
-    </NewsLayout>
+    </SectionLayout>
   );
 };
 

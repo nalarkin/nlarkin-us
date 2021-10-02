@@ -1,6 +1,6 @@
 import React from 'react';
 import Disclaimer from '../disclaimer';
-import style from './newsBody.module.css';
+import style from './newsBody.module.scss';
 import NewsHero from './NewsHero';
 import ArticleCardLarge from './ArticleCardLarge';
 import OpinionColumn from './OpinionColumn';

@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
 import SEO, { SEOProps } from '../seo';
-import style from './newsLayout.module.css';
+import style from './SectionLayout.module.scss';
 import Link from 'next/link';
-import MainNewsHeader from '../headers/MainNewsHeader';
+import NewsHeader from '../headers/MainNewsHeader';
 import Footer from '../footers/footer';
 import { NextSeo } from 'next-seo';
 import SmallFooter from '../footers/SmallFooter';
+import MinimalHeader from 'components/headers/MinimalHeader';
 
 type Props = {
   seo: SEOProps;
@@ -14,15 +15,19 @@ type Props = {
 
 const NewsLayout = ({ seo, children }: Props) => {
   return (
-    <div className={style.wrapper}>
-      {/* SEO */}
-      {/* <SEO description={seo.description} title={seo.title} /> */}
+    <>
+      {' '}
       <NextSeo {...seo} />
-      <MainNewsHeader />
-      {children}
-      <Footer />
-      <SmallFooter />
-    </div>
+      <MinimalHeader />
+      <div className={style.wrapper}>
+        {/* SEO */}
+        {/* <SEO description={seo.description} title={seo.title} /> */}
+
+        {children}
+        <Footer />
+        <SmallFooter />
+      </div>
+    </>
   );
 };
 

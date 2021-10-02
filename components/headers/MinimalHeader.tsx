@@ -34,6 +34,8 @@ const NavigationBar = ({ submit }: NavProps) => {
         </div>
         <button
           className={btnClass}
+          type='button'
+          aria-label='search button'
           onClick={() => changeSearchStatus(!searchIsOpen)}
         >
           <div className={style.searchIcon}>
