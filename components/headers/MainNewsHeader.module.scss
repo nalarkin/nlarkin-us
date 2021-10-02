@@ -57,18 +57,6 @@
   }
 }
 
-.searchBar {
-  @include media('<laptop') {
-    display: none;
-  }
-}
-
-.searchIcon {
-  padding: 4px;
-  display: flex;
-  place-items: center;
-}
-
 .activeMod {
   background-color: #f7f7f7;
   transition: ease 0.6s;
@@ -128,6 +116,31 @@
   margin: 0px auto 0px;
 
   @include media('>laptop') {
+    display: none;
+  }
+}
+
+.searchBar {
+  @include media('<laptop') {
+    display: none;
+  }
+}
+
+.searchIcon {
+  padding: 4px;
+  display: flex;
+  place-items: center;
+}
+
+.searchBtn {
+  cursor: pointer;
+  position: static;
+  @include flex-row;
+  padding: 2px;
+  place-items: center;
+  margin-right: 5px;
+  border-radius: 3px;
+  @include media('<laptop') {
     display: none;
   }
 }
