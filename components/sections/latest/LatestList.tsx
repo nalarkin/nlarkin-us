@@ -3,17 +3,10 @@ import style from './LatestList.module.css';
 import * as Schema from '../../../lib/schema';
 import SectionListCard from '../cards/SectionListCard';
 import LatestHeader from './LatestHeader';
+import { Article } from 'interfaces';
 
 type Props = {
-  articles: Array<
-    Pick<
-      Schema.Article,
-      '_id' | 'authors' | 'date' | 'excerpt' | 'image' | 'title'
-    > & {
-      slug: string;
-      authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
-    }
-  >;
+  articles: Article[];
 };
 
 const LatestList = ({ articles }: Props) => {

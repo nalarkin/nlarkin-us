@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
-import style from './MobileMenu.module.css';
+import style from './MobileMenu.module.scss';
 import classNames from 'classnames';
 import { headerCategoryLinks, allFooterTopNavLinks } from '../../links';
 import { List } from '../list';
@@ -43,7 +43,7 @@ const MobileMenu = () => {
           </div>
         </div>
         <div className={style.container}>
-          <SearchBar />
+          <SearchBar submit={handleClick} />
           <List
             items={allFooterTopNavLinks}
             renderItem={({ name, categoryLinks }): JSX.Element => {

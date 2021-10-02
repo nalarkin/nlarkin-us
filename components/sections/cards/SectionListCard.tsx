@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './SectionListCard.module.css';
+import style from './SectionListCard.module.scss';
 import Link from 'next/link';
 import { ImageBuilder } from '../../ImageBuilder';
 import * as Schema from '../../../lib/schema';

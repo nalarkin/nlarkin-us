@@ -5,6 +5,7 @@ import ArticleCard from '../../../components/body/ArticleCard';
 import NewsLayout from '../../../components/layouts/newsLayout';
 import { shuffle } from '../../../lib/utils';
 import { getClient } from '../../../lib/sanity.server';
+import style from './[slug].module.scss';
 import {
   sectionSlugsQuery,
   sectionArticlesQuery,
@@ -14,6 +15,7 @@ import Disclaimer from '../../../components/disclaimer';
 import LatestList from '../../../components/sections/latest/LatestList';
 import SectionHero from '../../../components/sections/cards/SectionHero';
 import LargeArticleCard from 'components/home/cards/LargeCard';
+import SectionLayout from 'components/layouts/SectionLayout';
 
 export const getStaticProps: GetStaticProps = async ({
   params,
@@ -69,11 +71,13 @@ const NewsCategoryMain = ({
   };
 
   return (
-    <NewsLayout seo={{ title: '', description: 'all world news in 1 place' }}>
-      <div className='flex flex-col mt-4 capitalize'>
+    <SectionLayout
+      seo={{ title: '', description: 'all world news in 1 place' }}
+    >
+      <div className='flex flex-col pt-7'>
         {/* <div className='text-3xl font-bold'> {title}</div> */}
         <SectionHero articles={articles} />
-        <div className='flex flex-row flex-wrap w-3/4 mx-auto '>
+        <div className={style.body}>
           {articles.length === 0
             ? handleNoArticles()
             : articles.map((article) => {
@@ -94,7 +98,7 @@ const NewsCategoryMain = ({
         <LatestList articles={articles} />
         <Disclaimer />
       </div>
-    </NewsLayout>
+    </SectionLayout>
   );
 };
 

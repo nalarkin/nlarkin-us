@@ -2,6 +2,8 @@ import type * as Schema from './schema';
 import groq from 'groq';
 
 import axios from 'axios';
+import { Article } from '../interfaces';
+import { Section } from './schema';
 
 const articleFields = `
   _id,
@@ -50,12 +52,7 @@ export const articleQueryAll = groq`
   *[_type == "article"] {
     ${articleFields}
   }`;
-export type ArticleResultAll = Array<
-  Pick<Schema.Article, '_id' | 'date' | 'excerpt' | 'image' | 'title'> & {
-    authors: Array<Pick<Schema.Author, 'name' | 'picture'> & { slug: string }>;
-    slug: string;
-  }
->;
+export type ArticleResultAll = Array<Article>;
 
 // export const sectionArticlesQuery = groq`
 // *[_type == 'article' && references(*[_type == "section" && slug.current == $slug][0]._id)][] {
@@ -71,16 +68,8 @@ export const sectionArticlesQuery = groq`
   }
 }[0]`;
 export type SectionArticlesResponse = {
-  articles: Array<
-    Pick<
-      Schema.Article,
-      '_id' | 'authors' | 'date' | 'excerpt' | 'image' | 'title'
-    > & {
-      slug: string;
-      authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
-    }
-  >;
-  title: string;
+  articles: Array<Article>;
+  title: Pick<Schema.Section, 'title'>;
 };
 
 // export async function getArticleSlugs(): Promise<ArticleSlugsResult | null> {

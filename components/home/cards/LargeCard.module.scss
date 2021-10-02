@@ -1,4 +1,4 @@
-@import 'styles/variables';
+@import 'styles/news';
 
 .container {
   padding-bottom: 32px;
@@ -6,7 +6,7 @@
 }
 
 .articleLink:hover {
-  @include link-hover();
+  @include link-hover;
 }
 
 .title {
@@ -26,9 +26,9 @@
   margin-right: 0;
 }
 
-@media (max-width: 880px) {
+@media (max-width: $size-tablet) {
   .card {
-    @include flex-col();
+    @include flex-col;
   }
 
   .image {
@@ -49,9 +49,9 @@
   }
 }
 
-@media (min-width: 880px) {
+@media (min-width: $size-tablet + 1px) {
   .card {
-    @include grid();
+    @include grid;
   }
 
   .image {

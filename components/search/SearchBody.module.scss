@@ -1,0 +1,86 @@
+@import 'styles/news';
+
+$gray: #666;
+$bg: #f7f7f7;
+
+%container {
+  @include flex-col;
+  color: $gray;
+  font-family: $font-serif;
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.background {
+  background-color: $bg;
+  width: 100%;
+}
+
+.container {
+  @extend %container;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 0.75rem;
+  padding: 28px 25px 5px;
+}
+
+.searchContainer {
+  @extend %container;
+  line-height: 0.75rem;
+  padding: 28px 25px 5px;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+.resultCount {
+  line-height: normal;
+  margin: 5px 0px;
+}
+
+.searchBar {
+  @include flex-row;
+  flex-flow: wrap;
+  flex: 1 1 auto;
+  width: 100%;
+  position: relative;
+}
+
+.input {
+  @include flex-row;
+  font-weight: 700;
+  // padding-right: 30px;
+  width: 100%;
+  font-size: 2.125rem;
+  line-height: 2.8rem;
+  position: relative;
+}
+
+.btn {
+  // flex: none;
+  padding: 0px 10px;
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  // margin-left: -30px;
+}
+
+.textInput {
+  @include flex-row;
+  // flex: 1 1 auto;
+  padding-right: 30px;
+  color: #121212;
+  position: relative;
+  font-family: $font-sans;
+  font-weight: 700;
+  background-color: $bg;
+  border-bottom: 1px solid transparent;
+  width: 100%;
+  // border: 0;
+  &:focus,
+  &:hover {
+    border-bottom: 1px solid #e2e2e2;
+    transition: border-color 0.1s ease-in;
+  }
+}

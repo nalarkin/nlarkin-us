@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import style from './Search.module.css';
+import style from './Search.module.scss';
+import { ImSearch } from 'react-icons/im';
+import { useRouter } from 'next/router';
 
-const SearchBar = () => {
+type SearchProps = {
+  submit?: () => void;
+};
+
+const SearchBar = ({ submit }: SearchProps) => {
+  const router = useRouter();
   const [text, changeText] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,8 +22,33 @@ const SearchBar = () => {
     return true;
   };
 
+  const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // router.push({
+    //   pathname: '/news/search',
+    //   query: { all: text },
+    // });
+    // if (submit !== undefined) {
+    //   // submit(text);
+    //   router.push({
+    //     pathname: '/news/search',
+    //     query: { all: text },
+    //   });
+    // } else {
+
+    if (submit !== undefined) {
+      submit();
+    }
+    router.push({
+      pathname: '/news/search',
+      query: { all: text },
+    });
+  };
+  //   }
+  // };
+
   return (
-    <div className={style.searchContainer}>
+    <form className={style.searchContainer} onSubmit={performSearch}>
       <div className={style.inputContainer}>
         <input
           className={style.input}
@@ -25,8 +57,8 @@ const SearchBar = () => {
           value={text}
           onChange={handleChange}
         />
-        {/* <input className={style.clear} type='reset' placeholder='CLEAR'></input> */}
         <button
+          type='reset'
           className={style.clear}
           onClick={() => {
             changeText('');
@@ -36,10 +68,10 @@ const SearchBar = () => {
           CLEAR
         </button>
       </div>
-      <button className={style.btn} disabled={isDisabled()}>
+      <button className={style.btn} type='submit' disabled={isDisabled()}>
         GO
       </button>
-    </div>
+    </form>
   );
 };
 
