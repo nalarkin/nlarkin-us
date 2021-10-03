@@ -14,6 +14,8 @@ import ImageRow from 'components/tiles/ImageRow';
 import HeroTwoRows from 'components/tiles/HeroTwoRows';
 import SectionLayout from 'components/layouts/SectionLayout';
 import type { Article } from 'interfaces';
+import Carousel from 'components/tiles/Carousel';
+import SimpleSlider from 'components/tiles/Slider';
 
 const NewsSEO = {
   description:
@@ -47,7 +49,7 @@ const ExamplePage = ({ data }: Props) => {
   let content: string | JSX.Element = '';
   if (data !== undefined && data.length > 4) {
     const example = data.slice(3);
-    console.log(example);
+    // console.log(example);
     const examples: TileExample[] = [
       {
         name: 'ImageRow',
@@ -74,6 +76,12 @@ const ExamplePage = ({ data }: Props) => {
         articleCount: 5,
         items: data.slice(3),
         renderItem: (item) => <HeroTwoRows articles={item} />,
+      },
+      {
+        name: 'Carousel',
+        articleCount: 5,
+        items: data.slice(3),
+        renderItem: (item) => <Carousel articles={item} />,
       },
     ];
 

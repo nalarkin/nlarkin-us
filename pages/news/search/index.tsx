@@ -33,7 +33,7 @@ export default function Search({ data }: SearchProps) {
   const [isLoading, setLoading] = useState(true);
   const [queryParams, setQueryParams] = useState<string | string[]>('');
   useEffect(() => {
-    console.log(queryParams);
+    // console.log(queryParams);
     if ('all' in query) {
       const { all } = query;
       setQueryParams(all as string);
