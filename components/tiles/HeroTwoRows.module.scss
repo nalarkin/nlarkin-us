@@ -86,7 +86,7 @@
 
 .carousel {
   @include media('>laptop') {
-    display: hidden;
+    display: none;
   }
 }
 

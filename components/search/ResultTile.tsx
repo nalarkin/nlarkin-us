@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './ResultTile.module.scss';
 import * as Schema from 'lib/schema';
-import Date from 'components/Date';
+import Date from 'components/shared/Date';
 import { ImageBuilder } from '../shared/ImageBuilder';
 import Link from 'next/link';
 import { formatAuthors, getAuthorName } from 'lib/utils';

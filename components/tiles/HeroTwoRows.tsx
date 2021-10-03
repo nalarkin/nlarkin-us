@@ -10,6 +10,7 @@ import {
 import { ImageBuilder } from 'components/shared/ImageBuilder';
 import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
 import Link from 'next/link';
+import Carousel from './Carousel';
 
 type Props = {
   articles: Article[];
@@ -62,6 +63,7 @@ const HeroTwoRows = ({ articles }: Props) => {
   const firstArticle = articles[0];
   const columnTwoArticles = articles.slice(1, 3);
   const columnThreeArticles = articles.slice(3, 5);
+  const carouselArticles = columnTwoArticles.concat(columnThreeArticles);
 
   return (
     <section className={style.container}>
@@ -82,7 +84,11 @@ const HeroTwoRows = ({ articles }: Props) => {
           <RowBuilder articles={columnTwoArticles} />
           <RowBuilder articles={columnThreeArticles} />
         </div>
-        <div className={style.carousel}></div>
+      </div>
+      <div className={style.carousel}>
+        <div className={style.container}>
+          <Carousel articles={carouselArticles} />
+        </div>
       </div>
     </section>
   );

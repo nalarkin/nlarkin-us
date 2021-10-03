@@ -1,23 +1,28 @@
 @import 'tile';
 
 .tileContainer {
-  // @include divider-item('left');
-  // @include divider-item('right');
   @include flex-col;
-  // background-color: red;
-  height: 100%;
+  flex: 1 1 auto;
+  border: 2px black solid;
+  position: relative;
+  min-height: max-content;
+
   &::before {
     @include divider-section('left', 'light');
   }
-  &::after {
-    @include divider-section('right', 'light');
-    // right: -25px;
-  }
+}
+
+.image {
+  display: block;
+  position: relative;
 }
 
 .title {
   @extend %title;
   font-size: 0.8rem;
+  @include flex-col;
+  position: relative;
+  flex: 1 1 auto;
 }
 
 .container {
