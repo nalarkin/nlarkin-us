@@ -86,9 +86,9 @@ const HeroTwoRows = ({ articles }: Props) => {
         </div>
       </div>
       <div className={style.carousel}>
-        <div className={style.container}>
-          <Carousel articles={carouselArticles} />
-        </div>
+        {/* <div className={style.container}> */}
+        <Carousel articles={carouselArticles} />
+        {/* </div> */}
       </div>
     </section>
   );

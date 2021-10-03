@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import style from './layout.module.css';
-import SEO from '../shar../shared/seo';
-import { SEOProps } from '../shar../shared/seo';
+import SEO from 'components/shared/seo';
+import { SEOProps } from 'components/shared/seo';
 
 type Props = {
   seo: SEOProps;

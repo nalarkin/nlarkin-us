@@ -14,12 +14,26 @@ export function shuffle(a: any[]) {
   }
   return a;
 }
+/**
+ * Shuffles array in place.
+ * @param {Array} a items An array containing the items.
+ */
+export function shuffleCopy<T>(a: T[]) {
+  const copyArray = [...a];
+  let j, x, i;
+  for (i = copyArray.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = copyArray[i];
+    copyArray[i] = copyArray[j];
+    copyArray[j] = x;
+  }
+  return copyArray;
+}
 
 /**
  * Return a string which is the proper formatting of the list of authors
  *
  */
-
 export function formatAuthors<T>(
   authors: Array<T>,
   get: (arg0: T) => string
@@ -31,9 +45,6 @@ export function formatAuthors<T>(
   if (n === 1) {
     return get(authors[0]);
   }
-  // if (n === 2) {
-  //   return `${get(authors[0])} and ${get(authors[1])}`;
-  // }
   let content = `${get(authors[0])}`;
   for (let i = 1; i < n - 1; i++) {
     content = content + `, ${get(authors[i])}`;

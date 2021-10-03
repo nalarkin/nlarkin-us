@@ -91,7 +91,7 @@ const ExamplePage = ({ data }: Props) => {
       <div>
         {examples.map(({ name, articleCount, items, renderItem }) => {
           return (
-            <div key={name} className='border-2 border-blue-700'>
+            <div key={name} className=''>
               <div className=' font-bold flex flex-row bg-gray-100'>
                 {' '}
                 {name}

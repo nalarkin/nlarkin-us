@@ -97,9 +97,10 @@ $size-desktop: 1200px;
     border-#{$side}: 1px solid translate-border-color($color);
   } @else if $side == 'top' {
     border-bottom: 1px solid translate-border-color($color);
-    margin-bottom: 15px;
-    margin-top: 15px;
-
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    content: '';
     display: block;
   } @else if $side == 'bottom' {
     border-bottom: 1px solid translate-border-color($color);

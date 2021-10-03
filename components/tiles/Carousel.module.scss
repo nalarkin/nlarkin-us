@@ -5,7 +5,8 @@
   flex: 1 1 auto;
   border: 2px black solid;
   position: relative;
-  min-height: max-content;
+  min-height: 100%;
+  // min-height: 100%;
 
   &::before {
     @include divider-section('left', 'light');
@@ -22,10 +23,25 @@
   font-size: 0.8rem;
   @include flex-col;
   position: relative;
-  flex: 1 1 auto;
+  // flex: 1 1 auto;
 }
 
 .container {
-  padding-bottom: 40px;
-  height: max-content;
+  @extend %container;
+  // padding-bottom: 40px;
+  position: relative;
+  // height: 100%;
+  // display: flex;
+  // &::before {
+  //   @include divider-section('top', 'dark');
+  //   // margin-top: 30px;
+  //   margin-bottom: 50px;
+  // }
+}
+.flexTile {
+  display: flex;
+}
+
+.categoryHeader {
+  @extend %categoryHeader;
 }

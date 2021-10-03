@@ -3,6 +3,7 @@
 ## TODO:
 
 - Home page mobile view, make opinion cards lay in column instead of it's own column
+- Fix carousel wrapping issues at certain resolutions (text gets cut off)
 - Create Section Header Card with a specific layout
 - add tiles with different sizes for the home page and section pages.
 - add valid links to header and footer
