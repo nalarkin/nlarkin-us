@@ -7,6 +7,9 @@ import { List } from '../shared/list';
 import { ImageCropBuilder } from '../shared/ImageCropBuilder';
 import Link from 'next/link';
 import style from './Carousel.module.scss';
+import 'swiper/css';
+import { buildArticleSlug } from 'lib/utils';
+// import 'swiper/css/navigation';
 
 type Props = {
   articles: Article[];
@@ -16,7 +19,7 @@ const TileBuilder = ({ article }: { article: Article }) => {
   const { title, image, slug } = article;
   return (
     <div className={style.tileContainer}>
-      <Link href={slug}>
+      <Link href={buildArticleSlug(slug)}>
         <a className={style.image}>
           <div>
             <ImageCropBuilder image={image} width={300} height={200} />

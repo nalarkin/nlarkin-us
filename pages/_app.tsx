@@ -8,7 +8,8 @@ import { useEffect } from 'react';
 // import 'swiper/scss';
 // import 'swiper/scss/navigation';
 // import 'swiper/scss/pagination';
-import 'components/tiles/Carousel.scss';
+// import 'components/tiles/Carousel.scss';
+import 'components/tiles/Swiper.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // const tagManagerArgs: TagManagerArgs = {
