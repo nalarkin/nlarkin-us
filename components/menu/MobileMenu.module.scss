@@ -1,9 +1,9 @@
 @import 'styles/news';
 
 .menu {
-  animation-duration: 0.4s;
-  animation-name: slidein;
-  animation-iteration-count: initial;
+  // animation-duration: 0.4s;
+  // animation-name: slidein;
+  // animation-iteration-count: initial;
   position: fixed;
   z-index: 70;
   padding: 10px 18px;
@@ -28,9 +28,13 @@
   letter-spacing: 0.2px;
 }
 
-.btn {
+.btnAnimation {
   transform: rotate(-90deg);
   transition: all 0.4s ease-in-out;
+}
+
+.btn {
+    padding: 8px 9px 9px;
 }
 
 .container {
@@ -69,7 +73,7 @@
   font-weight: bold;
   font-size: 25px;
   height: 47px;
-  font-family: Georgia, ui-serif, Cambria, 'Times New Roman', Times, serif;
+  font-family: $font-serif;
 }
 
 .exit {
@@ -79,13 +83,3 @@
   padding: 10px;
 }
 
-@keyframes slidein {
-  from {
-    left: -200px;
-    width: 0%;
-  }
-  to {
-    left: 0px;
-    animation-play-state: paused;
-  }
-}

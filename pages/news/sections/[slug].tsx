@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const queryParams = { slug: params?.slug };
-  const { title, articles } = await getClient(
+  const { title, articles, slug } = await getClient(
     preview
   ).fetch<SectionArticlesResponse>(sectionArticlesQuery, queryParams);
   return {
@@ -30,6 +30,7 @@ export const getStaticProps: GetStaticProps = async ({
       data: {
         articles: articles,
         title: title,
+        slug: slug,
       },
       // data:  {
       //   articles: articles,
@@ -60,7 +61,7 @@ const NewsCategoryMain = ({
     return <div></div>;
   }
   // console.log(`data: ${JSON.stringify(data)}`);
-  const { articles, title } = data;
+  const { articles, title, slug } = data;
 
   const handleNoArticles = () => {
     return (
@@ -73,6 +74,8 @@ const NewsCategoryMain = ({
   return (
     <SectionLayout
       seo={{ title: '', description: 'all world news in 1 place' }}
+      sectionTitle={title}
+      slug={slug}
     >
       <div className='flex flex-col pt-7'>
         {/* <div className='text-3xl font-bold'> {title}</div> */}

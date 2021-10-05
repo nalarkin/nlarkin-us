@@ -19,10 +19,8 @@ const MobileMenu = () => {
     setMenu(!isActive);
   };
   const button = (
-    <button className='' onClick={() => handleClick()}>
-      <div className='mr-3 py-2 pr-2 relative '>
-        <FiMenu size={18} className={isActive ? style.btn : ''} />
-      </div>
+    <button className={style.btn} onClick={() => handleClick()}>
+        <FiMenu size={18} className={isActive ? style.btnAnimation : ''} />
     </button>
   );
 

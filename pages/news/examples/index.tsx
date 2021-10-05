@@ -16,6 +16,7 @@ import SectionLayout from 'components/layouts/SectionLayout';
 import type { Article } from 'interfaces';
 import Carousel from 'components/tiles/Carousel';
 import SimpleSlider from 'components/tiles/Slider';
+import MinimalHeader from 'components/headers/MinimalHeader';
 
 const NewsSEO = {
   description:
@@ -104,12 +105,15 @@ const ExamplePage = ({ data }: Props) => {
     );
   }
   return (
-    <div className={style.wrapper}>
-      {content}
-      {/* <div>you shouldnt see this</div>
+    <>
+      <MinimalHeader sectionTitle='examples' />
+      <div className={style.wrapper}>
+        {content}
+        {/* <div>you shouldnt see this</div>
       <div>{JSON.stringify(`data: ${data}`)}</div> */}
-      {/* <SectionLayout seo={NewsSEO}>{content}</SectionLayout> */}
-    </div>
+        {/* <SectionLayout seo={NewsSEO}>{content}</SectionLayout> */}
+      </div>
+    </>
   );
 };
 

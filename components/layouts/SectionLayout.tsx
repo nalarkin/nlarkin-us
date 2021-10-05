@@ -10,15 +10,17 @@ import MinimalHeader from 'components/headers/MinimalHeader';
 
 type Props = {
   seo: SEOProps;
+  sectionTitle?: string;
+  slug?: string;
   children?: ReactNode;
 };
 
-const NewsLayout = ({ seo, children }: Props) => {
+const SectionLayout = ({ seo, sectionTitle, slug, children }: Props) => {
   return (
     <>
       {' '}
       <NextSeo {...seo} />
-      <MinimalHeader />
+      <MinimalHeader sectionTitle={sectionTitle} slug={slug} />
       <div className={style.wrapper}>
         {/* SEO */}
         {/* <SEO description={seo.description} title={seo.title} /> */}
@@ -31,4 +33,4 @@ const NewsLayout = ({ seo, children }: Props) => {
   );
 };
 
-export default NewsLayout;
+export default SectionLayout;

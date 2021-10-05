@@ -16,9 +16,12 @@
   border-right: 1px solid rgb(204, 204, 204);
 }
 
-.btn {
+.btnAnimation {
   transform: rotate(-90deg);
   transition: all 0.4s ease-in-out;
+}
+.btn {
+    padding: 8px 9px 9px;
 }
 
 @keyframes slidein {
@@ -28,7 +31,6 @@
   }
 
   to {
-
     left: 0px;
     animation-play-state: paused;
   }

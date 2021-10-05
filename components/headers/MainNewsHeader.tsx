@@ -39,9 +39,9 @@ const TopNavigationBar = () => {
     'font-serif',
   ]);
 
-  const imgClass = classNames(['mr-3', 'p-2', style.hideIfSmall]);
+  // const imgClass = classNames(['mr-3', 'p-2', style.hideIfSmall]);
   const headerBanners = classNames(['justify-self-center', style.hideIfSmall]);
-  const profileClass = classNames(['flex', 'justify-end', style.hideIfLarge]);
+  // const profileClass = classNames(['flex', 'justify-end', style.hideIfLarge]);
   return (
     <>
       <div className={style.topNav}>

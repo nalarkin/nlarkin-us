@@ -63,13 +63,15 @@ export type ArticleResultAll = Array<Article>;
 export const sectionArticlesQuery = groq`
 *[ _type == "section" && slug.current == $slug ]{
   title,
+  "slug": slug.current,
   "articles": *[ _type == "article" && references(^._id)] {
     ${articleFields}
   }
 }[0]`;
 export type SectionArticlesResponse = {
   articles: Array<Article>;
-  title: Pick<Schema.Section, 'title'>;
+  title: string;
+  slug: string;
 };
 
 // export async function getArticleSlugs(): Promise<ArticleSlugsResult | null> {
