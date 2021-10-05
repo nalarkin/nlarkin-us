@@ -21,6 +21,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/body/ArticleBody.jsx", "lib/sanity.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/body/ArticleBody.tsx", "lib/sanity.js"],
   "exclude": ["node_modules"]
 }

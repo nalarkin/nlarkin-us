@@ -6,7 +6,7 @@ import { ImageBuilder } from 'components/shared/ImageBuilder';
 import { List } from 'components/shared/list';
 import type { Article } from 'interfaces';
 
-import { buildArticleSlug } from '../../lib/utils';
+import { buildArticleSlug, editExcerptToSize } from '../../lib/utils';
 import Carousel from './Carousel';
 import style from './HeroTwoRows.module.scss';
 
@@ -23,19 +23,20 @@ const RowBuilder = ({ articles }: Props) => {
           items={articles}
           renderItem={({ image, title, excerpt, slug }) => {
             return (
-              <div className={style.itemContainer}>
+              <section className={style.itemContainer}>
                 <Link href={buildArticleSlug(slug)}>
-                  <a className={style.imageContainer}>
+                  <a className={style.hover}>
                     <ImageBuilder image={image} />
+                    <div className={style.textContent}>
+                      <h3 className={style.title}>{title}</h3>
+                      <p className={style.excerpt}>
+                        {' '}
+                        {editExcerptToSize(excerpt)}
+                      </p>
+                    </div>
                   </a>
                 </Link>
-                <Link href={buildArticleSlug(slug)}>
-                  <a className={style.textContent}>
-                    <div className={style.title}>{title}</div>
-                    <div className={style.excerpt}> {excerpt}</div>
-                  </a>
-                </Link>
-              </div>
+              </section>
             );
           }}
         />
@@ -44,13 +45,6 @@ const RowBuilder = ({ articles }: Props) => {
   );
 };
 
-/** TODO: At  < laptop size, hero tile turns into 1 large card on top, and 4 items on carousel below with two tiles per screen
- * Can use this package to implement.
- * https://www.npmjs.com/package/react-responsive-carousel
- * At <tablet size, it just overflows with a scroll going to the right. I don't like this design.
- * Could either make the carousel hold more items off to the side, or could turn the Items into Column,
- * but would need excerpts to fill out image card (two columns, title + excerpt on left, image on right)
- *  */
 const HeroTwoRows = ({ articles }: Props) => {
   if (articles.length !== 5) {
     console.error(

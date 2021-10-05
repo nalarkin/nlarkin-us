@@ -65,3 +65,46 @@ export const getAuthorName = (
 
 export const buildArticleSlug = (slug: string) => `/news/articles/${slug}`;
 export const buildSectionSlug = (slug: string) => `/news/sections/${slug}`;
+
+/**
+ * Preference for making articles excerpts of certain length to format nicely on cards.
+ * Full sentance within range > Longer sentance which is shortened with elipses to fit
+ * range > multiple sentances concatenated to fit in range.
+ * @param excerpt excerpt to be used for article card
+ * @param minSize minimum number of characters for excerpt length
+ * @param maxSize max number of characters for excerpt length
+ * @returns a string which contains an edited version of the excerpt to fit within range
+ */
+export const editExcerptToSize = (
+  excerpt?: string,
+  minSize = 55,
+  maxSize = 83
+) => {
+  if (!excerpt) {
+    return '';
+  }
+  const sentanceSizeRegex = new RegExp(
+    `[.!?]\\s?([^.!?]{${minSize},${maxSize}}[.!?])`
+  );
+  const hasLargeSentence = new RegExp(`([^.!?]{${minSize},}[.!?])`);
+  const captureLargeSentence = new RegExp(`[^?!.]{${minSize},${maxSize}}`);
+  if (sentanceSizeRegex.test(excerpt)) {
+    const firstOccurrance = new RegExp(
+      `[.!?]\\s?([^.!?]{${minSize},${maxSize}}[.!?])`
+    );
+    const result = excerpt.match(firstOccurrance);
+    if (result) {
+      const [, capturedString] = result;
+      return capturedString;
+    }
+  } else if (hasLargeSentence.test(excerpt)) {
+    // occurs when all sentances in excerpt are longer than max length desired.
+    const result = `${excerpt.match(captureLargeSentence)}...`;
+    return result;
+  }
+  // occurs when all sentences are shorter than the required length.
+  console.error(
+    `failed all tests in editExcerptToSize() function call for excerpt: ${excerpt}`
+  );
+  return `failed all tests for excerpt: ${excerpt}`;
+};

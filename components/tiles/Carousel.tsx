@@ -5,7 +5,7 @@ import { Navigation, SwiperOptions } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import type { Article } from 'interfaces';
-import { buildArticleSlug } from 'lib/utils';
+import { buildArticleSlug, editExcerptToSize } from 'lib/utils';
 
 import { ImageCropBuilder } from '../shared/ImageCropBuilder';
 import style from './Carousel.module.scss';
@@ -13,51 +13,87 @@ import style from './Carousel.module.scss';
 import 'swiper/css';
 // import 'swiper/css/navigation';
 
+type TileLayout = 'row' | 'column';
 type Props = {
   articles: Article[];
+  tileLayout?: TileLayout;
 };
 
-const TileBuilder = ({ article }: { article: Article }) => {
+const ColumnTileBuilder = ({ article }: { article: Article }) => {
   const { title, image, slug } = article;
   return (
-    <div className={style.tileContainer}>
+    <section className="h-full">
       <Link href={buildArticleSlug(slug)}>
-        <a className={style.image}>
-          <div>
-            <ImageCropBuilder image={image} width={300} height={200} />
+        <a className={style.tileContainer}>
+          {/* <div className={style.image}> */}
+          <ImageCropBuilder image={image} width={300} height={200} />
+          {/* </div> */}
+
+          <h3 className={style.title}>{title}</h3>
+        </a>
+      </Link>
+    </section>
+  );
+};
+const RowTileBuilder = ({ article }: { article: Article }) => {
+  const { title, image, slug, excerpt } = article;
+  const shortenedExcerpt = editExcerptToSize(excerpt ?? '');
+
+  return (
+    <section className="h-full">
+      <Link href={buildArticleSlug(slug)}>
+        <a className={style.hover}>
+          <div className={style.tileRowContainer}>
+            <div className={style.rowTileContent}>
+              <h3 className={style.rowTileTitle}>{title}</h3>
+              <p className={style.rowTileExcerpt}>{shortenedExcerpt}</p>
+            </div>
+            <div>
+              <ImageCropBuilder image={image} width={300} height={300} />
+            </div>
           </div>
         </a>
       </Link>
-      <Link href={slug}>
-        <a className={style.image}>
-          <div className={style.title}>{title}</div>
-        </a>
-      </Link>
-    </div>
+    </section>
   );
 };
 
-const options: SwiperOptions = {
-  slidesPerView: 2,
-  breakpoints: {
-    '320': {
-      slidesPerView: 2,
-      // spaceBetween: 0,
+const buildSwiperOptionsBasedOnSize = (size: number) => {
+  const options: SwiperOptions = {
+    slidesPerView: 2,
+    breakpoints: {
+      '320': {
+        slidesPerView: 2,
+        // spaceBetween: 0,
+      },
+      '769': {
+        slidesPerView: 3,
+        // spaceBetween: 0,
+      },
+      '993': {
+        slidesPerView: Math.min(size, 5),
+        // spaceBetween: 0,
+      },
     },
-    '769': {
-      slidesPerView: 3,
-      // spaceBetween: 0,
-    },
-    '993': {
-      slidesPerView: 5,
-      // spaceBetween: 0,
-    },
-  },
-  spaceBetween: 31,
-  navigation: true,
-  modules: [Navigation],
-  preloadImages: true,
-  // autoHeight: true,
+    spaceBetween: 31,
+    navigation: true,
+    modules: [Navigation],
+    preloadImages: true,
+    // autoHeight: true,
+  };
+  return options;
+};
+
+type BuildTileProps = {
+  article: Article;
+  tileLayout: TileLayout;
+};
+
+const BuildTile = ({ article, tileLayout }: BuildTileProps) => {
+  if (tileLayout === 'column') {
+    return <ColumnTileBuilder article={article} />;
+  }
+  return <RowTileBuilder article={article} />;
 };
 
 /**
@@ -66,14 +102,9 @@ const options: SwiperOptions = {
  * style  to the elements. For me to allow a dynamic number of items, I need to do all the ternary
  * tests.
  */
-const Carousel = ({ articles }: Props) => {
-  /**
-   * To match scss globals
-   * $size-tablet: 768px;
-    $size-laptop: 992px;
-   */
-
+const Carousel = ({ articles, tileLayout = 'column' }: Props) => {
   const n = articles.length;
+  const options = buildSwiperOptionsBasedOnSize(n);
   return (
     <div className={style.container}>
       <div className={style.categoryHeader}>Section Category Here</div>
@@ -83,26 +114,26 @@ const Carousel = ({ articles }: Props) => {
           onSwiper={(swiper) => console.log(swiper)}
           {...options}
         >
-          {n > 0 ? (
+          {n > 0 && (
             <SwiperSlide key={articles[0]._id}>
-              <TileBuilder article={articles[0]} />
+              <BuildTile article={articles[0]} tileLayout={tileLayout} />
             </SwiperSlide>
-          ) : null}
-          {n > 1 ? (
+          )}
+          {n > 1 && (
             <SwiperSlide key={articles[1]._id}>
-              <TileBuilder article={articles[1]} />
+              <BuildTile article={articles[1]} tileLayout={tileLayout} />
             </SwiperSlide>
-          ) : null}
-          {n > 2 ? (
+          )}
+          {n > 2 && (
             <SwiperSlide key={articles[2]._id}>
-              <TileBuilder article={articles[2]} />
+              <BuildTile article={articles[2]} tileLayout={tileLayout} />
             </SwiperSlide>
-          ) : null}
-          {n > 3 ? (
+          )}
+          {n > 3 && (
             <SwiperSlide key={articles[3]._id}>
-              <TileBuilder article={articles[3]} />
+              <BuildTile article={articles[3]} tileLayout={tileLayout} />
             </SwiperSlide>
-          ) : null}
+          )}
           {/* <div className='swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight'>
           <div className='swiper-wrapper'>
             <List
@@ -116,11 +147,11 @@ const Carousel = ({ articles }: Props) => {
           </div>
         </div> */}
 
-          {n > 4 ? (
+          {n > 4 && (
             <SwiperSlide key={articles[4]._id}>
-              <TileBuilder article={articles[4]} />
+              <BuildTile article={articles[4]} tileLayout={tileLayout} />
             </SwiperSlide>
-          ) : null}
+          )}
         </Swiper>
       </div>
     </div>

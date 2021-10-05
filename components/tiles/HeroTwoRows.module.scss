@@ -118,13 +118,12 @@
 .textContent {
   @include flex-col;
   margin-bottom: auto;
-  &:hover {
-    .title {
-      @include link-hover;
-    }
-  }
 }
 
 .categoryHeader {
   @extend %categoryHeader;
+}
+
+.hover:hover {
+  @include link-hover;
 }

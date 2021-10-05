@@ -1,5 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn types
-npx lint-staged
+# yarn types
+# npx lint-staged
+
+# Disable concurent to run build-types after ESLint in lint-staged
+npx lint-staged --concurrent false

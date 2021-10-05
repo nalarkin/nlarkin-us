@@ -42,16 +42,28 @@ type Props = {
   data?: ArticleResultAll;
 };
 
+// const logTest = (arr: ArticleResultAll) => {
+//   arr.forEach((value) => {
+//     console.log(JSON.stringify(value));
+//   });
+// };
+
 const ExamplePage = ({ data }: Props) => {
   let content: string | JSX.Element = '';
   if (data !== undefined && data.length > 4) {
     // const example = data.slice(3);
     // console.log(example);
+    // const sizeThree = data.slice(3);
+    // console.log(data);
+    // logTest(sizeThree);
+    // const sizeTwo = data.slice(0, 2);
+    // console.log(sizeTwo);
+    // console.log(`sizeTwo: ${sizeTwo}`);
     const examples: TileExample[] = [
       {
         name: 'ImageRow',
         articleCount: 5,
-        items: data.slice(3),
+        items: data.slice(0, 5),
         renderItem: (item) => <ImageRow articles={item} />,
       },
       {
@@ -71,13 +83,25 @@ const ExamplePage = ({ data }: Props) => {
       {
         name: 'HeroTwoRows',
         articleCount: 5,
-        items: data.slice(3),
+        items: data.slice(0, 5),
         renderItem: (item) => <HeroTwoRows articles={item} />,
       },
       {
-        name: 'Carousel',
+        name: 'Carousel 5',
         articleCount: 5,
-        items: data.slice(3),
+        items: data.slice(0, 5),
+        renderItem: (item) => <Carousel articles={item} />,
+      },
+      {
+        name: 'Carousel 4',
+        articleCount: 4,
+        items: data.slice(0, 4),
+        renderItem: (item) => <Carousel articles={item} tileLayout="row" />,
+      },
+      {
+        name: 'Carousel 3',
+        articleCount: 4,
+        items: data.slice(0, 3),
         renderItem: (item) => <Carousel articles={item} />,
       },
     ];
