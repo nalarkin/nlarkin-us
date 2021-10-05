@@ -1,16 +1,14 @@
-import style from './HeroTwoRows.module.scss';
 import React from 'react';
-import type { Article } from 'interfaces';
-import { List } from 'components/shared/list';
-import {
-  getAuthorName,
-  formatAuthors,
-  buildArticleSlug,
-} from '../../lib/utils';
-import { ImageBuilder } from 'components/shared/ImageBuilder';
-import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
+
 import Link from 'next/link';
+
+import { ImageBuilder } from 'components/shared/ImageBuilder';
+import { List } from 'components/shared/list';
+import type { Article } from 'interfaces';
+
+import { buildArticleSlug } from '../../lib/utils';
 import Carousel from './Carousel';
+import style from './HeroTwoRows.module.scss';
 
 type Props = {
   articles: Article[];
@@ -23,7 +21,7 @@ const RowBuilder = ({ articles }: Props) => {
       <div className={style.listWrapper}>
         <List
           items={articles}
-          renderItem={({ image, authors, title, excerpt, slug }) => {
+          renderItem={({ image, title, excerpt, slug }) => {
             return (
               <div className={style.itemContainer}>
                 <Link href={buildArticleSlug(slug)}>

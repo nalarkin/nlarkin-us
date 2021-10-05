@@ -1,17 +1,17 @@
 import React from 'react';
-import type { Article } from 'interfaces';
-import style from './ImageRow.module.scss';
+
+import Link from 'next/link';
+
+import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
 import { List } from 'components/shared/list';
+import type { Article } from 'interfaces';
+
 import {
   getAuthorName,
   formatAuthors,
   buildArticleSlug,
 } from '../../lib/utils';
-import { ImageBuilder } from 'components/shared/ImageBuilder';
-import { urlForImage } from 'lib/sanity';
-import Image from 'next/image';
-import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
-import Link from 'next/link';
+import style from './ImageRow.module.scss';
 
 type Props = {
   articles: Article[];
@@ -34,7 +34,7 @@ const ImageTile = ({ item }: { item: Article }) => {
       </div>
       <Link href={buildArticleSlug(slug)}>
         <a className={style.title}>
-          <div className=''>{title}</div>
+          <div className="">{title}</div>
         </a>
       </Link>
     </div>

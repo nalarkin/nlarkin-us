@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { urlForImage } from '../../lib/sanity';
 import * as Schema from '../../lib/schema';
 
@@ -20,15 +21,15 @@ export const ImageBuilder = ({ image, classes = '' }: Props) => {
     );
     return <div></div>;
   }
-  const imageWidth = parseInt(match[1]);
-  const imageHeight = parseInt(match[2]);
+  const imageWidth = parseInt(match[1], 10);
+  const imageHeight = parseInt(match[2], 10);
   if (!imageWidth || !imageHeight) {
     return <div></div>;
   }
 
-  const getUrlFromSanity = (image: Schema.ArticleImage | undefined) => {
-    return imageUrl;
-  };
+  // const getUrlFromSanity = (image: Schema.ArticleImage | undefined) => {
+  //   return imageUrl;
+  // };
 
   const imageUrl = urlForImage(image).url();
   if (imageUrl === null) {
@@ -44,7 +45,7 @@ export const ImageBuilder = ({ image, classes = '' }: Props) => {
     <Image
       src={imageUrl}
       alt={image?.alt ?? ''}
-      layout='responsive'
+      layout="responsive"
       width={imageWidth}
       height={imageHeight}
       className={classes}

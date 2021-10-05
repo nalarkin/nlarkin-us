@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import * as Schema from 'lib/schema';
 
 /**
@@ -5,7 +6,9 @@ import * as Schema from 'lib/schema';
  * @param {Array} a items An array containing the items.
  */
 export function shuffle(a: any[]) {
-  var j, x, i;
+  let j;
+  let x;
+  let i;
   for (i = a.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1));
     x = a[i];
@@ -20,7 +23,9 @@ export function shuffle(a: any[]) {
  */
 export function shuffleCopy<T>(a: T[]) {
   const copyArray = [...a];
-  let j, x, i;
+  let j;
+  let x;
+  let i;
   for (i = copyArray.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1));
     x = copyArray[i];
@@ -47,9 +52,9 @@ export function formatAuthors<T>(
   }
   let content = `${get(authors[0])}`;
   for (let i = 1; i < n - 1; i++) {
-    content = content + `, ${get(authors[i])}`;
+    content += `, ${get(authors[i])}`;
   }
-  content = content + ` and ${get(authors[n - 1])}`;
+  content += ` and ${get(authors[n - 1])}`;
   return content;
 }
 

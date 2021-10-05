@@ -1,9 +1,11 @@
 import React from 'react';
-import style from './SectionListCard.module.scss';
+
 import Link from 'next/link';
-import { ImageBuilder } from '../../shared/ImageBuilder';
+
 import * as Schema from '../../../lib/schema';
 import Date from '../../shared/Date';
+import { ImageBuilder } from '../../shared/ImageBuilder';
+import style from './SectionListCard.module.scss';
 
 type ArticleCardProps = {
   title?: string;
@@ -29,13 +31,13 @@ const SectionListCard = ({
         </div>
         <div className={style.listContent}>
           <article className={style.article}>
-            <h3 className='font-bold mb-2 font-serif'>{title}</h3>
-            <div className='text-gray-700 font-serif normal-case'>
+            <h3 className="font-bold mb-2 font-serif">{title}</h3>
+            <div className="text-gray-700 font-serif normal-case">
               {description}
             </div>
           </article>
           <div className={style.image}>
-            <div className='block w-full my-auto'>
+            <div className="block w-full my-auto">
               <ImageBuilder image={image} />
             </div>
           </div>

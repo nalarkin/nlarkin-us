@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+
+import Link from 'next/link';
 import { FiMenu } from 'react-icons/fi';
-import style from './Menu.module.scss';
-import classNames from 'classnames';
+import OutsideClickHandler from 'react-outside-click-handler';
+
 import { headerCategoryLinks } from '../../links';
 import { List } from '../shared/list';
-import Link from 'next/link';
-import { useEffect } from 'react';
-import OutsideClickHandler from 'react-outside-click-handler';
+import style from './Menu.module.scss';
 
 const Menu = () => {
   const [isActive, setMenu] = useState<boolean>(false);
@@ -40,10 +40,10 @@ const Menu = () => {
           items={headerCategoryLinks}
           renderItem={([text, url]): JSX.Element => {
             return (
-              <li key={url} className='list-none font-semibold font-sans '>
+              <li key={url} className="list-none font-semibold font-sans ">
                 <Link href={url} key={text}>
                   <a
-                    className=' py-1 flex hover:bg-gray-100 '
+                    className=" py-1 flex hover:bg-gray-100 "
                     onClick={() => handleClick()}
                   >
                     {text}
@@ -58,7 +58,7 @@ const Menu = () => {
   );
 
   return (
-    <div className='hidden lg:flex'>
+    <div className="hidden lg:flex">
       {isActive ? content : null}
       {button}
     </div>

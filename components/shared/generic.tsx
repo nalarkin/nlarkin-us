@@ -1,4 +1,5 @@
 import React from 'react';
+
 import classNames from 'classnames';
 
 interface ButtonInjectedProps {
@@ -16,7 +17,6 @@ interface ButtonProps {
 
 export function Button({
   color,
-  icon,
   text,
   children,
   className,
@@ -25,7 +25,7 @@ export function Button({
   return renderContainer({
     className: classNames(color, className),
     children: (
-      <div className=''>
+      <div className="">
         {/* {icon && <Icon name={icon} />} */}
         {text && text}
         <div>{children}</div>

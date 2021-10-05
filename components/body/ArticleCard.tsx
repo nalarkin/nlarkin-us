@@ -1,9 +1,10 @@
 import React from 'react';
-import style from './ArticleCard.module.css';
+
 import Link from 'next/link';
-import { ImageBuilder } from '../shared/ImageBuilder';
+
 import * as Schema from '../../lib/schema';
-import cn from 'classnames';
+import { ImageBuilder } from '../shared/ImageBuilder';
+import style from './ArticleCard.module.css';
 
 type ArticleCardProps = {
   title?: string;
@@ -19,14 +20,14 @@ const ArticleCard = ({ title, description, image, slug }: ArticleCardProps) => {
       <a className={style.smallCard}>
         <article className={style.text}>
           {/* <article className='flex flex-col pr-4 '> */}
-          <h3 className='font-bold mb-2 font-serif'>{title}</h3>
-          <div className='text-gray-700 font-serif normal-case'>
+          <h3 className="font-bold mb-2 font-serif">{title}</h3>
+          <div className="text-gray-700 font-serif normal-case">
             {description}
           </div>
         </article>
         <div className={style.image}>
           {/* <div className='flex pr-4'> */}
-          <div className='block w-full my-auto '>
+          <div className="block w-full my-auto ">
             <ImageBuilder image={image} />
           </div>
         </div>

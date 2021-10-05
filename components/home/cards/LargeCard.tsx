@@ -1,8 +1,10 @@
 import React from 'react';
-import style from './LargeCard.module.scss';
+
 import Link from 'next/link';
-import { ImageBuilder } from '../../shared/ImageBuilder';
+
 import * as Schema from '../../../lib/schema';
+import { ImageBuilder } from '../../shared/ImageBuilder';
+import style from './LargeCard.module.scss';
 
 type ArticleWrapperProps = {
   slug: string;

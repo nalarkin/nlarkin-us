@@ -1,4 +1,5 @@
 import React from 'react';
+
 import style from 'ProfileImage.module.css';
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 export const ProfileImage = ({ children }: Props) => {
   return (
     <div className={style.image}>
-      <div className='rounded-full'></div>
+      <div className="rounded-full">{children}</div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import cn from 'classnames';
 
 type BtnProps = {
@@ -9,7 +10,7 @@ type BtnProps = {
 
 const NewsButton = ({
   color = 'bg-blue-800',
-  hoverColor = 'bg-blue-700',
+  // hoverColor = 'bg-blue-700',
   children,
 }: BtnProps) => {
   const btnClass = cn([

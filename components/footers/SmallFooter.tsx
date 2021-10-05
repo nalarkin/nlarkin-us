@@ -1,8 +1,10 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
-import { footerBottomLinks, allFooterTopNavLinks, SiteLink } from '../../links';
-import { List } from '../shared/list';
+
 import classNames from 'classnames';
+import Link from 'next/link';
+
+import { allFooterTopNavLinks, SiteLink } from '../../links';
+import { List } from '../shared/list';
 
 type Props = {
   text: string;
@@ -15,7 +17,7 @@ const FooterLink = ({ text, url, onClick }: Props) => {
     <Link href={url} key={text}>
       <a
         onClick={() => onClick()}
-        className=' text-sm  flex hover:underline focus:underline text-black '
+        className=" text-sm  flex hover:underline focus:underline text-black "
       >
         {text}
       </a>
@@ -47,16 +49,16 @@ const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
   };
 
   return (
-    <div className='flex flex-col w-full'>
+    <div className="flex flex-col w-full">
       <button onClick={() => setOpenStatus(!isOpen)} className={categoryClass}>
         {name && name}
       </button>
       {isOpen ? (
-        <ul className='flex flex-row flex-wrap pb-4'>
+        <ul className="flex flex-row flex-wrap pb-4">
           <List
             items={categoryLinks}
             renderItem={([text, url]) => (
-              <li key={url} className='w-6/12 '>
+              <li key={url} className="w-6/12 ">
                 <FooterLink text={text} url={url} onClick={closeAfterClick} />
               </li>
             )}
@@ -69,11 +71,11 @@ const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
 
 const SmallFooter = () => {
   return (
-    <div className='flex flex-col lg:hidden items-start divide-y-2 divide-solid divide-gray-200'>
+    <div className="flex flex-col lg:hidden items-start divide-y-2 divide-solid divide-gray-200">
       <List
         items={allFooterTopNavLinks}
         renderItem={({ name, categoryLinks }) => (
-          <div key={name} className='flex flex-col w-full '>
+          <div key={name} className="flex flex-col w-full ">
             <SmallFooterCategory name={name} categoryLinks={categoryLinks} />
           </div>
         )}

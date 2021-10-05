@@ -1,10 +1,9 @@
 import React from 'react';
+
+import { ArticleResultAll } from '../../lib/queries';
 import Disclaimer from '../disclaimer/disclaimer';
 import style from './newsBody.module.scss';
-import NewsHero from './NewsHero';
-import ArticleCardLarge from './ArticleCardLarge';
 import OpinionColumn from './OpinionColumn';
-import { ArticleResultAll } from '../../lib/queries';
 
 type Props = {
   opinionArticles: ArticleResultAll | undefined;

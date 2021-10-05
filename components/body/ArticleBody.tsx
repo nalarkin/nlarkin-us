@@ -1,7 +1,8 @@
-import markdownStyles from './markdown-styles.module.css';
-import BlockContent from '@sanity/block-content-to-react';
-import { PortableText } from '../../lib/sanity';
+// @ts-nocheck
+// need to use nocheck because sanity block content has no typescript support currently
 import * as React from 'react';
+
+import BlockContent from '@sanity/block-content-to-react';
 
 const serializers = {
   // container: (props) => {
@@ -10,25 +11,19 @@ const serializers = {
   //   </div>);
   // }
   types: {
-     block: (props) => (
-      <div className='mb-4 w-full text-xl font-serif'>
-        {props.children}
-      </div>
+    block: (props) => (
+      <div className="mb-4 w-full text-xl font-serif">{props.children}</div>
     ),
-
-  }
- 
-
-}
-
+  },
+};
 
 export default function ArticleBody({ text }) {
   return (
-    <div className=''>
+    <div className="">
       {/* <PortableText blocks={content} /> */}
       {/* <BlockContent blocks={content} className={markdownStyles.markdown} 
         serializers={serializers}/> */}
-        <BlockContent blocks={text} serializers={serializers} />
+      <BlockContent blocks={text} serializers={serializers} />
     </div>
   );
 }

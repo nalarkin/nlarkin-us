@@ -1,28 +1,24 @@
 // @ts-nocheck
 import React from 'react';
-import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
-import { articleQueryAll } from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
-import { ArticleResultAll } from 'lib/queries';
-import { List } from 'components/shared/list';
-import ArticleCard from 'components/body/ArticleCard';
-import LargeArticleCard from 'components/home/cards/LargeCard';
-import style from './index.module.scss';
-import { shuffle } from 'lib/utils';
-import LargeCardCaption from 'components/home/cards/LargeCardCaption';
-import ImageRow from 'components/tiles/ImageRow';
-import HeroTwoRows from 'components/tiles/HeroTwoRows';
-import SectionLayout from 'components/layouts/SectionLayout';
-import type { Article } from 'interfaces';
-import Carousel from 'components/tiles/Carousel';
-import SimpleSlider from 'components/tiles/Slider';
-import MinimalHeader from 'components/headers/MinimalHeader';
 
-const NewsSEO = {
-  description:
-    'This is a purely educational attempt to clone of the New York Times. Disclaimer....',
-  title: "Nathan's News",
-};
+import { GetStaticProps } from 'next';
+
+import MinimalHeader from 'components/headers/MinimalHeader';
+import LargeArticleCard from 'components/home/cards/LargeCard';
+import Carousel from 'components/tiles/Carousel';
+import HeroTwoRows from 'components/tiles/HeroTwoRows';
+import ImageRow from 'components/tiles/ImageRow';
+import type { Article } from 'interfaces';
+import { articleQueryAll, ArticleResultAll } from 'lib/queries';
+import { getClient } from 'lib/sanity.server';
+
+import style from './index.module.scss';
+
+// const NewsSEO = {
+//   description:
+//     'This is a purely educational attempt to clone of the New York Times. Disclaimer....',
+//   title: "Nathan's News",
+// };
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const articles = await getClient(preview).fetch<ArticleResultAll>(
@@ -49,7 +45,7 @@ type Props = {
 const ExamplePage = ({ data }: Props) => {
   let content: string | JSX.Element = '';
   if (data !== undefined && data.length > 4) {
-    const example = data.slice(3);
+    // const example = data.slice(3);
     // console.log(example);
     const examples: TileExample[] = [
       {
@@ -90,10 +86,10 @@ const ExamplePage = ({ data }: Props) => {
 
     content = (
       <div>
-        {examples.map(({ name, articleCount, items, renderItem }) => {
+        {examples.map(({ name, items, renderItem }) => {
           return (
-            <div key={name} className=''>
-              <div className=' font-bold flex flex-row bg-gray-100'>
+            <div key={name} className="">
+              <div className=" font-bold flex flex-row bg-gray-100">
                 {' '}
                 {name}
               </div>
@@ -106,7 +102,7 @@ const ExamplePage = ({ data }: Props) => {
   }
   return (
     <>
-      <MinimalHeader sectionTitle='examples' />
+      <MinimalHeader sectionTitle="examples" />
       <div className={style.wrapper}>
         {content}
         {/* <div>you shouldnt see this</div>

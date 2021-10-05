@@ -1,15 +1,16 @@
+import React, { useState, useEffect } from 'react';
+
 import Fuse from 'fuse.js';
-import { articleQueryAll, ArticleResultAll } from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-import MinimalHeader from 'components/headers/MinimalHeader';
 
-import React, { useRef, useState } from 'react';
+import MinimalHeader from 'components/headers/MinimalHeader';
 import SearchBody from 'components/search/SearchBody';
 import { Article } from 'interfaces';
+import { articleQueryAll, ArticleResultAll } from 'lib/queries';
+import { getClient } from 'lib/sanity.server';
+
 import { Spinner } from '../../../components/shared/Spinner';
-import { useEffect } from 'react';
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const articles = await getClient(preview).fetch<ArticleResultAll>(
@@ -22,11 +23,18 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   };
 };
 
+const queryIsSingleString = (query: string | string[]): query is string => {
+  if (typeof query === 'string') {
+    return true;
+  }
+  return false;
+};
+
 type SearchProps = {
   data: ArticleResultAll;
 };
 
-type ResultInitial = undefined | Fuse.FuseResult<ArticleResultAll>;
+// type ResultInitial = undefined | Fuse.FuseResult<ArticleResultAll>;
 
 export default function Search({ data }: SearchProps) {
   const { query } = useRouter();
@@ -62,14 +70,14 @@ export default function Search({ data }: SearchProps) {
   // const savedHeader = <MinimalHeader />;
 
   if (!isLoading && queryParams) {
-    let initial = '';
+    // let initial = '';
     let initialResult: Fuse.FuseResult<Article>[] = [];
     if (queryIsSingleString(queryParams)) {
-      initial = queryParams;
+      // initial = queryParams;
       initialResult = fuse.search(queryParams);
     } else {
       const joinedQueryString = queryParams.join(' ');
-      initial = joinedQueryString;
+      // initial = joinedQueryString;
       initialResult = fuse.search(joinedQueryString);
     }
     // possibly unnecessary render of nav bar after search results have loaded
@@ -94,10 +102,3 @@ export default function Search({ data }: SearchProps) {
     </div>
   );
 }
-
-const queryIsSingleString = (query: string | string[]): query is string => {
-  if (typeof query === 'string') {
-    return true;
-  }
-  return false;
-};

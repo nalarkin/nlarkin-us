@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
-import SEO, { SEOProps } from '../shared/seo';
-import style from './newsLayout.module.css';
-import Link from 'next/link';
-import MainNewsHeader from '../headers/MainNewsHeader';
-import Footer from '../footers/footer';
+
 import { NextSeo } from 'next-seo';
+
+import Footer from '../footers/footer';
 import SmallFooter from '../footers/SmallFooter';
+import MainNewsHeader from '../headers/MainNewsHeader';
+import { SEOProps } from '../shared/seo';
+import style from './newsLayout.module.css';
 
 type Props = {
   seo: SEOProps;

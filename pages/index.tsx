@@ -1,18 +1,12 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FaRegNewspaper } from 'react-icons/fa';
-import { BsPersonLinesFill } from 'react-icons/bs';
-import { Button } from '../components/shared/generic';
-
 import React from 'react';
+
+import type { NextPage } from 'next';
+
 import Layout from '../components/layouts/layout';
-import SEO from '../components/shared/seo';
 
 const HomeContents = () => {
   return (
-    <div className='flex justify-center items-center flex-col md:flex-row'>
+    <div className="flex justify-center items-center flex-col md:flex-row">
       {/* <Card
         text='Would you like to see my resume?'
         btnText='Resume'

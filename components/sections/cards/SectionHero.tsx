@@ -1,9 +1,11 @@
 import React from 'react';
-import style from './SectionHero.module.scss';
-import * as Schema from '../../../lib/schema';
-import { ImageBuilder } from '../../shared/ImageBuilder';
+
 import Link from 'next/link';
+
 import { Article } from 'interfaces';
+
+import { ImageBuilder } from '../../shared/ImageBuilder';
+import style from './SectionHero.module.scss';
 
 type ArticleWrapperProps = {
   slug: string;

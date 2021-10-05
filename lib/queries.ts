@@ -1,9 +1,7 @@
-import type * as Schema from './schema';
 import groq from 'groq';
 
-import axios from 'axios';
 import { Article } from '../interfaces';
-import { Section } from './schema';
+import type * as Schema from './schema';
 
 const articleFields = `
   _id,
@@ -24,7 +22,7 @@ const articleFields = `
 export const sectionSlugsQuery = groq`
 *[_type == "section" && defined(slug.current)][].slug.current
 `;
-export type sectionSlugsResult = Array<string>;
+export type SectionSlugsResult = Array<string>;
 
 /** Get all slugs for all articles.
  * @returns Returns string[ ]

@@ -1,14 +1,16 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, SwiperOptions } from 'swiper';
 import React from 'react';
-import type { Article } from 'interfaces';
-import { ImageBuilder } from 'components/shared/ImageBuilder';
-import { List } from '../shared/list';
-import { ImageCropBuilder } from '../shared/ImageCropBuilder';
+
 import Link from 'next/link';
-import style from './Carousel.module.scss';
-import 'swiper/css';
+import { Navigation, SwiperOptions } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import type { Article } from 'interfaces';
 import { buildArticleSlug } from 'lib/utils';
+
+import { ImageCropBuilder } from '../shared/ImageCropBuilder';
+import style from './Carousel.module.scss';
+
+import 'swiper/css';
 // import 'swiper/css/navigation';
 
 type Props = {
@@ -124,7 +126,5 @@ const Carousel = ({ articles }: Props) => {
     </div>
   );
 };
-
-style;
 
 export default Carousel;

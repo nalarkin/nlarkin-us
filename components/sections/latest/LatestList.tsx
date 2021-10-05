@@ -1,9 +1,10 @@
 import React from 'react';
-import style from './LatestList.module.css';
-import * as Schema from '../../../lib/schema';
+
+import { Article } from 'interfaces';
+
 import SectionListCard from '../cards/SectionListCard';
 import LatestHeader from './LatestHeader';
-import { Article } from 'interfaces';
+import style from './LatestList.module.css';
 
 type Props = {
   articles: Article[];
@@ -17,7 +18,7 @@ const LatestList = ({ articles }: Props) => {
         {articles.map((article, index) => {
           return (
             <div key={article._id + index}>
-              <div className=' '>
+              <div className=" ">
                 <SectionListCard
                   description={article.excerpt ?? ''}
                   image={article.image}

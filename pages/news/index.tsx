@@ -1,25 +1,14 @@
 import React from 'react';
-import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
-import Layout from '../../components/layouts/layout';
-import NewsLayout from '../../components/layouts/newsLayout';
+
+import { GetStaticProps } from 'next';
+
 import NewsBody from '../../components/body/newsBody';
-import Disclaimer from '../../components/disclaimer/disclaimer';
-import CookieNotice from 'components/disclaimer/CookieNotice';
-import {
-  SectionArticlesResponse,
-  sectionArticlesQuery,
-  sectionSlugsQuery,
-  articleQueryAll,
-} from '../../lib/queries';
-import { getClient } from '../../lib/sanity.server';
-import { ArticleResultAll } from '../../lib/queries';
-import { List } from '../../components/shared/list';
-import ArticleCard from '../../components/body/ArticleCard';
 import LargeArticleCard from '../../components/home/cards/LargeCard';
+import NewsLayout from '../../components/layouts/newsLayout';
+import { List } from '../../components/shared/list';
+import { articleQueryAll, ArticleResultAll } from '../../lib/queries';
+import { getClient } from '../../lib/sanity.server';
 import style from './index.module.css';
-import { shuffle } from '../../lib/utils';
-import LargeCardCaption from '../../components/home/cards/LargeCardCaption';
-import ImageRow from 'components/tiles/ImageRow';
 
 const NewsSEO = {
   description:
@@ -80,7 +69,7 @@ type Props = {
 const NewsHome = ({ data }: Props) => {
   return (
     // <div className={style.content}>
-    <div className=''>
+    <div className="">
       <NewsLayout seo={NewsSEO}>
         {/* <div>home</div> */}
         {/* <div className='flex flex-row'></div> */}

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import style from './disclaimer.module.css';
+
 import cn from 'classnames';
-import NewsButton from '../shared/newsButton';
 import Cookies from 'js-cookie';
+
+import NewsButton from '../shared/newsButton';
+import style from './disclaimer.module.css';
 
 const Disclaimer = () => {
   const getDismissalStatus = () => {
@@ -44,16 +46,16 @@ const Disclaimer = () => {
     <div className={isDismissed ? `hidden` : ''}>
       <div className={style.alert}>
         <div className={dismissClass}>
-          <div className='flex flex-col text-center gap-y-5 '>
+          <div className="flex flex-col text-center gap-y-5 ">
             <div>Disclaimer</div>
-            <div className=' '>
+            <div className=" ">
               This site is purely for educational purposes. This site has no
               affilitiation with the NYT.
             </div>
             <div> I am making this to learn Next.js.</div>
           </div>
           <button
-            className='flex w-max mb-3 mt-9'
+            className="flex w-max mb-3 mt-9"
             onClick={() => handleClick()}
           >
             <NewsButton>Dismiss</NewsButton>

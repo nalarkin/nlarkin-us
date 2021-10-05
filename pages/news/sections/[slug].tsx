@@ -1,21 +1,20 @@
 import React from 'react';
+
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { Article } from 'interfaces';
-import ArticleCard from 'components/body/ArticleCard';
-import NewsLayout from 'components/layouts/newsLayout';
-import { shuffle } from 'lib/utils';
-import { getClient } from 'lib/sanity.server';
-import style from './[slug].module.scss';
+
+import Disclaimer from 'components/disclaimer/disclaimer';
+import LargeArticleCard from 'components/home/cards/LargeCard';
+import SectionLayout from 'components/layouts/SectionLayout';
+import SectionHero from 'components/sections/cards/SectionHero';
+import LatestList from 'components/sections/latest/LatestList';
 import {
   sectionSlugsQuery,
   sectionArticlesQuery,
   SectionArticlesResponse,
 } from 'lib/queries';
-import Disclaimer from 'components/disclaimer/disclaimer';
-import LatestList from 'components/sections/latest/LatestList';
-import SectionHero from 'components/sections/cards/SectionHero';
-import LargeArticleCard from 'components/home/cards/LargeCard';
-import SectionLayout from 'components/layouts/SectionLayout';
+import { getClient } from 'lib/sanity.server';
+
+import style from './[slug].module.scss';
 
 export const getStaticProps: GetStaticProps = async ({
   params,
@@ -28,9 +27,9 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       data: {
-        articles: articles,
-        title: title,
-        slug: slug,
+        articles,
+        title,
+        slug,
       },
       // data:  {
       //   articles: articles,
@@ -65,7 +64,7 @@ const NewsCategoryMain = ({
 
   const handleNoArticles = () => {
     return (
-      <div className='flex text-center mx-auto normal-case'>
+      <div className="flex text-center mx-auto normal-case">
         {`There are currently no articles in this cateogry "${title}"`}
       </div>
     );
@@ -77,7 +76,7 @@ const NewsCategoryMain = ({
       sectionTitle={title}
       slug={slug}
     >
-      <div className='flex flex-col pt-7'>
+      <div className="flex flex-col pt-7">
         {/* <div className='text-3xl font-bold'> {title}</div> */}
         <SectionHero articles={articles} />
         <div className={style.body}>

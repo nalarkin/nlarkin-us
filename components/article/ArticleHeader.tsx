@@ -1,6 +1,7 @@
 import React from 'react';
-import style from './ArticleHeader.module.css';
+
 import * as Schema from '../../lib/schema';
+import style from './ArticleHeader.module.css';
 
 type Props = {
   authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
@@ -10,8 +11,8 @@ type Props = {
 const ArticleHeader = ({ authors }: Props) => {
   // console.log(`authors: ${JSON.stringify(authors)}`);
   return (
-    <div className='flex flex-col '>
-      <div className='mb-10 mx-auto'>
+    <div className="flex flex-col ">
+      <div className="mb-10 mx-auto">
         <div className={style.author}>
           {' '}
           {authors.map((author) => (

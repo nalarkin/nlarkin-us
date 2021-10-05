@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import React from 'react';
+
+import Link from 'next/link';
 
 type BottomProps = {
   text: string;
@@ -10,7 +11,7 @@ type BottomProps = {
 export const FooterLinkBottom = ({ text, url }: BottomProps) => {
   return (
     <Link href={url} key={text}>
-      <a className='p-2 capitalize text-xs w-max hover:underline focus:underline '>
+      <a className="p-2 capitalize text-xs w-max hover:underline focus:underline ">
         {text}
       </a>
     </Link>
@@ -20,7 +21,7 @@ export const FooterLinkBottom = ({ text, url }: BottomProps) => {
 export const FooterLinkTop = ({ text, url }: BottomProps) => {
   return (
     <Link href={url} key={text}>
-      <a className=' text-sm  flex w-40 hover:underline focus:underline text-black '>
+      <a className=" text-sm  flex w-40 hover:underline focus:underline text-black ">
         {text}
       </a>
     </Link>

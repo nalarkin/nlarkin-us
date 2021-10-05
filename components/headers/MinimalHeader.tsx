@@ -1,18 +1,17 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
-import { ImSearch } from 'react-icons/im';
-import { FiMenu } from 'react-icons/fi';
-import style from './MinimalHeader.module.scss';
-import { IoMdPerson } from 'react-icons/io';
-import { List } from '../shared/list';
-import { headerCategoryLinks } from '../../links';
-import NewsButton from '../shared/newsButton';
-import Menu from '../menu/Menu';
-import DateComponent from '../shared/Date';
-import MobileMenu from '../menu/MobileMenu';
-import SearchBar from 'components/search/SearchBar';
+
 import classNames from 'classnames';
+import Link from 'next/link';
+import { ImSearch } from 'react-icons/im';
+import { IoMdPerson } from 'react-icons/io';
+
+import SearchBar from 'components/search/SearchBar';
+
 import { buildSectionSlug } from '../../lib/utils';
+import Menu from '../menu/Menu';
+import MobileMenu from '../menu/MobileMenu';
+import NewsButton from '../shared/newsButton';
+import style from './MinimalHeader.module.scss';
 
 type NavProps = {
   sectionTitle?: string;
@@ -43,7 +42,7 @@ const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
   }
 
   return (
-    <header className='w-full'>
+    <header className="w-full">
       <div className={style.siteHeader}>
         <section className={style.topContainer}>
           <div className={style.leftBtnGroup}>
@@ -53,8 +52,8 @@ const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
             </div>
             <button
               className={btnClass}
-              type='button'
-              aria-label='search button'
+              type="button"
+              aria-label="search button"
               onClick={() => changeSearchStatus(!searchIsOpen)}
             >
               <div className={''}>
@@ -70,9 +69,9 @@ const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
           </div>
 
           <div className={style.title}>
-            <Link href='/news'>
+            <Link href="/news">
               <a>
-                <h1 className=''>The Nathan Times</h1>
+                <h1 className="">The Nathan Times</h1>
               </a>
             </Link>
           </div>
@@ -80,11 +79,11 @@ const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
           <div className={style.rightBtnGroup}>
             <div className={style.login}>
               <NewsButton>
-                <div className=''>log in</div>
+                <div className="">log in</div>
               </NewsButton>
             </div>
 
-            <Link href='/news/profile'>
+            <Link href="/news/profile">
               <a className={style.profile}>
                 <IoMdPerson size={25} />
               </a>

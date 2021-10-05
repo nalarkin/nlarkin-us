@@ -1,28 +1,22 @@
 import React from 'react';
-import {
-  NextPage,
-  GetStaticProps,
-  GetStaticPaths,
-  GetServerSideProps,
-} from 'next';
-import Layout from '../../../components/layouts/layout';
-import NewsLayout from '../../../components/layouts/newsLayout';
+
+import { GetStaticProps, GetStaticPaths } from 'next';
+
+import ArticleHeader from '../../../components/article/ArticleHeader';
+import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
+import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
+import ArticleBody from '../../../components/body/ArticleBody';
 import Disclaimer from '../../../components/disclaimer/disclaimer';
-import { getClient, sanityClient } from '../../../lib/sanity.server';
+import NewsLayout from '../../../components/layouts/newsLayout';
+import { ImageBuilder } from '../../../components/shared/ImageBuilder';
 import {
   articleQuery,
   ArticleQueryResult,
   articleSlugsQuery,
+  ArticleSlugsResult,
 } from '../../../lib/queries';
-import ErrorPage from 'next/error';
-import { useRouter } from 'next/router';
-import ArticleBody from '../../../components/body/ArticleBody';
-import ArticleHeader from '../../../components/article/ArticleHeader';
-import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
-import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
+import { getClient } from '../../../lib/sanity.server';
 import style from '../../../styles/article.module.css';
-import { ImageBuilder } from '../../../components/shared/ImageBuilder';
-import { ArticleSlugsResult } from '../../../lib/queries';
 
 /**
  * Fake data generator
@@ -43,7 +37,7 @@ export const getStaticProps: GetStaticProps = async ({
   if (slug === undefined) {
     slug = '';
   }
-  const queryParams = { slug: slug };
+  const queryParams = { slug };
 
   const result = await getClient(preview).fetch<ArticleQueryResult>(
     articleQuery,
@@ -93,7 +87,6 @@ const NewsSEO = {
 
 export default function ArticlePage({
   data,
-  preview = false,
 }: {
   data: ArticleQueryResult | undefined;
   preview: boolean;
@@ -105,12 +98,12 @@ export default function ArticlePage({
   return (
     <div>
       <NewsLayout seo={NewsSEO}>
-        <div className='flex flex-col '>
+        <div className="flex flex-col ">
           {/* optional hero here with title over image */}
           <div className={style.image}>
             <ImageBuilder image={image} />
           </div>
-          <h1 className='text-xl font-bold mt-5 mb-5 mx-auto'>{title}</h1>
+          <h1 className="text-xl font-bold mt-5 mb-5 mx-auto">{title}</h1>
           <ArticleHeader authors={authors} />
           <div className={style.body}>
             <ArticleHeaderSocial />

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { urlForImage } from '../../lib/sanity';
 import * as Schema from '../../lib/schema';
 
@@ -15,7 +16,7 @@ export const ImageCropBuilder = ({
   width,
   height,
 }: Props) => {
-  const imageSizeRegex = /-([\d]{3,})x([\d]{3,})-/;
+  // const imageSizeRegex = /-([\d]{3,})x([\d]{3,})-/;
   const imageRefWithSize = image?.asset._ref;
   if (imageRefWithSize === undefined) {
     return <div></div>;
@@ -35,7 +36,7 @@ export const ImageCropBuilder = ({
     <Image
       src={imageUrl}
       alt={image?.alt ?? ''}
-      layout='responsive'
+      layout="responsive"
       width={width}
       height={height}
       className={classes}
