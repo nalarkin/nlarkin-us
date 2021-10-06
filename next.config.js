@@ -6,7 +6,7 @@ const path = require("path");
 module.exports = (phase, { defaultConfig }) => {
   if ("sassOptions" in defaultConfig) {
     defaultConfig.sassOptions = {
-      includePaths: ["./src", "./styles"],
+      includePaths: ["./styles"],
       // prependData: `@import "~@styles/variables.scss";`,
     };
   }

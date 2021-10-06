@@ -8,7 +8,7 @@ import Carousel from 'components/tiles/Carousel';
 import HeroTwoRows from 'components/tiles/HeroTwoRows';
 import { ArticleResultAll } from 'lib/queries';
 
-import style from './NewsLayout.module.scss';
+import style from './NewsLayout3.module.scss';
 
 type Props = {
   articles: ArticleResultAll;
