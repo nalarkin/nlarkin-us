@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ArticleResultAll } from '../../lib/queries';
 import Disclaimer from '../disclaimer/disclaimer';
-import style from './newsBody.module.scss';
+import style from './OpinionBody.module.scss';
 import OpinionColumn from './OpinionColumn';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const NewsBody = ({ opinionArticles, children }: Props) => {
+const OpinionBody = ({ opinionArticles, children }: Props) => {
   return (
     <main className={style.content}>
       {/* <NewsHero /> */}
@@ -28,4 +28,4 @@ const NewsBody = ({ opinionArticles, children }: Props) => {
   );
 };
 
-export default NewsBody;
+export default OpinionBody;

@@ -7,7 +7,7 @@ import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
 import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
 import ArticleBody from '../../../components/body/ArticleBody';
 import Disclaimer from '../../../components/disclaimer/disclaimer';
-import NewsLayout from '../../../components/layouts/newsLayout';
+import NewsLayout from '../../../components/layouts/newsLayout2';
 import { ImageBuilder } from '../../../components/shared/ImageBuilder';
 import {
   articleQuery,

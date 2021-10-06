@@ -198,12 +198,14 @@ const BottomNavigationBar = () => {
 const NewsHeader = () => {
   return (
     <>
-      <div className={style.siteHeader}>
-        <TopNavigationBar />
-        {/* header 2 title, changes in small screen  */}
-        <MiddleNavigationBar />
-        {/* header 3 displays nav links if large, if small displays date */}
-        <BottomNavigationBar />
+      <div className="block">
+        <div className={style.siteHeader}>
+          <TopNavigationBar />
+          {/* header 2 title, changes in small screen  */}
+          <MiddleNavigationBar />
+          {/* header 3 displays nav links if large, if small displays date */}
+          <BottomNavigationBar />
+        </div>
       </div>
     </>
   );

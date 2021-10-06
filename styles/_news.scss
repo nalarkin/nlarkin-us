@@ -9,6 +9,8 @@ $size-tablet: 768px;
 $size-laptop: 992px;
 $size-desktop: 1200px;
 
+// nyt uses min(740px) and min(1070px)
+
 @mixin link-hover() {
   color: #737373;
   // opacity: 50%;
@@ -121,4 +123,22 @@ $size-desktop: 1200px;
   margin-#{$side}: 16px;
   padding-#{$side}: 16px;
   border-#{$side}: 1px solid translate-border-color($color);
+}
+
+@mixin body-container() {
+  @include flex-col;
+  // max-width: 100vw;
+  padding-left: 24px;
+  padding-right: 24px;
+  @include media('>laptop') {
+    max-width: 1200px;
+  }
+
+  // padding-top: 20px;
+
+  // border-top: 1px solid #121212;
+  @include media('>phone') {
+    margin: 20px auto 0px;
+    padding: 0 3%;
+  }
 }

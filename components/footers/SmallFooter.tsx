@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import { allFooterTopNavLinks, SiteLink } from '../../links';
 import { List } from '../shared/list';
+import style from './SmallFooter.module.scss';
 
 type Props = {
   text: string;
@@ -71,15 +72,22 @@ const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
 
 const SmallFooter = () => {
   return (
-    <div className="flex flex-col lg:hidden items-start divide-y-2 divide-solid divide-gray-200">
-      <List
-        items={allFooterTopNavLinks}
-        renderItem={({ name, categoryLinks }) => (
-          <div key={name} className="flex flex-col w-full ">
-            <SmallFooterCategory name={name} categoryLinks={categoryLinks} />
-          </div>
-        )}
-      />
+    <div className="block">
+      <div className={style.container}>
+        <div className="flex flex-col lg:hidden items-start divide-y-2 divide-solid divide-gray-200">
+          <List
+            items={allFooterTopNavLinks}
+            renderItem={({ name, categoryLinks }) => (
+              <div key={name} className="flex flex-col w-full ">
+                <SmallFooterCategory
+                  name={name}
+                  categoryLinks={categoryLinks}
+                />
+              </div>
+            )}
+          />
+        </div>
+      </div>
     </div>
   );
 };

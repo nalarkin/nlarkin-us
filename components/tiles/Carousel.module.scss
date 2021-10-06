@@ -51,6 +51,7 @@
   position: relative;
   // height: 100%;
   // display: flex;
+  display: block;
   // &::before {
   //   @include divider-section('top', 'dark');
   //   // margin-top: 30px;
@@ -60,6 +61,8 @@
 
 .flexTile {
   display: flex;
+  // display: block;
+  // max-width: 100%;
 }
 
 .categoryHeader {

@@ -1,12 +1,14 @@
 @import 'styles/news';
 
 .siteHeader {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  /* background-color: aqua; */
-  margin: 0 auto;
+  @include body-container;
+  // display: flex;
+  // flex-direction: column;
+  // width: 100%;
+  // /* background-color: aqua; */
+  // margin: 0 auto;
   background-color: white;
+  position: relative;
   /* padding: 0 3%; */
 }
 

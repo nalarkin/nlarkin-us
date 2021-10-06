@@ -106,35 +106,36 @@ const Carousel = ({ articles, tileLayout = 'column' }: Props) => {
   const n = articles.length;
   const options = buildSwiperOptionsBasedOnSize(n);
   return (
-    <div className={style.container}>
-      <div className={style.categoryHeader}>Section Category Here</div>
-      <div className={style.flexTile}>
-        <Swiper
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-          {...options}
-        >
-          {n > 0 && (
-            <SwiperSlide key={articles[0]._id}>
-              <BuildTile article={articles[0]} tileLayout={tileLayout} />
-            </SwiperSlide>
-          )}
-          {n > 1 && (
-            <SwiperSlide key={articles[1]._id}>
-              <BuildTile article={articles[1]} tileLayout={tileLayout} />
-            </SwiperSlide>
-          )}
-          {n > 2 && (
-            <SwiperSlide key={articles[2]._id}>
-              <BuildTile article={articles[2]} tileLayout={tileLayout} />
-            </SwiperSlide>
-          )}
-          {n > 3 && (
-            <SwiperSlide key={articles[3]._id}>
-              <BuildTile article={articles[3]} tileLayout={tileLayout} />
-            </SwiperSlide>
-          )}
-          {/* <div className='swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight'>
+    <div className="block w-full">
+      <div className={style.container}>
+        <div className={style.categoryHeader}>Section Category Here</div>
+        <div className={style.flexTile}>
+          <Swiper
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            {...options}
+          >
+            {n > 0 && (
+              <SwiperSlide key={articles[0]._id}>
+                <BuildTile article={articles[0]} tileLayout={tileLayout} />
+              </SwiperSlide>
+            )}
+            {n > 1 && (
+              <SwiperSlide key={articles[1]._id}>
+                <BuildTile article={articles[1]} tileLayout={tileLayout} />
+              </SwiperSlide>
+            )}
+            {n > 2 && (
+              <SwiperSlide key={articles[2]._id}>
+                <BuildTile article={articles[2]} tileLayout={tileLayout} />
+              </SwiperSlide>
+            )}
+            {n > 3 && (
+              <SwiperSlide key={articles[3]._id}>
+                <BuildTile article={articles[3]} tileLayout={tileLayout} />
+              </SwiperSlide>
+            )}
+            {/* <div className='swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight'>
           <div className='swiper-wrapper'>
             <List
               items={articles}
@@ -147,12 +148,13 @@ const Carousel = ({ articles, tileLayout = 'column' }: Props) => {
           </div>
         </div> */}
 
-          {n > 4 && (
-            <SwiperSlide key={articles[4]._id}>
-              <BuildTile article={articles[4]} tileLayout={tileLayout} />
-            </SwiperSlide>
-          )}
-        </Swiper>
+            {n > 4 && (
+              <SwiperSlide key={articles[4]._id}>
+                <BuildTile article={articles[4]} tileLayout={tileLayout} />
+              </SwiperSlide>
+            )}
+          </Swiper>
+        </div>
       </div>
     </div>
   );

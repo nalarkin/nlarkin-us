@@ -1,0 +1,11 @@
+@import 'styles/news';
+
+.container {
+  @include body-container;
+  // border-top: 1px solid #ebebeb;
+  // padding-top: 9px;
+  // border: black 2px solid;
+  @include media('>laptop') {
+    display: none;
+  }
+}

@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-// import '../styles/globals.scss';
+import '../styles/globals.scss';
 import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 

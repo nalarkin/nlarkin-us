@@ -14,7 +14,9 @@
 
 .sectionGrid {
   @include media('<laptop') {
-    @include grid(14);
+    // @include grid(14);
+    display: grid;
+    grid-column: auto;
   }
   @include media('>laptop') {
     @include grid(20);
@@ -32,7 +34,10 @@
 }
 
 .tileHero {
-  @include grid-span(14);
+  // @include grid-span(12);
+  display: grid;
+  grid-column: span auto;
+  // @include grid-span(14);
   @include media('>laptop') {
     @include grid-span(12);
   }
@@ -44,16 +49,32 @@
   // @include flex-row;
   text-align: center;
   margin: 0px auto;
-  max-width: 75%;
+  max-width: 85%;
   line-height: 2rem;
   font-weight: 700;
   letter-spacing: 0.2px;
   color: black;
   height: max-content;
   padding-top: 20px;
+  @include media('<laptop') {
+    font-size: 1.5rem;
+  }
+}
+
+.heroContent {
+  @include flex-col;
+  width: 100%;
 }
 
 .heroTileLink {
+  @include flex-col;
+  width: 100%;
+  // background-color: blue;
+
+  @include media('<tablet') {
+    margin-bottom: 40px;
+  }
+
   &:hover {
     .heroTitle {
       @include link-hover;
@@ -69,7 +90,7 @@
   text-align: center;
   margin: 0px auto auto;
   color: #737373;
-  max-width: 90%;
+  max-width: 95%;
   padding-top: 10px;
 }
 
