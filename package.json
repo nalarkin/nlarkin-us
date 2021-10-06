@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && next export",
+    "deploy": "rimraf .next out && next build && next export",
+    "clean": "rimraf .next out",
     "build-types": "tsc --noEmit --pretty",
     "prepare": "husky install"
   },
@@ -67,6 +68,7 @@
     "lint-staged": "^11.2.0",
     "postcss": "^8.3.6",
     "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
     "sanity-codegen": "^0.9.5",
     "tailwindcss": "^2.2.15",
     "typescript": "4.4.3"
