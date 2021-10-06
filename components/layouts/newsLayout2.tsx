@@ -6,7 +6,7 @@ import Footer from '../footers/footer';
 import SmallFooter from '../footers/SmallFooter';
 import MainNewsHeader from '../headers/MainNewsHeader';
 import { SEOProps } from '../shared/seo';
-import style from './newsLayout2.module.css';
+import style from './newsLayout2.module.scss';
 
 type Props = {
   seo: SEOProps;
