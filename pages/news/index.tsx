@@ -2,7 +2,7 @@ import React from 'react';
 
 import { GetStaticProps } from 'next';
 
-import { NewsLayout } from 'components/layouts/NewsLayout';
+import NewsLayout from 'components/layouts/NewsLayout';
 import { articleQueryAll, ArticleResultAll } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 

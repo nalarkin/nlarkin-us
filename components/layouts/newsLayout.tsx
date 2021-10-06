@@ -15,7 +15,7 @@ type Props = {
   // children?: ReactNode;
 };
 
-export const NewsLayout = ({ articles }: Props) => {
+const NewsLayout = ({ articles }: Props) => {
   return (
     <div className={style.wrapper}>
       <div className={style.pageHeader}>
@@ -35,3 +35,5 @@ export const NewsLayout = ({ articles }: Props) => {
     </div>
   );
 };
+
+export default NewsLayout;
