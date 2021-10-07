@@ -127,12 +127,7 @@ const ExamplePage = ({ data }: Props) => {
   return (
     <>
       <MinimalHeader sectionTitle="examples" />
-      <div className={style.wrapper}>
-        {content}
-        {/* <div>you shouldnt see this</div>
-      <div>{JSON.stringify(`data: ${data}`)}</div> */}
-        {/* <SectionLayout seo={NewsSEO}>{content}</SectionLayout> */}
-      </div>
+      <div className={style.wrapper}>{content}</div>
     </>
   );
 };

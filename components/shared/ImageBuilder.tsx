@@ -45,7 +45,7 @@ export const ImageBuilder = ({ image, classes = '' }: Props) => {
     <Image
       src={imageUrl}
       alt={image?.alt ?? ''}
-      layout="responsive"
+      // layout="responsive"
       width={imageWidth}
       height={imageHeight}
       className={classes}

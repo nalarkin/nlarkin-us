@@ -6,11 +6,7 @@ import OpinionCard from './OpinionCard';
 import style from './OpinionColumn.module.css';
 
 const OpinionHeader = () => {
-  return (
-    <div className="border-t-2 border-black pt-2 text-xs mb-2 font-bold font-sans">
-      Opinion
-    </div>
-  );
+  return <div className="pt-2 text-xs mb-2 font-bold font-sans">Opinion</div>;
 };
 
 type OpinionProps = {

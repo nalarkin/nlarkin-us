@@ -2,7 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import * as Schema from '../../../lib/schema';
+import type { Article } from 'interfaces';
+
 import { ImageBuilder } from '../../shared/ImageBuilder';
 import style from './LargeCard.module.scss';
 
@@ -25,19 +26,11 @@ const ArticleLinkWrapper = ({
 };
 
 type ArticleCardProps = {
-  title?: string;
-  excerpt: string;
-  authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
-  image: Schema.ArticleImage | undefined;
-  slug: string;
+  article: Article;
 };
 
-const LargeArticleCard = ({
-  title,
-  excerpt,
-  image,
-  slug,
-}: ArticleCardProps) => {
+const LargeArticleCard = ({ article }: ArticleCardProps) => {
+  const { slug, title, excerpt, image } = article;
   return (
     <div className={style.container}>
       <div className={style.card}>

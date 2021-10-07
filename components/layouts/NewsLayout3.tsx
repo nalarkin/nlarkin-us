@@ -1,9 +1,12 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import React from 'react';
 
+import OpinionBody from 'components/body/OpinionBody';
 import Footer from 'components/footers/footer';
 import SmallFooter from 'components/footers/SmallFooter';
 import MainNewsHeader from 'components/headers/MainNewsHeader';
+import LargeArticleCard from 'components/home/cards/LargeCard';
+import SectionHero from 'components/sections/cards/SectionHero';
 import Carousel from 'components/tiles/Carousel';
 import HeroTwoRows from 'components/tiles/HeroTwoRows';
 import { ArticleResultAll } from 'lib/queries';
@@ -23,7 +26,14 @@ const NewsLayout = ({ articles }: Props) => {
       </div>
       <div className={style.pageBody}>
         <div className={style.bodyContainer}>
-          <Carousel articles={articles.slice(0, 4)} />
+          <SectionHero articles={articles.slice(0, 5)} />
+          <OpinionBody opinionArticles={articles}>
+            <Carousel articles={articles.slice(0, 3)} />
+            {/* <HeroTwoRows articles={articles.slice(0, 5)} /> */}
+            <LargeArticleCard article={articles[3]} />
+            <Carousel articles={articles.slice(0, 4)} />
+          </OpinionBody>
+          <Carousel articles={articles.slice(0, 4)} tileLayout="row" />
           <HeroTwoRows articles={articles.slice(0, 5)} />
           <Carousel articles={articles.slice(0, 4)} />
         </div>

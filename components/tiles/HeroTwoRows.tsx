@@ -21,12 +21,14 @@ const RowBuilder = ({ articles }: Props) => {
       <div className={style.listWrapper}>
         <List
           items={articles}
-          renderItem={({ image, title, excerpt, slug }) => {
+          renderItem={({ image, title, excerpt, slug, _id }) => {
             return (
-              <section className={style.itemContainer}>
+              <section className={style.itemContainer} key={_id}>
                 <Link href={buildArticleSlug(slug)}>
                   <a className={style.hover}>
-                    <ImageBuilder image={image} />
+                    <div className="w-full">
+                      <ImageBuilder image={image} />
+                    </div>
                     <div className={style.textContent}>
                       <h3 className={style.title}>{title}</h3>
                       <p className={style.excerpt}>
@@ -64,7 +66,9 @@ const HeroTwoRows = ({ articles }: Props) => {
         <div className={style.tileHero}>
           <Link href={buildArticleSlug(firstArticle.slug)}>
             <a className={style.heroTileLink}>
-              <ImageBuilder image={firstArticle.image} />
+              <div className="w-full">
+                <ImageBuilder image={firstArticle.image} />
+              </div>
               <div className={style.heroContent}>
                 <div className={style.heroTitle}>{firstArticle.title}</div>
                 <div className={style.heroExcerpt}>{firstArticle.excerpt}</div>

@@ -67,21 +67,6 @@ type Props = {
 const NewsHome = ({ data }: Props) => {
   return (
     <>
-      {/* <div className={style.content}> */}
-
-      {/* <NewsLayout seo={NewsSEO}> */}
-      {/* <div>home</div> */}
-      {/* <div className='flex flex-row'></div> */}
-
-      {/* <OpinionBody opinionArticles={data}>
-            <HomeBuilder articles={data} />
-          </OpinionBody> */}
-      {/* <div className="h-36 block ">
-          <Carousel articles={data?.slice(0, 4) ?? []} tileLayout="column" />
-        </div> */}
-      {/* <HomeContent articles={data ?? []} />
-      </NewsLayout> */}
-      {/* <CookieNotice /> */}
       <NewsLayout articles={data ?? []} />
     </>
   );

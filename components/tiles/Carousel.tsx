@@ -26,7 +26,9 @@ const ColumnTileBuilder = ({ article }: { article: Article }) => {
       <Link href={buildArticleSlug(slug)}>
         <a className={style.tileContainer}>
           {/* <div className={style.image}> */}
-          <ImageCropBuilder image={image} width={300} height={200} />
+          <div className="w-full">
+            <ImageCropBuilder image={image} width={300} height={200} />
+          </div>
           {/* </div> */}
 
           <h3 className={style.title}>{title}</h3>
@@ -48,7 +50,7 @@ const RowTileBuilder = ({ article }: { article: Article }) => {
               <h3 className={style.rowTileTitle}>{title}</h3>
               <p className={style.rowTileExcerpt}>{shortenedExcerpt}</p>
             </div>
-            <div>
+            <div className="w-full">
               <ImageCropBuilder image={image} width={300} height={300} />
             </div>
           </div>
