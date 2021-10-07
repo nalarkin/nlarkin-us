@@ -70,15 +70,7 @@ const ExamplePage = ({ data }: Props) => {
         name: 'LargeCard',
         articleCount: 1,
         items: data[0],
-        renderItem: (item) => (
-          <LargeArticleCard
-            authors={item.authors}
-            excerpt={item.excerpt}
-            image={item.image}
-            slug={item.slug}
-            title={item.title}
-          />
-        ),
+        renderItem: (item) => <LargeArticleCard article={item} />,
       },
       {
         name: 'HeroTwoRows',

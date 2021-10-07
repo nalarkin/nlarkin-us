@@ -85,14 +85,7 @@ const NewsCategoryMain = ({
             : articles.map((article) => {
                 return (
                   // <div className='flex flex-row flex-wrap  ' key={article._id}>
-                  <LargeArticleCard
-                    excerpt={article.excerpt ?? ''}
-                    image={article.image}
-                    title={article.title}
-                    slug={article.slug}
-                    authors={article.authors}
-                    key={article._id}
-                  />
+                  <LargeArticleCard article={article} key={article._id} />
                   // </div>
                 );
               })}
