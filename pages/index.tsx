@@ -1,18 +1,29 @@
 import React from 'react';
 
 import type { NextPage } from 'next';
+import Link from 'next/link';
 
 import Layout from '../components/layouts/layout';
 
 const HomeContents = () => {
   return (
-    <div className="flex justify-center items-center flex-col md:flex-row">
+    <div className="flex justify-center items-center flex-col md:flex-row gap-7">
+      <div className="bg-white rounded-lg flex  justify-center">
+        <Link href="/resume">
+          <a className="p-7 my-auto">Resume</a>
+        </Link>
+      </div>
+      <div className="bg-white rounded-lg flex  justify-center">
+        <Link href="/news">
+          <a className="p-7 my-auto">News</a>
+        </Link>
+      </div>
       {/* <Card
-        text='Would you like to see my resume?'
-        btnText='Resume'
-        href='/resume'
+        text="Would you like to see my resume?"
+        btnText="Resume"
+        href="/resume"
       />
-      <Card text='Want to see the news?' btnText='news' href='/news' /> */}
+      <Card text="Want to see the news?" btnText="news" href="/news" /> */}
     </div>
   );
 };
