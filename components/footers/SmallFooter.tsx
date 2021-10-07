@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 import Link from 'next/link';
 
-import { allFooterTopNavLinks, SiteLink } from '../../links';
+import { FooterCategory, allFooterTopNavLinks, SiteLink } from 'links';
+
 import { List } from '../shared/list';
 import style from './SmallFooter.module.scss';
 
@@ -26,13 +27,36 @@ const FooterLink = ({ text, url, onClick }: Props) => {
   );
 };
 
+type FooterGroups = {
+  [index: string]: boolean;
+};
+function buildInitialState(arr: FooterCategory[]) {
+  const newObject: FooterGroups = {};
+  arr.forEach(({ name }) => {
+    newObject[name] = false;
+  });
+  return newObject;
+}
+
+const initialState = buildInitialState(allFooterTopNavLinks);
+
 type CategoryProps = {
   name: string;
   categoryLinks: SiteLink[];
+  handleClick: (val: string, x: boolean) => void;
+  isOpen: boolean;
 };
 
-const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
-  const [isOpen, setOpenStatus] = useState<boolean>(false);
+const SmallFooterCategory = ({
+  name,
+  categoryLinks,
+  handleClick,
+  isOpen,
+}: CategoryProps) => {
+  useEffect(() => {
+    return () => {};
+  }, [isOpen]);
+
   const categoryClass = classNames([
     'font-bold',
     'uppercase',
@@ -44,14 +68,15 @@ const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
     'flex w-full',
     { 'text-gray-400': isOpen },
   ]);
-
-  const closeAfterClick = () => {
-    setOpenStatus(false);
+  const clickedHeader = (
+    _e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    handleClick(name, !isOpen);
   };
 
   return (
     <div className="flex flex-col w-full">
-      <button onClick={() => setOpenStatus(!isOpen)} className={categoryClass}>
+      <button onClick={clickedHeader} className={categoryClass}>
         {name && name}
       </button>
       {isOpen ? (
@@ -60,7 +85,7 @@ const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
             items={categoryLinks}
             renderItem={([text, url]) => (
               <li key={url} className="w-6/12 ">
-                <FooterLink text={text} url={url} onClick={closeAfterClick} />
+                <FooterLink text={text} url={url} onClick={() => null} />
               </li>
             )}
           />
@@ -71,6 +96,20 @@ const SmallFooterCategory = ({ name, categoryLinks }: CategoryProps) => {
 };
 
 const SmallFooter = () => {
+  const [categoriesOpenState, setCategoriesState] = useState(initialState);
+
+  const handleClick = (categoryName: string, isOpen: boolean) => {
+    if (!isOpen) {
+      setCategoriesState(initialState);
+    } else {
+      const copyCategories = {
+        ...initialState,
+      };
+      copyCategories[categoryName] = isOpen;
+      setCategoriesState(copyCategories);
+    }
+  };
+
   return (
     <div className="block">
       <div className={style.container}>
@@ -81,7 +120,9 @@ const SmallFooter = () => {
               <div key={name} className="flex flex-col w-full ">
                 <SmallFooterCategory
                   name={name}
+                  handleClick={handleClick}
                   categoryLinks={categoryLinks}
+                  isOpen={categoriesOpenState[name]}
                 />
               </div>
             )}

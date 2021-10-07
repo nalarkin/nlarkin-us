@@ -1,5 +1,5 @@
 export type SiteLink = [string, string];
-type FooterCategory = {
+export type FooterCategory = {
   name: string;
   categoryLinks: SiteLink[];
 };
