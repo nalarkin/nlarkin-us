@@ -1,9 +1,5 @@
 @import '/styles/news';
 
 .body {
-  @include flex-col;
-  margin: 0px auto;
-  max-width: 1200px;
-  padding-top: 20px;
-  border-top: 1px solid #121212;
+  @include body-container;
 }

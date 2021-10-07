@@ -1,0 +1,150 @@
+@import './tile';
+
+.divider {
+  @extend %itemColumnContainer;
+}
+
+.container {
+  @extend %container;
+}
+
+.listWrapper {
+  @include grid(8);
+}
+
+.sectionGrid {
+  @include media('<laptop') {
+    // @include grid(14);
+    display: grid;
+    grid-column: auto;
+  }
+  @include media('>laptop') {
+    @include grid(20);
+  }
+}
+
+.itemRowContainer {
+  position: relative;
+  @include media('>laptop') {
+    @include grid-span(8);
+    &:first-child::after {
+      @include divider-section('bottom', 'light');
+    }
+  }
+}
+
+.tileHero {
+  // @include grid-span(12);
+  display: grid;
+  grid-column: span auto;
+  // @include grid-span(14);
+  @include media('>laptop') {
+    @include grid-span(12);
+  }
+}
+
+.heroTitle {
+  font-family: $font-serif;
+  font-size: 1.7rem;
+  // @include flex-row;
+  text-align: center;
+  margin: 0px auto;
+  max-width: 85%;
+  line-height: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: black;
+  height: max-content;
+  padding-top: 20px;
+  @include media('<laptop') {
+    font-size: 1.5rem;
+  }
+}
+
+.heroContent {
+  @include flex-col;
+  width: 100%;
+}
+
+.heroTileLink {
+  @include flex-col;
+  width: 100%;
+  // background-color: blue;
+
+  @include media('<tablet') {
+    margin-bottom: 40px;
+  }
+
+  &:hover {
+    .heroTitle {
+      @include link-hover;
+    }
+  }
+}
+
+.heroExcerpt {
+  letter-spacing: 0.1px;
+  line-height: 1.1875rem;
+  font-family: $font-serif;
+  font-size: 1rem;
+  text-align: center;
+  margin: 0px auto auto;
+  color: #737373;
+  max-width: 95%;
+  padding-top: 10px;
+}
+
+.groupTwo {
+  display: none;
+  @include media('>laptop') {
+    @include grid-span(8);
+    position: relative;
+    &::before {
+      @include divider-section('left');
+    }
+  }
+}
+
+.carousel {
+  @include media('>laptop') {
+    display: none;
+  }
+}
+
+.itemContainer {
+  @include flex-col;
+  // align-items: flex-start;
+
+  @include grid-span(4);
+  position: relative;
+  &:not(:first-child)::before {
+    @include divider-section('left', 'light');
+  }
+}
+
+.authors {
+  @extend %authors;
+}
+
+.title {
+  @extend %title;
+  padding-top: 8px;
+}
+.excerpt {
+  @extend %excerpt;
+  margin-bottom: auto;
+  padding-top: 4px;
+}
+
+.textContent {
+  @include flex-col;
+  margin-bottom: auto;
+}
+
+.categoryHeader {
+  @extend %categoryHeader;
+}
+
+.hover:hover {
+  @include link-hover;
+}

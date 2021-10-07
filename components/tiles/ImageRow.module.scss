@@ -1,0 +1,35 @@
+// @use 'tile';
+@import './tile';
+// @import 'styles/news';
+
+.container {
+  @extend %container;
+}
+
+.listWrapper {
+  @include flex-row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.itemColumnContainer {
+  @extend %itemColumnContainer;
+  flex: 1;
+  &:not(:first-child) {
+    @include divider-item('left', 'light');
+  }
+}
+.imageContainer {
+  display: block;
+}
+
+.categoryHeader {
+  @extend %categoryHeader;
+}
+
+.authors {
+  @extend %authors;
+}
+.title {
+  @extend %title;
+}

@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
-import { FiMenu } from 'react-icons/fi';
-import style from './MobileMenu.module.scss';
-import classNames from 'classnames';
-import { headerCategoryLinks, allFooterTopNavLinks } from '../../links';
-import { List } from '../list';
+
 import Link from 'next/link';
-import { useEffect } from 'react';
-import OutsideClickHandler from 'react-outside-click-handler';
+import { FiMenu } from 'react-icons/fi';
 import { GrClose } from 'react-icons/gr';
+
+import { allFooterTopNavLinks } from '../../links';
 import SearchBar from '../search/SearchBar';
+import { List } from '../shared/list';
+import style from './MobileMenu.module.scss';
 
 const MobileMenu = () => {
   const [isActive, setMenu] = useState<boolean>(false);
 
-  const btnClass = classNames([{ btn: isActive }, { btn: !isActive }]);
+  // const btnClass = classNames([{ btn: isActive }, { btn: !isActive }]);
 
   const handleClick = () => {
     setMenu(!isActive);
   };
   const button = (
-    <button className='' onClick={() => handleClick()}>
-      <div className='mr-3 py-2 pr-2 relative '>
-        <FiMenu size={18} className={isActive ? style.btn : ''} />
-      </div>
+    <button className={style.btn} onClick={() => handleClick()}>
+      <FiMenu size={18} className={isActive ? style.btnAnimation : ''} />
     </button>
   );
 
@@ -34,7 +31,7 @@ const MobileMenu = () => {
 
   const content = (
     <div className={style.menu}>
-      <div className=''>
+      <div className="">
         <div className={style.navBar}>
           <div>
             <div className={style.title}>The Nathan Times</div>
@@ -48,13 +45,13 @@ const MobileMenu = () => {
             items={allFooterTopNavLinks}
             renderItem={({ name, categoryLinks }): JSX.Element => {
               return (
-                <div className='flex flex-col w-full'>
+                <div className="flex flex-col w-full" key={name}>
                   <div className={style.sectionTitle}> {name}</div>
                   <ul className={style.sectionGrid}>
                     <List
                       items={categoryLinks}
                       renderItem={([text, url]) => (
-                        <li key={url} className='list-none font-sans '>
+                        <li key={url} className="list-none font-sans ">
                           <Link href={url} key={text}>
                             <a
                               className={style.sectionLink}
@@ -77,7 +74,7 @@ const MobileMenu = () => {
   );
 
   return (
-    <div className='flex lg:hidden'>
+    <div className="flex lg:hidden">
       {isActive ? content : null}
       {button}
     </div>

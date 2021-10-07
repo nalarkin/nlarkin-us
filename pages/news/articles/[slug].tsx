@@ -1,28 +1,23 @@
 import React from 'react';
-import {
-  NextPage,
-  GetStaticProps,
-  GetStaticPaths,
-  GetServerSideProps,
-} from 'next';
-import Layout from '../../../components/layouts/layout';
-import NewsLayout from '../../../components/layouts/newsLayout';
-import Disclaimer from '../../../components/disclaimer';
-import { getClient, sanityClient } from '../../../lib/sanity.server';
+
+import { GetStaticProps, GetStaticPaths } from 'next';
+
+import ArticleHeader from 'components/article/ArticleHeader';
+import ArticleHeaderInfo from 'components/article/ArticleHeaderInfo';
+import ArticleHeaderSocial from 'components/article/ArticleHeaderSocial';
+import ArticleBody from 'components/body/ArticleBody';
+import Disclaimer from 'components/disclaimer/disclaimer';
+import ArticleLayout from 'components/layouts/ArticleLayout';
+import { ImageBuilder } from 'components/shared/ImageBuilder';
 import {
   articleQuery,
   ArticleQueryResult,
   articleSlugsQuery,
-} from '../../../lib/queries';
-import ErrorPage from 'next/error';
-import { useRouter } from 'next/router';
-import ArticleBody from '../../../components/body/ArticleBody';
-import ArticleHeader from '../../../components/article/ArticleHeader';
-import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
-import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
-import style from '../../../styles/article.module.css';
-import { ImageBuilder } from '../../../components/ImageBuilder';
-import { ArticleSlugsResult } from '../../../lib/queries';
+  ArticleSlugsResult,
+} from 'lib/queries';
+import { getClient } from 'lib/sanity.server';
+
+import style from './article.module.scss';
 
 /**
  * Fake data generator
@@ -43,7 +38,7 @@ export const getStaticProps: GetStaticProps = async ({
   if (slug === undefined) {
     slug = '';
   }
-  const queryParams = { slug: slug };
+  const queryParams = { slug };
 
   const result = await getClient(preview).fetch<ArticleQueryResult>(
     articleQuery,
@@ -62,18 +57,9 @@ export const getStaticProps: GetStaticProps = async ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const paths = await sanityClient.fetch(articleSlugsQuery);
-  // const paths = await getArticleSlugs();
   const paths = await getClient(false).fetch<ArticleSlugsResult | undefined>(
     articleSlugsQuery
   );
-  // console.log(`paths: ${paths.toString()}`);
-  // if (paths === undefined) {
-  //   return {
-  //     paths: {},
-  //     fallback: true,
-  //   };
-  // }
   if (paths === null) {
     throw Error('paths was null');
   } else if (paths === undefined) {
@@ -85,15 +71,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const NewsSEO = {
-  description:
-    'This is a purely educational attempt to clone of the New York Times. Disclaimer....',
-  title: "Nathan's News",
-};
+// const NewsSEO = {
+//   description:
+//     'This is a purely educational attempt to clone of the New York Times. Disclaimer....',
+//   title: "Nathan's News",
+// };
 
 export default function ArticlePage({
   data,
-  preview = false,
 }: {
   data: ArticleQueryResult | undefined;
   preview: boolean;
@@ -104,13 +89,13 @@ export default function ArticlePage({
   const { title, text, authors, date, image } = data;
   return (
     <div>
-      <NewsLayout seo={NewsSEO}>
-        <div className='flex flex-col '>
+      <ArticleLayout>
+        <div className="flex flex-col ">
           {/* optional hero here with title over image */}
           <div className={style.image}>
             <ImageBuilder image={image} />
           </div>
-          <h1 className='text-xl font-bold mt-5 mb-5 mx-auto'>{title}</h1>
+          <h1 className="text-xl font-bold mt-5 mb-5 mx-auto">{title}</h1>
           <ArticleHeader authors={authors} />
           <div className={style.body}>
             <ArticleHeaderSocial />
@@ -119,7 +104,7 @@ export default function ArticlePage({
           </div>
           <Disclaimer />
         </div>
-      </NewsLayout>
+      </ArticleLayout>
     </div>
   );
 }

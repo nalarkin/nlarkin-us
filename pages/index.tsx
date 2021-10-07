@@ -1,25 +1,29 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FaRegNewspaper } from 'react-icons/fa';
-import { BsPersonLinesFill } from 'react-icons/bs';
-import { Button } from '../components/generic';
-
 import React from 'react';
+
+import type { NextPage } from 'next';
+import Link from 'next/link';
+
 import Layout from '../components/layouts/layout';
-import Card from '../components/card';
-import SEO from '../components/seo';
 
 const HomeContents = () => {
   return (
-    <div className='flex justify-center items-center flex-col md:flex-row'>
-      <Card
-        text='Would you like to see my resume?'
-        btnText='Resume'
-        href='/resume'
+    <div className="flex justify-center items-center flex-col md:flex-row gap-7">
+      <div className="bg-white rounded-lg flex  justify-center">
+        <Link href="/resume">
+          <a className="p-7 my-auto">Resume</a>
+        </Link>
+      </div>
+      <div className="bg-white rounded-lg flex  justify-center">
+        <Link href="/news">
+          <a className="p-7 my-auto">News</a>
+        </Link>
+      </div>
+      {/* <Card
+        text="Would you like to see my resume?"
+        btnText="Resume"
+        href="/resume"
       />
-      <Card text='Want to see the news?' btnText='news' href='/news' />
+      <Card text="Want to see the news?" btnText="news" href="/news" /> */}
     </div>
   );
 };

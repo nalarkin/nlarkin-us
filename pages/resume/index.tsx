@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Layout from '../../components/layouts/layout';
 
 const ResumeSEO = {
@@ -11,7 +12,7 @@ const Resume = () => {
   return (
     <div>
       <Layout seo={ResumeSEO}>
-        <div className='text-center '>this is where I would put my resume</div>
+        <div className="text-center ">this is where I would put my resume</div>
       </Layout>
     </div>
   );

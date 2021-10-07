@@ -1,35 +1,35 @@
 import React from 'react';
+
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { Article } from '../../../interfaces';
-import ArticleCard from '../../../components/body/ArticleCard';
-import NewsLayout from '../../../components/layouts/newsLayout';
-import { shuffle } from '../../../lib/utils';
-import { getClient } from '../../../lib/sanity.server';
-import style from './[slug].module.scss';
+
+import Disclaimer from 'components/disclaimer/disclaimer';
+import LargeArticleCard from 'components/home/cards/LargeCard';
+import SectionLayout from 'components/layouts/SectionLayout';
+import SectionHero from 'components/sections/cards/SectionHero';
+import LatestList from 'components/sections/latest/LatestList';
 import {
   sectionSlugsQuery,
   sectionArticlesQuery,
   SectionArticlesResponse,
-} from '../../../lib/queries';
-import Disclaimer from '../../../components/disclaimer';
-import LatestList from '../../../components/sections/latest/LatestList';
-import SectionHero from '../../../components/sections/cards/SectionHero';
-import LargeArticleCard from 'components/home/cards/LargeCard';
-import SectionLayout from 'components/layouts/SectionLayout';
+} from 'lib/queries';
+import { getClient } from 'lib/sanity.server';
+
+import style from './[slug].module.scss';
 
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
   const queryParams = { slug: params?.slug };
-  const { title, articles } = await getClient(
+  const { title, articles, slug } = await getClient(
     preview
   ).fetch<SectionArticlesResponse>(sectionArticlesQuery, queryParams);
   return {
     props: {
       data: {
-        articles: articles,
-        title: title,
+        articles,
+        title,
+        slug,
       },
       // data:  {
       //   articles: articles,
@@ -60,11 +60,11 @@ const NewsCategoryMain = ({
     return <div></div>;
   }
   // console.log(`data: ${JSON.stringify(data)}`);
-  const { articles, title } = data;
+  const { articles, title, slug } = data;
 
   const handleNoArticles = () => {
     return (
-      <div className='flex text-center mx-auto normal-case'>
+      <div className="flex text-center mx-auto normal-case">
         {`There are currently no articles in this cateogry "${title}"`}
       </div>
     );
@@ -73,8 +73,10 @@ const NewsCategoryMain = ({
   return (
     <SectionLayout
       seo={{ title: '', description: 'all world news in 1 place' }}
+      sectionTitle={title}
+      slug={slug}
     >
-      <div className='flex flex-col pt-7'>
+      <div className="flex flex-col pt-7">
         {/* <div className='text-3xl font-bold'> {title}</div> */}
         <SectionHero articles={articles} />
         <div className={style.body}>
@@ -83,14 +85,7 @@ const NewsCategoryMain = ({
             : articles.map((article) => {
                 return (
                   // <div className='flex flex-row flex-wrap  ' key={article._id}>
-                  <LargeArticleCard
-                    excerpt={article.excerpt ?? ''}
-                    image={article.image}
-                    title={article.title}
-                    slug={article.slug}
-                    authors={article.authors}
-                    key={article._id}
-                  />
+                  <LargeArticleCard article={article} key={article._id} />
                   // </div>
                 );
               })}

@@ -1,24 +1,27 @@
 import React, { ReactNode } from 'react';
-import SEO, { SEOProps } from '../seo';
-import style from './SectionLayout.module.scss';
-import Link from 'next/link';
-import NewsHeader from '../headers/MainNewsHeader';
-import Footer from '../footers/footer';
+
 import { NextSeo } from 'next-seo';
-import SmallFooter from '../footers/SmallFooter';
+
 import MinimalHeader from 'components/headers/MinimalHeader';
+
+import Footer from '../footers/footer';
+import SmallFooter from '../footers/SmallFooter';
+import { SEOProps } from '../shared/seo';
+import style from './SectionLayout.module.scss';
 
 type Props = {
   seo: SEOProps;
+  sectionTitle?: string;
+  slug?: string;
   children?: ReactNode;
 };
 
-const NewsLayout = ({ seo, children }: Props) => {
+const SectionLayout = ({ seo, sectionTitle, slug, children }: Props) => {
   return (
     <>
       {' '}
       <NextSeo {...seo} />
-      <MinimalHeader />
+      <MinimalHeader sectionTitle={sectionTitle} slug={slug} />
       <div className={style.wrapper}>
         {/* SEO */}
         {/* <SEO description={seo.description} title={seo.title} /> */}
@@ -31,4 +34,4 @@ const NewsLayout = ({ seo, children }: Props) => {
   );
 };
 
-export default NewsLayout;
+export default SectionLayout;

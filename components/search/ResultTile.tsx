@@ -1,10 +1,13 @@
 import React from 'react';
-import style from './ResultTile.module.scss';
-import * as Schema from 'lib/schema';
-import Date from 'components/Date';
-import { ImageBuilder } from '../ImageBuilder';
+
 import Link from 'next/link';
+
+import Date from 'components/shared/Date';
+import * as Schema from 'lib/schema';
 import { formatAuthors, getAuthorName } from 'lib/utils';
+
+import { ImageBuilder } from '../shared/ImageBuilder';
+import style from './ResultTile.module.scss';
 
 type Props = {
   article: Pick<

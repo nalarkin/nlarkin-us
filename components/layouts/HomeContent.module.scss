@@ -1,0 +1,11 @@
+@import 'styles/news';
+.container {
+  // @include grid-span
+  // display: flex;
+  // max-width: 2000px;
+  // @include body-container;
+  // display: flex;
+  // flex-direction: column;
+  // max-width: 1200px;
+  @include body-container;
+}

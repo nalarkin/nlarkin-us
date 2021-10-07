@@ -1,23 +1,25 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
-import { ImSearch } from 'react-icons/im';
-import { FiMenu } from 'react-icons/fi';
-import style from './MainNewsHeader.module.scss';
-import { IoMdPerson } from 'react-icons/io';
-import { List } from '../list';
-import { headerCategoryLinks } from '../../links';
-import NewsButton from '../newsButton';
-import Menu from '../menu/Menu';
-import DateComponent from '../Date';
-import MobileMenu from '../menu/MobileMenu';
+
 import classNames from 'classnames';
+import Link from 'next/link';
+import { ImSearch } from 'react-icons/im';
+import { IoMdPerson } from 'react-icons/io';
+
 import SearchBar from 'components/search/SearchBar';
+
+import { headerCategoryLinks } from '../../links';
+import Menu from '../menu/Menu';
+import MobileMenu from '../menu/MobileMenu';
+import DateComponent from '../shared/Date';
+import { List } from '../shared/list';
+import NewsButton from '../shared/newsButton';
+import style from './MainNewsHeader.module.scss';
 
 const CurrentDate = () => {
   const currentDate = new Date();
 
   return (
-    <div className=' font-bold text-xs '>
+    <div className=" font-bold text-xs ">
       <DateComponent dateString={currentDate.toISOString()} />
     </div>
   );
@@ -39,9 +41,9 @@ const TopNavigationBar = () => {
     'font-serif',
   ]);
 
-  const imgClass = classNames(['mr-3', 'p-2', style.hideIfSmall]);
+  // const imgClass = classNames(['mr-3', 'p-2', style.hideIfSmall]);
   const headerBanners = classNames(['justify-self-center', style.hideIfSmall]);
-  const profileClass = classNames(['flex', 'justify-end', style.hideIfLarge]);
+  // const profileClass = classNames(['flex', 'justify-end', style.hideIfLarge]);
   return (
     <>
       <div className={style.topNav}>
@@ -52,8 +54,8 @@ const TopNavigationBar = () => {
           </div>
           <button
             className={btnClass}
-            type='button'
-            aria-label='search button'
+            type="button"
+            aria-label="search button"
             onClick={() => changeSearchStatus(!searchIsOpen)}
           >
             <div className={style.searchIcon}>
@@ -65,21 +67,21 @@ const TopNavigationBar = () => {
           </div>
         </div>
         <div>
-          <Link href='/news'>
+          <Link href="/news">
             <a>
               <h1 className={bigTitleClass}>The Nathan Times</h1>
             </a>
           </Link>
           <div className={headerBanners}>
-            <div className='w-80 flex justify-between font-sans'>
-              <Link href='/news/u-s'>
-                <a className='px-2 py-1 news-nav-link text-xs'>U.S</a>
+            <div className="w-80 flex justify-between font-sans">
+              <Link href="/news/u-s">
+                <a className="px-2 py-1 news-nav-link text-xs">U.S</a>
               </Link>
-              <Link href='/news/international'>
-                <a className='px-2 py-1 news-nav-link text-xs'>INTERNATIONAL</a>
+              <Link href="/news/international">
+                <a className="px-2 py-1 news-nav-link text-xs">INTERNATIONAL</a>
               </Link>
-              <Link href='/news/canada'>
-                <a className='px-2 py-1 news-nav-link text-xs'>CANADA</a>
+              <Link href="/news/canada">
+                <a className="px-2 py-1 news-nav-link text-xs">CANADA</a>
               </Link>
             </div>
           </div>
@@ -88,13 +90,13 @@ const TopNavigationBar = () => {
         <div className={style.rightBtnGroup}>
           <div className={style.login}>
             <NewsButton>
-              <div className=''>log in</div>
+              <div className="">log in</div>
             </NewsButton>
           </div>
           <div className={style.profile}>
-            <Link href='/news/profile'>
-              <a className=''>
-                <IoMdPerson size={25} className='' />
+            <Link href="/news/profile">
+              <a className="">
+                <IoMdPerson size={25} className="" />
               </a>
             </Link>
           </div>
@@ -126,22 +128,22 @@ const MiddleNavigationBar = () => {
   return (
     <>
       <div className={style.middleNav}>
-        <div className='flex flex-col'>
+        <div className="flex flex-col">
           <div className={dateClass}>
             <CurrentDate />
-            <div className='text-xs '>Today’s Paper</div>
+            <div className="text-xs ">Today’s Paper</div>
           </div>
         </div>
-        <Link href='/news'>
+        <Link href="/news">
           <a>
             <h1 className={bigTitleClass}>The Nathan Times</h1>
           </a>
         </Link>
 
-        <div className=''>
+        <div className="">
           <div className={stockClass}>
-            <div className='font-bold text-sm'>72° F73° 54°</div>
-            <div className='text-sm'>Nasdaq +1.05%</div>
+            <div className="font-bold text-sm">72° F73° 54°</div>
+            <div className="text-sm">Nasdaq +1.05%</div>
           </div>
         </div>
       </div>
@@ -174,7 +176,7 @@ const BottomNavigationBar = () => {
                   return (
                     <li key={url}>
                       <Link href={url} key={text}>
-                        <a className='px-1 py-2 news-nav-link text-xxs'>
+                        <a className="px-1 py-2 news-nav-link text-xxs">
                           {text}
                         </a>
                       </Link>
@@ -196,12 +198,14 @@ const BottomNavigationBar = () => {
 const NewsHeader = () => {
   return (
     <>
-      <div className={style.siteHeader}>
-        <TopNavigationBar />
-        {/* header 2 title, changes in small screen  */}
-        <MiddleNavigationBar />
-        {/* header 3 displays nav links if large, if small displays date */}
-        <BottomNavigationBar />
+      <div className="block">
+        <div className={style.siteHeader}>
+          <TopNavigationBar />
+          {/* header 2 title, changes in small screen  */}
+          <MiddleNavigationBar />
+          {/* header 3 displays nav links if large, if small displays date */}
+          <BottomNavigationBar />
+        </div>
       </div>
     </>
   );

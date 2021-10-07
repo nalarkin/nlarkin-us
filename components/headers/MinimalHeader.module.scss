@@ -2,31 +2,66 @@
 
 $side-group-span: 5;
 
-.siteHeader {
-  @include flex-row;
-  width: 100%;
-  margin: 0 auto;
-  background-color: white;
-  margin: auto;
-  padding: 0 3%;
-  // max-width: 1200px;
-  border-bottom: 1px solid #e2e2e2;
+%btnHover {
+  background-color: #f7f7f7;
+  transition: ease 0.6s;
 }
 
-.headerContainer {
-  padding: 4px 15px 2px;
+%headerContainer {
+  background-color: white;
+  border-bottom: 1px solid #e2e2e2;
+  width: 100%;
+  padding: 0 3%;
+}
+
+.siteHeader {
+  // @include flex-row;
+  @extend %headerContainer;
+  margin: 0 auto;
+  margin: auto;
+
+  // max-width: 1200px;
+  height: 50px;
+  @include media('>laptop') {
+    height: 43px;
+  }
+}
+
+.topContainer {
   max-width: 1200px;
   position: relative;
   @include flex-row;
   margin: 0px auto;
-  // align-items: center;
   width: 100%;
+  padding: 8px 15px 3px;
+  @include media('>laptop') {
+    padding: 4px 15px 2px;
+  }
+}
+
+.rowTwoContainer {
+  display: none;
+  @extend %headerContainer;
+
+  @include media('>tablet', '<laptop') {
+    position: relative;
+    min-height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.tabletLogin {
+  margin-left: auto;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding: 0px 8px;
+  color: rgb(50, 104, 145);
 }
 
 .searchIcon {
   padding: 4px;
-  display: flex;
-  place-items: center;
 }
 
 .searchBtn {
@@ -34,7 +69,7 @@ $side-group-span: 5;
   // margin: auto;
   position: static;
   @include flex-row;
-  padding: 2px;
+  padding: 8px 9px 9px;
   place-items: center;
   margin-right: 5px;
   border-radius: 3px;
@@ -43,11 +78,13 @@ $side-group-span: 5;
   @include media('<laptop') {
     display: none;
   }
+  &:hover {
+    @extend %btnHover;
+  }
 }
 
 .activeMod {
-  background-color: #f7f7f7;
-  transition: ease 0.6s;
+  @extend %btnHover;
   // padding: 0px;
 }
 .inactiveMod {
@@ -61,8 +98,11 @@ $side-group-span: 5;
 }
 
 .menuBtn {
-  padding: 5px;
+  // padding: 5px;
   align-items: center;
+  &:hover {
+    @extend %btnHover;
+  }
 }
 
 .leftBtnGroup {
@@ -70,6 +110,7 @@ $side-group-span: 5;
   position: absolute;
   left: 0px;
   align-items: center;
+  // vertical-align: middle;
 }
 .rightBtnGroup {
   @include flex-row;
@@ -78,7 +119,7 @@ $side-group-span: 5;
   align-items: center;
   // margin-left: auto;
   // border: 2px black solid;
-  height: 100%;
+  height: 80%;
   @include media('>laptop') {
   }
 }
@@ -109,6 +150,28 @@ $side-group-span: 5;
 .profile {
   padding: 4px;
   @include media('>laptop') {
+    display: none;
+  }
+}
+.sectionTitle {
+  display: block;
+  position: absolute;
+  left: 105px;
+  line-height: 19px;
+  top: 8px;
+  letter-spacing: 0.7px;
+  line-height: 19px;
+  font-size: 14.25px;
+  font-family: $font-sans;
+  font-weight: 700;
+  text-transform: uppercase;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.responsiveSectionTitle {
+  @include media('<laptop') {
     display: none;
   }
 }

@@ -1,0 +1,37 @@
+.menu {
+  animation-duration: 0.4s;
+  animation-name: slidein;
+  animation-iteration-count: initial;
+  position: fixed;
+  z-index: 70;
+  padding: 10px 18px;
+  background-color: rgb(202, 202, 202);
+  width: 190px;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 4px 0px 6px 1px;
+  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+  border-radius: 3px;
+  border-right: 1px solid rgb(204, 204, 204);
+}
+
+.btnAnimation {
+  transform: rotate(-90deg);
+  transition: all 0.4s ease-in-out;
+}
+.btn {
+    padding: 8px 9px 9px;
+}
+
+@keyframes slidein {
+  from {
+    left: -200px;
+    width: 0%;
+  }
+
+  to {
+    left: 0px;
+    animation-play-state: paused;
+  }
+}

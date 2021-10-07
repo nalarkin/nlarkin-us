@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import style from './Search.module.scss';
-import { ImSearch } from 'react-icons/im';
+
 import { useRouter } from 'next/router';
+
+import style from './Search.module.scss';
 
 type SearchProps = {
   submit?: () => void;
@@ -52,13 +53,13 @@ const SearchBar = ({ submit }: SearchProps) => {
       <div className={style.inputContainer}>
         <input
           className={style.input}
-          type='text'
-          placeholder='SEARCH'
+          type="text"
+          placeholder="SEARCH"
           value={text}
           onChange={handleChange}
         />
         <button
-          type='reset'
+          type="reset"
           className={style.clear}
           onClick={() => {
             changeText('');
@@ -68,7 +69,7 @@ const SearchBar = ({ submit }: SearchProps) => {
           CLEAR
         </button>
       </div>
-      <button className={style.btn} type='submit' disabled={isDisabled()}>
+      <button className={style.btn} type="submit" disabled={isDisabled()}>
         GO
       </button>
     </form>

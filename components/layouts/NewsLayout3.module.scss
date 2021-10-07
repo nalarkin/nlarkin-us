@@ -1,0 +1,23 @@
+@import 'styles/news';
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // flex: 1 1 auto;
+  // background-color: blue;
+}
+
+.pageHeader,
+.pageFooter {
+  flex-shrink: 0;
+}
+
+.pageBody {
+  flex-grow: 1;
+}
+
+.bodyContainer {
+  @include body-container;
+  // border: black solid 1px;
+}
