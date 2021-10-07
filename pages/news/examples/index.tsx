@@ -4,10 +4,10 @@ import React from 'react';
 import { GetStaticProps } from 'next';
 
 import MinimalHeader from 'components/headers/MinimalHeader';
-import LargeArticleCard from 'components/home/cards/LargeCard';
 import Carousel from 'components/tiles/Carousel';
 import HeroTwoRows from 'components/tiles/HeroTwoRows';
 import ImageRow from 'components/tiles/ImageRow';
+import LargeArticleCard from 'components/tiles/LargeCard';
 import type { Article } from 'interfaces';
 import { articleQueryAll, ArticleResultAll } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';

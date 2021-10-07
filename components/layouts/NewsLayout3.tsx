@@ -5,10 +5,10 @@ import OpinionBody from 'components/body/OpinionBody';
 import Footer from 'components/footers/footer';
 import SmallFooter from 'components/footers/SmallFooter';
 import MainNewsHeader from 'components/headers/MainNewsHeader';
-import LargeArticleCard from 'components/home/cards/LargeCard';
 import SectionHero from 'components/sections/cards/SectionHero';
 import Carousel from 'components/tiles/Carousel';
 import HeroTwoRows from 'components/tiles/HeroTwoRows';
+import LargeArticleCard from 'components/tiles/LargeCard';
 import { ArticleResultAll } from 'lib/queries';
 
 import style from './NewsLayout3.module.scss';

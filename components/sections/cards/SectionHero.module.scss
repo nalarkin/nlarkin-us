@@ -42,7 +42,7 @@
 }
 
 .articleTitle {
-  @include media('<tablet') {
+  @include media('>tablet') {
     font-size: 1.3125rem;
     line-height: 1.4375rem;
     font-weight: 700;
@@ -67,7 +67,7 @@
   }
 
   @include media('>laptop') {
-    @include grid($columns: 20);
+    @include grid(20);
   }
 }
 
@@ -75,6 +75,12 @@
   @include media('<tablet') {
     @include flex-col;
     padding-bottom: 15px;
+  }
+  @include media('>tablet') {
+    @include grid;
+  }
+  @include media('>laptop') {
+    @include grid(12);
   }
 }
 
@@ -87,10 +93,8 @@
 }
 
 .groupThree {
-  @include media('<laptop') {
-    grid-column: span 8;
-    @include grid(8);
-  }
+  grid-column: span 8;
+  @include grid(8);
   @include media('>laptop') {
     @include grid-span(14);
     @include grid(10);
@@ -99,19 +103,12 @@
 }
 
 .fourth {
-  @include media('<tablet') {
-    // display: grid;
-    // position: relative;
-    // grid-column: span 4;
-  }
+  display: grid;
+  position: relative;
   @include media('>tablet', '<laptop') {
-    display: grid;
-    position: relative;
     grid-column: span 6;
   }
   @include media('>laptop') {
-    display: grid;
-    position: relative;
     grid-column: span 14;
     border-top: 1px solid #dedede;
     padding-top: 10px;
@@ -132,27 +129,48 @@
     padding-right: 10px;
     grid-column: span 5;
   }
+  &:not(:first-child)::before {
+    @include media('>tablet') {
+      display: grid;
+      content: '';
+      height: 100%;
+      position: absolute;
+      left: -16px;
+      border-left: 1px solid #dedede;
+    }
+  }
+}
+
+.heroText {
+  @include flex-col;
+  width: 100%;
+  @include media('>tablet') {
+    grid-column: span 6;
+  }
+  @include media('>laptop') {
+    position: relative;
+    grid-column-start: span 4;
+    margin-right: -15px;
+  }
 }
 
 @media (max-width: $size-tablet) {
-  .heroText {
-    display: flex;
-    width: 100%;
-  }
-
   .tile,
   .fourth {
     border-top: $border-light 1px solid;
-  }
-
-  .tile,
-  .fourth {
     padding: 10px 0px;
   }
 }
 
 .hero {
   position: relative;
+  @include media('>tablet') {
+    display: grid;
+    grid-column: span 14;
+  }
+  @include media('>laptop') {
+    grid-column: span 12;
+  }
 
   &::after {
     @include media('>laptop') {
@@ -165,99 +183,28 @@
 }
 
 .fourth {
-  // display: relative;
   &:not(:first-child)::before {
     @include media('>tablet') {
       @include divider-section('left');
-      // display: grid;
-      // content: '';
-      // height: 100%;
-      // position: absolute;
-      // left: -16px;
-      // border-left: 1px solid #dedede;
     }
   }
 }
 
-@media (min-width: $size-tablet) {
-  .hero {
-    display: grid;
-    grid-column: span 14;
-  }
-
-  .heroGrid {
+.groupTwo {
+  @include media('>tablet') {
+    position: relative;
     @include grid;
-  }
-
-  .heroText {
-    display: block;
-    width: 100%;
-    grid-column: span 6;
-  }
-
-  .groupTwo {
-    position: relative;
-    @include grid();
     grid-column: span 14;
   }
-
-  .heroContent {
-    flex-direction: column;
-  }
-
-  .tile:not(:first-child)::before {
-    display: grid;
-    content: '';
-    height: 100%;
-    position: absolute;
-    left: -16px;
-    border-left: 1px solid #dedede;
-  }
-}
-
-@media (min-width: $size-laptop) {
-  .hero {
-    display: grid;
-    grid-column: span 12;
-  }
-
-  .heroText {
-    @include flex-col();
-    position: relative;
-    grid-column-start: span 4;
-    margin-right: -15px;
-  }
-
-  .heroGrid {
-    @include grid(12);
-  }
-
-  .groupTwo {
-    position: relative;
+  @include media('>laptop') {
     display: grid;
     height: max-content;
     grid-column: span 8;
   }
+}
 
-  .heroContent {
+.heroContent {
+  @include media('>tablet') {
     flex-direction: column;
-  }
-
-  .tile:not(:first-child)::before {
-    display: grid;
-    content: '';
-    height: 100%;
-    position: absolute;
-    left: -16px;
-    border-left: 1px solid #dedede;
-  }
-
-  .groupTwo:not(:first-child)::before {
-    // display: grid;
-    // content: '';
-    // height: 100%;
-    // position: absolute;
-    // left: -16px;
-    // border-left: 1px solid #dedede;
   }
 }

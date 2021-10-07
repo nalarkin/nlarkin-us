@@ -4,10 +4,11 @@ import Link from 'next/link';
 import { Navigation, SwiperOptions } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
+import { List } from 'components/shared/list';
 import type { Article } from 'interfaces';
 import { buildArticleSlug, editExcerptToSize } from 'lib/utils';
 
-import { ImageCropBuilder } from '../shared/ImageCropBuilder';
 import style from './Carousel.module.scss';
 
 import 'swiper/css';
@@ -60,21 +61,18 @@ const RowTileBuilder = ({ article }: { article: Article }) => {
   );
 };
 
-const buildSwiperOptionsBasedOnSize = (size: number) => {
+const buildSwiperOptionsBasedOnSize = (size: number, tileLayout: string) => {
   const options: SwiperOptions = {
     slidesPerView: 2,
     breakpoints: {
       '320': {
         slidesPerView: 2,
-        // spaceBetween: 0,
       },
       '769': {
-        slidesPerView: 3,
-        // spaceBetween: 0,
+        slidesPerView: tileLayout === 'column' ? 3 : 2,
       },
       '993': {
         slidesPerView: Math.min(size, 5),
-        // spaceBetween: 0,
       },
     },
     spaceBetween: 31,
@@ -98,6 +96,35 @@ const BuildTile = ({ article, tileLayout }: BuildTileProps) => {
   return <RowTileBuilder article={article} />;
 };
 
+const PhoneTileBuilder = ({ articles }: { articles: Article[] }) => {
+  return (
+    <List
+      items={articles}
+      renderItem={({ title, _id, slug, excerpt, image }) => {
+        return (
+          <section key={_id} className={style.phoneTile}>
+            <Link href={buildArticleSlug(slug)}>
+              <a>
+                <div className={style.phoneGrid}>
+                  <div>
+                    <div className={style.phoneTileTitle}>{title}</div>
+                    <div className={style.phoneTileExcerpt}>
+                      {editExcerptToSize(excerpt)}
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <ImageCropBuilder image={image} width={300} height={300} />
+                  </div>
+                </div>
+              </a>
+            </Link>
+          </section>
+        );
+      }}
+    />
+  );
+};
+
 /**
  * Have to use this bad design because library doesn't allow Higher Order Components or Generics
  * to create list. Using HOC causes the items to be rendered outside the wrapper necesary to apply
@@ -106,12 +133,16 @@ const BuildTile = ({ article, tileLayout }: BuildTileProps) => {
  */
 const Carousel = ({ articles, tileLayout = 'column' }: Props) => {
   const n = articles.length;
-  const options = buildSwiperOptionsBasedOnSize(n);
+  const options = buildSwiperOptionsBasedOnSize(n, tileLayout);
   return (
     <div className="block w-full">
       <div className={style.container}>
         <div className={style.categoryHeader}>Section Category Here</div>
-        <div className={style.flexTile}>
+        <div
+          className={
+            tileLayout === 'column' ? style.flexTile : style.responsiveTile
+          }
+        >
           <Swiper
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
@@ -157,6 +188,7 @@ const Carousel = ({ articles, tileLayout = 'column' }: Props) => {
             )}
           </Swiper>
         </div>
+        {tileLayout === 'row' && <PhoneTileBuilder articles={articles} />}
       </div>
     </div>
   );
