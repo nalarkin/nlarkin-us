@@ -32,18 +32,18 @@ const HeroTile = ({ article }: CardProps) => {
   return (
     // <div className={style.hero}>
     <>
-      <div className={style.heroGrid}>
-        <div className={style.heroText}>
-          <ArticleLinkWrapper slug={article.slug}>
+      <ArticleLinkWrapper slug={article.slug}>
+        <div className={style.heroGrid}>
+          <div className={style.heroText}>
             <div className={style.heroTitle}>{article.title}</div>
             <div className={style.excerpt}>{article.excerpt}</div>
-          </ArticleLinkWrapper>
+          </div>
+          <div className={style.heroImage}>
+            {' '}
+            <ImageBuilder image={article.image} />
+          </div>
         </div>
-        <div className={style.heroImage}>
-          {' '}
-          <ImageBuilder image={article.image} />
-        </div>
-      </div>
+      </ArticleLinkWrapper>
     </>
   );
 };

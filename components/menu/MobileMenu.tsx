@@ -45,7 +45,7 @@ const MobileMenu = () => {
             items={allFooterTopNavLinks}
             renderItem={({ name, categoryLinks }): JSX.Element => {
               return (
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col w-full" key={name}>
                   <div className={style.sectionTitle}> {name}</div>
                   <ul className={style.sectionGrid}>
                     <List

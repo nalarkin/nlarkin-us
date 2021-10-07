@@ -4,7 +4,7 @@ import cn from 'classnames';
 import Cookies from 'js-cookie';
 
 import NewsButton from '../shared/newsButton';
-import style from './disclaimer.module.css';
+import style from './disclaimer.module.scss';
 
 const Disclaimer = () => {
   const getDismissalStatus = () => {

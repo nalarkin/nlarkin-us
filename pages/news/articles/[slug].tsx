@@ -2,21 +2,22 @@ import React from 'react';
 
 import { GetStaticProps, GetStaticPaths } from 'next';
 
-import ArticleHeader from '../../../components/article/ArticleHeader';
-import ArticleHeaderInfo from '../../../components/article/ArticleHeaderInfo';
-import ArticleHeaderSocial from '../../../components/article/ArticleHeaderSocial';
-import ArticleBody from '../../../components/body/ArticleBody';
-import Disclaimer from '../../../components/disclaimer/disclaimer';
-import NewsLayout from '../../../components/layouts/newsLayout2';
-import { ImageBuilder } from '../../../components/shared/ImageBuilder';
+import ArticleHeader from 'components/article/ArticleHeader';
+import ArticleHeaderInfo from 'components/article/ArticleHeaderInfo';
+import ArticleHeaderSocial from 'components/article/ArticleHeaderSocial';
+import ArticleBody from 'components/body/ArticleBody';
+import Disclaimer from 'components/disclaimer/disclaimer';
+import ArticleLayout from 'components/layouts/ArticleLayout';
+import { ImageBuilder } from 'components/shared/ImageBuilder';
 import {
   articleQuery,
   ArticleQueryResult,
   articleSlugsQuery,
   ArticleSlugsResult,
-} from '../../../lib/queries';
-import { getClient } from '../../../lib/sanity.server';
-import style from '../../../styles/article.module.css';
+} from 'lib/queries';
+import { getClient } from 'lib/sanity.server';
+
+import style from './article.module.scss';
 
 /**
  * Fake data generator
@@ -56,18 +57,9 @@ export const getStaticProps: GetStaticProps = async ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const paths = await sanityClient.fetch(articleSlugsQuery);
-  // const paths = await getArticleSlugs();
   const paths = await getClient(false).fetch<ArticleSlugsResult | undefined>(
     articleSlugsQuery
   );
-  // console.log(`paths: ${paths.toString()}`);
-  // if (paths === undefined) {
-  //   return {
-  //     paths: {},
-  //     fallback: true,
-  //   };
-  // }
   if (paths === null) {
     throw Error('paths was null');
   } else if (paths === undefined) {
@@ -79,11 +71,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const NewsSEO = {
-  description:
-    'This is a purely educational attempt to clone of the New York Times. Disclaimer....',
-  title: "Nathan's News",
-};
+// const NewsSEO = {
+//   description:
+//     'This is a purely educational attempt to clone of the New York Times. Disclaimer....',
+//   title: "Nathan's News",
+// };
 
 export default function ArticlePage({
   data,
@@ -97,7 +89,7 @@ export default function ArticlePage({
   const { title, text, authors, date, image } = data;
   return (
     <div>
-      <NewsLayout seo={NewsSEO}>
+      <ArticleLayout>
         <div className="flex flex-col ">
           {/* optional hero here with title over image */}
           <div className={style.image}>
@@ -112,7 +104,7 @@ export default function ArticlePage({
           </div>
           <Disclaimer />
         </div>
-      </NewsLayout>
+      </ArticleLayout>
     </div>
   );
 }
