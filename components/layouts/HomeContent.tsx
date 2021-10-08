@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HeroTwoRows from 'components/tiles/HeroTwoRows';
-import type { Article } from 'interfaces';
+import type { Article } from 'lib/interfaces';
 
 import style from './HomeContent.module.scss';
 

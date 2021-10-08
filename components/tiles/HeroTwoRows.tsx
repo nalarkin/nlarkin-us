@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { ImageBuilder } from 'components/shared/ImageBuilder';
 import { List } from 'components/shared/list';
-import type { Article } from 'interfaces';
+import type { Article } from 'lib/interfaces';
 
 import { buildArticleSlug, editExcerptToSize } from '../../lib/utils';
 import Carousel from './Carousel';

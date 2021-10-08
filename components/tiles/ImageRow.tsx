@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
 import { List } from 'components/shared/list';
-import type { Article } from 'interfaces';
+import type { Article } from 'lib/interfaces';
 
 import {
   getAuthorName,

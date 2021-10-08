@@ -10,8 +10,9 @@ export type Author = {
 
 export type Article = Pick<
   Schema.Article,
-  '_id' | 'date' | 'excerpt' | 'image' | 'title'
+  '_id' | 'date' | 'excerpt' | 'title'
 > & {
+  image: Schema.Article['image'];
   authors: Array<Pick<Schema.Author, 'name' | 'picture'> & { slug: string }>;
   slug: string;
 };

@@ -8,7 +8,6 @@ import SmallFooter from 'components/footers/SmallFooter';
 import MainNewsHeader from 'components/headers/MainNewsHeader';
 import MainHero from 'components/sections/cards/MainHero';
 import Carousel from 'components/tiles/Carousel';
-import HeroTwoRows from 'components/tiles/HeroTwoRows';
 import { HomeQuery } from 'lib/interfaces';
 import { homeQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
@@ -78,7 +77,6 @@ const NewsHome = ({ data }: Props) => {
   const { hero, opinionColumn, opinionBody } = data;
   // const size3 = opinionBody.articles.slice(0, 3);
   const size4 = opinionBody.articles.slice(0, 4);
-  const size5 = opinionBody.articles.slice(0, 5);
   return (
     <div className={style.wrapper}>
       <div className={style.pageHeader}>
@@ -92,7 +90,7 @@ const NewsHome = ({ data }: Props) => {
             bodyArticles={opinionBody.articles}
           />
           <Carousel articles={size4} tileLayout="row" />
-          <HeroTwoRows articles={size5} />
+          <MainHero data={hero} />
           <Carousel articles={size4} />
         </div>
       </div>
