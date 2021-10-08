@@ -156,11 +156,7 @@ const Carousel = ({ articles, tileLayout = 'column' }: Props) => {
             tileLayout === 'column' ? style.flexTile : style.responsiveTile
           }
         >
-          <Swiper
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
-            {...options}
-          >
+          <Swiper {...options}>
             {n > 0 && (
               <SwiperSlide key={articles[0]._id}>
                 <BuildTile article={articles[0]} tileLayout={tileLayout} />

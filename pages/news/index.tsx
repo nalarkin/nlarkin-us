@@ -77,6 +77,7 @@ const NewsHome = ({ data }: Props) => {
   const { hero, opinionColumn, opinionBody } = data;
   // const size3 = opinionBody.articles.slice(0, 3);
   const size4 = opinionBody.articles.slice(0, 4);
+  const size5 = opinionBody.articles.slice(0, 5);
   return (
     <div className={style.wrapper}>
       <div className={style.pageHeader}>
@@ -91,7 +92,7 @@ const NewsHome = ({ data }: Props) => {
           />
           <Carousel articles={size4} tileLayout="row" />
           <MainHero data={hero} />
-          <Carousel articles={size4} />
+          <Carousel articles={size5} />
         </div>
       </div>
       <div className={style.pageFooter}>
