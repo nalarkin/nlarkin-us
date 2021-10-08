@@ -151,19 +151,16 @@ const MiddleNavigationBar = () => {
   );
 };
 
-const BottomNavigationBar = () => {
-  const dateClass = classNames([
-    'flex',
-    style.hideIfLarge,
-    'justify-center',
-    'border-t-2',
-    'border-b-2',
-    'border-gray-200',
-    'border-solid',
-    'py-3',
-  ]);
-  const navList = classNames([style.navList, 'justify-between', 'w-full']);
+const LoginButton = () => {
+  return (
+    <Link href="news/login">
+      <a className={style.loginBtn}>log in</a>
+    </Link>
+  );
+};
 
+const BottomNavigationBar = () => {
+  const navList = classNames([style.navList, 'justify-between', 'w-full']);
   return (
     <>
       <div>
@@ -187,8 +184,9 @@ const BottomNavigationBar = () => {
             </ul>
           </div>
         </div>
-        <div className={dateClass}>
+        <div className={style.mobileHeader2}>
           <CurrentDate />
+          <LoginButton />
         </div>
       </div>
     </>

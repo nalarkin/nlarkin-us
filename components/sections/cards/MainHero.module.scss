@@ -17,6 +17,9 @@
   @include media('>laptop') {
     padding: 0px 0px 32px;
   }
+  &:not(:first-child)::before {
+    @include divider-section('top', 'dark');
+  }
 }
 
 .heroTitle,

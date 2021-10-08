@@ -1,9 +1,8 @@
 @import 'styles/news';
 
 .siteHeader {
-  @include body-container;
-  // display: flex;
-  // flex-direction: column;
+  // @include body-container;
+  @include flex-col;
   // width: 100%;
   // /* background-color: aqua; */
   // margin: 0 auto;
@@ -44,6 +43,37 @@
   }
 }
 
+.mobileHeader2 {
+  @include flex-row;
+  border: 8px 0px;
+  border-bottom: 1px solid #e2e2e2;
+  border-top: 1px solid #e2e2e2;
+  background-color: #f7f7f7;
+  @include media('>tablet', '<laptop') {
+    background-color: white;
+  }
+  padding: 13px 20px 12px;
+  font-size: 11px;
+  @include media('>tablet', '<laptop') {
+    justify-content: center;
+  }
+
+  @include media('>laptop') {
+    display: none;
+  }
+}
+.loginBtn {
+  margin-left: auto;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding: 0px 0px 0px 8px;
+  color: rgb(50, 104, 145);
+  @include media('>tablet', '<laptop') {
+    position: absolute;
+    right: 20px;
+  }
+}
+
 .navList {
   @include media('<laptop') {
     display: none;
@@ -69,26 +99,34 @@
 }
 
 .menuBtn {
-  padding: 5px;
   align-items: center;
 }
 
 .leftBtnGroup {
   @include flex-row;
   position: absolute;
-  left: 0px;
+  left: 10px;
+  top: 5px;
+  @include media('>laptop') {
+    left: 0px;
+    top: 0px;
+  }
+
   align-items: center;
 }
 
 .rightBtnGroup {
   @include flex-row;
   position: absolute;
-  right: 0px;
+
   align-items: center;
   // margin-left: auto;
   // border: 2px black solid;
   height: 100%;
+  right: 5px;
+  top: 0px;
   @include media('>laptop') {
+    right: 0px;
   }
 }
 
@@ -103,7 +141,9 @@
 }
 
 .profile {
-  padding: 4px;
+  padding: 7px 9px 9px;
+  position: absolute;
+  right: 3px;
   @include media('>laptop') {
     display: none;
   }
