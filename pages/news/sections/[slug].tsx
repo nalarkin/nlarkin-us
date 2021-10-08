@@ -3,10 +3,10 @@ import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Disclaimer from 'components/disclaimer/disclaimer';
-import LargeArticleCard from 'components/home/cards/LargeCard';
 import SectionLayout from 'components/layouts/SectionLayout';
 import SectionHero from 'components/sections/cards/SectionHero';
 import LatestList from 'components/sections/latest/LatestList';
+import LargeArticleCard from 'components/tiles/LargeCard';
 import {
   sectionSlugsQuery,
   sectionArticlesQuery,

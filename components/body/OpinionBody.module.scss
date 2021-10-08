@@ -12,17 +12,23 @@
   }
 }
 .contentBody {
-  border-right: 1px solid #c7c7c7;
-  padding-right: 15px;
+  @include media('>laptop') {
+    border-right: 1px solid #c7c7c7;
+    padding-right: 15px;
+  }
 }
 .opinionBlock::before {
   // @include divider-section('top', 'dark');
 }
 .opinionSpacer {
-  padding-left: 15px;
+  @include media('>laptop') {
+    padding-left: 15px;
+  }
 }
 .opinionBlock {
-  border-top: 1px solid #121212;
+  @include media('>tablet') {
+    border-top: 1px solid #121212;
+  }
   // display: relative;
 }
 

@@ -1,39 +1,30 @@
 import React from 'react';
 
-import { ArticleResultAll } from '../../lib/queries';
+import { ArticleOpinion } from 'lib/interfaces';
+
 import { List } from '../shared/list';
 import OpinionCard from './OpinionCard';
-import style from './OpinionColumn.module.css';
+import style from './OpinionColumn.module.scss';
 
 const OpinionHeader = () => {
   return <div className="pt-2 text-xs mb-2 font-bold font-sans">Opinion</div>;
 };
 
 type OpinionProps = {
-  articles: ArticleResultAll | undefined;
+  articles: ArticleOpinion[];
 };
 
 const OpinionColumn = ({ articles }: OpinionProps) => {
-  if (articles === undefined) {
-    return <div></div>;
-  }
-
   return (
     <div className={style.container}>
       <OpinionHeader />
       <div className="flex flex-col divide-y-2 ">
         <List
           items={articles}
-          renderItem={(item) => {
+          renderItem={({ title, authors, slug, _id }) => {
             return (
-              <div className="w-full " key={item._id}>
-                <OpinionCard
-                  title={item.title}
-                  // excerpt={item.excerpt}
-                  authors={item.authors}
-                  date={item.date}
-                  slug={item.slug}
-                />
+              <div className="w-full " key={_id}>
+                <OpinionCard title={title} authors={authors} slug={slug} />
               </div>
             );
           }}

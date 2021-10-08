@@ -1,0 +1,15 @@
+@import 'styles/news';
+
+.container {
+  display: none;
+  @include media('>tablet') {
+    display: flex;
+    flex-direction: column;
+  }
+  @include media('>laptop') {
+    padding-left: 16px;
+  }
+}
+
+@media (min-width: 880px) {
+}

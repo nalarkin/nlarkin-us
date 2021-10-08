@@ -1,6 +1,7 @@
 import groq from 'groq';
 
-import { Article } from '../interfaces';
+import { Article } from 'lib/interfaces';
+
 import type * as Schema from './schema';
 
 const articleFields = `
@@ -31,7 +32,6 @@ export const articleSlugsQuery = groq`
 *[_type == "article" && defined(slug.current)][].slug.current`;
 export type ArticleSlugsResult = Array<string>;
 
-// This shoudl work, but params are causing an issue
 export const articleQuery = groq`
     *[_type == "article" && slug.current == $slug][0] {
       text,
@@ -72,42 +72,81 @@ export type SectionArticlesResponse = {
   slug: string;
 };
 
-// export async function getArticleSlugs(): Promise<ArticleSlugsResult | null> {
-//   try {
-//     const response = await axios.get(
-//       'https://azbpy7e5.api.sanity.io/v1/data/query/production?query=*%5B_type%20%3D%3D%20%22article%22%20%26%26%20defined(slug.current)%5D%5B%5D.slug.current'
-//       // {
-//       //   // params: {
-//       //   //   query:
-//       //   //     '*%5B_type%20%3D%3D%20%22article%22%20%26%26%20defined(slug.current)%5D%5B%5D.slug.current',
-//       //   // },
-//       // }
-//     );
-//     return response.data.result;
-//   } catch (error) {
-//     console.error(error);
-//     return null;
-//   }
-// }
+const getSorted = (desiredSize: number) =>
+  `| order(date desc)[0..${desiredSize - 1}]`;
 
-// export async function getArticleData(
-//   slug: string
-// ): Promise<ArticleQueryResult | null> {
-//   try {
-//     const response = await axios.get(
-//       'https://azbpy7e5.api.sanity.io/v1/data/query/production/',
-//       {
-//         params: {
-//           query:
-//             '%20%20%20%20*%5B_type%20%3D%3D%20%22article%22%20%26%26%20slug.current%20%3D%3D%20%24slug%5D%5B0%5D%20%7B%0A%20%20%20%20%20%20text%2C%0A%20%20%20%20%20%20%20%20_id%2C%0A%20%20title%2C%0A%20%20date%2C%0A%20%20excerpt%2C%0A%20%20image%2C%0A%20%20%22slug%22%3A%20slug.current%2C%0A%20%20authors%5B%5D-%3E%20%7Bname%2C%20%22slug%22%3A%20slug.current%7D%0A%20%20%20%20%7D',
-//           '%24slug': `${slug}`,
-//         },
-//       }
-//     );
-//     // console.log(response.data);
-//     return response.data.result;
-//   } catch (error) {
-//     console.error(error);
-//     return null;
-//   }
-// }
+const articleNoImage = `
+  _id,
+  title,
+  "slug": slug.current
+`;
+const getArticleAuthors = `
+authors[]-> {
+            name, 
+            "slug": slug.current, 
+            picture
+          }
+`;
+
+export const homeQuery = groq`
+{
+  "hero": {
+    "uid": "Hero",
+    "articles": {
+      "main": *[_type=="article" ] {
+        ${articleNoImage},
+        excerpt,
+        image,
+      }| order(date desc)[0],
+      "sideArticles": *[_type=="article" ] {
+        ${articleNoImage},
+        excerpt
+      }${getSorted(3)}
+    }
+	},
+	"opinionColumn": {
+	  "uid": "Opinion Column",
+    "title": "Opinion",
+    "articles": *[_type=="article"]{
+      ${articleNoImage},
+      ${getArticleAuthors}
+    }${getSorted(14)}  
+	},
+	"opinionBody": {
+    "uid": "OpinionBody",
+    "articles": *[_type=="article"]{
+      ${articleNoImage},
+    	excerpt,
+      image
+		}${getSorted(14)}
+  },
+	"moreNews": {
+    "uid": "More News",
+    "title": "More News",
+    "articles": {
+      "main": *[_type=="article"] {
+          ${articleNoImage},
+          excerpt
+       }${getSorted(4)},
+      "headlines": *[_type=="article"] {
+        ${articleNoImage}
+      }${getSorted(6)}
+  	}	
+	},
+	"culture": {
+    "uid": "Culture",
+    "title": "Culture",
+    "articles": *[_type=="article"] {
+      ${articleNoImage},
+      excerpt,
+      image,
+  	}${getSorted(5)}
+	},
+	"cooking": {
+    "uid": "Cooking",
+    "title": "Cooking",
+    "articles": *[_type=="article"] {
+      ${articleNoImage}
+    }${getSorted(5)}
+	}
+}`;

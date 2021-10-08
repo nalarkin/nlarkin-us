@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { Article } from 'interfaces';
+import { Article } from 'lib/interfaces';
 
 import { ImageBuilder } from '../../shared/ImageBuilder';
 import style from './SectionHero.module.scss';

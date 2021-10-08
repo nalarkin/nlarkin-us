@@ -3,7 +3,7 @@ import React, { useCallback, useState, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import { ImSearch } from 'react-icons/im';
 
-import { Article } from 'interfaces';
+import { Article } from 'lib/interfaces';
 import { ArticleResultAll } from 'lib/queries';
 
 import ResultTile from './ResultTile';

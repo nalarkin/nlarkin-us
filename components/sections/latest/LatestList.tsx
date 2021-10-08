@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Article } from 'interfaces';
+import { Article } from 'lib/interfaces';
 
 import SectionListCard from '../cards/SectionListCard';
 import LatestHeader from './LatestHeader';

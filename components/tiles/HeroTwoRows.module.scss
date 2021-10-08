@@ -37,7 +37,11 @@
   // @include grid-span(12);
   display: grid;
   grid-column: span auto;
+  color: black;
   // @include grid-span(14);
+  @include media('>tablet', '<laptop') {
+    padding-bottom: 32px;
+  }
   @include media('>laptop') {
     @include grid-span(12);
   }
@@ -53,7 +57,7 @@
   line-height: 2rem;
   font-weight: 700;
   letter-spacing: 0.2px;
-  color: black;
+  // color: black;
   height: max-content;
   padding-top: 20px;
   @include media('<laptop') {
@@ -67,6 +71,7 @@
 }
 
 .heroTileLink {
+  // @extend %container;
   @include flex-col;
   width: 100%;
   // background-color: blue;
@@ -76,9 +81,10 @@
   }
 
   &:hover {
-    .heroTitle {
-      @include link-hover;
-    }
+    @include link-hover;
+    // .heroTitle {
+    //   @include link-hover;
+    // }
   }
 }
 

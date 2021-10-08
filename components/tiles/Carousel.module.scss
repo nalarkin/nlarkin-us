@@ -18,15 +18,9 @@
 .tileRowContainer {
   display: grid;
   grid-template-columns: auto 91px;
-
-  // @include flex-row;
-  // flex: 1 1 auto;
   column-gap: 11px;
-  // border: 2px black solid;
   position: relative;
   min-height: 100%;
-  // // min-height: 100%;
-
   &::before {
     @include divider-section('left', 'light');
   }
@@ -48,35 +42,60 @@
 
 .container {
   @extend %container;
-  // padding-bottom: 40px;
   position: relative;
-  // height: 100%;
-  // display: flex;
   display: block;
-  // &::before {
-  //   @include divider-section('top', 'dark');
-  //   // margin-top: 30px;
-  //   margin-bottom: 50px;
-  // }
 }
 
 .flexTile {
   display: flex;
-  // display: block;
-  // max-width: 100%;
+}
+.responsiveTile {
+  display: flex;
+  @include media('<tablet') {
+    display: none;
+  }
+}
+
+.phoneTile {
+  font-family: $font-serif;
+  color: rgb(18, 18, 18);
+
+  &:not(:last-child)::after {
+    @include divider-section('bottom');
+  }
+
+  @include media('>tablet') {
+    display: none;
+  }
+}
+.phoneTileTitle {
+  font-size: 1.3125rem;
+  line-height: 1.4375rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.phoneTileExcerpt {
+  font-size: 1rem;
+  letter-spacing: normal;
+  line-height: 1.375rem;
+  position: relative;
+  color: rgb(89, 89, 89);
+}
+
+.phoneGrid {
+  display: grid;
+  grid-template-columns: auto 91px;
+  column-gap: 11px;
 }
 
 .categoryHeader {
   @extend %categoryHeader;
 }
 
-// "flex flex-col bg-blue-500"
-
 .rowTileContent {
   display: flex;
   flex-direction: column;
 }
-// "text-xs pt-1"
 .rowTileExcerpt {
   padding-top: 4px;
   font-size: 0.875rem;
@@ -96,10 +115,5 @@
   // color: black;
 }
 .hover:hover {
-  // color: red;
-  // opacity: 50%;
-  // transition-property: color;
-  // transition: color 0.6s ease;
-  // transition-property: ;
   @include link-hover;
 }

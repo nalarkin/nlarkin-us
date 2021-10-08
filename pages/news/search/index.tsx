@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import MinimalHeader from 'components/headers/MinimalHeader';
 import SearchBody from 'components/search/SearchBody';
-import { Article } from 'interfaces';
+import { Article } from 'lib/interfaces';
 import { articleQueryAll, ArticleResultAll } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
