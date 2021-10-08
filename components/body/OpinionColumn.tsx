@@ -4,7 +4,7 @@ import { ArticleOpinion } from 'lib/interfaces';
 
 import { List } from '../shared/list';
 import OpinionCard from './OpinionCard';
-import style from './OpinionColumn.module.css';
+import style from './OpinionColumn.module.scss';
 
 const OpinionHeader = () => {
   return <div className="pt-2 text-xs mb-2 font-bold font-sans">Opinion</div>;

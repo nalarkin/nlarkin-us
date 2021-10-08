@@ -58,6 +58,8 @@
 
 .phoneTile {
   font-family: $font-serif;
+  color: rgb(18, 18, 18);
+
   &:not(:last-child)::after {
     @include divider-section('bottom');
   }
@@ -71,7 +73,6 @@
   line-height: 1.4375rem;
   font-weight: 700;
   letter-spacing: 0.2px;
-  color: rgb(18, 18, 18);
 }
 .phoneTileExcerpt {
   font-size: 1rem;

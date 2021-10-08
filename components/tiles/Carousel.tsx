@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
 import { List } from 'components/shared/list';
-import type { Article } from 'interfaces';
+import type { ArticleDetailedImage } from 'lib/interfaces';
 import { buildArticleSlug, editExcerptToSize } from 'lib/utils';
 
 import style from './Carousel.module.scss';
@@ -16,15 +16,15 @@ import 'swiper/css';
 
 type TileLayout = 'row' | 'column';
 type Props = {
-  articles: Article[];
+  articles: ArticleDetailedImage[];
   tileLayout?: TileLayout;
 };
 
-const ColumnTileBuilder = ({ article }: { article: Article }) => {
+const ColumnTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
   const { title, image, slug } = article;
   return (
     <section className="h-full">
-      <Link href={buildArticleSlug(slug)}>
+      <Link href={buildArticleSlug(slug ?? '')}>
         <a className={style.tileContainer}>
           {/* <div className={style.image}> */}
           <div className="w-full">
@@ -38,13 +38,13 @@ const ColumnTileBuilder = ({ article }: { article: Article }) => {
     </section>
   );
 };
-const RowTileBuilder = ({ article }: { article: Article }) => {
+const RowTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
   const { title, image, slug, excerpt } = article;
   const shortenedExcerpt = editExcerptToSize(excerpt ?? '');
 
   return (
     <section className="h-full">
-      <Link href={buildArticleSlug(slug)}>
+      <Link href={buildArticleSlug(slug ?? '')}>
         <a className={style.hover}>
           <div className={style.tileRowContainer}>
             <div className={style.rowTileContent}>
@@ -85,7 +85,7 @@ const buildSwiperOptionsBasedOnSize = (size: number, tileLayout: string) => {
 };
 
 type BuildTileProps = {
-  article: Article;
+  article: ArticleDetailedImage;
   tileLayout: TileLayout;
 };
 
@@ -96,15 +96,19 @@ const BuildTile = ({ article, tileLayout }: BuildTileProps) => {
   return <RowTileBuilder article={article} />;
 };
 
-const PhoneTileBuilder = ({ articles }: { articles: Article[] }) => {
+const PhoneTileBuilder = ({
+  articles,
+}: {
+  articles: ArticleDetailedImage[];
+}) => {
   return (
     <List
       items={articles}
       renderItem={({ title, _id, slug, excerpt, image }) => {
         return (
           <section key={_id} className={style.phoneTile}>
-            <Link href={buildArticleSlug(slug)}>
-              <a>
+            <Link href={buildArticleSlug(slug ?? '')}>
+              <a className={style.hover}>
                 <div className={style.phoneGrid}>
                   <div>
                     <div className={style.phoneTileTitle}>{title}</div>

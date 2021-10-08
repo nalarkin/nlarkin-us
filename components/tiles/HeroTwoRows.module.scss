@@ -39,6 +39,9 @@
   grid-column: span auto;
   color: black;
   // @include grid-span(14);
+  @include media('>tablet', '<laptop') {
+    padding-bottom: 32px;
+  }
   @include media('>laptop') {
     @include grid-span(12);
   }

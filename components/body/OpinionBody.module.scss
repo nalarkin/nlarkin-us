@@ -21,7 +21,9 @@
   // @include divider-section('top', 'dark');
 }
 .opinionSpacer {
-  padding-left: 15px;
+  @include media('>laptop') {
+    padding-left: 15px;
+  }
 }
 .opinionBlock {
   @include media('>tablet') {
