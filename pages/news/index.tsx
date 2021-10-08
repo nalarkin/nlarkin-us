@@ -2,9 +2,18 @@ import React from 'react';
 
 import { GetStaticProps } from 'next';
 
-import NewsLayout from 'components/layouts/NewsLayout3';
-import { articleQueryAll, ArticleResultAll } from 'lib/queries';
+import OpinionBody from 'components/body/OpinionBody';
+import Footer from 'components/footers/footer';
+import SmallFooter from 'components/footers/SmallFooter';
+import MainNewsHeader from 'components/headers/MainNewsHeader';
+import MainHero from 'components/sections/cards/MainHero';
+import Carousel from 'components/tiles/Carousel';
+import HeroTwoRows from 'components/tiles/HeroTwoRows';
+import { HomeQuery } from 'lib/interfaces';
+import { homeQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
+
+import style from './index.module.scss';
 
 // import NewsLayout from '../../components/layouts/NewsLayout3';
 
@@ -15,12 +24,10 @@ import { getClient } from 'lib/sanity.server';
 // };
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const articles = await getClient(preview).fetch<ArticleResultAll>(
-    articleQueryAll
-  );
+  const query = await getClient(preview).fetch<HomeQuery>(homeQuery);
   return {
     props: {
-      data: articles,
+      data: query,
     },
   };
 };
@@ -61,14 +68,39 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 // };
 
 type Props = {
-  data?: ArticleResultAll;
+  data?: HomeQuery;
 };
 
 const NewsHome = ({ data }: Props) => {
+  if (data === undefined) {
+    return <div></div>;
+  }
+  const { hero, opinionColumn, opinionBody } = data;
+  // const size3 = opinionBody.articles.slice(0, 3);
+  const size4 = opinionBody.articles.slice(0, 4);
+  const size5 = opinionBody.articles.slice(0, 5);
   return (
-    <>
-      <NewsLayout articles={data ?? []} />
-    </>
+    <div className={style.wrapper}>
+      <div className={style.pageHeader}>
+        <MainNewsHeader />
+      </div>
+      <div className={style.pageBody}>
+        <div className={style.bodyContainer}>
+          <MainHero data={hero} />
+          <OpinionBody
+            columnArticles={opinionColumn.articles}
+            bodyArticles={opinionBody.articles}
+          />
+          <Carousel articles={size4} tileLayout="row" />
+          <HeroTwoRows articles={size5} />
+          <Carousel articles={size4} />
+        </div>
+      </div>
+      <div className={style.pageFooter}>
+        <Footer />
+        <SmallFooter />
+      </div>
+    </div>
   );
 };
 

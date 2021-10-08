@@ -1,27 +1,33 @@
 import React from 'react';
 
-import { ArticleResultAll } from '../../lib/queries';
+import Carousel from 'components/tiles/Carousel';
+import LargeArticleCard from 'components/tiles/LargeCard';
+import { ArticleDetailedImage, ArticleOpinion } from 'lib/interfaces';
+
 import Disclaimer from '../disclaimer/disclaimer';
 import style from './OpinionBody.module.scss';
 import OpinionColumn from './OpinionColumn';
 
 type Props = {
-  opinionArticles: ArticleResultAll | undefined;
-  children: React.ReactNode;
+  columnArticles: ArticleOpinion[];
+  bodyArticles: ArticleDetailedImage[];
 };
 
-const OpinionBody = ({ opinionArticles, children }: Props) => {
+const OpinionBody = ({ columnArticles, bodyArticles }: Props) => {
+  const size3 = bodyArticles.slice(0, 3);
+  const size4 = bodyArticles.slice(0, 4);
   return (
     <main className={style.content}>
       {/* <NewsHero /> */}
-      <div className={style.contentBody}>{children}</div>
+      <div className={style.contentBody}>
+        <Carousel articles={size3} />
+        <LargeArticleCard article={bodyArticles[4]} />
+        <Carousel articles={size4} />
+      </div>
 
       <div className={style.opinionSpacer}>
         <div className={style.opinionBlock}>
-          {/* <div className='flex flex-row pr-4'>
-          <ArticleCardLarge />
-        </div> */}
-          <OpinionColumn articles={opinionArticles} />
+          <OpinionColumn articles={columnArticles} />
         </div>
       </div>
 

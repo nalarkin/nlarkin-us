@@ -1,0 +1,215 @@
+@import 'styles/news';
+
+.excerpt {
+  font-size: 0.8rem;
+  padding-top: 8px;
+  color: $excerpt-color;
+  @include media('<phone') {
+    font-size: 1rem;
+    letter-spacing: normal;
+    line-height: 1.375rem;
+  }
+}
+
+.outerContainer {
+  font-family: $font-serif;
+  padding: 0px 0px 40px;
+  @include media('>laptop') {
+    padding: 0px 0px 32px;
+  }
+}
+
+.heroTitle,
+.articleTile {
+  font-weight: bold;
+  margin: 2px 0px;
+  height: max-content;
+  font-size: 0.9rem;
+}
+
+.articleLink:hover {
+  @include link-hover;
+}
+
+.heroTitle {
+  @include media('<tablet') {
+    font-size: 1.875rem;
+    line-height: 2.0625rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+}
+
+.articleTitle {
+  @include media('>tablet') {
+    font-size: 1.3125rem;
+    line-height: 1.4375rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+}
+
+.heroImage {
+  position: relative;
+  display: block;
+  @include media('<tablet') {
+    padding: 15px 0px;
+  }
+  @include media('>tablet') {
+    grid-column: span 8;
+  }
+}
+
+.container {
+  @include media('>tablet') {
+    @include grid;
+  }
+
+  @include media('>laptop') {
+    @include grid(20);
+  }
+}
+
+.heroGrid {
+  @include media('<tablet') {
+    @include flex-col;
+    padding-bottom: 15px;
+  }
+  @include media('>tablet') {
+    @include grid;
+  }
+  @include media('>laptop') {
+    @include grid(12);
+  }
+}
+
+.hero,
+.heroContent,
+.tile {
+  @include media('<tablet') {
+    @include flex-col;
+  }
+}
+
+.groupThree {
+  // grid-column: span 8;
+  @include grid(8);
+  @include grid-span(8);
+  @include media('>tablet') {
+  }
+  @include media('>laptop') {
+    // @include grid-span(14);
+    // @include grid-span(8);
+    @include grid(10);
+    // width: 100%;
+  }
+}
+
+.fourth {
+  display: grid;
+  position: relative;
+  // width: 200px;
+  // background-color: green;
+  @include media('>tablet', '<laptop') {
+    grid-column: span 6;
+  }
+  @include media('>laptop') {
+    grid-column: span 8;
+    border-top: 1px solid #dedede;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+}
+
+.tile {
+  position: relative;
+  display: grid;
+  @include media('<tablet') {
+    grid-column: span 8;
+  }
+  @include media('>tablet', '<laptop') {
+    grid-column: span 4;
+  }
+  @include media('>laptop') {
+    padding-right: 10px;
+    grid-column: span 5;
+  }
+  &:not(:first-child)::before {
+    @include media('>tablet') {
+      display: grid;
+      content: '';
+      height: 100%;
+      position: absolute;
+      left: -16px;
+      border-left: 1px solid #dedede;
+    }
+  }
+}
+
+.heroText {
+  @include flex-col;
+  width: 100%;
+  @include media('>tablet') {
+    grid-column: span 6;
+  }
+  @include media('>laptop') {
+    position: relative;
+    grid-column-start: span 4;
+    margin-right: -15px;
+  }
+}
+
+@media (max-width: $size-tablet) {
+  .tile,
+  .fourth {
+    border-top: $border-light 1px solid;
+    padding: 10px 0px;
+  }
+}
+
+.hero {
+  position: relative;
+  @include media('>tablet') {
+    display: grid;
+    grid-column: span 14;
+  }
+  @include media('>laptop') {
+    grid-column: span 12;
+  }
+
+  &::after {
+    @include media('>laptop') {
+      @include divider-section('right');
+    }
+    @include media('>tablet', '<laptop') {
+      @include divider-section('bottom');
+    }
+  }
+}
+
+.fourth {
+  &:not(:first-child)::before {
+    @include media('>tablet') {
+      @include divider-section('left');
+    }
+  }
+}
+
+.groupTwo {
+  @include media('>tablet') {
+    position: relative;
+    @include grid;
+    grid-column: span 14;
+  }
+  @include media('>laptop') {
+    height: max-content;
+    grid-column: span 8;
+    @include grid(8);
+  }
+}
+
+.heroContent {
+  @include media('>tablet') {
+    flex-direction: column;
+  }
+}
