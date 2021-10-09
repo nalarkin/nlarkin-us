@@ -1,6 +1,6 @@
 import groq from 'groq';
 
-import { Article } from 'lib/interfaces';
+import { Article, ArticleDetailedImageAuthors } from 'lib/interfaces';
 
 import type * as Schema from './schema';
 
@@ -29,7 +29,13 @@ export type SectionSlugsResult = Array<string>;
  * @returns Returns string[ ]
  */
 export const articleSlugsQuery = groq`
-*[_type == "article" && defined(slug.current)][].slug.current`;
+*[_type == "article" && defined(slug.current)][].slug.current
+`;
+
+export const authorSlugQuery = groq`
+*[_type == "author" && defined(slug.current)][].slug.current
+`;
+
 export type ArticleSlugsResult = Array<string>;
 
 export const articleQuery = groq`
@@ -78,7 +84,8 @@ const getSorted = (desiredSize: number) =>
 const articleNoImage = `
   _id,
   title,
-  "slug": slug.current
+  "slug": slug.current,
+  date
 `;
 const getArticleAuthors = `
 authors[]-> {
@@ -87,6 +94,26 @@ authors[]-> {
             picture
           }
 `;
+
+export const authorQuery = groq`
+*[_type == "author" && slug.current == $slug][0] {
+  bio,
+  picture,
+  name,
+  "articles": *[_type=="article" && references(^._id)] {
+    ${articleNoImage},
+    ${getArticleAuthors},
+    excerpt,
+    image
+  }
+}
+`;
+export type AuthorQueryResult = {
+  name: Schema.Author['name'];
+  picture: Schema.Author['picture'];
+  bio: Schema.Author['bio'];
+  articles: ArticleDetailedImageAuthors[];
+};
 
 export const homeQuery = groq`
 {

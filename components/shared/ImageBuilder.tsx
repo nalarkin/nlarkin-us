@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { imageSizeRegex } from 'lib/utils';
+
 import { urlForImage } from '../../lib/sanity';
 import * as Schema from '../../lib/schema';
 
@@ -9,7 +11,6 @@ type Props = {
 };
 
 export const ImageBuilder = ({ image, classes = '' }: Props) => {
-  const imageSizeRegex = /-([\d]{3,})x([\d]{3,})-/;
   const imageRefWithSize = image?.asset._ref;
   if (imageRefWithSize === undefined) {
     return <div></div>;

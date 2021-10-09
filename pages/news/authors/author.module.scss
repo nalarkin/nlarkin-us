@@ -1,0 +1,35 @@
+@import 'styles/news';
+.bioContainer {
+  @include flex-row;
+  align-items: flex-start;
+  font-family: $font-serif;
+}
+
+.profileImg {
+  border-radius: 9999px;
+  margin-right: 26px;
+  width: 105px;
+  height: 105px;
+}
+
+.bioContent {
+  @include flex-col;
+}
+
+.authorName {
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: 900;
+  margin-top: 10px;
+  flex: 1 75%;
+}
+
+.authorBioText {
+  color: #666;
+  letter-spacing: 0.17px;
+  font-size: 17px;
+  line-height: 23px;
+  margin: 7px 0 0;
+  max-width: 705px;
+  font-weight: 400;
+}

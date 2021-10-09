@@ -2,6 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import { formatAuthors, getAuthorName } from 'lib/utils';
+
 import * as Schema from '../../../lib/schema';
 import Date from '../../shared/Date';
 import { ImageBuilder } from '../../shared/ImageBuilder';
@@ -22,7 +24,9 @@ const SectionListCard = ({
   image,
   slug,
   date,
+  authors,
 }: ArticleCardProps) => {
+  const formattedAuthors = formatAuthors(authors, getAuthorName).toUpperCase();
   return (
     <Link href={`/news/articles/${slug}`}>
       <a className={style.listCard}>
@@ -34,6 +38,11 @@ const SectionListCard = ({
             <h3 className="font-bold mb-2 font-serif">{title}</h3>
             <div className="text-gray-700 font-serif normal-case">
               {description}
+            </div>
+            <div>
+              <div className=" text-gray-400 text-xs mt-3 font-sans font-semibold">
+                By {formattedAuthors}
+              </div>
             </div>
           </article>
           <div className={style.image}>

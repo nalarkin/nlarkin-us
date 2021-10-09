@@ -1,21 +1,28 @@
 import React from 'react';
 
-import { Article } from 'lib/interfaces';
+import { Article, ArticleDetailedImageAuthors } from 'lib/interfaces';
 
 import SectionListCard from '../cards/SectionListCard';
 import LatestHeader from './LatestHeader';
-import style from './LatestList.module.css';
+import style from './LatestList.module.scss';
 
 type Props = {
   articles: Article[];
 };
 
+const testArticles = (
+  article: Article
+): article is ArticleDetailedImageAuthors => {
+  return (article as ArticleDetailedImageAuthors).authors !== undefined;
+};
+
 const LatestList = ({ articles }: Props) => {
+  const convertedArticles = articles.filter(testArticles);
   return (
     <div className={style.container}>
       <div className={style.innerContainer}>
         <LatestHeader />
-        {articles.map((article, index) => {
+        {convertedArticles.map((article, index) => {
           return (
             <div key={article._id + index}>
               <div className=" ">
@@ -23,7 +30,7 @@ const LatestList = ({ articles }: Props) => {
                   description={article.excerpt ?? ''}
                   image={article.image}
                   title={article.title}
-                  slug={article.slug}
+                  slug={article.slug ?? ''}
                   authors={article.authors}
                   date={article.date}
                 />

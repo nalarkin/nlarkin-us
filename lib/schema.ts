@@ -145,6 +145,13 @@ export interface Author extends SanityDocument {
   picture?: ArticleImage;
 
   /**
+   * Bio — `string`
+   *
+   *
+   */
+  bio?: string;
+
+  /**
    * Slug — `slug`
    *
    *
