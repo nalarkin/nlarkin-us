@@ -29,7 +29,7 @@ export type Author = {
 interface CategoryArticles<T> {
   articles: T;
 }
-type AuthorsArray = Array<
+export type AuthorsArray = Array<
   Pick<Schema.Author, 'name' | 'picture'> & { slug: string }
 >;
 
@@ -62,6 +62,14 @@ export type Article =
   | ArticleDetailed
   | ArticleDetailedImageAuthors
   | ArticleOpinion;
+
+export type Y = Exclude<Article, ArticleDetailedImageAuthors>;
+
+export type X = Record<string, number>;
+
+export type Z = Omit<ArticleDetailedImageAuthors, keyof ArticleOpinion>;
+
+export type V = Extract<Article, keyof Y>;
 
 export interface CategoryHero {
   uid: 'Hero';

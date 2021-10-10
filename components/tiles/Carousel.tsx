@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
 import { List } from 'components/shared/list';
-import type { Article, ArticleDetailedImage } from 'lib/interfaces';
+import type { ArticleDetailedImage } from 'lib/interfaces';
 import { buildArticleSlug, editExcerptToSize } from 'lib/utils';
 
 import style from './Carousel.module.scss';
@@ -16,16 +16,12 @@ import 'swiper/css';
 
 type TileLayout = 'row' | 'column';
 type Props = {
-  articles: ArticleDetailedImage[] | Article[];
+  articles: ArticleDetailedImage[];
   tileLayout?: TileLayout;
 };
 
-const ColumnTileBuilder = ({
-  article,
-}: {
-  article: ArticleDetailedImage | Article;
-}) => {
-  const { title, image, slug } = article;
+const ColumnTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
+  const { title, slug, image } = article;
   return (
     <section className="h-full">
       <Link href={buildArticleSlug(slug ?? '')}>
@@ -42,11 +38,7 @@ const ColumnTileBuilder = ({
     </section>
   );
 };
-const RowTileBuilder = ({
-  article,
-}: {
-  article: ArticleDetailedImage | Article;
-}) => {
+const RowTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
   const { title, image, slug, excerpt } = article;
   const shortenedExcerpt = editExcerptToSize(excerpt ?? '');
 
@@ -93,7 +85,7 @@ const buildSwiperOptionsBasedOnSize = (size: number, tileLayout: string) => {
 };
 
 type BuildTileProps = {
-  article: ArticleDetailedImage | Article;
+  article: ArticleDetailedImage;
   tileLayout: TileLayout;
 };
 
@@ -107,11 +99,10 @@ const BuildTile = ({ article, tileLayout }: BuildTileProps) => {
 const PhoneTileBuilder = ({
   articles,
 }: {
-  articles: ArticleDetailedImage[] | Article[];
+  articles: ArticleDetailedImage[];
 }) => {
   return (
     <List
-      // @ts-expect-error
       items={articles}
       renderItem={({ title, _id, slug, excerpt, image }) => {
         return (

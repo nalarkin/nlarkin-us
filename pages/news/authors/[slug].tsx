@@ -60,7 +60,6 @@ export default function AuthorPage({ data }: PageProps) {
     return <div></div>;
   }
   const { name, bio, picture, articles } = data;
-  console.log(JSON.stringify(articles));
   return (
     <NewsLayout>
       <div className={style.bioContainer}>

@@ -1,6 +1,10 @@
 import groq from 'groq';
 
-import { Article, ArticleDetailedImageAuthors } from 'lib/interfaces';
+import {
+  Article,
+  ArticleDetailedImageAuthors,
+  AuthorsArray,
+} from 'lib/interfaces';
 
 import type * as Schema from './schema';
 
@@ -48,9 +52,11 @@ export type ArticleQueryResult = Pick<
   Schema.Article,
   '_id' | 'date' | 'excerpt' | 'image' | 'title' | 'text'
 > & {
-  authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
+  authors: AuthorsArray;
   slug: string;
 };
+
+// export type ArticleQueryR =
 
 export const articleQueryAll = groq`
   *[_type == "article"] {
@@ -73,7 +79,7 @@ export const sectionArticlesQuery = groq`
   }
 }[0]`;
 export type SectionArticlesResponse = {
-  articles: Array<Article>;
+  articles: Array<ArticleDetailedImageAuthors>;
   title: string;
   slug: string;
 };

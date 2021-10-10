@@ -7,7 +7,6 @@ import { GetStaticProps } from 'next';
 import MinimalHeader from 'components/headers/MinimalHeader';
 import Carousel from 'components/tiles/Carousel';
 import HeroTwoRows from 'components/tiles/HeroTwoRows';
-import ImageRow from 'components/tiles/ImageRow';
 import LargeArticleCard from 'components/tiles/LargeCard';
 import { articleQueryAll, ArticleResultAll } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
@@ -60,12 +59,6 @@ const ExamplePage = ({ data }: Props) => {
     // console.log(sizeTwo);
     // console.log(`sizeTwo: ${sizeTwo}`);
     const examples: TileExample[] = [
-      {
-        name: 'ImageRow',
-        articleCount: 5,
-        items: data.slice(0, 5),
-        renderItem: (item) => <ImageRow articles={item} />,
-      },
       {
         name: 'LargeCard',
         articleCount: 1,

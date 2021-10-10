@@ -4,14 +4,14 @@ import Link from 'next/link';
 
 import { ImageBuilder } from 'components/shared/ImageBuilder';
 import { List } from 'components/shared/list';
-import type { Article } from 'lib/interfaces';
+import { ArticleDetailedImage } from 'lib/interfaces';
 
 import { buildArticleSlug, editExcerptToSize } from '../../lib/utils';
 import Carousel from './Carousel';
 import style from './HeroTwoRows.module.scss';
 
 type Props = {
-  articles: Article[];
+  articles: ArticleDetailedImage[];
 };
 
 const RowBuilder = ({ articles }: Props) => {
@@ -24,7 +24,7 @@ const RowBuilder = ({ articles }: Props) => {
           renderItem={({ image, title, excerpt, slug, _id }) => {
             return (
               <section className={style.itemContainer} key={_id}>
-                <Link href={buildArticleSlug(slug)}>
+                <Link href={buildArticleSlug(slug ?? '')}>
                   <a className={style.hover}>
                     <div className="w-full">
                       <ImageBuilder image={image} />
@@ -64,7 +64,7 @@ const HeroTwoRows = ({ articles }: Props) => {
       <div className={style.categoryHeader}>Section Category Here</div>
       <div className={style.sectionGrid}>
         <div className={style.tileHero}>
-          <Link href={buildArticleSlug(firstArticle.slug)}>
+          <Link href={buildArticleSlug(firstArticle.slug ?? '')}>
             <a className={style.heroTileLink}>
               <div className="w-full">
                 <ImageBuilder image={firstArticle.image} />

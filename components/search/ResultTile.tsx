@@ -3,20 +3,14 @@ import React from 'react';
 import Link from 'next/link';
 
 import Date from 'components/shared/Date';
-import * as Schema from 'lib/schema';
+import { ArticleDetailedImageAuthors } from 'lib/interfaces';
 import { formatAuthors, getAuthorName } from 'lib/utils';
 
 import { ImageBuilder } from '../shared/ImageBuilder';
 import style from './ResultTile.module.scss';
 
 type Props = {
-  article: Pick<
-    Schema.Article,
-    '_id' | 'date' | 'excerpt' | 'image' | 'title'
-  > & {
-    authors: Array<Pick<Schema.Author, 'name' | 'picture'> & { slug: string }>;
-    slug: string;
-  };
+  article: ArticleDetailedImageAuthors;
 };
 
 const ResultTile = ({ article }: Props) => {
