@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 
-import { FooterCategory, allFooterTopNavLinks, SiteLink } from 'links';
+import { FooterCategory, allFooterTopNavLinks, SiteLink } from 'lib/links';
 
 import { List } from '../shared/list';
 import style from './SmallFooter.module.scss';

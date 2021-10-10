@@ -6,8 +6,9 @@ import { ImSearch } from 'react-icons/im';
 import { IoMdPerson } from 'react-icons/io';
 
 import SearchBar from 'components/search/SearchBar';
+import { headerCategoryLinks } from 'lib/links';
+import { buildSectionSlug } from 'lib/utils';
 
-import { headerCategoryLinks } from '../../links';
 import Menu from '../menu/Menu';
 import MobileMenu from '../menu/MobileMenu';
 import DateComponent from '../shared/Date';
@@ -74,13 +75,13 @@ const TopNavigationBar = () => {
           </Link>
           <div className={headerBanners}>
             <div className="w-80 flex justify-between font-sans">
-              <Link href="/news/u-s">
+              <Link href={buildSectionSlug('u-s')}>
                 <a className="px-2 py-1 news-nav-link text-xs">U.S</a>
               </Link>
-              <Link href="/news/international">
+              <Link href={buildSectionSlug('international')}>
                 <a className="px-2 py-1 news-nav-link text-xs">INTERNATIONAL</a>
               </Link>
-              <Link href="/news/canada">
+              <Link href={buildSectionSlug('canada')}>
                 <a className="px-2 py-1 news-nav-link text-xs">CANADA</a>
               </Link>
             </div>

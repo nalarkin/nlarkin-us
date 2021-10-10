@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { FiMenu } from 'react-icons/fi';
 import OutsideClickHandler from 'react-outside-click-handler';
 
-import { headerCategoryLinks } from '../../links';
+import { headerCategoryLinks } from 'lib/links';
+
 import { List } from '../shared/list';
 import style from './Menu.module.scss';
 

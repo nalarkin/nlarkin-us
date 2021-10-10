@@ -58,7 +58,7 @@ export const footerArtsLinks: SiteLink[] = [
   ["Today's Arts", '/news/sections/todays-arts'],
   ['Art & Design', '/news/sections/art-&-design'],
   ['Books', '/news/sections/books'],
-  ['Best Sellers Book List', '/news/sections/best-sellers-book-list'],
+  ['Best Sellers', '/news/sections/best-sellers'],
   ['Dance', '/news/sections/dance'],
   ['Movies', '/news/sections/movies'],
   ['Music', '/news/sections/music'],

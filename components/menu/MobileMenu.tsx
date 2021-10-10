@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { FiMenu } from 'react-icons/fi';
 import { GrClose } from 'react-icons/gr';
 
-import { allFooterTopNavLinks } from '../../links';
+import { allFooterTopNavLinks } from 'lib/links';
+
 import SearchBar from '../search/SearchBar';
 import { List } from '../shared/list';
 import style from './MobileMenu.module.scss';
