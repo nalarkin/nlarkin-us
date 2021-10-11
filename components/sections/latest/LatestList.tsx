@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
+import classNames from 'classnames';
 import Fuse from 'fuse.js';
+import { ImSearch } from 'react-icons/im';
 
 import { List } from 'components/shared/list';
 import { Article, ArticleDetailedImageAuthors } from 'lib/interfaces';
@@ -67,6 +69,8 @@ const LatestList = ({ articles }: Props) => {
   const fuse = new Fuse(articles, options);
   const [userHasSearched, setUserHasSearched] = useState(false);
   const [text, changeText] = useState('');
+  const [latestIsActive, setLatestActive] = useState(true);
+  const [searchIsActive, setSearchActive] = useState(false);
   const [result, changeResult] = useState<
     Fuse.FuseResult<ArticleDetailedImageAuthors>[]
   >([]);
@@ -85,13 +89,68 @@ const LatestList = ({ articles }: Props) => {
     }
   };
 
+  const selectLatest = (
+    _e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setLatestActive(true);
+    setSearchActive(false);
+  };
+  const selectSearch = (
+    _e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setLatestActive(false);
+    setSearchActive(true);
+  };
+
+  const latestClass = classNames([
+    [style.btnLatest],
+    { [style.active]: latestIsActive },
+  ]);
+  const searchClass = classNames([
+    [style.btnLatest],
+    { [style.active]: searchIsActive },
+  ]);
+  const searchContainer = classNames([
+    { [style.searchContainer]: searchIsActive },
+  ]);
   const latestHeader = (
     <form onSubmit={handleSubmit}>
-      <div className="flex flex-row px-4 ">
-        <div className="flex flex-row w-4/5  mx-auto border-t-2 border-b-2">
-          <div className={style.btnLatest}>Latest</div>
-          <div className={style.btnSearch}>Search</div>
-          <input type="text" onChange={handleChange} value={text} />
+      <div className="block">
+        <div className={style.headerContainer}>
+          <button className={latestClass} type="button" onClick={selectLatest}>
+            Latest
+          </button>
+          <div className={searchClass}>
+            <button
+              className={style.searchBtn}
+              type="button"
+              onClick={selectSearch}
+            >
+              Search
+            </button>
+            <div className={searchContainer}>
+              <div className={style.inputContainer}>
+                <div className={style.searchIcon}>
+                  <ImSearch size={16} />
+                </div>
+                <label
+                  htmlFor="search"
+                  aria-label="Search articles"
+                  className={style.visuallyHidden}
+                >
+                  search{' '}
+                </label>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  value={text}
+                  className={style.inputField}
+                  placeholder="Search"
+                  name="search"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </form>

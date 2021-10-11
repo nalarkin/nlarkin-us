@@ -1,3 +1,5 @@
+@import 'styles/news';
+
 /* largest container that centers content */
 .container {
   margin: 35px auto 0px;
@@ -14,12 +16,78 @@
 }
 
 .btnLatest {
-  padding: 13px 45px 8px;
+  padding: 13px 30px 8px;
   color: #333;
-  border-radius: 2px;
-  border: 2px black solid;
+
+  background-color: #fff;
+
+  display: block;
+  position: relative;
+  top: 0px;
+
+  font-size: 17px;
+  line-height: 23px;
+  font-weight: 700;
+}
+.inputContainer {
+  display: none;
+}
+.visuallyHidden {
+  @extend %visuallyHidden;
+}
+
+.searchIcon {
+  // display: block;
+  position: absolute;
+  display: inline-block;
+  height: 16px;
+  line-height: 0;
+  margin-right: 7px;
+  left: 15px;
+  top: 20px;
+}
+
+.active {
+  top: -7px;
+  margin-bottom: -8px;
+  padding-left: 45px;
+  padding-right: 45px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #fff;
+
+  .searchBtn {
+    display: none;
+  }
+  .inputContainer {
+    @include flex-row;
+    display: relative;
+  }
+  .inputField {
+    position: relative;
+    top: 5px;
+
+    min-width: 80px;
+    max-width: 710px;
+  }
 }
 .btnSearch {
   padding: 13px 45px 8px;
   color: #333;
+}
+
+.headerContainer {
+  padding: 0px 15px;
+  border-bottom: 1px solid #ccc;
+  border-top: 2px solid #000;
+  position: relative;
+  @include flex-row;
+}
+
+.searchContainer {
+  min-width: 160px;
+  max-width: 785px;
+  display: block;
 }
