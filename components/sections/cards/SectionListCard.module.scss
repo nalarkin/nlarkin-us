@@ -6,6 +6,7 @@
   line-height: 13px;
   color: rgb(153, 153, 153);
   margin: 8px 0px 7px;
+  font-family: $font-sans;
   @include media('>tablet') {
   }
   @include media('<tablet') {
@@ -49,6 +50,6 @@
 .article {
   @include media('<tablet') {
     @include flex-col;
-    flex: 1;
+    flex: 2;
   }
 }

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import MinimalHeader from 'components/headers/MinimalHeader';
 import SearchBody from 'components/search/SearchBody';
-import { Article } from 'lib/interfaces';
+import { ArticleDetailedImageAuthors } from 'lib/interfaces';
 import { articleQueryAll, ArticleResultAll } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
@@ -31,7 +31,7 @@ const queryIsSingleString = (query: string | string[]): query is string => {
 };
 
 type SearchProps = {
-  data: ArticleResultAll;
+  data: ArticleDetailedImageAuthors[];
 };
 
 // type ResultInitial = undefined | Fuse.FuseResult<ArticleResultAll>;
@@ -50,7 +50,7 @@ export default function Search({ data }: SearchProps) {
   }, [query, queryParams]);
 
   // const myIndex = Fuse.createIndex(['title', 'author.firstName'], mockData);
-  const options: Fuse.IFuseOptions<Article> = {
+  const options: Fuse.IFuseOptions<ArticleDetailedImageAuthors> = {
     // isCaseSensitive: false,
     includeScore: true,
     // shouldSort: true,
@@ -71,7 +71,7 @@ export default function Search({ data }: SearchProps) {
 
   if (!isLoading && queryParams) {
     // let initial = '';
-    let initialResult: Fuse.FuseResult<Article>[] = [];
+    let initialResult: Fuse.FuseResult<ArticleDetailedImageAuthors>[] = [];
     if (queryIsSingleString(queryParams)) {
       // initial = queryParams;
       initialResult = fuse.search(queryParams);

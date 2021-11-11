@@ -1,6 +1,10 @@
 import groq from 'groq';
 
-import { Article } from 'lib/interfaces';
+import {
+  Article,
+  ArticleDetailedImageAuthors,
+  AuthorsArray,
+} from 'lib/interfaces';
 
 import type * as Schema from './schema';
 
@@ -23,13 +27,31 @@ const articleFields = `
 export const sectionSlugsQuery = groq`
 *[_type == "section" && defined(slug.current)][].slug.current
 `;
+/** Get all Sections that exist in the Headless CMS */
+export const sectionsQueryAll = groq`
+*[_type == "section" && defined(slug.current)]{
+  _id,
+  title,
+  "slug": slug.current,
+}
+`;
+export type SectionResultAll = Array<
+  Pick<Schema.Section, '_id' | 'title'> & { slug: string }
+>;
+
 export type SectionSlugsResult = Array<string>;
 
 /** Get all slugs for all articles.
  * @returns Returns string[ ]
  */
 export const articleSlugsQuery = groq`
-*[_type == "article" && defined(slug.current)][].slug.current`;
+*[_type == "article" && defined(slug.current)][].slug.current
+`;
+
+export const authorSlugQuery = groq`
+*[_type == "author" && defined(slug.current)][].slug.current
+`;
+
 export type ArticleSlugsResult = Array<string>;
 
 export const articleQuery = groq`
@@ -42,9 +64,11 @@ export type ArticleQueryResult = Pick<
   Schema.Article,
   '_id' | 'date' | 'excerpt' | 'image' | 'title' | 'text'
 > & {
-  authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
+  authors: AuthorsArray;
   slug: string;
 };
+
+// export type ArticleQueryR =
 
 export const articleQueryAll = groq`
   *[_type == "article"] {
@@ -67,7 +91,7 @@ export const sectionArticlesQuery = groq`
   }
 }[0]`;
 export type SectionArticlesResponse = {
-  articles: Array<Article>;
+  articles: Array<ArticleDetailedImageAuthors>;
   title: string;
   slug: string;
 };
@@ -78,7 +102,8 @@ const getSorted = (desiredSize: number) =>
 const articleNoImage = `
   _id,
   title,
-  "slug": slug.current
+  "slug": slug.current,
+  date
 `;
 const getArticleAuthors = `
 authors[]-> {
@@ -87,6 +112,26 @@ authors[]-> {
             picture
           }
 `;
+
+export const authorQuery = groq`
+*[_type == "author" && slug.current == $slug][0] {
+  bio,
+  picture,
+  name,
+  "articles": *[_type=="article" && references(^._id)] {
+    ${articleNoImage},
+    ${getArticleAuthors},
+    excerpt,
+    image
+  }
+}
+`;
+export type AuthorQueryResult = {
+  name: Schema.Author['name'];
+  picture: Schema.Author['picture'];
+  bio: Schema.Author['bio'];
+  articles: ArticleDetailedImageAuthors[];
+};
 
 export const homeQuery = groq`
 {

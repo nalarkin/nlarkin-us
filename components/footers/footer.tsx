@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { footerBottomLinks, allFooterTopNavLinks } from '../../links';
+import { footerBottomLinks, allFooterTopNavLinks } from 'lib/links';
+
 import { List } from '../shared/list';
 import style from './footer.module.scss';
 import { FooterLinkBottom, FooterLinkTop } from './footerLink';

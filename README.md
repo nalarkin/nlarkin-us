@@ -4,13 +4,11 @@
 
 - Fix text wrapping on SectionHero Tile on size < laptop
 
-- Fix carousel row wrapping issues at certain resolutions (text gets cut off)
 - Create Section Header Card with a specific layout
 - add tiles with different sizes for the home page and section pages.
 - add valid links to header and footer
 - Probably add OAuth (github/social sign in) because it's fairly simple and useful to have.
-- Idk if NYT has 'author' pages which are dedicated for each author, but I could make that if they do.
-- update mobile view links to shorter names to match the shorter names in NYT
+- Add search feature to author pages
 
 ## Boilerplate Generated During create is below
 

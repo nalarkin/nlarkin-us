@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { ImageBuilder } from 'components/shared/ImageBuilder';
-import type { Article, ArticleDetailedImage } from 'lib/interfaces';
+import type { ArticleDetailedImage } from 'lib/interfaces';
 
 import style from './LargeCard.module.scss';
 
@@ -22,7 +22,7 @@ const ArticleLinkWrapper = ({ slug, children }: ArticleWrapperProps) => {
 };
 
 type ArticleCardProps = {
-  article: Article | ArticleDetailedImage;
+  article: ArticleDetailedImage;
 };
 
 const LargeArticleCard = ({ article }: ArticleCardProps) => {

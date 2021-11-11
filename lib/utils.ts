@@ -108,3 +108,5 @@ export const editExcerptToSize = (
   );
   return `failed all tests for excerpt: ${excerpt}`;
 };
+
+export const imageSizeRegex = /-([\d]{3,})x([\d]{3,})-/;

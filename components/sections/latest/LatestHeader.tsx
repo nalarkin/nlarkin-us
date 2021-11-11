@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './LatestList.module.css';
+import style from './LatestHeader.module.scss';
 
 const LatestHeader = () => {
   return (

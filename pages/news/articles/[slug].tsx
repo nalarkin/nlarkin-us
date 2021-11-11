@@ -6,7 +6,7 @@ import ArticleHeader from 'components/article/ArticleHeader';
 import ArticleHeaderInfo from 'components/article/ArticleHeaderInfo';
 import ArticleHeaderSocial from 'components/article/ArticleHeaderSocial';
 import ArticleBody from 'components/body/ArticleBody';
-import Disclaimer from 'components/disclaimer/disclaimer';
+// import Disclaimer from 'components/disclaimer/disclaimer';
 import ArticleLayout from 'components/layouts/ArticleLayout';
 import { ImageBuilder } from 'components/shared/ImageBuilder';
 import {
@@ -102,7 +102,7 @@ export default function ArticlePage({
             <ArticleHeaderInfo authors={authors} date={date} />
             <ArticleBody text={text} />
           </div>
-          <Disclaimer />
+          {/* <Disclaimer /> */}
         </div>
       </ArticleLayout>
     </div>

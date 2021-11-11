@@ -3,17 +3,16 @@ import React, { useCallback, useState, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import { ImSearch } from 'react-icons/im';
 
-import { Article } from 'lib/interfaces';
-import { ArticleResultAll } from 'lib/queries';
+import { ArticleDetailedImageAuthors } from 'lib/interfaces';
 
 import ResultTile from './ResultTile';
 import style from './SearchBody.module.scss';
 
 type BodyProps = {
   query?: string;
-  articles?: ArticleResultAll;
-  fuse: Fuse<Article>;
-  initialResult: Fuse.FuseResult<Article>[];
+  articles?: ArticleDetailedImageAuthors;
+  fuse: Fuse<ArticleDetailedImageAuthors>;
+  initialResult: Fuse.FuseResult<ArticleDetailedImageAuthors>[];
 };
 
 // type SortMethod = 'relevance' | 'newest' | 'oldest';
@@ -24,7 +23,7 @@ export default function SearchBody({
   initialResult,
 }: BodyProps) {
   const [result, changeResult] =
-    useState<Fuse.FuseResult<Article>[]>(initialResult);
+    useState<Fuse.FuseResult<ArticleDetailedImageAuthors>[]>(initialResult);
   const [text, changeText] = useState(query);
   // const [sortMethod, changeSortMethod] = useState<SortMethod>('relevance');
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

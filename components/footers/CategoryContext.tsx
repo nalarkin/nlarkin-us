@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { allFooterTopNavLinks, FooterCategory } from 'links';
+import { allFooterTopNavLinks, FooterCategory } from 'lib/links';
 
 export type FooterGroups = {
   [index: string]: boolean;

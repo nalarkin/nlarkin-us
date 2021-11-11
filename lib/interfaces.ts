@@ -8,14 +8,14 @@ export type Author = {
   };
 };
 
-export type Article = Pick<
-  Schema.Article,
-  '_id' | 'date' | 'excerpt' | 'title'
-> & {
-  image: Schema.Article['image'];
-  authors: Array<Pick<Schema.Author, 'name' | 'picture'> & { slug: string }>;
-  slug: string;
-};
+// export type Article = Pick<
+//   Schema.Article,
+//   '_id' | 'date' | 'excerpt' | 'title'
+// > & {
+//   image: Schema.Article['image'];
+//   authors: Array<Pick<Schema.Author, 'name' | 'picture'> & { slug: string }>;
+//   slug: string;
+// };
 
 // export type ArticleDetailed = Pick<
 //   Schema.Article,
@@ -29,7 +29,7 @@ export type Article = Pick<
 interface CategoryArticles<T> {
   articles: T;
 }
-type AuthorsArray = Array<
+export type AuthorsArray = Array<
   Pick<Schema.Author, 'name' | 'picture'> & { slug: string }
 >;
 
@@ -37,6 +37,7 @@ export interface ArticleBasic {
   _id: Schema.SanityDocument['_id'];
   title?: Schema.Article['title'];
   slug?: string;
+  date?: Schema.Article['date'];
 }
 
 export interface ArticleDetailed extends ArticleBasic {
@@ -48,9 +49,27 @@ export interface ArticleDetailedImage extends ArticleDetailed {
   image: Schema.Article['image'];
 }
 
+export interface ArticleDetailedImageAuthors extends ArticleDetailedImage {
+  authors: AuthorsArray;
+}
+
 export interface ArticleOpinion extends ArticleBasic {
   authors: AuthorsArray;
 }
+
+export type Article =
+  | ArticleBasic
+  | ArticleDetailed
+  | ArticleDetailedImageAuthors
+  | ArticleOpinion;
+
+export type Y = Exclude<Article, ArticleDetailedImageAuthors>;
+
+export type X = Record<string, number>;
+
+export type Z = Omit<ArticleDetailedImageAuthors, keyof ArticleOpinion>;
+
+export type V = Extract<Article, keyof Y>;
 
 export interface CategoryHero {
   uid: 'Hero';

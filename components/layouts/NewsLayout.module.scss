@@ -1,0 +1,20 @@
+@import 'styles/news';
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageHeader,
+.pageFooter {
+  flex-shrink: 0;
+}
+
+.pageBody {
+  flex-grow: 1;
+}
+
+.bodyContainer {
+  @include body-container;
+}
