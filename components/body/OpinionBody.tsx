@@ -4,7 +4,7 @@ import Carousel from 'components/tiles/Carousel';
 import LargeArticleCard from 'components/tiles/LargeCard';
 import { ArticleDetailedImage, ArticleOpinion } from 'lib/interfaces';
 
-import Disclaimer from '../disclaimer/disclaimer';
+// import Disclaimer from '../disclaimer/disclaimer';
 import style from './OpinionBody.module.scss';
 import OpinionColumn from './OpinionColumn';
 
@@ -31,7 +31,7 @@ const OpinionBody = ({ columnArticles, bodyArticles }: Props) => {
         </div>
       </div>
 
-      <Disclaimer />
+      {/* <Disclaimer /> */}
     </main>
   );
 };

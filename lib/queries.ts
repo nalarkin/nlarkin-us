@@ -27,6 +27,18 @@ const articleFields = `
 export const sectionSlugsQuery = groq`
 *[_type == "section" && defined(slug.current)][].slug.current
 `;
+/** Get all Sections that exist in the Headless CMS */
+export const sectionsQueryAll = groq`
+*[_type == "section" && defined(slug.current)]{
+  _id,
+  title,
+  "slug": slug.current,
+}
+`;
+export type SectionResultAll = Array<
+  Pick<Schema.Section, '_id' | 'title'> & { slug: string }
+>;
+
 export type SectionSlugsResult = Array<string>;
 
 /** Get all slugs for all articles.

@@ -41,3 +41,14 @@
     flex: 3;
   }
 }
+
+.homeContainer {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+}
+
+.projectImage {
+  max-height: 80%;
+  max-width: 80%;
+  background-color: red;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 
-import Disclaimer from 'components/disclaimer/disclaimer';
+// import Disclaimer from 'components/disclaimer/disclaimer';
 import SectionLayout from 'components/layouts/SectionLayout';
 import SectionHero from 'components/sections/cards/SectionHero';
 import LatestList from 'components/sections/latest/LatestList';
@@ -91,7 +91,7 @@ const NewsCategoryMain = ({
               })}
         </div>
         <LatestList articles={articles} />
-        <Disclaimer />
+        {/* <Disclaimer /> */}
       </div>
     </SectionLayout>
   );
