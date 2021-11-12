@@ -11,7 +11,7 @@ const About = () => {
   return (
     <div>
       <Layout seo={AboutSEO}>
-        <div className="text-center"> about page</div>
+        <div className="text-center text-white"> about page</div>
       </Layout>
     </div>
   );

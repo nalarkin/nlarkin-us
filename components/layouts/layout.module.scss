@@ -1,0 +1,33 @@
+@import '../../styles/home';
+
+$footer-header-text-color: $nl-accent-background;
+
+.container {
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
+
+.nav {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: $nl-text;
+  font-size: x-large;
+  padding-bottom: 0.8rem;
+  margin-top: 1rem;
+  color: $footer-header-text-color;
+}
+
+.wrapper {
+  background-color: $nl-background;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 0px 3%;
+}
+
+.footer {
+  color: $footer-header-text-color;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  padding: 2rem 0rem;
+}

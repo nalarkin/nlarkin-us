@@ -1,13 +1,5 @@
 @import 'styles/news';
-
-%title {
-  font-weight: 800;
-  font-size: xx-large;
-}
-%subtitle {
-  font-weight: 600;
-  font-size: x-large;
-}
+@import 'styles/home';
 
 @mixin home-link-hover($color) {
   &:hover {
@@ -16,39 +8,143 @@
   }
 }
 
-.tileContainer {
-  @include flex-col;
-  @include media('>tablet') {
-    @include flex-row;
+@mixin debug-response() {
+  @include media('<phone') {
+    background-color: red;
   }
-  // max-width: 80%;
-  padding: 10px 20px;
+  @include media('>phone', '<tablet') {
+    background-color: orange;
+  }
+  @include media('>tablet', '<laptop') {
+    background-color: yellow;
+  }
+  @include media('>laptop', '<desktop') {
+    background-color: blue;
+  }
+  @include media('>desktop') {
+    background-color: green;
+  }
+}
+
+.tileContainer {
+  background-color: #fff;
+  border-radius: 20px;
+  // border: 4px solid $nl-accent-text;
+  @include flex-col;
+  margin: 20px 0px;
+  padding: 10px 0px;
+  // padding: 10px 20px;
+  width: 100%;
+  height: max-content;
   @include media('>tablet') {
-    padding: 10px 40px;
+    margin: 0px 10px 20px 0px;
+  }
+  @include media('>desktop') {
+    margin: 0px 0px 20px;
+  }
+
+  .list {
+    list-style-type: circle;
   }
   .cardText {
-    @include home-link-hover(#555);
-    flex: 2;
     .tileHeader {
       @extend %title;
     }
     .subtitle {
       @extend %subtitle;
     }
+    .technologies {
+      @extend %technologies;
+    }
+    .body {
+      @extend %body;
+    }
   }
-  .cardImage {
-    background-color: blue;
-    flex: 3;
+  // @include debug-response;
+}
+
+.welcomeMessage {
+  color: $nl-text;
+  // font-size: xx-large;
+  font-size: 2rem;
+  font-family: $nl-font-family;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 1rem;
+  @include media('>tablet') {
+    margin-bottom: 2rem;
   }
 }
 
 .homeContainer {
-  display: grid;
-  grid-template-columns: 5fr 4fr;
+  background-color: $nl-background;
+  font-family: $nl-font-family;
+  @include flex-col;
+  @include media('>desktop') {
+    @include flex-row;
+    justify-content: space-between;
+  }
 }
 
-.projectImage {
-  max-height: 80%;
-  max-width: 80%;
-  background-color: red;
+.tileGroup {
+  @include flex-col;
+  justify-content: space-between;
+  flex: 1;
+  @include media('>tablet', '<desktop') {
+    justify-content: space-between;
+    // background-color: red;
+    @include flex-row;
+  }
+  @include media('>desktop') {
+    justify-content: flex-start;
+  }
+}
+
+.tileGroupMiddle {
+  flex: 1;
+  @include flex-col;
+  justify-content: space-between;
+  @include media('>tablet', '<desktop') {
+    justify-content: center;
+    @include flex-row;
+  }
+  @include media('>desktop') {
+    justify-content: flex-start;
+  }
+  @include media('>desktop') {
+    margin: 0px 20px 20px;
+  }
+}
+
+.tileButton {
+  background-color: $nl-accent-background;
+  color: rgb(30, 58, 138);
+  padding: 15px;
+  border-radius: 20px;
+  width: 200px;
+  text-align: center;
+  font-size: 1rem;
+  margin: 10px auto;
+  // font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  &:hover {
+    background-color: $nl-accent-background-dark;
+  }
+}
+.disabledButton {
+  // opacity: 30%;
+  // pointer-events: none;
+  // cursor: none;
+  &:hover {
+    background-color: $nl-accent-background;
+  }
+}
+
+.body {
+}
+
+.bodyList {
+  max-width: max-content;
+  margin: 0px auto;
 }
