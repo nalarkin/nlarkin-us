@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import SEO, { SEOProps } from 'components/shared/seo';
 
-import style from './layout.module.css';
+import style from './layout.module.scss';
 
 type Props = {
   seo: SEOProps;
@@ -25,13 +25,13 @@ const Layout = ({ seo, children }: Props) => (
     </Head> */}
     <SEO description={seo.description} title={seo.title} />
     <div className={style.wrapper}>
-      <header className="">
+      <header className={style.nav}>
         <nav className="flex flex-row justify-between">
           <Link href="/">
-            <a className="nav-link">Nathan&apos;s website</a>
+            <a>Nathan&apos;s website</a>
           </Link>
           <Link href="/about">
-            <a className="nav-link">About</a>
+            <a>About</a>
           </Link>
         </nav>
       </header>

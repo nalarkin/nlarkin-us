@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable unused-imports/no-unused-vars */
 import React, { useState } from 'react';
 
@@ -5,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaBoxOpen } from 'react-icons/fa';
+import { RiComputerLine } from 'react-icons/ri';
 
 import Layout from '../components/layouts/layout';
 import style from './index.module.scss';
@@ -168,38 +170,6 @@ const HomeSEO = {
   title: 'Home',
 };
 
-const container = {
-  show: {
-    opacity: 1,
-    // animation: { x: 100 },
-    transition: {
-      when: 'beforeChildren',
-      staggerChildren: 0.5,
-    },
-  },
-  hidden: {
-    opacity: 0,
-    transition: {
-      when: 'afterChildren',
-    },
-  },
-};
-// const container = {
-//   hidden: { opacity: 0 },
-//   show: {
-//     opacity: 1,
-//     animate: { x: 100 },
-//     transition: {
-//       staggerChildren: 0.5,
-//     },
-//   },
-// };
-
-const item = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 },
-};
-
 type StaggerProps = {
   children: React.ReactElement[];
   delay: number;
@@ -264,6 +234,8 @@ const ProjectImage = ({ path }: ProjectImageProps) => {
   return (
     // <div className="flex">
     //   <div className="block">
+    // <div className="bg-gradient-to-r from-green-400 to-blue-500">
+    // <div className="">
     <Image
       src={path}
       alt=""
@@ -271,8 +243,11 @@ const ProjectImage = ({ path }: ProjectImageProps) => {
       height={500}
       layout="responsive"
       sizes="50vw"
+      className={style.itt}
+
       // className={style.projectImage}
     />
+    // </div>
     //   </div>
     // </div>
   );
@@ -294,8 +269,7 @@ interface Tile {
   textContent: React.ReactElement;
   image: React.ReactElement;
 }
-
-const allTiles: Tile[] = [
+export const allTiles: Tile[] = [
   {
     name: 'news',
     textContent: <NewsTile />,
@@ -326,7 +300,6 @@ const HomeContents = () => {
     <div className={style.homeContainer}>
       <div className="flex justify-start items-center flex-col md:flex-row gap-7 overflow-x-hidden mb-auto">
         <DirectionalStagger delay={0.3} transitionTime={1.2}>
-          {/* <div> */}
           {allTiles.map(({ name, textContent, image }) => {
             return (
               <div
@@ -339,17 +312,31 @@ const HomeContents = () => {
           })}
         </DirectionalStagger>
       </div>
-      <AnimatePresence exitBeforeEnter>
-        <motion.div
-          key={activeTile ? activeTile.name : 'empty'}
-          animate={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 20 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.15 }}
-        >
-          {activeTile.image}
-        </motion.div>
-      </AnimatePresence>
+      <div className={style.imageContainer}>
+        {/* <Image
+          src="/monitor.svg"
+          alt=""
+          height={500}
+          width={500}
+          className="aboslute right-3"
+        /> */}
+
+        <div className={style.ittt}>
+          <AnimatePresence exitBeforeEnter>
+            <motion.div
+              key={activeTile ? activeTile.name : 'empty'}
+              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.15 }}
+            >
+              {activeTile.image}
+            </motion.div>
+          </AnimatePresence>
+          <RiComputerLine className={style.laptop} />
+        </div>
+        <div>yo</div>
+      </div>
     </div>
   );
 };

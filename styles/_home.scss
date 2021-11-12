@@ -1,0 +1,15 @@
+$nl-background: rgb(17, 24, 39);
+$nl-text: #fff;
+$nl-accent-background: rgb(219, 234, 254);
+$nl-accent-background-dark: rgb(193, 208, 246);
+$nl-accent-text: rgb(30, 58, 138);
+$nl-font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
+
+%title {
+  font-weight: 700;
+  font-size: xx-large;
+}
+%subtitle {
+  font-weight: 600;
+  font-size: x-large;
+}

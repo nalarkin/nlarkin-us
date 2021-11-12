@@ -52,3 +52,36 @@
   max-width: 80%;
   background-color: red;
 }
+
+.imageContainer {
+  // background-image: url('../public/monitor.svg');
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+
+.it {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+.itt {
+  height: 50%;
+}
+
+.ittt {
+  width: 60%;
+  margin: auto auto auto;
+}
+
+.laptop {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 400px;
+  @include media('>desktop') {
+    font-size: 700px;
+  }
+}
