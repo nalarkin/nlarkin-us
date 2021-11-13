@@ -32,7 +32,7 @@ const newYorkTimesBullets = [
   'Significant use of the unique open-source Sanity.io query language `GROQ`',
   'Highly responsive design. I encourage you to change your browsers width and see the website adapt.',
   'Article Carousels on home page for mobile/tablet viewers',
-  'Acording footer for mobile viewers.',
+  'Accordion footer for mobile viewers.',
   'Implemented article searching, for fuzzy matches that include article title, excerpt, and author name.',
 ];
 const inventoryBullets = [
@@ -59,7 +59,7 @@ export const allProjects: Project[] = [
   {
     title: 'Story Generator',
     subtitle: 'test subtitle',
-    technologies: 'Rust, GitHub Pages',
+    technologies: 'Rust, GitHub Pages, Grammar Parse Trees',
     href: 'https://github.com/nalarkin/story-generator',
     bullets: storyGenBullets,
   },
