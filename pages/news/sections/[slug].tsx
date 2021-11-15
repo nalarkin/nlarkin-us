@@ -31,10 +31,6 @@ export const getStaticProps: GetStaticProps = async ({
         title,
         slug,
       },
-      // data:  {
-      //   articles: articles,
-      //   title: title,
-      // },
     },
   };
 };
@@ -53,13 +49,9 @@ const NewsCategoryMain = ({
 }: {
   data: SectionArticlesResponse | undefined;
 }) => {
-  // if (data) {
-  //   shuffle(data);
-  // }
   if (data === undefined) {
     return <div></div>;
   }
-  // console.log(`data: ${JSON.stringify(data)}`);
   const { articles, title, slug } = data;
 
   const handleNoArticles = () => {
@@ -72,14 +64,17 @@ const NewsCategoryMain = ({
 
   return (
     <SectionLayout
-      seo={{ title: '', description: 'all world news in 1 place' }}
+      seo={{
+        title: `${title} News`,
+        description: `All ${title} news in 1 place`,
+      }}
       sectionTitle={title}
       slug={slug}
     >
-      <div className="flex flex-col pt-7">
+      <div className={style.heroContainer}>
         {/* <div className='text-3xl font-bold'> {title}</div> */}
         <SectionHero articles={articles} />
-        <div className={style.body}>
+        <div className={``}>
           {articles.length === 0
             ? handleNoArticles()
             : articles.map((article) => {

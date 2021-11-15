@@ -2,8 +2,12 @@ import React from 'react';
 
 import { newYorkTimesSummary } from 'components/projects/NewYorkTimesImage';
 import ProjectPage from 'components/projects/ProjectPage';
+import { LinkWrapper } from 'components/shared/LinkWrapper';
 import { SEOProps } from 'components/shared/seo';
 import { newYorkTimesBullets } from 'lib/projectInfo';
+import { getButtonTextFromLink } from 'lib/utils';
+
+import style from '../course-registration-bot/index.module.scss';
 
 const seo: SEOProps = {
   title: newYorkTimesSummary.title,
@@ -17,7 +21,15 @@ const longerNewYorkSummary = {
 };
 
 const NewYorkTimesPage = () => {
-  return <ProjectPage project={longerNewYorkSummary} seo={seo} />;
+  return (
+    <ProjectPage project={longerNewYorkSummary} seo={seo}>
+      <LinkWrapper href="https://github.com/nalarkin/nlarkin-us">
+        <div className={style.primaryButton}>
+          {getButtonTextFromLink('https://github.com/nalarkin/nlarkin-us')}
+        </div>
+      </LinkWrapper>
+    </ProjectPage>
+  );
 };
 
 export default NewYorkTimesPage;
