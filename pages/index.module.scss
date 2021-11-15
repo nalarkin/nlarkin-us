@@ -148,13 +148,15 @@
 
 .bodyList {
   max-width: max-content;
-  // margin: 0px auto;
   margin-right: -1em;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  @include media('>phone') {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  }
   gap: 50px;
 }
 

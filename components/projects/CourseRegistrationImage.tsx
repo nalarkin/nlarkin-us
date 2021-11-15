@@ -25,4 +25,5 @@ export const courseRegistrationSummary: ProjectSummary = {
   slug: 'course-registration-bot',
   bullets: registrationBulletsSummary,
   image: <CourseRegistrationImage />,
+  technologies: 'Python, Selenium, Sphinx',
 };

@@ -12,6 +12,7 @@ export interface ProjectSummary {
   slug: string;
   bullets: string[];
   href: string;
+  technologies: string;
 }
 
 export const storyGenBullets = [
@@ -112,18 +113,18 @@ export const allProjects: Project[] = [
   {
     title: 'New York Times Clone',
     subtitle:
-      'Typescript, React.js, Next.js, Sass, HTML, JavaScript, Sanity.io',
+      'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Sanity.io',
     technologies:
-      'Typescript, React.js, Next.js, Sass, HTML, JavaScript, Headless CMS',
+      'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Headless CMS',
     href: '/news',
     bullets: newYorkTimesBullets,
   },
   {
     title: 'Inventory Management Software',
     subtitle:
-      'Typescript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Asynchronous data fetching',
+      'TypeScript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Asynchronous data fetching',
     technologies:
-      'Typescript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Async Data Fetching',
+      'TypeScript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Async Data Fetching',
     href: '',
     bullets: inventoryBullets,
   },

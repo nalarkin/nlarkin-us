@@ -25,4 +25,5 @@ export const academicAdvisorSummary: ProjectSummary = {
   slug: 'academic-advisor',
   bullets: academicAdvisorBulletsSummary,
   image: <AcademicAdvisorImage />,
+  technologies: 'Flutter, Dart, NoSQL, Firebase, Authentication, Data Streams',
 };
