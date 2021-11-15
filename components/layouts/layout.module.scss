@@ -9,9 +9,9 @@ $footer-header-text-color: $nl-accent-background;
 }
 
 .nav {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: $nl-text;
-  font-size: x-large;
+  // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  // color: $nl-text;
+  // font-size: x-large;
   padding-bottom: 0.8rem;
   margin-top: 1rem;
   color: $footer-header-text-color;
@@ -30,4 +30,26 @@ $footer-header-text-color: $nl-accent-background;
   display: grid;
   grid-template-columns: auto 1fr auto;
   padding: 2rem 0rem;
+}
+
+.logoText {
+  // font-family: $nl-font-family;
+  font-family: $nl-header-font;
+  @include flex-row;
+  align-items: flex-end;
+  line-height: normal;
+  font-size: 1.5rem;
+
+  @include media('>tablet') {
+    font-size: 2rem;
+  }
+  .lowercase {
+    margin-left: -2px;
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+    @include media('>tablet') {
+      font-size: 1.5rem;
+      margin-bottom: 1px;
+    }
+  }
 }

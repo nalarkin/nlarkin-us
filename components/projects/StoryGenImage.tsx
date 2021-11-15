@@ -3,16 +3,11 @@ import React from 'react';
 import Image from 'next/image';
 
 import { ProjectSummary, storyGenBulletsSummary } from 'lib/projectInfo';
+import storyImage from 'public/rustacean.png';
 
 const StoryGenImage = () => {
   return (
-    <Image
-      src="/rustacean.png"
-      alt="rust langauge icon"
-      width={1200}
-      height={800}
-      objectFit="contain"
-    />
+    <Image src={storyImage} alt="rust langauge icon" objectFit="contain" />
   );
 };
 

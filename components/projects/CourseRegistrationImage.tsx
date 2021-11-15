@@ -3,17 +3,11 @@ import React from 'react';
 import Image from 'next/image';
 
 import { ProjectSummary, registrationBulletsSummary } from 'lib/projectInfo';
+import pythonImage from 'public/python.png';
 
 const CourseRegistrationImage = () => {
   return (
-    <Image
-      src="/python.png"
-      alt="python langauge icon"
-      width={2400}
-      height={2390}
-      objectFit="contain"
-      // sizes="50vw"
-    />
+    <Image src={pythonImage} alt="python langauge icon" objectFit="contain" />
   );
 };
 
