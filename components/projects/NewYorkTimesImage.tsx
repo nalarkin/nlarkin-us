@@ -3,17 +3,10 @@ import React from 'react';
 import Image from 'next/image';
 
 import { ProjectSummary, newYorkTimesBulletsSummary } from 'lib/projectInfo';
+import timesImage from 'public/nextjs.png';
 
 const NewYorkTimesImage = () => {
-  return (
-    <Image
-      src="/nextjs.png"
-      alt="next js logo"
-      width={1200}
-      height={719}
-      objectFit="contain"
-    />
-  );
+  return <Image src={timesImage} alt="next js logo" objectFit="contain" />;
 };
 
 export default NewYorkTimesImage;

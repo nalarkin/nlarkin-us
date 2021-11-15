@@ -3,16 +3,14 @@ import React from 'react';
 import Image from 'next/image';
 
 import { inventoryBulletsSummary, ProjectSummary } from 'lib/projectInfo';
+import gsuImage from 'public/gsu.png';
 
 const InventoryManagementImage = () => {
   return (
     <Image
-      src="/gsu.png"
+      src={gsuImage}
       alt="georgia state university logo"
-      width={1500}
-      height={1221}
       objectFit="contain"
-      // sizes="50vw"
     />
   );
 };
