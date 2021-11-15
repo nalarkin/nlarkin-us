@@ -1,8 +1,8 @@
 export const appConfig = {
-  site_name: "Nathan Larkin's personal site",
+  site_name: "Nathan Larkin's Personal Site",
   title: 'Nextjs Starter',
   description:
-    "This is Nathan Larkin's personal website which includes example projects and resume information.",
+    "This is Nathan Larkin's personal website which includes example projects.",
   locale: 'en',
 };
 
@@ -14,7 +14,7 @@ export const SEO = {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.nlarkin.us',
-    site_name: "Nathan Larkin's personal site",
+    site_name: "Nathan Larkin's Personal Site",
   },
   twitter: {
     cardType: 'summary_large_image',
