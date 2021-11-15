@@ -7,7 +7,8 @@ import { storyGenBullets } from 'lib/projectInfo';
 
 const seo: SEOProps = {
   title: storyGenSummary.title,
-  description: 'hello',
+  description:
+    'A binary executable that generates random sentences based off the user defined rules read from a local text file.',
 };
 
 const longerStoryGenSummary = { ...storyGenSummary, bullets: storyGenBullets };

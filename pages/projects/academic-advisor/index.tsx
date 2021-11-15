@@ -7,7 +7,8 @@ import { academicAdvisorBullets } from 'lib/projectInfo';
 
 const seo: SEOProps = {
   title: academicAdvisorSummary.title,
-  description: 'hello',
+  description:
+    'Android application that was designed to improve communication between parents, students, and teachers.',
 };
 
 const longerAcademicSummary = {

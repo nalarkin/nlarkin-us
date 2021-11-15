@@ -7,7 +7,8 @@ import { newYorkTimesBullets } from 'lib/projectInfo';
 
 const seo: SEOProps = {
   title: newYorkTimesSummary.title,
-  description: 'hello',
+  description:
+    'A fully responsive New York Times website clone built from scratch.',
 };
 
 const longerNewYorkSummary = {

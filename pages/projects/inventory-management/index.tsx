@@ -7,7 +7,8 @@ import { inventoryBullets } from 'lib/projectInfo';
 
 const seo: SEOProps = {
   title: inventoryManagementSummary.title,
-  description: 'hello',
+  description:
+    'A full-stack inventory management website for 30+ GSU graduate researchers.',
 };
 
 const longerInventorySummary = {

@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 
 const seo: SEOProps = {
   title: courseRegistrationSummary.title,
-  description: 'hello',
+  description: 'Application which automatically registers for courses.',
 };
 
 const longerCourseRegistrationSummary = {
