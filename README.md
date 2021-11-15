@@ -1,48 +1,22 @@
 # nlarkin.us - Nathan's Personal Website
 
-## TODO:
+## FYI
 
-- Fix text wrapping on SectionHero Tile on size < laptop
+* There won't be a lot of documentation because the website is only intended to be interacted with through the browser.
+* Also there is probably a lot of dead code in the components folder. It's not a high priority for me to remove this, as the unused code gets removed at build time.
+* The main branch of this GitHub repository is what gets deployed to https://www.nlarkin.us (deployed through Varcel). 
 
-- Create Section Header Card with a specific layout
-- add tiles with different sizes for the home page and section pages.
-- add valid links to header and footer
-- Probably add OAuth (github/social sign in) because it's fairly simple and useful to have.
-- Add search feature to author pages
+## Things that were difficult
 
-## Boilerplate Generated During create is below
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Matching the exact behavior of the NYT when it resized was difficult, order would frequently change, and there were many stages to each layout. 
+  * If I had more time I would have copied more layouts to add more variety to my site.
+* Using conditional CSS was new for me, such as `.container:not(:first-child)::before {...}`
+  * Using this is how the majority of the NYT achieves it's dividers
+* Carousels were a big pain to style because the packages on `npm` offer very little styling control and have hidden implementation details that made it difficult to utilize CSS flexbox.
+* Implementing the search initial page load after the search was difficult with fuse.js
+  * It was easy to load the component with fuse.js and users could search, but when I transition to a new page, I had difficulty getting the results to to display.
+  * Solved using the hook useEffect with a useCallback hook to update the state on load.
+* Sanity.io was very time consuming to setup.
+  * Getting Rich text was difficult, ran into numerous issues. Turns out their example blog project was causing the issue! *Arggg*
+  * Getting the statically generated content at build time was a little difficult, mainly because this was my first time using Next.js
+  * The `GROQ` query language used for querying data had a learning curve. It does have some cool features.

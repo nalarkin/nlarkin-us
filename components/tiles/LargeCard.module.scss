@@ -51,7 +51,7 @@
   }
 }
 
-@media (min-width: $size-tablet + 1px) {
+@media (min-width: ($size-tablet + 1px)) {
   .card {
     @include grid;
   }

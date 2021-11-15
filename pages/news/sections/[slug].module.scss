@@ -3,3 +3,11 @@
 .body {
   @include body-container;
 }
+
+.heroContainer {
+  // "flex flex-col pt-7"
+  @include flex-col;
+  padding-top: 1.75rem;
+  // padding: 1.75rem 3% 0px;
+  @include body-container;
+}
