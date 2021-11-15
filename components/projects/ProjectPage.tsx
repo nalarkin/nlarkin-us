@@ -33,13 +33,17 @@ export const BuildList = ({ values }: BuildListProps) => {
 };
 
 const ProjectPage = ({ project, seo, children = null }: ProjectPageProps) => {
-  const { title, image, bullets, href } = project;
+  const { title, image, bullets, href, technologies } = project;
   const [buttonText] = getButtonTextFromLink(href);
   return (
     <Layout seo={seo}>
       <main className={styles.mainContainer}>
         <h1 className={styles.title}>{`${title} Project`}</h1>
         <div className={styles.image}>{image}</div>
+        <div className={styles.technology}>
+          <h2 className={styles.technologyTitle}>Technologies and Concepts</h2>
+          <div className={styles.technologyText}>{technologies}</div>
+        </div>
         <BuildList values={bullets} />
         <LinkWrapper href={href}>
           <div className={styles.primaryButton}>{buttonText}</div>

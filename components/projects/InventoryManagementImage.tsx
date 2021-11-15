@@ -25,4 +25,6 @@ export const inventoryManagementSummary: ProjectSummary = {
   slug: 'inventory-management',
   bullets: inventoryBulletsSummary,
   image: <InventoryManagementImage />,
+  technologies:
+    'TypeScript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Async Data Fetching',
 };

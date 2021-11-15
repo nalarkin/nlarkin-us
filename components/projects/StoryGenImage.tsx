@@ -24,4 +24,5 @@ export const storyGenSummary: ProjectSummary = {
   bullets: storyGenBulletsSummary,
   image: <StoryGenImage />,
   slug: 'story-generator',
+  technologies: 'Rust, GitHub Pages, Grammar Parse Trees',
 };
