@@ -110,3 +110,15 @@ export const editExcerptToSize = (
 };
 
 export const imageSizeRegex = /-([\d]{3,})x([\d]{3,})-/;
+
+export const getButtonTextFromLink = (href: string): [string, boolean] => {
+  let buttonText = 'See on GitHub';
+  let isDisabled = false;
+  if (href.length === 0) {
+    buttonText = 'Private Code';
+    isDisabled = true;
+  } else if (!href.includes('https:')) {
+    buttonText = 'View Site';
+  }
+  return [buttonText, isDisabled];
+};

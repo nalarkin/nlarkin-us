@@ -5,13 +5,14 @@ $nl-accent-background: rgb(219, 234, 254);
 $nl-accent-background-dark: rgb(193, 208, 246);
 $nl-accent-text: rgb(30, 58, 138);
 $nl-font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
+$nl-learn-button: rgb(235, 235, 235);
+// $nl-learn-button: rgb(168, 255, 233);
+$nl-learn-button-text: rgb(92, 92, 92);
 
 %title {
   font-weight: 700;
-  // font-size: xx-large;
   font-size: 1.4rem;
   padding: 10px 20px 0px;
-
   text-align: center;
   @include media('>tablet') {
     padding: 10px 30px 0px;
@@ -50,5 +51,19 @@ $nl-font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
   padding: 0px 50px;
   @include media('>tablet') {
     padding: 0px 50px 0px;
+  }
+}
+
+%homeButton {
+  padding: 15px;
+  border-radius: 20px;
+  width: 150px;
+  text-align: center;
+  font-size: 1rem;
+  // margin: 10px auto;
+  font-weight: 600;
+  margin-bottom: 10px;
+  &:hover {
+    filter: brightness(0.9);
   }
 }

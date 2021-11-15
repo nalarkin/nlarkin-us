@@ -1,0 +1,10 @@
+@import '../../../styles/home';
+
+.primaryButton {
+  @extend %homeButton;
+  background-color: hsl(0, 100%, 81%);
+  color: #000;
+  margin: 0px auto 10px;
+  font-size: 1.3rem;
+  width: 250px;
+}

@@ -6,15 +6,28 @@ export interface Project {
   href: string;
 }
 
-const storyGenBullets = [
+export interface ProjectSummary {
+  title: string;
+  image: React.ReactElement;
+  slug: string;
+  bullets: string[];
+  href: string;
+}
+
+export const storyGenBullets = [
   'Developed a binary executable that generates random sentences based off the user defined rules read from a local text file.',
   'Developed grammar rule validation that prevents endless cycles and unreachable grammar rules by using graph theory.',
   'Implemented Backus-Naur grammar notation as the basis for writing grammar rules.',
   'Created substation documentation for the application.',
   'Key Concepts include: graph theory for validity tests, Backus-Naur form grammar for rules, and graceful error handling.',
+  'Written in Rust.',
+];
+export const storyGenBulletsSummary = [
+  'Developed a binary executable that generates random sentences based off the user defined rules read from a local text file.',
+  'Developed grammar rule validation that prevents endless cycles and unreachable grammar rules by using graph theory.',
 ];
 
-const academicAdvisorBullets = [
+export const academicAdvisorBullets = [
   'Part of team that developed an Android application that was designed to improve communication between parents, students, and teachers.',
   'Private messaging',
   'Secure user signup pipeline',
@@ -23,7 +36,12 @@ const academicAdvisorBullets = [
   'Developed a reddit like messaging board for discussions between application users',
   'Helped develop the local notifications that students and parents could receive for upcoming homework assignments and school events.',
 ];
-const newYorkTimesBullets = [
+export const academicAdvisorBulletsSummary = [
+  'Part of team that developed an Android application that was designed to improve communication between parents, students, and teachers.',
+  'Features include private messaging, user authentication, secure user signup pipeline.',
+  'Desiged and implemented the backend database.',
+];
+export const newYorkTimesBullets = [
   'Developed a fully responsive New York Times website clone from scratch.',
   'Website is generated statically using React and Next.js.',
   'Extensive use of SASS for custom responsive style. Tailwind was used for prototyping, but vast majority is styled with SASS.',
@@ -35,7 +53,12 @@ const newYorkTimesBullets = [
   'Accordion footer for mobile viewers.',
   'Implemented article searching, for fuzzy matches that include article title, excerpt, and author name.',
 ];
-const inventoryBullets = [
+export const newYorkTimesBulletsSummary = [
+  'Developed a fully responsive New York Times website clone from scratch.',
+  'Extensive use of SASS for custom responsive style.',
+  'Implemented article searching, for fuzzy matches that include article title, excerpt, and author name.',
+];
+export const inventoryBullets = [
   'Developing a full-stack inventory management website for 30+ GSU graduate researchers.',
   'Application features will include CRUD operations on items in inventory, including renting and returning items, form validation, authentication, authorization, API creation, and RESTful API communication.',
   'Sole person responsible for the front-end development of the application, along with two people who are developing the Django backend.',
@@ -45,7 +68,11 @@ const inventoryBullets = [
   'Inventory and users data is persisted through a MySQL database.',
   'Estimated initial release Jan 1st, 2022 ??',
 ];
-const registrationBullets = [
+export const inventoryBulletsSummary = [
+  'Developing a full-stack inventory management website for 30+ GSU graduate researchers.',
+  'Application features will include CRUD operations on items in inventory, including renting and returning items, form validation, authentication, authorization, API creation, and RESTful API communication.',
+];
+export const registrationBullets = [
   'Developed an application which routinely searches for desired courses at my college and automatically registers for the course when they become available.',
   'Application is implemented through CLI commands and uses browser automation to perform actions while the user is away.',
   'Application can run completely in the background within a terminal. There is no browser window necessary.',
@@ -53,6 +80,10 @@ const registrationBullets = [
   'Design patterns were developed using the classic `Design Patterns: Elements of Reusable Object-Oriented Software`',
   'Design patterns include the stategy pattern and subscribe/observe pattern, among others.',
   'During design I stressed the importance of communication through interface abstraction.',
+];
+export const registrationBulletsSummary = [
+  'Developed an application which routinely searches for desired courses at my college and automatically registers for the course when they become available.',
+  'Application is implemented through CLI commands and uses browser automation to perform actions while the user is away.',
 ];
 
 export const allProjects: Project[] = [

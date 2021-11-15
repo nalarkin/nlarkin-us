@@ -57,20 +57,20 @@
     }
   }
   .cardText {
+    .tileHeader {
+      @extend %title;
+    }
+    .subtitle {
+      @extend %subtitle;
+    }
+    .technologies {
+      @extend %technologies;
+    }
+    .body {
+      @extend %body;
+    }
   }
   // @include debug-response;
-}
-.tileHeader {
-  @extend %title;
-}
-.subtitle {
-  @extend %subtitle;
-}
-.technologies {
-  @extend %technologies;
-}
-.body {
-  @extend %body;
 }
 
 .welcomeMessage {
@@ -130,36 +130,31 @@
 .tileButton {
   background-color: $nl-accent-background;
   color: rgb(30, 58, 138);
-  @extend %homeButton;
-}
-.learnMoreButton {
-  // background-color: #fff;
-  background-color: $nl-learn-button;
-  color: $nl-learn-button-text;
-  // border: 1px solid $nl-learn-button-text;
-  @extend %homeButton;
+  padding: 15px;
+  border-radius: 20px;
+  width: 200px;
+  text-align: center;
+  font-size: 1rem;
+  margin: 10px auto;
+  // font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  &:hover {
+    background-color: $nl-accent-background-dark;
+  }
 }
 .disabledButton {
-  // font-size: 0.7rem;
+  // opacity: 30%;
+  // pointer-events: none;
+  // cursor: none;
   &:hover {
-    filter: brightness(1);
+    background-color: $nl-accent-background;
   }
+}
+
+.body {
 }
 
 .bodyList {
   max-width: max-content;
-  // margin: 0px auto;
-  margin-right: -1em;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 50px;
-}
-
-.card {
-  display: grid;
-  grid-template-rows: max-content 200px 1fr;
-  gap: 15px;
+  margin: 0px auto;
 }

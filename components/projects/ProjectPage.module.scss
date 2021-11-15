@@ -1,0 +1,57 @@
+@import 'styles/news';
+@import 'styles/home';
+.mainContainer {
+  display: grid;
+  grid-template-rows: max-content 200px 1fr;
+  gap: 50px;
+  color: #fff;
+  font-family: $nl-font-family;
+  max-width: 1000px;
+  padding: 0px 10%;
+  margin: 0px auto;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.list {
+  &::before {
+    content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #fff; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+  }
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
+}
+
+.bodyList {
+  // margin: 0px auto;
+  margin-right: -1em;
+  font-size: 1.5rem;
+}
+
+.primaryButton {
+  @extend %homeButton;
+  background-color: $nl-accent-background;
+  color: $nl-accent-text;
+  margin: 0px auto 10px;
+  font-size: 1.3rem;
+  width: 250px;
+}
+
+.image {
+  display: grid;
+  background-color: rgb(192, 192, 192);
+  border-radius: 20px;
+  padding: 10px 40px;
+}
+
+.imageBackground {
+}

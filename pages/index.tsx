@@ -2,9 +2,14 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import React from 'react';
 
-import Link from 'next/link';
-
-import { allProjects, Project } from 'lib/projectInfo';
+import { academicAdvisorSummary } from 'components/projects/AcademicAdvisorImage';
+import { courseRegistrationSummary } from 'components/projects/CourseRegistrationImage';
+import { inventoryManagementSummary } from 'components/projects/InventoryManagementImage';
+import { newYorkTimesSummary } from 'components/projects/NewYorkTimesImage';
+import { storyGenSummary } from 'components/projects/StoryGenImage';
+import { LinkWrapper } from 'components/shared/LinkWrapper';
+import { ProjectSummary } from 'lib/projectInfo';
+import { getButtonTextFromLink } from 'lib/utils';
 
 import Layout from '../components/layouts/layout';
 import style from './index.module.scss';
@@ -12,7 +17,7 @@ import style from './index.module.scss';
 interface BuildListProps {
   values: string[];
 }
-const BuildList = ({ values }: BuildListProps) => {
+export const BuildList = ({ values }: BuildListProps) => {
   return (
     <ul className={style.bodyList}>
       {values.map((content, idx) => {
@@ -26,56 +31,29 @@ const BuildList = ({ values }: BuildListProps) => {
   );
 };
 
-interface LinkWrapperProps {
-  href: string;
-  children: React.ReactNode;
-}
-
-/** Wraps the children with a link. Uses next link if the link destination
- * is within this domain, otherwise use a traditional <a> link */
-const LinkWrapper = ({ href, children }: LinkWrapperProps) => {
-  if (href.includes('https:')) {
-    return (
-      <a target="_blank" href={href} rel="noopener noreferrer">
-        {children}
-      </a>
-    );
-  }
-  if (href.length === 0) {
-    return <>{children}</>;
-  }
-  return (
-    <Link href={href}>
-      <a>{children}</a>
-    </Link>
-  );
-};
-
 interface ProjectTileProps {
-  project: Project;
+  project: ProjectSummary;
 }
 
 const ProjectTile = ({ project }: ProjectTileProps) => {
-  const { title, href, bullets, subtitle, technologies } = project;
-  let buttonText = 'See on GitHub';
-  let isDisabled = false;
-  if (href.length === 0) {
-    buttonText = 'Private source code';
-    isDisabled = true;
-  } else if (!href.includes('https:')) {
-    buttonText = 'See the Site';
-  }
+  const { title, href, bullets, image, slug } = project;
+  const [buttonText, isDisabled] = getButtonTextFromLink(href);
   return (
     <section className={style.tileContainer}>
-      <div className={style.cardText}>
-        <h3 className={style.tileHeader}>{title}</h3>
+      <div className={style.card}>
         {/* <h4 className={style.subtitle}>{subtitle}</h4> */}
-        <h4 className={style.technologies}>{technologies}</h4>
+        <h3 className={style.tileHeader}>{title}</h3>
+        <div>
+          <div className="flex w-full h-full px-10"> {image}</div>
+        </div>
         <div className={style.body}>
           <BuildList values={bullets} />
         </div>
       </div>
-      <div className="flex mx-auto">
+      <div className="flex justify-evenly">
+        <LinkWrapper href={`/projects/${slug}`}>
+          <div className={style.learnMoreButton}>Learn More</div>
+        </LinkWrapper>
         <LinkWrapper href={href}>
           <div
             className={`${style.tileButton} ${
@@ -91,7 +69,7 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
 };
 
 const HomeSEO = {
-  description: "Welcome to Nathan Larkin's personal website.",
+  description: "Welcome to Nathan Larkin's Personal Website.",
   title: 'Home',
 };
 
@@ -99,19 +77,12 @@ const HomeContents = () => {
   return (
     <div>
       <h2 className={style.welcomeMessage}>Personal Projects</h2>
-      <div className={style.homeContainer}>
-        <div className={style.tileGroup}>
-          <ProjectTile project={allProjects[0]} />
-          <ProjectTile project={allProjects[3]} />
-        </div>
-        <div className={style.tileGroupMiddle}>
-          <ProjectTile project={allProjects[4]} />
-        </div>
-        <div className={style.tileGroup}>
-          <ProjectTile project={allProjects[2]} />
-
-          <ProjectTile project={allProjects[1]} />
-        </div>
+      <div className={style.cards}>
+        <ProjectTile project={inventoryManagementSummary} />
+        <ProjectTile project={newYorkTimesSummary} />
+        <ProjectTile project={storyGenSummary} />
+        <ProjectTile project={courseRegistrationSummary} />
+        <ProjectTile project={academicAdvisorSummary} />
       </div>
     </div>
   );
