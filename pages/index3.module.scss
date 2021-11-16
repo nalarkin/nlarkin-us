@@ -1,0 +1,173 @@
+@import 'styles/news';
+@import 'styles/home';
+
+@mixin home-link-hover($color) {
+  &:hover {
+    color: $color;
+    transition: color 0.6s ease;
+  }
+}
+
+@mixin debug-response() {
+  @include media('<phone') {
+    background-color: red;
+  }
+  @include media('>phone', '<tablet') {
+    background-color: orange;
+  }
+  @include media('>tablet', '<laptop') {
+    background-color: yellow;
+  }
+  @include media('>laptop', '<desktop') {
+    background-color: blue;
+  }
+  @include media('>desktop') {
+    background-color: green;
+  }
+}
+
+.tileContainer {
+  background-color: #fff;
+  border-radius: 20px;
+  // border: 4px solid $nl-accent-text;
+  @include flex-col;
+  margin: 20px 0px;
+  padding: 10px 0px;
+  // padding: 10px 20px;
+  width: 100%;
+  height: max-content;
+  @include media('>tablet') {
+    margin: 0px 10px 20px 0px;
+  }
+  @include media('>desktop') {
+    margin: 0px 0px 20px;
+  }
+
+  .list {
+    &::before {
+      content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+      color: $nl-accent-text; /* Change the color */
+      font-weight: bold; /* If you want it to be bold */
+      display: inline-block; /* Needed to add space between the bullet and the text */
+      width: 1em; /* Also needed for space (tweak if needed) */
+      margin-left: -1em; /* Also needed for space (tweak if needed) */
+    }
+    &:not(:first-child) {
+      margin-top: 0.7rem;
+    }
+  }
+  .cardText {
+  }
+  // @include debug-response;
+}
+.tileHeader {
+  @extend %title;
+}
+.subtitle {
+  @extend %subtitle;
+}
+.technologies {
+  @extend %technologies;
+}
+.body {
+  @extend %body;
+}
+
+.welcomeMessage {
+  color: $nl-text;
+  // font-size: xx-large;
+  font-size: 2.2rem;
+  font-family: $nl-font-family;
+  // font-family: $nl-header-font;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1.2rem;
+  margin-bottom: 1rem;
+  @include media('>tablet') {
+    margin-bottom: 2rem;
+  }
+}
+
+.homeContainer {
+  background-color: $nl-background;
+  font-family: $nl-font-family;
+  @include flex-col;
+  @include media('>desktop') {
+    @include flex-row;
+    justify-content: space-between;
+  }
+}
+
+.tileGroup {
+  @include flex-col;
+  justify-content: space-between;
+  flex: 1;
+  @include media('>tablet', '<desktop') {
+    justify-content: space-between;
+    // background-color: red;
+    @include flex-row;
+  }
+  @include media('>desktop') {
+    justify-content: flex-start;
+  }
+}
+
+.tileGroupMiddle {
+  flex: 1;
+  @include flex-col;
+  justify-content: space-between;
+  @include media('>tablet', '<desktop') {
+    justify-content: center;
+    @include flex-row;
+  }
+  @include media('>desktop') {
+    justify-content: flex-start;
+  }
+  @include media('>desktop') {
+    margin: 0px 20px 20px;
+  }
+}
+
+.tileButton {
+  background-color: $nl-accent-background;
+  color: rgb(30, 58, 138);
+  @extend %homeButton;
+}
+.learnMoreButton {
+  // background-color: #fff;
+  background-color: $nl-learn-button;
+  color: $nl-learn-button-text;
+  // border: 1px solid $nl-learn-button-text;
+  @extend %homeButton;
+}
+.disabledButton {
+  // font-size: 0.7rem;
+  &:hover {
+    filter: brightness(1);
+  }
+}
+
+.bodyList {
+  max-width: max-content;
+  margin-right: -1em;
+}
+
+.cards {
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  @include media('>phone') {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    // grid-auto-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+  // background-color: pink;
+  gap: 50px;
+}
+
+.card {
+  display: grid;
+  // grid-template-rows: max-content 200px 1fr;
+  grid-template-rows: max-content 200px 1fr;
+  min-height: 100%;
+  gap: 15px;
+}

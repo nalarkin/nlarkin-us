@@ -12,7 +12,7 @@ import { ProjectSummary } from 'lib/projectInfo';
 import { getButtonTextFromLink } from 'lib/utils';
 
 import Layout from '../components/layouts/layout';
-import style from './index.module.scss';
+import style from './index3.module.scss';
 
 interface BuildListProps {
   values: string[];
@@ -50,23 +50,18 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
         </div>
       </div>
       <div className="flex justify-evenly">
-        <LinkWrapper
-          href={`/projects/${slug}`}
-          classStyle={style.linkWrapperLearn}
-        >
+        <LinkWrapper href={`/projects/${slug}`}>
           <div className={style.learnMoreButton}>Learn More</div>
         </LinkWrapper>
-        {/* <div className={style.linkWrapper}> */}
-        <LinkWrapper href={href} classStyle={style.linkWrapperGithub}>
+        <LinkWrapper href={href}>
           <div
             className={`${style.tileButton} ${
               isDisabled && style.disabledButton
-            } ${!isDisabled && style.enabledButton}`}
+            }`}
           >
             {buttonText}
           </div>
         </LinkWrapper>
-        {/* </div> */}
       </div>
     </section>
   );

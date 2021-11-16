@@ -1,9 +1,9 @@
 @import 'styles/news';
 @import 'styles/home';
 
-@mixin home-link-hover($color) {
+@mixin home-link-hover-2($color) {
   &:hover {
-    color: $color;
+    color: color.adjust($color, $red: 15);
     transition: color 0.6s ease;
   }
 }
@@ -28,21 +28,11 @@
 
 .tileContainer {
   background-color: #fff;
-  border-radius: 20px;
-  // border: 4px solid $nl-accent-text;
+  // margin: 20px 0px;
+  border-radius: 30px;
+  padding: 15px 0px;
   @include flex-col;
-  margin: 20px 0px;
-  padding: 10px 0px;
-  // padding: 10px 20px;
-  width: 100%;
-  height: max-content;
-  @include media('>tablet') {
-    margin: 0px 10px 20px 0px;
-  }
-  @include media('>desktop') {
-    margin: 0px 0px 20px;
-  }
-
+  justify-content: space-between;
   .list {
     &::before {
       content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
@@ -56,9 +46,6 @@
       margin-top: 0.7rem;
     }
   }
-  .cardText {
-  }
-  // @include debug-response;
 }
 .tileHeader {
   @extend %title;
@@ -75,10 +62,8 @@
 
 .welcomeMessage {
   color: $nl-text;
-  // font-size: xx-large;
   font-size: 2.2rem;
   font-family: $nl-font-family;
-  // font-family: $nl-header-font;
   text-align: center;
   font-weight: 500;
   margin-top: 1.2rem;
@@ -88,73 +73,29 @@
   }
 }
 
-.homeContainer {
-  background-color: $nl-background;
-  font-family: $nl-font-family;
-  @include flex-col;
-  @include media('>desktop') {
-    @include flex-row;
-    justify-content: space-between;
-  }
-}
-
-.tileGroup {
-  @include flex-col;
-  justify-content: space-between;
-  flex: 1;
-  @include media('>tablet', '<desktop') {
-    justify-content: space-between;
-    // background-color: red;
-    @include flex-row;
-  }
-  @include media('>desktop') {
-    justify-content: flex-start;
-  }
-}
-
-.tileGroupMiddle {
-  flex: 1;
-  @include flex-col;
-  justify-content: space-between;
-  @include media('>tablet', '<desktop') {
-    justify-content: center;
-    @include flex-row;
-  }
-  @include media('>desktop') {
-    justify-content: flex-start;
-  }
-  @include media('>desktop') {
-    margin: 0px 20px 20px;
-  }
-}
-
 .tileButton {
-  background-color: $nl-accent-background;
-  color: rgb(30, 58, 138);
   @extend %homeButton;
+  &:not(.disabledButton) {
+    @include style-home-button($nl-accent-background, #1f3a85);
+  }
+  &:is(.disabledButton) {
+    @include basic-button-style($nl-accent-background, #1f3a85);
+  }
 }
 .learnMoreButton {
-  // background-color: #fff;
-  background-color: $nl-learn-button;
-  color: $nl-learn-button-text;
-  // border: 1px solid $nl-learn-button-text;
   @extend %homeButton;
-}
-.disabledButton {
-  // font-size: 0.7rem;
-  &:hover {
-    filter: brightness(1);
+  &:not(.disabledButton) {
+    @include style-home-button($nl-learn-button, $nl-learn-button-text);
   }
 }
-
 .bodyList {
   max-width: max-content;
   margin-right: -1em;
 }
 
 .cards {
+  margin-top: 30px;
   display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   @include media('>phone') {
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   }
@@ -163,6 +104,14 @@
 
 .card {
   display: grid;
-  grid-template-rows: max-content 200px 1fr;
+  grid-template-rows: max-content 200px max-content;
   gap: 15px;
+}
+
+.linkWrapperGithub {
+  @include focus-wrapper($nl-accent-background-dark);
+}
+
+.linkWrapperLearn {
+  @include focus-wrapper($nl-learn-button);
 }
