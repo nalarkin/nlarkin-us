@@ -107,3 +107,11 @@
   grid-template-rows: max-content 200px max-content;
   gap: 15px;
 }
+
+.linkWrapperGithub {
+  @include focus-wrapper($nl-accent-background-dark);
+}
+
+.linkWrapperLearn {
+  @include focus-wrapper($nl-learn-button);
+}

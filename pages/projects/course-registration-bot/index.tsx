@@ -25,9 +25,14 @@ const CourseRegistrationPage = () => {
       seo={seo}
       whiteBackground={true}
     >
-      <LinkWrapper href={'https://youtu.be/ymE4Cj72WnM'}>
-        <div className={styles.primaryButton}>Watch Demo</div>
-      </LinkWrapper>
+      <div className="mx-auto w-max">
+        <LinkWrapper
+          href={'https://youtu.be/ymE4Cj72WnM'}
+          classStyle={styles.buttonFocusWrapper}
+        >
+          <div className={styles.primaryButton}>Watch Demo</div>
+        </LinkWrapper>
+      </div>
     </ProjectPage>
   );
 };

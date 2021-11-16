@@ -7,3 +7,8 @@
   font-size: 1.3rem;
   width: 250px;
 }
+
+.buttonFocusWrapper {
+  @include focus-wrapper(#ff9e9e);
+  width: max-content;
+}

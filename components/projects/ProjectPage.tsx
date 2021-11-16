@@ -45,9 +45,11 @@ const ProjectPage = ({ project, seo, children = null }: ProjectPageProps) => {
           <div className={styles.technologyText}>{technologies}</div>
         </div>
         <BuildList values={bullets} />
-        <LinkWrapper href={href}>
-          <div className={styles.primaryButton}>{buttonText}</div>
-        </LinkWrapper>
+        <div className="w-max mx-auto">
+          <LinkWrapper href={href} classStyle={styles.buttonFocusWrapper}>
+            <div className={styles.primaryButton}>{buttonText}</div>
+          </LinkWrapper>
+        </div>
         {children}
       </main>
     </Layout>

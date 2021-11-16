@@ -70,7 +70,7 @@ $nl-header-font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
   text-align: center;
   // font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 
 @mixin basic-button-style($background, $text-color) {
@@ -85,5 +85,21 @@ $nl-header-font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
     color: color.scale($text-color, $lightness: 40%);
     background-color: color.scale($background, $lightness: 40%);
     transition: color 0.6s ease, background-color 0.6s ease;
+  }
+  // &:focus {
+  //   // border: 2px solid color.scale($background, $blackness: 20%);
+  //   // border-radius: 20px;
+  //   outline: 2px solid red;
+  // }
+  // &:focus-within {
+  //   outline: 2px solid green;
+  // }
+}
+
+@mixin focus-wrapper($color) {
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid color.scale($color, $blackness: 80%);
+    border-radius: 20px;
   }
 }

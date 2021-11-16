@@ -23,11 +23,16 @@ const longerNewYorkSummary = {
 const NewYorkTimesPage = () => {
   return (
     <ProjectPage project={longerNewYorkSummary} seo={seo}>
-      <LinkWrapper href="https://github.com/nalarkin/nlarkin-us">
-        <div className={style.primaryButton}>
-          {getButtonTextFromLink('https://github.com/nalarkin/nlarkin-us')}
-        </div>
-      </LinkWrapper>
+      <div className="w-max mx-auto">
+        <LinkWrapper
+          href="https://github.com/nalarkin/nlarkin-us"
+          classStyle={style.buttonFocusWrapper}
+        >
+          <div className={style.primaryButton}>
+            {getButtonTextFromLink('https://github.com/nalarkin/nlarkin-us')}
+          </div>
+        </LinkWrapper>
+      </div>
     </ProjectPage>
   );
 };

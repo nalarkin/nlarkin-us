@@ -50,10 +50,14 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
         </div>
       </div>
       <div className="flex justify-evenly">
-        <LinkWrapper href={`/projects/${slug}`}>
+        <LinkWrapper
+          href={`/projects/${slug}`}
+          classStyle={style.linkWrapperLearn}
+        >
           <div className={style.learnMoreButton}>Learn More</div>
         </LinkWrapper>
-        <LinkWrapper href={href}>
+        {/* <div className={style.linkWrapper}> */}
+        <LinkWrapper href={href} classStyle={style.linkWrapperGithub}>
           <div
             className={`${style.tileButton} ${
               isDisabled && style.disabledButton
@@ -62,6 +66,7 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
             {buttonText}
           </div>
         </LinkWrapper>
+        {/* </div> */}
       </div>
     </section>
   );
