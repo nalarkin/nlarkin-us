@@ -47,8 +47,7 @@
 
 .primaryButton {
   @extend %homeButton;
-  background-color: $nl-accent-background;
-  color: $nl-accent-text;
+  @include style-home-button($nl-accent-background, $nl-accent-text);
   margin: 0px auto 10px;
   font-size: 1.3rem;
   width: 250px;
