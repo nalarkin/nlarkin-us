@@ -7,22 +7,28 @@ module.exports = (phase, { defaultConfig }) => {
   if ("sassOptions" in defaultConfig) {
     defaultConfig.sassOptions = {
       includePaths: ["./styles"],
-      // prependData: `@import "~@styles/variables.scss";`,
     };
   }
 
   if ("reactStrictMode" in defaultConfig) {
     defaultConfig.reactStrictMode = true;
   }
-  // if ('images' in defaultConfig) {
-  //   defaultConfig['images'] = { domains: ['cdn.sanity.io'] };
-  // }
-
-  return { ...defaultConfig, images: { domains: ["cdn.sanity.io"] } };
+  return {
+    ...defaultConfig,
+    images: { domains: ["cdn.sanity.io"] },
+    async redirects() {
+      return [
+        // {
+        //   source: "/projects/:slug(\\w{1,})",
+        //   destination: "/projects/:slug",
+        //   permanent: true,
+        // },
+        {
+          source: "/(projects)",
+          destination: "/",
+          permanent: false,
+        },
+      ];
+    },
+  };
 };
-// module.exports = {
-// reactStrictMode: true,
-// images: {
-//   domains: ['cdn.sanity.io'],
-// },
-// };

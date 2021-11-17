@@ -13,10 +13,11 @@ export default NewYorkTimesImage;
 
 export const newYorkTimesSummary: ProjectSummary = {
   title: 'New York Times Clone',
-  href: '/news',
+  href: 'https://github.com/nalarkin/nlarkin-us',
+  // href: '/news',
   bullets: newYorkTimesBulletsSummary,
   image: <NewYorkTimesImage />,
   slug: 'nyt-clone',
   technologies:
-    'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Headless CMS',
+    'TypeScript, React.js, Next.js, Sass, HTML/CSS, JavaScript, Headless CMS',
 };

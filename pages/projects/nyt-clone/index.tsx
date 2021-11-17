@@ -24,12 +24,9 @@ const NewYorkTimesPage = () => {
   return (
     <ProjectPage project={longerNewYorkSummary} seo={seo}>
       <div className="w-max mx-auto">
-        <LinkWrapper
-          href="https://github.com/nalarkin/nlarkin-us"
-          classStyle={style.buttonFocusWrapper}
-        >
+        <LinkWrapper href="/news" classStyle={style.buttonFocusWrapper}>
           <div className={style.primaryButton}>
-            {getButtonTextFromLink('https://github.com/nalarkin/nlarkin-us')}
+            {getButtonTextFromLink('/news')}
           </div>
         </LinkWrapper>
       </div>

@@ -24,5 +24,5 @@ export const inventoryManagementSummary: ProjectSummary = {
   bullets: inventoryBulletsSummary,
   image: <InventoryManagementImage />,
   technologies:
-    'TypeScript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Async Data Fetching',
+    'TypeScript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Async Data Fetching, HTML/CSS',
 };

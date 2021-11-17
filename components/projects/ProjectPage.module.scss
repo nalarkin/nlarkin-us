@@ -47,15 +47,15 @@
 
 .primaryButton {
   @extend %homeButton;
+  margin: 0px auto 10px;
+  font-size: 1.3rem;
+  width: 250px;
   &:not(.disabledButton) {
     @include style-home-button($nl-accent-background, #1f3a85);
   }
   &:is(.disabledButton) {
     @include basic-button-style($nl-accent-background, #1f3a85);
   }
-  margin: 0px auto 10px;
-  font-size: 1.3rem;
-  width: 250px;
 }
 
 .buttonFocusWrapper {
@@ -69,14 +69,14 @@
   padding: 10px 40px;
 }
 .technology {
-  font-family: monospace, 'Courier New', Courier;
+  font-family: $nl-font-family;
   color: $nl-accent-background-dark;
   font-size: 1.5rem;
   font-weight: 600;
+  text-align: center;
 
   .technologyTitle {
     font-size: 1.5rem;
-    text-align: center;
     @include media('>tablet') {
       font-size: 1.7rem;
     }
@@ -84,6 +84,7 @@
   }
   .technologyText {
     font-size: 1.2rem;
+    font-style: oblique;
     @include media('>tablet') {
       font-size: 1.3rem;
     }
