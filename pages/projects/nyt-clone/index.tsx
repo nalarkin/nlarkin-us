@@ -7,7 +7,7 @@ import { SEOProps } from 'components/shared/seo';
 import { newYorkTimesBullets } from 'lib/projectInfo';
 import { getButtonTextFromLink } from 'lib/utils';
 
-import style from '../course-registration-bot/index.module.scss';
+import style from '../course-bot/index.module.scss';
 
 const seo: SEOProps = {
   title: newYorkTimesSummary.title,

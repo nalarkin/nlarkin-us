@@ -16,7 +16,7 @@ export default CourseRegistrationImage;
 export const courseRegistrationSummary: ProjectSummary = {
   title: 'Course Registration Bot',
   href: '',
-  slug: 'course-registration-bot',
+  slug: 'course-bot',
   bullets: registrationBulletsSummary,
   image: <CourseRegistrationImage />,
   technologies: 'Python, Selenium, Sphinx',
