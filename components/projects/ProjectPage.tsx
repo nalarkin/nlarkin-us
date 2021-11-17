@@ -34,7 +34,7 @@ export const BuildList = ({ values }: BuildListProps) => {
 
 const ProjectPage = ({ project, seo, children = null }: ProjectPageProps) => {
   const { title, image, bullets, href, technologies } = project;
-  const [buttonText] = getButtonTextFromLink(href);
+  const [buttonText, isDisabled] = getButtonTextFromLink(href);
   return (
     <Layout seo={seo}>
       <main className={styles.mainContainer}>
@@ -47,7 +47,13 @@ const ProjectPage = ({ project, seo, children = null }: ProjectPageProps) => {
         <BuildList values={bullets} />
         <div className="w-max mx-auto">
           <LinkWrapper href={href} classStyle={styles.buttonFocusWrapper}>
-            <div className={styles.primaryButton}>{buttonText}</div>
+            <div
+              className={`${styles.primaryButton} ${
+                isDisabled ? styles.disabledButton : ''
+              }`}
+            >
+              {buttonText}
+            </div>
           </LinkWrapper>
         </div>
         {children}

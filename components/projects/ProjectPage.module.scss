@@ -47,7 +47,12 @@
 
 .primaryButton {
   @extend %homeButton;
-  @include style-home-button($nl-accent-background, $nl-accent-text);
+  &:not(.disabledButton) {
+    @include style-home-button($nl-accent-background, #1f3a85);
+  }
+  &:is(.disabledButton) {
+    @include basic-button-style($nl-accent-background, #1f3a85);
+  }
   margin: 0px auto 10px;
   font-size: 1.3rem;
   width: 250px;
@@ -59,7 +64,7 @@
 
 .image {
   display: grid;
-  background-color: rgb(192, 192, 192);
+  background-color: rgb(233, 233, 233);
   border-radius: 20px;
   padding: 10px 40px;
 }
