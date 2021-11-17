@@ -16,76 +16,63 @@ export interface ProjectSummary {
 }
 
 export const storyGenBullets = [
-  'Developed a binary executable that generates random sentences based off the user defined rules read from a local text file.',
-  'Developed grammar rule validation that prevents endless cycles and unreachable grammar rules by using graph theory.',
-  'Implemented Backus-Naur grammar notation as the basis for writing grammar rules.',
-  'Created substation documentation for the application.',
-  'Key Concepts include: graph theory for validity tests, Backus-Naur form grammar for rules, and graceful error handling.',
-  'Written in Rust.',
-];
-export const storyGenBulletsSummary = [
-  'Developed a binary executable that generates random sentences based off the user defined rules read from a local text file.',
-  'Developed grammar rule validation that prevents endless cycles and unreachable grammar rules by using graph theory.',
+  'Developed a binary executable that generates random sentences based off the user defined rules',
+  'Developed grammar rule validation that prevents endless cycles and unreachable grammar rules by using graph theory',
+  'Grammar rules are parsed from a local text file the user specifies',
+  'Grammar rule notation was based of Backus-Naur grammar notation',
+  'Created substantial documentation for the application',
+  'Implemented graceful error handling, including program exit if endless cycle is detected, and a warning message if unreachable grammar rules exist',
+  'Program is written in Rust',
 ];
 
 export const academicAdvisorBullets = [
-  'Part of team that developed an Android application that was designed to improve communication between parents, students, and teachers.',
-  'Private messaging',
-  'Secure user signup pipeline',
-  'User authentication',
+  'Part of team that developed an Android application that was designed to improve communication between parents, students, and teachers',
+  'Designed and implemented private messaging with message read receipts',
+  'Designed and implemented secure user signup pipeline',
+  'Created login process using Firebase authentication',
   'Backend database design and implementation',
+  'Implemented most state management using an industry standard library named `bloc`',
   'Developed a reddit like messaging board for discussions between application users',
-  'Helped develop the local notifications that students and parents could receive for upcoming homework assignments and school events.',
-];
-export const academicAdvisorBulletsSummary = [
-  'Part of team that developed an Android application that was designed to improve communication between parents, students, and teachers.',
-  'Features include private messaging, user authentication, secure user signup pipeline.',
-  'Desiged and implemented the backend database.',
+  'Helped develop the local notifications that students and parents could receive for upcoming homework assignments and school events',
+  'This was the only project in my portfolio that was developed as a school project',
 ];
 export const newYorkTimesBullets = [
-  'Developed a fully responsive New York Times website clone from scratch.',
-  'Website is generated statically using React and Next.js.',
-  'Extensive use of SASS for custom responsive style. Tailwind was used for prototyping, but vast majority is styled with SASS.',
+  'Developed a fully responsive New York Times website clone from scratch',
+  'Website is generated statically using React and Next.js',
   'Developed schema for article, authors, and categories that are stored in a headless content management system (Sanity.io)',
-  'When website is statically generated at build time, the content from the headless CMS is used to dynamically generate the website.',
+  'Implemented searching for website that matches article title, excerpt, and author name',
+  'Extensive use of SASS for custom responsive style. Tailwind was used for prototyping, but vast majority is styled with SASS',
+  'When website is statically generated at build time, the content from the headless CMS is used to dynamically generate the website',
   'Significant use of the unique open-source Sanity.io query language `GROQ`',
-  'Highly responsive design. I encourage you to change your browsers width and see the website adapt.',
-  'Article Carousels on home page for mobile/tablet viewers',
-  'Accordion footer for mobile viewers.',
-  'Implemented article searching, for fuzzy matches that include article title, excerpt, and author name.',
-];
-export const newYorkTimesBulletsSummary = [
-  'Developed a fully responsive New York Times website clone from scratch.',
-  'Extensive use of SASS for custom responsive style.',
-  'Implemented article searching, for fuzzy matches that include article title, excerpt, and author name.',
+  "Highly responsive design. I encourage you to change your browser's width and see the website adapt",
+  'Created article carousels on home page for mobile/tablet viewers',
+  'Created an accordion footer for mobile viewers',
 ];
 export const inventoryBullets = [
-  'Developing a full-stack inventory management website for 30+ GSU graduate researchers.',
-  'Application features will include CRUD operations on items in inventory, including renting and returning items, form validation, authentication, authorization, API creation, and RESTful API communication.',
-  'Sole person responsible for the front-end development of the application, along with two people who are developing the Django backend.',
-  'Developed mobile friendly application which allows QR code scanning to asynchronously fetch data from the backend database and display info about the scanned item.',
-  'Initial developed in React, but migrated to Next.js to improve scalability.',
-  'Will connect to a django server running on a raspberri pi',
-  'Inventory and users data is persisted through a MySQL database.',
-  'Estimated initial release Jan 1st, 2022 ??',
-];
-export const inventoryBulletsSummary = [
-  'Developing a full-stack inventory management website for 30+ GSU graduate researchers.',
-  'Application features will include CRUD operations on items in inventory, including renting and returning items, form validation, authentication, authorization, API creation, and RESTful API communication.',
+  'Developing a full-stack inventory management website that will serve over 30 GSU researchers',
+  'Sole person responsible for the front-end development of the application',
+  'Application utilizes a custom REST API to provide CRUD operations on items in inventory',
+  'User features includes renting and returning items, form validation and user authentication',
+  'Two other team members are developing the Django backend',
+  'Developed mobile friendly application which allows QR code scanning to asynchronously fetch data from the backend database and display info about the scanned item',
+  'Initial developed in React, but migrated to Next.js to improve scalability',
+  'Application will be deployed on a Raspberry Pi local web server',
+  'Inventory and users data is persisted through a MySQL database',
+  'Estimated initial release December 2021',
 ];
 export const registrationBullets = [
-  'Developed an application which routinely searches for desired courses at my college and automatically registers for the course when they become available.',
-  'Application is implemented through CLI commands and uses browser automation to perform actions while the user is away.',
-  'Application can run completely in the background within a terminal. There is no browser window necessary.',
-  'Continuously refactored to incorporate various design patterns.',
+  'Developed a Python application which routinely searches for desired college courses and registers when a course becomes available',
+  'Application is implemented through CLI commands and uses browser automation to perform searches',
+  'Application can run completely in the background within a terminal. There is no browser window necessary',
+  'Refactored the code to incorporate various design patterns, such as the strategy pattern and subscribe/observe pattern, among others',
   'Design patterns were developed using the classic `Design Patterns: Elements of Reusable Object-Oriented Software`',
-  'Design patterns include the stategy pattern and subscribe/observe pattern, among others.',
-  'During design I stressed the importance of communication through interface abstraction.',
+  'During design I stressed the importance of communication through interface abstraction to improve the reusability, extensibility, and maintainability',
 ];
-export const registrationBulletsSummary = [
-  'Developed an application which routinely searches for desired courses at my college and automatically registers for the course when they become available.',
-  'Application is implemented through CLI commands and uses browser automation to perform actions while the user is away.',
-];
+export const registrationBulletsSummary = registrationBullets.slice(0, 2);
+export const inventoryBulletsSummary = inventoryBullets.slice(0, 3);
+export const newYorkTimesBulletsSummary = newYorkTimesBullets.slice(0, 3);
+export const academicAdvisorBulletsSummary = academicAdvisorBullets.slice(0, 3);
+export const storyGenBulletsSummary = storyGenBullets.slice(0, 3);
 
 export const allProjects: Project[] = [
   {

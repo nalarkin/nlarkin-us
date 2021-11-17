@@ -19,5 +19,5 @@ export const newYorkTimesSummary: ProjectSummary = {
   image: <NewYorkTimesImage />,
   slug: 'nyt-clone',
   technologies:
-    'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Headless CMS',
+    'TypeScript, React.js, Next.js, Sass, HTML/CSS, JavaScript, Headless CMS',
 };
