@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { NextSeo } from 'next-seo';
+
+import Layout from 'components/layouts/layout';
 import { newYorkTimesSummary } from 'components/projects/NewYorkTimesImage';
 import ProjectPage from 'components/projects/ProjectPage';
 import { LinkWrapper } from 'components/shared/LinkWrapper';
@@ -22,16 +25,23 @@ const longerNewYorkSummary = {
 
 const NewYorkTimesPage = () => {
   return (
-    <ProjectPage project={longerNewYorkSummary} seo={seo}>
-      <div className="w-max mx-auto">
-        <LinkWrapper href="/news" classStyle={style.buttonFocusWrapper}>
-          <div className={style.primaryButton}>
-            {getButtonTextFromLink('/news')}
-          </div>
-        </LinkWrapper>
-      </div>
-    </ProjectPage>
+    <>
+      <NextSeo {...seo} />
+      <ProjectPage project={longerNewYorkSummary}>
+        <div className="w-max mx-auto">
+          <LinkWrapper href="/news" classStyle={style.buttonFocusWrapper}>
+            <div className={style.primaryButton}>
+              {getButtonTextFromLink('/news')}
+            </div>
+          </LinkWrapper>
+        </div>
+      </ProjectPage>
+    </>
   );
 };
 
 export default NewYorkTimesPage;
+
+NewYorkTimesPage.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>;
+};

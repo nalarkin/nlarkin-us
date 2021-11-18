@@ -7,13 +7,15 @@ import SEO, { SEOProps } from 'components/shared/seo';
 import style from './layout.module.scss';
 
 type Props = {
-  seo: SEOProps;
+  seo?: SEOProps;
   children?: ReactNode;
 };
 
 const Layout = ({ seo, children }: Props) => (
   <>
-    <SEO description={seo.description} title={seo.title} />
+    {seo !== undefined ? (
+      <SEO description={seo.description} title={seo.title} />
+    ) : null}
     <div className={style.wrapper}>
       <header className={style.nav}>
         <nav className="flex flex-row">

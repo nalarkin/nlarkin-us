@@ -8,6 +8,7 @@ import { inventoryManagementSummary } from 'components/projects/InventoryManagem
 import { newYorkTimesSummary } from 'components/projects/NewYorkTimesImage';
 import { storyGenSummary } from 'components/projects/StoryGenImage';
 import { LinkWrapper } from 'components/shared/LinkWrapper';
+import SEO from 'components/shared/seo';
 import { ProjectSummary } from 'lib/projectInfo';
 import { getButtonTextFromLink } from 'lib/utils';
 
@@ -94,10 +95,15 @@ const HomeContents = () => {
 
 const Home = () => {
   return (
-    <Layout seo={HomeSEO}>
+    <>
+      <SEO description={HomeSEO.description} title={HomeSEO.title} />{' '}
       <HomeContents />
-    </Layout>
+    </>
   );
 };
 
 export default Home;
+
+Home.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>;
+};

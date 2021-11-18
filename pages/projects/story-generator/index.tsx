@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { NextSeo } from 'next-seo';
+
+import Layout from 'components/layouts/layout';
 import ProjectPage from 'components/projects/ProjectPage';
 import { storyGenSummary } from 'components/projects/StoryGenImage';
 import { SEOProps } from 'components/shared/seo';
@@ -14,7 +17,16 @@ const seo: SEOProps = {
 const longerStoryGenSummary = { ...storyGenSummary, bullets: storyGenBullets };
 
 const StoryGenerator = () => {
-  return <ProjectPage project={longerStoryGenSummary} seo={seo} />;
+  return (
+    <>
+      <NextSeo {...seo} />
+      <ProjectPage project={longerStoryGenSummary} />
+    </>
+  );
 };
 
 export default StoryGenerator;
+
+StoryGenerator.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>;
+};

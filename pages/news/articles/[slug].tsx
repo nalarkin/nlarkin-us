@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { NextSeo } from 'next-seo';
 
 import ArticleHeader from 'components/article/ArticleHeader';
 import ArticleHeaderInfo from 'components/article/ArticleHeaderInfo';
@@ -87,24 +88,31 @@ export default function ArticlePage({
     return <div></div>;
   }
   const { title, text, authors, date, image } = data;
+  const SEO = {
+    title: `${title} | The Nathan Times`,
+    description: 'A Mock News Website for my Portfolio.',
+  };
   return (
     <div>
-      <ArticleLayout>
-        <div className="flex flex-col ">
-          {/* optional hero here with title over image */}
-          <div className={style.image}>
-            <ImageBuilder image={image} />
-          </div>
-          <h1 className="text-xl font-bold mt-5 mb-5 mx-auto">{title}</h1>
-          <ArticleHeader authors={authors} />
-          <div className={style.body}>
-            <ArticleHeaderSocial />
-            <ArticleHeaderInfo authors={authors} date={date} />
-            <ArticleBody text={text} />
-          </div>
-          {/* <Disclaimer /> */}
+      <NextSeo {...SEO} />
+      <div className="flex flex-col ">
+        {/* optional hero here with title over image */}
+        <div className={style.image}>
+          <ImageBuilder image={image} />
         </div>
-      </ArticleLayout>
+        <h1 className="text-xl font-bold mt-5 mb-5 mx-auto">{title}</h1>
+        <ArticleHeader authors={authors} />
+        <div className={style.body}>
+          <ArticleHeaderSocial />
+          <ArticleHeaderInfo authors={authors} date={date} />
+          <ArticleBody text={text} />
+        </div>
+        {/* <Disclaimer /> */}
+      </div>
     </div>
   );
 }
+
+ArticlePage.getLayout = function getLayout(page: React.ReactElement) {
+  return <ArticleLayout>{page}</ArticleLayout>;
+};

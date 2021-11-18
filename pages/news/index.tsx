@@ -31,41 +31,6 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   };
 };
 
-// const HomeBuilder = ({
-//   articles,
-// }: {
-//   articles: ArticleResultAll | undefined;
-// }) => {
-//   if (articles === undefined) {
-//     return <div></div>;
-//   }
-
-//   return (
-//     // <>
-//     <>
-//       <div className={style.container}>
-//         <List
-//           items={articles}
-//           renderItem={(article) => {
-//             return (
-//               <LargeArticleCard
-//                 authors={article.authors}
-//                 excerpt={article.excerpt ?? ''}
-//                 image={article.image}
-//                 slug={article.slug}
-//                 title={article.title}
-//                 key={article._id}
-//               />
-//             );
-//           }}
-//         />
-
-//         {/* </> */}
-//       </div>
-//     </>
-//   );
-// };
-
 type Props = {
   data?: HomeQuery;
 };
