@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import { ProjectSummary, registrationBulletsSummary } from 'lib/projectInfo';
-import pythonImage from 'public/python.png';
+import pythonImage from 'public/python_mini.png';
 
 const CourseRegistrationImage = () => {
   return (

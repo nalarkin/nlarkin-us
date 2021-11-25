@@ -1,4 +1,5 @@
 import groq from 'groq';
+import type { IGetImageReturn } from 'plaiceholder/dist/get-image';
 
 import {
   Article,
@@ -60,6 +61,17 @@ export const articleQuery = groq`
       ${articleFields}
     }
   `;
+// export type ArticleQueryResult = Pick<
+//   Schema.Article,
+//   '_id' | 'date' | 'excerpt' | 'title' | 'text'
+// > & {
+//   authors: AuthorsArray;
+//   slug: string;
+//   image: IGetImageReturn['img'] & { blurDataURL: string; alt: string };
+// };
+export type ArticleProps = Omit<ArticleQueryResult, 'image'> & {
+  image: IGetImageReturn['img'] & { blurDataURL: string; alt: string };
+};
 export type ArticleQueryResult = Pick<
   Schema.Article,
   '_id' | 'date' | 'excerpt' | 'image' | 'title' | 'text'
@@ -76,19 +88,13 @@ export const articleQueryAll = groq`
   }`;
 export type ArticleResultAll = Array<Article>;
 
-// export const sectionArticlesQuery = groq`
-// *[_type == 'article' && references(*[_type == "section" && slug.current == $slug][0]._id)][] {
-//   ${articleFields}
-// }
-// `;
-
 export const sectionArticlesQuery = groq`
 *[ _type == "section" && slug.current == $slug ]{
   title,
   "slug": slug.current,
   "articles": *[ _type == "article" && references(^._id)] {
     ${articleFields}
-  }
+  } | order(date desc)
 }[0]`;
 export type SectionArticlesResponse = {
   articles: Array<ArticleDetailedImageAuthors>;
@@ -123,7 +129,7 @@ export const authorQuery = groq`
     ${getArticleAuthors},
     excerpt,
     image
-  }
+  } | order(date desc)
 }
 `;
 export type AuthorQueryResult = {

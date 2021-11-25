@@ -6,7 +6,7 @@
 2. Change home page to not reuse the same 5 articles, and instead us all articles on the page (now that I have enough)
 3. Change article page title format (I think title should appear above image, in addition to the excerpt?)
 4. Check sections not meeting minimum article count
-5. Downsize images on home page
+5. 
 
 ## FYI
 

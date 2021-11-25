@@ -8,9 +8,10 @@ import * as Schema from '../../lib/schema';
 type Props = {
   image?: Schema.ArticleImage;
   classes?: string;
+  blurURL?: string;
 };
 
-export const ImageBuilder = ({ image, classes = '' }: Props) => {
+export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
   const imageRefWithSize = image?.asset._ref;
   if (imageRefWithSize === undefined) {
     return <div></div>;
@@ -41,6 +42,19 @@ export const ImageBuilder = ({ image, classes = '' }: Props) => {
     );
     return <div></div>;
   }
+  if (blurURL.length > 0) {
+    <Image
+      src={imageUrl}
+      alt={image?.alt ?? ''}
+      // layout="responsive"
+      width={imageWidth}
+      height={imageHeight}
+      className={classes}
+      quality={50}
+      placeholder="blur"
+      blurDataURL={blurURL}
+    />;
+  }
 
   return (
     <Image
@@ -50,6 +64,7 @@ export const ImageBuilder = ({ image, classes = '' }: Props) => {
       width={imageWidth}
       height={imageHeight}
       className={classes}
+      quality={50}
     />
   );
 };

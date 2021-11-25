@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import { ProjectSummary, storyGenBulletsSummary } from 'lib/projectInfo';
-import storyImage from 'public/rustacean.png';
+import storyImage from 'public/rustacean_mini.png';
 
 const StoryGenImage = () => {
   return (
