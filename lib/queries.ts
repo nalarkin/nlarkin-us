@@ -69,9 +69,18 @@ export const articleQuery = groq`
 //   slug: string;
 //   image: IGetImageReturn['img'] & { blurDataURL: string; alt: string };
 // };
-export type ArticleProps = Omit<ArticleQueryResult, 'image'> & {
-  image: IGetImageReturn['img'] & { blurDataURL: string; alt: string };
+
+export type PlaceholderImage = IGetImageReturn['img'] & {
+  blurDataURL: string;
+  alt: string;
 };
+
+export type ArticleProps = Omit<ArticleQueryResult, 'image'> & {
+  image: PlaceholderImage;
+};
+
+export type SanityImage = Schema.Article['image'];
+
 export type ArticleQueryResult = Pick<
   Schema.Article,
   '_id' | 'date' | 'excerpt' | 'image' | 'title' | 'text'

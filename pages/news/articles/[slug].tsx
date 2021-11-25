@@ -3,7 +3,6 @@ import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
-import { getPlaiceholder } from 'plaiceholder';
 
 import ArticleHeader from 'components/article/ArticleHeader';
 import ArticleHeaderInfo from 'components/article/ArticleHeaderInfo';
@@ -11,6 +10,7 @@ import ArticleHeaderSocial from 'components/article/ArticleHeaderSocial';
 import ArticleBody from 'components/body/ArticleBody';
 // import Disclaimer from 'components/disclaimer/disclaimer';
 import ArticleLayout from 'components/layouts/ArticleLayout';
+import { convertImage } from 'components/shared/convertImage';
 import {
   ArticleProps,
   articleQuery,
@@ -18,22 +18,9 @@ import {
   articleSlugsQuery,
   ArticleSlugsResult,
 } from 'lib/queries';
-import { urlForImage } from 'lib/sanity';
 import { getClient } from 'lib/sanity.server';
 
 import style from './article.module.scss';
-
-const convertImage = async (image: ArticleQueryResult['image']) => {
-  const imageUrl = urlForImage(image).url();
-  const { base64, img } = await getPlaiceholder(imageUrl ?? '');
-  // console.log(`BASE64 Placeholder: ${base64}`);
-  const transformedImage: ArticleProps['image'] = {
-    ...img,
-    blurDataURL: base64,
-    alt: image?.alt ?? '',
-  };
-  return transformedImage;
-};
 
 /**
  * Fake data generator
