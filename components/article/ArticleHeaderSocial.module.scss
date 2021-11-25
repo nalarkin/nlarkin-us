@@ -1,0 +1,27 @@
+.socialBarContainer {
+  // background-color: red;
+  display: block;
+  width: 300px;
+}
+
+.socialBarGrid {
+  display: flex;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  // grid-template-rows: 1fr;
+  // background-color: red;
+}
+
+.circleButton {
+  // display: grid;
+  display: flex;
+  place-items: center;
+  cursor: pointer;
+  justify-content: center;
+  background-color: #ccc;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  margin-right: 16px;
+}
