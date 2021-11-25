@@ -1,10 +1,10 @@
 import groq from 'groq';
-import type { IGetImageReturn } from 'plaiceholder/dist/get-image';
 
 import {
   Article,
   ArticleDetailedImageAuthors,
   AuthorsArray,
+  PlaceholderImage,
 } from 'lib/interfaces';
 
 import type * as Schema from './schema';
@@ -70,11 +70,6 @@ export const articleQuery = groq`
 //   image: IGetImageReturn['img'] & { blurDataURL: string; alt: string };
 // };
 
-export type PlaceholderImage = IGetImageReturn['img'] & {
-  blurDataURL: string;
-  alt: string;
-};
-
 export type ArticleProps = Omit<ArticleQueryResult, 'image'> & {
   image: PlaceholderImage;
 };
@@ -105,6 +100,16 @@ export const sectionArticlesQuery = groq`
     ${articleFields}
   } | order(date desc)
 }[0]`;
+
+export type SectionArticleQuery = Omit<ArticleDetailedImageAuthors, 'image'> & {
+  image: Schema.Article['image'];
+};
+
+export type SectionArticleProps = {
+  articles: Array<SectionArticleQuery>;
+  title: string;
+  slug: string;
+};
 export type SectionArticlesResponse = {
   articles: Array<ArticleDetailedImageAuthors>;
   title: string;

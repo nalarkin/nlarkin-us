@@ -1,3 +1,5 @@
+import type { IGetImageReturn } from 'plaiceholder/dist/get-image';
+
 import * as Schema from 'lib/schema';
 
 export type Author = {
@@ -6,6 +8,12 @@ export type Author = {
     first: string;
     last: string;
   };
+};
+
+export type PlaceholderImage = IGetImageReturn['img'] & {
+  blurDataURL: string;
+  alt: string;
+  placeholder: 'blur';
 };
 
 // export type Article = Pick<
@@ -46,8 +54,12 @@ export interface ArticleDetailed extends ArticleBasic {
 
 export interface ArticleDetailedImage extends ArticleDetailed {
   // image:  Pick<Schema.Article, 'image'>;
-  image: Schema.Article['image'];
+  image: PlaceholderImage;
 }
+// export interface ArticleDetailedImage extends ArticleDetailed {
+//   // image:  Pick<Schema.Article, 'image'>;
+//   image: Schema.Article['image'];
+// }
 
 export interface ArticleDetailedImageAuthors extends ArticleDetailedImage {
   authors: AuthorsArray;

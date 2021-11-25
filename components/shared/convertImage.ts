@@ -1,6 +1,7 @@
 import { getPlaiceholder } from 'plaiceholder';
 
-import { PlaceholderImage, SanityImage } from 'lib/queries';
+import { PlaceholderImage } from 'lib/interfaces';
+import { SanityImage } from 'lib/queries';
 import { urlForImage } from 'lib/sanity';
 
 export const convertImage = async (image: SanityImage) => {
@@ -11,6 +12,7 @@ export const convertImage = async (image: SanityImage) => {
     ...img,
     blurDataURL: base64,
     alt: image?.alt ?? '',
+    placeholder: 'blur',
   };
   return transformedImage;
 };

@@ -1,19 +1,21 @@
 import React from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
+import { PlaceholderImage } from 'lib/interfaces';
 import { formatAuthors, getAuthorName } from 'lib/utils';
 
 import * as Schema from '../../../lib/schema';
 import Date from '../../shared/Date';
-import { ImageBuilder } from '../../shared/ImageBuilder';
+// import { ImageBuilder } from '../../shared/ImageBuilder';
 import style from './SectionListCard.module.scss';
 
 type ArticleCardProps = {
   title?: string;
   description: string;
   authors: Array<Pick<Schema.Author, 'name'> & { slug: string }>;
-  image: Schema.ArticleImage | undefined;
+  image: PlaceholderImage;
   slug: string;
   date?: string;
 };
@@ -47,7 +49,8 @@ const SectionListCard = ({
           </article>
           <div className={style.image}>
             <div className="block w-full my-auto">
-              <ImageBuilder image={image} />
+              <Image {...image} />
+              {/* <ImageBuilder image={image} /> */}
             </div>
           </div>
         </div>

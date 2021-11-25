@@ -1,11 +1,11 @@
 import React from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { ArticleDetailedImage } from 'lib/interfaces';
 import { buildArticleSlug } from 'lib/utils';
 
-import { ImageBuilder } from '../../shared/ImageBuilder';
 import style from './SectionHero.module.scss';
 
 type ArticleWrapperProps = {
@@ -42,7 +42,8 @@ const HeroTile = ({ article }: CardProps) => {
           </div>
           <div className={style.heroImage}>
             {' '}
-            <ImageBuilder image={image} />
+            <Image {...image} />
+            {/* <ImageBuilder image={image} /> */}
           </div>
         </div>
       </ArticleLinkWrapper>

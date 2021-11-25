@@ -1,8 +1,8 @@
 import React from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
-import { ImageBuilder } from 'components/shared/ImageBuilder';
 import type { ArticleDetailedImage } from 'lib/interfaces';
 
 import style from './LargeCard.module.scss';
@@ -36,7 +36,8 @@ const LargeArticleCard = ({ article }: ArticleCardProps) => {
             <div className={style.excerpt}>{excerpt}</div>
           </article>
           <div className={style.image}>
-            <ImageBuilder image={image} />
+            <Image {...image} />
+            {/* <ImageBuilder image={image} /> */}
           </div>
         </div>
       </ArticleLinkWrapper>
