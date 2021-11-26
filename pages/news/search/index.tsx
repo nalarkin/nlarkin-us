@@ -36,7 +36,7 @@ type SearchProps = {
 
 // type ResultInitial = undefined | Fuse.FuseResult<ArticleResultAll>;
 
-export default function Search({ data }: SearchProps) {
+export default function SearchPage({ data }: SearchProps) {
   const { query } = useRouter();
   const [isLoading, setLoading] = useState(true);
   const [queryParams, setQueryParams] = useState<string | string[]>('');
@@ -59,9 +59,9 @@ export default function Search({ data }: SearchProps) {
     // minMatchCharLength: 1,
     // location: 0,
     threshold: 0.3,
-    // distance: 100,
+    distance: 500,
     // useExtendedSearch: false,
-    // ignoreLocation: false,
+    // ignoreLocation: true,
     // ignoreFieldNorm: false,
     keys: ['title', 'excerpt', 'authors.name'],
   };
@@ -103,6 +103,6 @@ export default function Search({ data }: SearchProps) {
   );
 }
 
-Search.getLayout = function getLayout(page: React.ReactElement) {
+SearchPage.getLayout = function getLayout(page: React.ReactElement) {
   return <NewsLayout>{page}</NewsLayout>;
 };
