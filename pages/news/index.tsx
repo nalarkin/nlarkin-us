@@ -12,6 +12,7 @@ import Carousel from 'components/tiles/Carousel';
 import { HomeQuery, HomeProps, ArticleDetailedImage } from 'lib/interfaces';
 import { homeQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
+import { shuffle, shuffleCopy } from 'lib/utils';
 
 import style from './index.module.scss';
 
@@ -27,6 +28,10 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   query.hero.articles.main.image = await convertImage(
     query.hero.articles.main.image
   );
+  const hero1 = {
+    ...query.opinionBody.articles[2],
+    image: await convertImage(query.opinionBody.articles[2].image),
+  };
 
   const carouselColumn: ArticleDetailedImage[] = await Promise.all(
     query.opinionBody.articles.map(async (src) => {
@@ -38,6 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       return transformed;
     })
   );
+  shuffle(carouselColumn);
   const carouselRow: ArticleDetailedImage[] = await Promise.all(
     query.opinionBody.articles.map(async (src) => {
       const image = await convertImage(src.image, { height: 300, width: 300 });
@@ -48,8 +54,13 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       return transformed;
     })
   );
-  const grid3 = Array.from(carouselColumn);
-  const grid4 = carouselColumn;
+  shuffle(carouselRow);
+
+  // const row1 = Array.from(carouselColumn);
+  const row1 = shuffleCopy(carouselColumn);
+  const row2 = shuffleCopy(carouselColumn);
+
+  // console.log(`hero1: ${JSON.stringify(hero1, null, 2)}`);
 
   query.opinionBody.articles = await Promise.all(
     query.opinionBody.articles.map(async (src) => {
@@ -61,23 +72,9 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       return transformed;
     })
   );
-
-  // const transformedArticles = await Promise.all(
-  //   query.hero.articles.sideArticles.map(async (src) => {
-  //     const image = await convertImage(src);
-  //     const transformed = {
-  //       ...src,
-  //       image,
-  //     };
-  //     return transformed;
-  //   })
-  // );
-
-  // console.log(`carouselColumn: ${JSON.stringify(carouselColumn)}`);
-  // console.log(`carouselRow: ${JSON.stringify(carouselRow)}`);
   return {
     props: {
-      data: { ...query, carouselColumn, carouselRow, grid3, grid4 },
+      data: { ...query, carouselColumn, carouselRow, row1, row2, hero1 },
     },
   };
 };
@@ -96,14 +93,11 @@ const NewsHome = ({ data }: Props) => {
     // opinionBody,
     carouselColumn,
     carouselRow,
-    grid3,
+    row1,
+    hero1,
+    // culture
     // grid4,
   } = data;
-  console.log(`carouselColumn: ${JSON.stringify(carouselColumn, null, 2)}`);
-  console.log(
-    '========================================================================'
-  );
-  console.log(`grid3: ${JSON.stringify(grid3, null, 2)}`);
 
   // const size3 = opinionBody.articles.slice(0, 3);
   const size4 = carouselRow.slice(0, 4);
@@ -118,11 +112,16 @@ const NewsHome = ({ data }: Props) => {
           <MainHero data={hero} />
           <OpinionBody
             columnArticles={opinionColumn.articles}
-            bodyArticles={grid3}
+            bodyArticles={row1}
+            centerArticle={hero1}
           />
-          <Carousel articles={size4} tileLayout="row" />
+          <Carousel
+            articles={size4}
+            tileLayout="row"
+            categoryHeader="Staff Favorites"
+          />
           <MainHero data={hero} />
-          <Carousel articles={size5} />
+          <Carousel articles={size5} categoryHeader="Dive Deeper" />
         </div>
       </div>
       <div className={style.pageFooter}>

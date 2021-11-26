@@ -11,18 +11,23 @@ import OpinionColumn from './OpinionColumn';
 type Props = {
   columnArticles: ArticleOpinion[];
   bodyArticles: ArticleDetailedImage[];
+  centerArticle: ArticleDetailedImage;
 };
 
-const OpinionBody = ({ columnArticles, bodyArticles }: Props) => {
+const OpinionBody = ({
+  columnArticles,
+  bodyArticles,
+  centerArticle,
+}: Props) => {
   const size3 = bodyArticles.slice(0, 3);
   const size4 = bodyArticles.slice(0, 4);
   return (
     <main className={style.content}>
       {/* <NewsHero /> */}
       <div className={style.contentBody}>
-        <Carousel articles={size3} />
-        <LargeArticleCard article={bodyArticles[4]} />
-        <Carousel articles={size4} />
+        <Carousel articles={size3} categoryHeader="Latest News" />
+        <LargeArticleCard article={centerArticle} />
+        <Carousel articles={size4} categoryHeader="Most Popular Articles" />
       </div>
 
       <div className={style.opinionSpacer}>

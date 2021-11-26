@@ -138,6 +138,8 @@ export type HomeQuery = {
 export type HomeProps = HomeQuery & {
   carouselRow: ArticleDetailedImage[];
   carouselColumn: ArticleDetailedImage[];
-  grid3: ArticleDetailedImage[];
-  grid4: ArticleDetailedImage[];
+  hero1: ArticleDetailedImage;
+  hero2: ArticleDetailedImage;
+  row1: ArticleDetailedImage[];
+  row2: ArticleDetailedImage[];
 };

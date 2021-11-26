@@ -18,6 +18,7 @@ type TileLayout = 'row' | 'column';
 type Props = {
   articles: ArticleDetailedImage[];
   tileLayout?: TileLayout;
+  categoryHeader?: string;
 };
 
 const ColumnTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
@@ -141,13 +142,17 @@ const PhoneTileBuilder = ({
  * style  to the elements. For me to allow a dynamic number of items, I need to do all the ternary
  * tests.
  */
-const Carousel = ({ articles, tileLayout = 'column' }: Props) => {
+const Carousel = ({
+  articles,
+  tileLayout = 'column',
+  categoryHeader = 'Section Category',
+}: Props) => {
   const n = articles.length;
   const options = buildSwiperOptionsBasedOnSize(n, tileLayout);
   return (
     <div className="block w-full">
       <div className={style.container}>
-        <div className={style.categoryHeader}>Section Category Here</div>
+        <div className={style.categoryHeader}>{categoryHeader}</div>
         <div
           className={
             tileLayout === 'column' ? style.flexTile : style.responsiveTile

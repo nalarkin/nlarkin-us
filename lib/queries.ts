@@ -116,8 +116,12 @@ export type SectionArticlesResponse = {
   slug: string;
 };
 
-const getSorted = (desiredSize: number) =>
-  `| order(date desc)[0..${desiredSize - 1}]`;
+interface GetSortedProps {
+  start?: number;
+  desiredSize: number;
+}
+const getSorted = ({ start = 0, desiredSize }: GetSortedProps) =>
+  `| order(date desc)[${start}..${desiredSize - 1 + start}]`;
 
 const articleNoImage = `
   _id,
@@ -166,7 +170,7 @@ export const homeQuery = groq`
       "sideArticles": *[_type=="article" ] {
         ${articleNoImage},
         excerpt
-      }${getSorted(3)}
+      }${getSorted({ start: 1, desiredSize: 3 })}
     }
 	},
 	"opinionColumn": {
@@ -175,7 +179,7 @@ export const homeQuery = groq`
     "articles": *[_type=="article"]{
       ${articleNoImage},
       ${getArticleAuthors}
-    }${getSorted(14)}  
+    }${getSorted({ start: 5, desiredSize: 14 })}  
 	},
 	"opinionBody": {
     "uid": "OpinionBody",
@@ -183,7 +187,7 @@ export const homeQuery = groq`
       ${articleNoImage},
     	excerpt,
       image
-		}${getSorted(14)}
+		}${getSorted({ start: 5, desiredSize: 14 })}
   },
 	"moreNews": {
     "uid": "More News",
@@ -192,10 +196,10 @@ export const homeQuery = groq`
       "main": *[_type=="article"] {
           ${articleNoImage},
           excerpt
-       }${getSorted(4)},
+       }${getSorted({ desiredSize: 4 })},
       "headlines": *[_type=="article"] {
         ${articleNoImage}
-      }${getSorted(6)}
+      }${getSorted({ desiredSize: 6 })}
   	}	
 	},
 	"culture": {
@@ -205,13 +209,13 @@ export const homeQuery = groq`
       ${articleNoImage},
       excerpt,
       image,
-  	}${getSorted(5)}
+  	}${getSorted({ desiredSize: 5 })}
 	},
 	"cooking": {
     "uid": "Cooking",
     "title": "Cooking",
     "articles": *[_type=="article"] {
       ${articleNoImage}
-    }${getSorted(5)}
+    }${getSorted({ desiredSize: 5 })}
 	}
 }`;
