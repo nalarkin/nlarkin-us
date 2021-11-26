@@ -134,3 +134,10 @@ export type HomeQuery = {
   culture: CategoryCulture;
   cooking: CategoryCooking;
 };
+
+export type HomeProps = HomeQuery & {
+  carouselRow: ArticleDetailedImage[];
+  carouselColumn: ArticleDetailedImage[];
+  grid3: ArticleDetailedImage[];
+  grid4: ArticleDetailedImage[];
+};
