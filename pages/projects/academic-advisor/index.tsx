@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { NextSeo } from 'next-seo';
+
+import Layout from 'components/layouts/layout';
 import { academicAdvisorSummary } from 'components/projects/AcademicAdvisorImage';
 import ProjectPage from 'components/projects/ProjectPage';
 import { SEOProps } from 'components/shared/seo';
@@ -17,7 +20,16 @@ const longerAcademicSummary = {
 };
 
 const AcademicAdvisorPage = () => {
-  return <ProjectPage project={longerAcademicSummary} seo={seo} />;
+  return (
+    <>
+      <NextSeo {...seo} />
+      <ProjectPage project={longerAcademicSummary} />{' '}
+    </>
+  );
 };
 
 export default AcademicAdvisorPage;
+
+AcademicAdvisorPage.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>;
+};

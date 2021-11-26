@@ -7,14 +7,16 @@ import MinimalHeader from 'components/headers/MinimalHeader';
 import style from './NewsLayout.module.scss';
 
 type Props = {
+  title?: string;
+  slug?: string;
   children?: ReactNode;
 };
 
-const NewsLayout = ({ children }: Props) => {
+const NewsLayout = ({ title, slug, children }: Props) => {
   return (
     <div className={style.wrapper}>
       <div className={style.pageHeader}>
-        <MinimalHeader />
+        <MinimalHeader sectionTitle={title} slug={slug} />
       </div>
       <div className={style.pageBody}>
         <div className={style.bodyContainer}>{children}</div>

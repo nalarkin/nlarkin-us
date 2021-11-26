@@ -1,17 +1,27 @@
 import Image from 'next/image';
 
+import { PlaceholderImage } from 'lib/interfaces';
 import { imageSizeRegex } from 'lib/utils';
 
 import { urlForImage } from '../../lib/sanity';
 import * as Schema from '../../lib/schema';
 
 type Props = {
-  image?: Schema.ArticleImage;
+  image?: Schema.ArticleImage | PlaceholderImage;
   classes?: string;
+  blurURL?: string;
 };
 
-export const ImageBuilder = ({ image, classes = '' }: Props) => {
-  const imageRefWithSize = image?.asset._ref;
+const isPlaceholderImage = (
+  image: Schema.ArticleImage | PlaceholderImage
+): image is PlaceholderImage => {
+  return !('_type' in image);
+};
+
+export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
+  if (image === undefined) return null;
+  if (isPlaceholderImage(image)) return null;
+  const imageRefWithSize = image?.asset?._ref;
   if (imageRefWithSize === undefined) {
     return <div></div>;
   }
@@ -41,6 +51,19 @@ export const ImageBuilder = ({ image, classes = '' }: Props) => {
     );
     return <div></div>;
   }
+  if (blurURL.length > 0) {
+    <Image
+      src={imageUrl}
+      alt={image?.alt ?? ''}
+      // layout="responsive"
+      width={imageWidth}
+      height={imageHeight}
+      className={classes}
+      quality={50}
+      placeholder="blur"
+      blurDataURL={blurURL}
+    />;
+  }
 
   return (
     <Image
@@ -50,6 +73,7 @@ export const ImageBuilder = ({ image, classes = '' }: Props) => {
       width={imageWidth}
       height={imageHeight}
       className={classes}
+      quality={50}
     />
   );
 };

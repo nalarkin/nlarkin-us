@@ -17,7 +17,7 @@ export const ImageCropBuilder = ({
   height,
 }: Props) => {
   // const imageSizeRegex = /-([\d]{3,})x([\d]{3,})-/;
-  const imageRefWithSize = image?.asset._ref;
+  const imageRefWithSize = image?.asset?._ref;
   if (imageRefWithSize === undefined) {
     return <div></div>;
   }

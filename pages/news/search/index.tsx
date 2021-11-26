@@ -4,7 +4,7 @@ import Fuse from 'fuse.js';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
-import MinimalHeader from 'components/headers/MinimalHeader';
+import NewsLayout from 'components/layouts/NewsLayout';
 import SearchBody from 'components/search/SearchBody';
 import { ArticleDetailedImageAuthors } from 'lib/interfaces';
 import { articleQueryAll, ArticleResultAll } from 'lib/queries';
@@ -58,7 +58,7 @@ export default function Search({ data }: SearchProps) {
     // findAllMatches: false,
     // minMatchCharLength: 1,
     // location: 0,
-    threshold: 0.6,
+    threshold: 0.3,
     // distance: 100,
     // useExtendedSearch: false,
     // ignoreLocation: false,
@@ -82,23 +82,27 @@ export default function Search({ data }: SearchProps) {
     }
     // possibly unnecessary render of nav bar after search results have loaded
     return (
-      <div>
-        <MinimalHeader />
-        {/* {savedHeader} */}
-        <SearchBody
-          query={query.all as string}
-          fuse={fuse}
-          initialResult={initialResult}
-        />
-      </div>
+      // <div>
+      //   <MinimalHeader />
+      //   {/* {savedHeader} */}
+      <SearchBody
+        query={query.all as string}
+        fuse={fuse}
+        initialResult={initialResult}
+      />
+      // </div>
     );
   }
 
   return (
-    <div>
-      <MinimalHeader />
-      {/* {savedHeader} */}
-      <Spinner />
-    </div>
+    // <div>
+    //   <MinimalHeader />
+    //   {/* {savedHeader} */}
+    <Spinner />
+    // </div>
   );
 }
+
+Search.getLayout = function getLayout(page: React.ReactElement) {
+  return <NewsLayout>{page}</NewsLayout>;
+};

@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { NextSeo } from 'next-seo';
+import Image from 'next/image';
 
 import ArticleHeader from 'components/article/ArticleHeader';
 import ArticleHeaderInfo from 'components/article/ArticleHeaderInfo';
@@ -8,8 +10,9 @@ import ArticleHeaderSocial from 'components/article/ArticleHeaderSocial';
 import ArticleBody from 'components/body/ArticleBody';
 // import Disclaimer from 'components/disclaimer/disclaimer';
 import ArticleLayout from 'components/layouts/ArticleLayout';
-import { ImageBuilder } from 'components/shared/ImageBuilder';
+import { convertImage } from 'components/shared/convertImage';
 import {
+  ArticleProps,
   articleQuery,
   ArticleQueryResult,
   articleSlugsQuery,
@@ -26,7 +29,6 @@ import style from './article.module.scss';
  * Headline generator
  * https://www.plot-generator.org.uk/headlines/
  */
-
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
@@ -44,6 +46,17 @@ export const getStaticProps: GetStaticProps = async ({
     articleQuery,
     queryParams
   );
+  // const imageUrl = urlForImage(result.image).url();
+  // const { base64, img } = await getPlaiceholder(imageUrl ?? '');
+  // console.log(`BASE64 Placeholder: ${base64}`);
+  // const transformedImage: ArticleProps['image'] = {
+  //   ...img,
+  //   blurDataURL: base64,
+  //   alt: result.image?.alt ?? '',
+  // };
+  const transformedImage = await convertImage(result.image);
+  const completeResponse: ArticleProps = { ...result, image: transformedImage };
+  // result.image = { ...result.image, blurDataURL: base64 };
   // console.log(`slug: ${slug}  result: ${JSON.stringify(result)}`);
 
   // const result = await getArticleData(slug);
@@ -51,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       preview,
-      data: result,
+      data: completeResponse,
     },
   };
 };
@@ -80,31 +93,39 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default function ArticlePage({
   data,
 }: {
-  data: ArticleQueryResult | undefined;
+  data: ArticleProps | undefined;
   preview: boolean;
 }) {
   if (data === undefined) {
     return <div></div>;
   }
   const { title, text, authors, date, image } = data;
+  const SEO = {
+    title: `${title} | The Nathan Times`,
+    description: 'A Mock News Website for my Portfolio.',
+  };
   return (
     <div>
-      <ArticleLayout>
-        <div className="flex flex-col ">
-          {/* optional hero here with title over image */}
-          <div className={style.image}>
-            <ImageBuilder image={image} />
-          </div>
-          <h1 className="text-xl font-bold mt-5 mb-5 mx-auto">{title}</h1>
-          <ArticleHeader authors={authors} />
-          <div className={style.body}>
-            <ArticleHeaderSocial />
-            <ArticleHeaderInfo authors={authors} date={date} />
-            <ArticleBody text={text} />
-          </div>
-          {/* <Disclaimer /> */}
+      <NextSeo {...SEO} />
+      <div className="flex flex-col ">
+        {/* optional hero here with title over image */}
+        <div className={style.image}>
+          <Image {...image} placeholder="blur" />
+          {/* <ImageBuilder image={image} blurURL={image.blurDataURL} /> */}
         </div>
-      </ArticleLayout>
+        <h1 className="text-xl font-bold mt-5 mb-5 mx-auto">{title}</h1>
+        <ArticleHeader authors={authors} />
+        <div className={style.body}>
+          <ArticleHeaderSocial />
+          <ArticleHeaderInfo authors={authors} date={date} />
+          <ArticleBody text={text} />
+        </div>
+        {/* <Disclaimer /> */}
+      </div>
     </div>
   );
 }
+
+ArticlePage.getLayout = function getLayout(page: React.ReactElement) {
+  return <ArticleLayout>{page}</ArticleLayout>;
+};

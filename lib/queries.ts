@@ -4,6 +4,7 @@ import {
   Article,
   ArticleDetailedImageAuthors,
   AuthorsArray,
+  PlaceholderImage,
 } from 'lib/interfaces';
 
 import type * as Schema from './schema';
@@ -60,6 +61,21 @@ export const articleQuery = groq`
       ${articleFields}
     }
   `;
+// export type ArticleQueryResult = Pick<
+//   Schema.Article,
+//   '_id' | 'date' | 'excerpt' | 'title' | 'text'
+// > & {
+//   authors: AuthorsArray;
+//   slug: string;
+//   image: IGetImageReturn['img'] & { blurDataURL: string; alt: string };
+// };
+
+export type ArticleProps = Omit<ArticleQueryResult, 'image'> & {
+  image: PlaceholderImage;
+};
+
+export type SanityImage = Schema.Article['image'];
+
 export type ArticleQueryResult = Pick<
   Schema.Article,
   '_id' | 'date' | 'excerpt' | 'image' | 'title' | 'text'
@@ -76,28 +92,36 @@ export const articleQueryAll = groq`
   }`;
 export type ArticleResultAll = Array<Article>;
 
-// export const sectionArticlesQuery = groq`
-// *[_type == 'article' && references(*[_type == "section" && slug.current == $slug][0]._id)][] {
-//   ${articleFields}
-// }
-// `;
-
 export const sectionArticlesQuery = groq`
 *[ _type == "section" && slug.current == $slug ]{
   title,
   "slug": slug.current,
   "articles": *[ _type == "article" && references(^._id)] {
     ${articleFields}
-  }
+  } | order(date desc)
 }[0]`;
+
+export type SectionArticleQuery = Omit<ArticleDetailedImageAuthors, 'image'> & {
+  image: Schema.Article['image'];
+};
+
+export type SectionArticleProps = {
+  articles: Array<SectionArticleQuery>;
+  title: string;
+  slug: string;
+};
 export type SectionArticlesResponse = {
   articles: Array<ArticleDetailedImageAuthors>;
   title: string;
   slug: string;
 };
 
-const getSorted = (desiredSize: number) =>
-  `| order(date desc)[0..${desiredSize - 1}]`;
+interface GetSortedProps {
+  start?: number;
+  desiredSize: number;
+}
+const getSorted = ({ start = 0, desiredSize }: GetSortedProps) =>
+  `| order(date desc)[${start}..${desiredSize - 1 + start}]`;
 
 const articleNoImage = `
   _id,
@@ -123,7 +147,7 @@ export const authorQuery = groq`
     ${getArticleAuthors},
     excerpt,
     image
-  }
+  } | order(date desc)
 }
 `;
 export type AuthorQueryResult = {
@@ -146,7 +170,7 @@ export const homeQuery = groq`
       "sideArticles": *[_type=="article" ] {
         ${articleNoImage},
         excerpt
-      }${getSorted(3)}
+      }${getSorted({ start: 1, desiredSize: 3 })}
     }
 	},
 	"opinionColumn": {
@@ -155,7 +179,7 @@ export const homeQuery = groq`
     "articles": *[_type=="article"]{
       ${articleNoImage},
       ${getArticleAuthors}
-    }${getSorted(14)}  
+    }${getSorted({ start: 5, desiredSize: 14 })}  
 	},
 	"opinionBody": {
     "uid": "OpinionBody",
@@ -163,7 +187,7 @@ export const homeQuery = groq`
       ${articleNoImage},
     	excerpt,
       image
-		}${getSorted(14)}
+		}${getSorted({ start: 5, desiredSize: 14 })}
   },
 	"moreNews": {
     "uid": "More News",
@@ -172,10 +196,10 @@ export const homeQuery = groq`
       "main": *[_type=="article"] {
           ${articleNoImage},
           excerpt
-       }${getSorted(4)},
+       }${getSorted({ desiredSize: 4 })},
       "headlines": *[_type=="article"] {
         ${articleNoImage}
-      }${getSorted(6)}
+      }${getSorted({ desiredSize: 6 })}
   	}	
 	},
 	"culture": {
@@ -185,13 +209,13 @@ export const homeQuery = groq`
       ${articleNoImage},
       excerpt,
       image,
-  	}${getSorted(5)}
+  	}${getSorted({ desiredSize: 5 })}
 	},
 	"cooking": {
     "uid": "Cooking",
     "title": "Cooking",
     "articles": *[_type=="article"] {
       ${articleNoImage}
-    }${getSorted(5)}
+    }${getSorted({ desiredSize: 5 })}
 	}
 }`;

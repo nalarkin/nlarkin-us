@@ -1,10 +1,10 @@
 import React from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { Navigation, SwiperOptions } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { ImageCropBuilder } from 'components/shared/ImageCropBuilder';
 import { List } from 'components/shared/list';
 import type { ArticleDetailedImage } from 'lib/interfaces';
 import { buildArticleSlug, editExcerptToSize } from 'lib/utils';
@@ -18,17 +18,21 @@ type TileLayout = 'row' | 'column';
 type Props = {
   articles: ArticleDetailedImage[];
   tileLayout?: TileLayout;
+  categoryHeader?: string;
 };
 
 const ColumnTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
   const { title, slug, image } = article;
+  // const croppedSrc =urlForImage(image).width(width).height(height).url();
   return (
     <section className="h-full">
       <Link href={buildArticleSlug(slug ?? '')}>
         <a className={style.tileContainer}>
           {/* <div className={style.image}> */}
           <div className="w-full">
-            <ImageCropBuilder image={image} width={300} height={200} />
+            <Image {...image} />
+            {/* <Image {...image} width={300} height={200} /> */}
+            {/* <ImageCropBuilder image={image} width={300} height={200} /> */}
           </div>
           {/* </div> */}
 
@@ -52,7 +56,9 @@ const RowTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
               <p className={style.rowTileExcerpt}>{shortenedExcerpt}</p>
             </div>
             <div className="w-full">
-              <ImageCropBuilder image={image} width={300} height={300} />
+              <Image {...image} />
+              {/* <Image {...image} width={300} height={300} /> */}
+              {/* <ImageCropBuilder image={image} width={300} height={300} /> */}
             </div>
           </div>
         </a>
@@ -117,7 +123,8 @@ const PhoneTileBuilder = ({
                     </div>
                   </div>
                   <div className="w-full">
-                    <ImageCropBuilder image={image} width={300} height={300} />
+                    <Image {...image} />
+                    {/* <ImageCropBuilder image={image} width={300} height={300} /> */}
                   </div>
                 </div>
               </a>
@@ -135,13 +142,17 @@ const PhoneTileBuilder = ({
  * style  to the elements. For me to allow a dynamic number of items, I need to do all the ternary
  * tests.
  */
-const Carousel = ({ articles, tileLayout = 'column' }: Props) => {
+const Carousel = ({
+  articles,
+  tileLayout = 'column',
+  categoryHeader = 'Section Category',
+}: Props) => {
   const n = articles.length;
   const options = buildSwiperOptionsBasedOnSize(n, tileLayout);
   return (
     <div className="block w-full">
       <div className={style.container}>
-        <div className={style.categoryHeader}>Section Category Here</div>
+        <div className={style.categoryHeader}>{categoryHeader}</div>
         <div
           className={
             tileLayout === 'column' ? style.flexTile : style.responsiveTile

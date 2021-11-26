@@ -1,9 +1,12 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-unused-vars */
-/** @type {import('next').NextConfig} */
-const path = require("path");
+// /* eslint-disable no-param-reassign */
+// /* eslint-disable no-unused-vars */
+// @ts-check
+// const path = require("path");
+const { withPlaiceholder } = require("@plaiceholder/next");
 
-module.exports = (phase, { defaultConfig }) => {
+/** @type {import('next').NextConfig} */
+const nextConfig = (_phase, { defaultConfig }) => {
   if ("sassOptions" in defaultConfig) {
     defaultConfig.sassOptions = {
       includePaths: ["./styles"],
@@ -13,7 +16,7 @@ module.exports = (phase, { defaultConfig }) => {
   if ("reactStrictMode" in defaultConfig) {
     defaultConfig.reactStrictMode = true;
   }
-  return {
+  return withPlaiceholder({
     ...defaultConfig,
     images: { domains: ["cdn.sanity.io"] },
     async redirects() {
@@ -30,5 +33,6 @@ module.exports = (phase, { defaultConfig }) => {
         },
       ];
     },
-  };
+  });
 };
+module.exports = nextConfig;

@@ -1,15 +1,17 @@
 import React from 'react';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 
-// import Disclaimer from 'components/disclaimer/disclaimer';
-import SectionLayout from 'components/layouts/SectionLayout';
+import NewsLayout from 'components/layouts/NewsLayout';
 import SectionHero from 'components/sections/cards/SectionHero';
 import LatestList from 'components/sections/latest/LatestList';
+import { convertImage } from 'components/shared/convertImage';
 import LargeArticleCard from 'components/tiles/LargeCard';
 import {
   sectionSlugsQuery,
   sectionArticlesQuery,
+  SectionArticleProps,
   SectionArticlesResponse,
 } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
@@ -23,11 +25,22 @@ export const getStaticProps: GetStaticProps = async ({
   const queryParams = { slug: params?.slug };
   const { title, articles, slug } = await getClient(
     preview
-  ).fetch<SectionArticlesResponse>(sectionArticlesQuery, queryParams);
+  ).fetch<SectionArticleProps>(sectionArticlesQuery, queryParams);
+  const transformedArticles = await Promise.all(
+    articles.map(async (src) => {
+      const image = await convertImage(src.image);
+      const transformed = {
+        ...src,
+        image,
+      };
+      return transformed;
+    })
+  );
+
   return {
     props: {
       data: {
-        articles,
+        articles: transformedArticles,
         title,
         slug,
       },
@@ -62,15 +75,15 @@ const NewsCategoryMain = ({
     );
   };
 
+  const seo = {
+    title: `${title} News`,
+    description: `All ${title} news in 1 place`,
+  };
+
   return (
-    <SectionLayout
-      seo={{
-        title: `${title} News`,
-        description: `All ${title} news in 1 place`,
-      }}
-      sectionTitle={title}
-      slug={slug}
-    >
+    <NewsLayout title={title} slug={slug}>
+      <NextSeo {...seo} />
+      {/* <MinimalHeader sectionTitle={title} slug={slug} /> */}
       <div className={style.heroContainer}>
         {/* <div className='text-3xl font-bold'> {title}</div> */}
         <SectionHero articles={articles} />
@@ -86,9 +99,8 @@ const NewsCategoryMain = ({
               })}
         </div>
         <LatestList articles={articles} />
-        {/* <Disclaimer /> */}
       </div>
-    </SectionLayout>
+    </NewsLayout>
   );
 };
 

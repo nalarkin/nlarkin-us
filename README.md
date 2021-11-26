@@ -1,5 +1,13 @@
 # nlarkin.us - Nathan's Personal Website
 
+## TODO
+
+1. Sort articles by post date updating GROQ query
+2. Change home page to not reuse the same 5 articles, and instead us all articles on the page (now that I have enough)
+3. Change article page title format (I think title should appear above image, in addition to the excerpt?)
+4. Check sections not meeting minimum article count
+5. 
+
 ## FYI
 
 * There won't be a lot of documentation because the website is only intended to be interacted with through the browser.

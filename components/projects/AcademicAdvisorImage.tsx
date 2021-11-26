@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import { academicAdvisorBulletsSummary, ProjectSummary } from 'lib/projectInfo';
-import flutterImage from 'public/flutter.png';
+import flutterImage from 'public/flutter_mini.png';
 
 const AcademicAdvisorImage = () => {
   return <Image src={flutterImage} alt="flutter icon" objectFit="contain" />;

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
 import SectionLayout from 'components/layouts/SectionLayout';
@@ -40,19 +41,9 @@ const Custom404 = ({
   if (sections === undefined) {
     return <div></div>;
   }
-  // return (
-  // <div>
-  //   If you are seeing this, it&apos;s probably because I didn&apos;t add this
-  //   article category to the headless CMS.
-  //   <div>{JSON.stringify(data, null, 2)}</div>
-  // </div>
-  // );
   return (
-    <SectionLayout
-      seo={{ title: '', description: 'unknown page' }}
-      sectionTitle={'404'}
-      slug={'/news'}
-    >
+    <>
+      <NextSeo title="404" description="Unknown Page" />
       <div className="flex flex-col pt-7 px-8 ">
         <h1 className="bold text-6xl text-center">404 Error</h1>
         <h2 className=" text-3xl text-center mt-3">Page not found</h2>
@@ -81,8 +72,16 @@ const Custom404 = ({
           })}
         </div>
       </div>
-    </SectionLayout>
+    </>
   );
 };
 
 export default Custom404;
+
+Custom404.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <SectionLayout sectionTitle={'404'} slug={'/news'}>
+      {page}
+    </SectionLayout>
+  );
+};

@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 
 import NewsLayout from 'components/layouts/NewsLayout';
 import LatestList from 'components/sections/latest/LatestList';
@@ -59,9 +60,14 @@ export default function AuthorPage({ data }: PageProps) {
   if (data === undefined) {
     return <div></div>;
   }
+
   const { name, bio, picture, articles } = data;
+  const seo = {
+    title: `${name} Author Page`,
+  };
   return (
-    <NewsLayout>
+    <>
+      <NextSeo {...seo} />
       <div className={style.bioContainer}>
         <div>
           <div className={style.profileImg}>
@@ -79,6 +85,10 @@ export default function AuthorPage({ data }: PageProps) {
       <div className={style.latestList}>
         <LatestList articles={articles} />
       </div>
-    </NewsLayout>
+    </>
   );
 }
+
+AuthorPage.getLayout = function getLayout(page: React.ReactElement) {
+  return <NewsLayout>{page}</NewsLayout>;
+};

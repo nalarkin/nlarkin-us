@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import { inventoryBulletsSummary, ProjectSummary } from 'lib/projectInfo';
-import gsuImage from 'public/gsu.png';
+import gsuImage from 'public/gsu_mini.png';
 
 const InventoryManagementImage = () => {
   return (

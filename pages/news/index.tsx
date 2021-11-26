@@ -7,10 +7,12 @@ import Footer from 'components/footers/footer';
 import SmallFooter from 'components/footers/SmallFooter';
 import MainNewsHeader from 'components/headers/MainNewsHeader';
 import MainHero from 'components/sections/cards/MainHero';
+import { convertImage } from 'components/shared/convertImage';
 import Carousel from 'components/tiles/Carousel';
-import { HomeQuery } from 'lib/interfaces';
+import { HomeQuery, HomeProps, ArticleDetailedImage } from 'lib/interfaces';
 import { homeQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
+import { shuffle, shuffleCopy } from 'lib/utils';
 
 import style from './index.module.scss';
 
@@ -21,63 +23,85 @@ import style from './index.module.scss';
 //     'This is a purely educational attempt to clone of the New York Times. Disclaimer....',
 //   title: "Nathan's News",
 // };
-
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const query = await getClient(preview).fetch<HomeQuery>(homeQuery);
+  query.hero.articles.main.image = await convertImage(
+    query.hero.articles.main.image
+  );
+  const hero1 = {
+    ...query.opinionBody.articles[2],
+    image: await convertImage(query.opinionBody.articles[2].image),
+  };
+
+  const carouselColumn: ArticleDetailedImage[] = await Promise.all(
+    query.opinionBody.articles.map(async (src) => {
+      const image = await convertImage(src.image, { height: 200, width: 300 });
+      const transformed = {
+        ...src,
+        image,
+      };
+      return transformed;
+    })
+  );
+  shuffle(carouselColumn);
+  const carouselRow: ArticleDetailedImage[] = await Promise.all(
+    query.opinionBody.articles.map(async (src) => {
+      const image = await convertImage(src.image, { height: 300, width: 300 });
+      const transformed = {
+        ...src,
+        image,
+      };
+      return transformed;
+    })
+  );
+  shuffle(carouselRow);
+
+  // const row1 = Array.from(carouselColumn);
+  const row1 = shuffleCopy(carouselColumn);
+  const row2 = shuffleCopy(carouselColumn);
+
+  // console.log(`hero1: ${JSON.stringify(hero1, null, 2)}`);
+
+  query.opinionBody.articles = await Promise.all(
+    query.opinionBody.articles.map(async (src) => {
+      const image = await convertImage(src.image);
+      const transformed = {
+        ...src,
+        image,
+      };
+      return transformed;
+    })
+  );
   return {
     props: {
-      data: query,
+      data: { ...query, carouselColumn, carouselRow, row1, row2, hero1 },
     },
   };
 };
 
-// const HomeBuilder = ({
-//   articles,
-// }: {
-//   articles: ArticleResultAll | undefined;
-// }) => {
-//   if (articles === undefined) {
-//     return <div></div>;
-//   }
-
-//   return (
-//     // <>
-//     <>
-//       <div className={style.container}>
-//         <List
-//           items={articles}
-//           renderItem={(article) => {
-//             return (
-//               <LargeArticleCard
-//                 authors={article.authors}
-//                 excerpt={article.excerpt ?? ''}
-//                 image={article.image}
-//                 slug={article.slug}
-//                 title={article.title}
-//                 key={article._id}
-//               />
-//             );
-//           }}
-//         />
-
-//         {/* </> */}
-//       </div>
-//     </>
-//   );
-// };
-
 type Props = {
-  data?: HomeQuery;
+  data?: HomeProps;
 };
 
 const NewsHome = ({ data }: Props) => {
   if (data === undefined) {
     return <div></div>;
   }
-  const { hero, opinionColumn, opinionBody } = data;
+  const {
+    hero,
+    opinionColumn,
+    // opinionBody,
+    carouselColumn,
+    carouselRow,
+    row1,
+    hero1,
+    // culture
+    // grid4,
+  } = data;
+
   // const size3 = opinionBody.articles.slice(0, 3);
-  const size4 = opinionBody.articles.slice(0, 4);
-  const size5 = opinionBody.articles.slice(0, 5);
+  const size4 = carouselRow.slice(0, 4);
+  const size5 = carouselColumn.slice(0, 5);
   return (
     <div className={style.wrapper}>
       <div className={style.pageHeader}>
@@ -88,11 +112,16 @@ const NewsHome = ({ data }: Props) => {
           <MainHero data={hero} />
           <OpinionBody
             columnArticles={opinionColumn.articles}
-            bodyArticles={opinionBody.articles}
+            bodyArticles={row1}
+            centerArticle={hero1}
           />
-          <Carousel articles={size4} tileLayout="row" />
+          <Carousel
+            articles={size4}
+            tileLayout="row"
+            categoryHeader="Staff Favorites"
+          />
           <MainHero data={hero} />
-          <Carousel articles={size5} />
+          <Carousel articles={size5} categoryHeader="Dive Deeper" />
         </div>
       </div>
       <div className={style.pageFooter}>
