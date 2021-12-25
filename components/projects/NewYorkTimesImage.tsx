@@ -14,7 +14,6 @@ export default NewYorkTimesImage;
 export const newYorkTimesSummary: ProjectSummary = {
   title: 'New York Times Clone',
   href: 'https://github.com/nalarkin/nlarkin-us',
-  // href: '/news',
   bullets: newYorkTimesBulletsSummary,
   image: <NewYorkTimesImage />,
   slug: 'nyt-clone',

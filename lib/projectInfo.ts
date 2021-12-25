@@ -26,15 +26,15 @@ export const storyGenBullets = [
 ];
 
 export const academicAdvisorBullets = [
-  'Part of team that developed an Android application that was designed to improve communication between parents, students, and teachers',
-  'Designed and implemented private messaging with message read receipts',
+  'Part of team that developed an Android app which aimed to improve communication between students, parents, and teachers',
+  'Designed and implemented private messaging, message read receipts, and secure user signup pipeline',
+  'This is the only project in my portfolio that was developed as a school project',
   'Designed and implemented secure user signup pipeline',
   'Created login process using Firebase authentication',
   'Backend database design and implementation',
   'Implemented most state management using an industry standard library named `bloc`',
   'Developed a reddit like messaging board for discussions between application users',
   'Helped develop the local notifications that students and parents could receive for upcoming homework assignments and school events',
-  'This was the only project in my portfolio that was developed as a school project',
 ];
 export const newYorkTimesBullets = [
   'Developed a fully responsive New York Times website clone from scratch',
@@ -50,15 +50,18 @@ export const newYorkTimesBullets = [
 ];
 export const inventoryBullets = [
   'Developing a full-stack inventory management website that will serve over 30 GSU researchers',
+  'Designed and implemented all critical back-end features of the custom REST API',
+  'Built the front-end features for item rental, user authentication, CRUD operations, QR code generation, and exporting data into Excel spreadsheets',
   'Sole person responsible for the front-end development of the application',
-  'Application utilizes a custom REST API to provide CRUD operations on items in inventory',
-  'User features includes renting and returning items, form validation and user authentication',
-  'Two other team members are developing the Django backend',
   'Developed mobile friendly application which allows QR code scanning to asynchronously fetch data from the backend database and display info about the scanned item',
-  'Initial developed in React, but migrated to Next.js to improve scalability',
-  'Application will be deployed on a Raspberry Pi local web server',
+  'Initial developed in React, but migrated to Next.js to improve scalability, improved routing, and time to first load',
+  'The custom back-end was created with Express.js using TypeScript',
+  'Back-end server features secure password storage by hashing passwords via argon2id',
+  'User login state is persisted in stateless manner using JSON Web Tokens.',
   'Inventory and users data is persisted through a MySQL database',
-  'Estimated initial release December 2021',
+  'Application will be deployed on a Raspberry Pi local web server',
+  'Estimated initial release January 2022',
+  'Currently unable to release full source code, but I do have an early alpha version of the backend server I created for this project',
 ];
 export const registrationBullets = [
   'Developed a Python application which routinely searches for desired college courses and registers when a course becomes available',

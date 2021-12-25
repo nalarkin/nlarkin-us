@@ -2,13 +2,18 @@
 @import 'styles/home';
 .mainContainer {
   display: grid;
-  grid-template-rows: max-content 200px 1fr;
+  grid-template-rows: max-content 200px max-content max-content 1fr;
   gap: 50px;
   color: #fff;
   font-family: $nl-font-family;
-  max-width: 1000px;
-  padding: 0px 10%;
-  margin: 0px auto;
+  // max-width: 1000px;
+  // max-width: 75ch;
+  max-width: 75ch;
+  // padding: 0px 10%;
+  // padding: 0 1em;
+
+  margin: 0 auto;
+  padding: 0 1.75rem;
 }
 
 .title {
@@ -74,7 +79,9 @@
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
-
+  // display: flex;
+  // flex-direction: column;
+  // height: max-content;
   .technologyTitle {
     font-size: 1.5rem;
     @include media('>tablet') {

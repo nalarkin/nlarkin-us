@@ -1,0 +1,38 @@
+@import '../../styles/home';
+
+.primaryButton {
+  @extend %homeButton;
+  @include style-home-button(#ff9e9e, #000);
+  margin: 0px auto 10px;
+  font-size: 1.3rem;
+  width: 250px;
+}
+.secondaryButton {
+  @extend %homeButton;
+  @include style-home-button(#c1ff88, #000);
+  margin: 0px auto 10px;
+  font-size: 1.3rem;
+  width: 250px;
+}
+
+.githubButton {
+  @extend %homeButton;
+  margin: 0px auto 10px;
+  font-size: 1.3rem;
+  width: 250px;
+  &:not(.disabledButton) {
+    @include style-home-button($nl-accent-background, #1f3a85);
+  }
+  &:is(.disabledButton) {
+    @include basic-button-style($nl-accent-background, #1f3a85);
+  }
+}
+
+.buttonFocusWrapperGithub {
+  @include focus-wrapper($nl-accent-background-dark);
+}
+
+.buttonFocusWrapper {
+  @include focus-wrapper(#ff9e9e);
+  width: max-content;
+}

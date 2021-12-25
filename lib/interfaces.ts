@@ -1,3 +1,4 @@
+import { ImageProps } from 'next/image';
 import type { IGetImageReturn } from 'plaiceholder/dist/get-image';
 
 import * as Schema from 'lib/schema';
@@ -10,11 +11,18 @@ export type Author = {
   };
 };
 
-export type PlaceholderImage = IGetImageReturn['img'] & {
-  blurDataURL: string;
-  alt: string;
-  placeholder: 'blur';
-};
+// export type PlaceholderImage = IGetImageReturn['img'] &
+//   Required<Pick<ImageProps, 'blurDataURL' | 'alt' | 'placeholder'>>;
+// export interface PlaceholderImage
+//   extends Pick<IGetImageReturn, 'img'>,
+//     Required<Pick<ImageProps, 'blurDataURL' | 'alt' | 'placeholder'>> {}
+export type PlaceholderImage = IGetImageReturn['img'] &
+  Required<Pick<ImageProps, 'blurDataURL' | 'alt' | 'placeholder'>>;
+// export type PlaceholderImage = IGetImageReturn['img'] & {
+//   blurDataURL: string;
+//   alt: string;
+//   placeholder: 'blur';
+// };
 
 // export type Article = Pick<
 //   Schema.Article,
