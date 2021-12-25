@@ -9,7 +9,7 @@ import { LinkWrapper } from 'components/shared/LinkWrapper';
 import { SEOProps } from 'components/shared/seo';
 import { registrationBullets } from 'lib/projectInfo';
 
-import styles from './index.module.scss';
+import styles from '../buttons.module.scss';
 
 const seo: SEOProps = {
   title: courseRegistrationSummary.title,

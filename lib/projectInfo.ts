@@ -61,6 +61,7 @@ export const inventoryBullets = [
   'Inventory and users data is persisted through a MySQL database',
   'Application will be deployed on a Raspberry Pi local web server',
   'Estimated initial release January 2022',
+  'Currently unable to release full source code, but I do have an early alpha version of the backend server I created for this project',
 ];
 export const registrationBullets = [
   'Developed a Python application which routinely searches for desired college courses and registers when a course becomes available',
