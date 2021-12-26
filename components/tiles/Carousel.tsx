@@ -56,7 +56,7 @@ const RowTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
               <p className={style.rowTileExcerpt}>{shortenedExcerpt}</p>
             </div>
             <div className="w-full">
-              <Image {...image} />
+              <Image {...image} placeholder="blur" />
               {/* <Image {...image} width={300} height={300} /> */}
               {/* <ImageCropBuilder image={image} width={300} height={300} /> */}
             </div>
@@ -123,7 +123,7 @@ const PhoneTileBuilder = ({
                     </div>
                   </div>
                   <div className="w-full">
-                    <Image {...image} />
+                    <Image {...image} placeholder="blur" />
                     {/* <ImageCropBuilder image={image} width={300} height={300} /> */}
                   </div>
                 </div>
