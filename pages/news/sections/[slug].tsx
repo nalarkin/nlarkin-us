@@ -23,27 +23,25 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const queryParams = { slug: params?.slug };
-  const { title, articles, slug } = await getClient(
-    preview
-  ).fetch<SectionArticleProps>(sectionArticlesQuery, queryParams);
+  const query = await getClient(preview).fetch<SectionArticleProps>(
+    sectionArticlesQuery,
+    queryParams
+  );
 
   const transformedArticles = await Promise.all(
-    articles.map(async (src) => {
-      const image = await convertImage(src.image);
-      const transformed = {
-        ...src,
-        image,
+    query.articles.map(async (article) => {
+      return {
+        ...article,
+        image: await convertImage(article.image),
       };
-      return transformed;
     })
   );
 
   return {
     props: {
       data: {
+        ...query,
         articles: transformedArticles,
-        title,
-        slug,
       },
     },
   };
@@ -58,11 +56,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const NewsCategoryMain = ({
-  data,
-}: {
-  data: SectionArticlesResponse | undefined;
-}) => {
+const NewsCategoryMain = ({ data }: { data?: SectionArticlesResponse }) => {
   if (data === undefined) {
     return <div></div>;
   }

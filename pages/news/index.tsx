@@ -32,15 +32,13 @@ async function convertCategoryToBlurImages(category: HomeCategory) {
         ...category,
         articles: await Promise.all(
           category.articles.map(async (article) => {
-            const image = await convertImage(article.image, {
-              height: 200,
-              width: 300,
-            });
-            const transformed = {
+            return {
               ...article,
-              image,
+              image: await convertImage(article.image, {
+                height: 200,
+                width: 300,
+              }),
             };
-            return transformed;
           })
         ),
       };
@@ -49,12 +47,10 @@ async function convertCategoryToBlurImages(category: HomeCategory) {
     case 'secondHeroTile': {
       const sideArticles = await Promise.all(
         category.articles.sideArticles.map(async (article) => {
-          const image = await convertImage(article.image);
-          const transformed = {
+          return {
             ...article,
-            image,
+            image: await convertImage(article.image),
           };
-          return transformed;
         })
       );
       const main = {
