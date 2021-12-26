@@ -321,11 +321,16 @@ export const homeQuery = `
   ${getNewsCategory(
     'diveDeeper',
     'Dive Deeper',
-    getSorted({ start: 20, desiredSize: 5 }),
+    getSorted({ start: 20, desiredSize: 4 }),
+    true
+  )}
+  ${getNewsCategory(
+    'culture',
+    'Culture',
+    getSorted({ start: 24, desiredSize: 3 }),
     true
   )}
 }`;
-
 // export const homeQuery = `
 // {
 //   "hero": {

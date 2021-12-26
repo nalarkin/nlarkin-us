@@ -17,8 +17,7 @@ import {
   SectionArticlesResponse,
 } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
-
-import style from './[slug].module.scss';
+import { VarietyService } from 'lib/variety';
 
 export const getStaticProps: GetStaticProps = async ({
   params,
@@ -58,18 +57,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-function getCarouselArticles(articles: ArticleDetailedImageAuthors[]) {
-  switch (articles.length) {
-    case 1:
-      throw new Error(
-        'Carousel format breaks when there is 1 item on carousel'
-      );
-    case 2:
-      return [...articles];
-    default:
-      return articles.slice(1, 5);
-  }
-}
+// function getCarouselArticles(articles: ArticleDetailedImageAuthors[]) {
+//   switch (articles.length) {
+//     case 1:
+//       throw new Error(
+//         'Carousel format breaks when there is 1 item on carousel'
+//       );
+//     case 2:
+//       return [...articles];
+//     default:
+//       return articles.slice(1, 5);
+//   }
+// }
 
 const SectionBody = ({
   articles,
@@ -79,8 +78,11 @@ const SectionBody = ({
   section: string;
 }) => {
   // const carouselA = articles.slice(1, 5);
-  const carouselA = getCarouselArticles(articles);
-  const carouselB = articles.slice(0, 4);
+  const Variety = new VarietyService(articles);
+  const carouselA = Variety.getPermutation();
+  // const carouselA = getCarouselArticles(articles);
+  // const carouselB = articles.slice(0, 4);
+  const carouselB = Variety.getPermutation();
   return (
     <>
       <Carousel
@@ -95,7 +97,8 @@ const SectionBody = ({
         tileLayout="column"
       />
       <Carousel
-        articles={[...carouselB].reverse()}
+        // articles={[...carouselB].reverse()}
+        articles={Variety.getPermutation()}
         categoryHeader={`${section} News Opinion Pieces`}
         tileLayout="row"
       />
@@ -125,19 +128,18 @@ const NewsCategoryMain = ({ data }: { data?: SectionArticlesResponse }) => {
   return (
     <NewsLayout title={title} slug={slug}>
       <NextSeo {...seo} />
-      {/* <MinimalHeader sectionTitle={title} slug={slug} /> */}
-      <div className={style.heroContainer}>
-        {/* <div className='text-3xl font-bold'> {title}</div> */}
-        <SectionHero articles={articles} />
-        <div className={``}>
-          {articles.length === 0 ? (
-            handleNoArticles()
-          ) : (
-            <SectionBody articles={articles} section={title} />
-          )}
-        </div>
-        <LatestList articles={articles} />
+      {/* <div className={style.heroContainer}> */}
+      <SectionHero articles={articles} />
+      {/* </div> */}
+      <div className={``}>
+        {articles.length === 0 ? (
+          handleNoArticles()
+        ) : (
+          <SectionBody articles={articles} section={title} />
+        )}
       </div>
+      <LatestList articles={articles} />
+      {/* </div> */}
     </NewsLayout>
   );
 };
