@@ -17,6 +17,7 @@ import {
   SectionArticlesResponse,
 } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
+import { VarietyService } from 'lib/variety';
 
 export const getStaticProps: GetStaticProps = async ({
   params,
@@ -56,18 +57,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-function getCarouselArticles(articles: ArticleDetailedImageAuthors[]) {
-  switch (articles.length) {
-    case 1:
-      throw new Error(
-        'Carousel format breaks when there is 1 item on carousel'
-      );
-    case 2:
-      return [...articles];
-    default:
-      return articles.slice(1, 5);
-  }
-}
+// function getCarouselArticles(articles: ArticleDetailedImageAuthors[]) {
+//   switch (articles.length) {
+//     case 1:
+//       throw new Error(
+//         'Carousel format breaks when there is 1 item on carousel'
+//       );
+//     case 2:
+//       return [...articles];
+//     default:
+//       return articles.slice(1, 5);
+//   }
+// }
 
 const SectionBody = ({
   articles,
@@ -77,8 +78,11 @@ const SectionBody = ({
   section: string;
 }) => {
   // const carouselA = articles.slice(1, 5);
-  const carouselA = getCarouselArticles(articles);
-  const carouselB = articles.slice(0, 4);
+  const Variety = new VarietyService(articles);
+  const carouselA = Variety.getPermutation();
+  // const carouselA = getCarouselArticles(articles);
+  // const carouselB = articles.slice(0, 4);
+  const carouselB = Variety.getPermutation();
   return (
     <>
       <Carousel
@@ -93,7 +97,8 @@ const SectionBody = ({
         tileLayout="column"
       />
       <Carousel
-        articles={[...carouselB].reverse()}
+        // articles={[...carouselB].reverse()}
+        articles={Variety.getPermutation()}
         categoryHeader={`${section} News Opinion Pieces`}
         tileLayout="row"
       />

@@ -156,6 +156,11 @@ export interface CategoryLatestNews
   uid: 'latestNews';
   title: string;
 }
+export interface CategoryCulture
+  extends CategoryArticles<ArticleDetailedImage[]> {
+  uid: 'culture';
+  title: string;
+}
 export interface CategoryMidHero
   extends CategoryArticles<ArticleDetailedImage> {
   uid: 'MidHero';
@@ -170,6 +175,7 @@ export type HomeCategory =
   | CategoryLatestNews
   | CategoryPopularArticles
   | CategoryMidHero
+  | CategoryCulture
   | CategoryDiveDeeper;
 export type HomeProps = {
   hero: CategoryHero;
@@ -180,6 +186,7 @@ export type HomeProps = {
   popularArticles: CategoryPopularArticles;
   midHero: CategoryMidHero;
   diveDeeper: CategoryDiveDeeper;
+  culture: CategoryCulture;
 };
 // export interface CategoryCulture
 //   extends CategoryArticles<ArticleDetailedImage[]> {

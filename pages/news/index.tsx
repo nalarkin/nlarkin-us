@@ -20,6 +20,7 @@ async function convertCategoryToBlurImages(category: HomeCategory) {
     case 'diveDeeper':
     case 'latestNews':
     case 'popularArticles':
+    case 'culture':
     case 'staffFavorites': {
       return {
         ...category,
@@ -88,6 +89,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const staffFavorites = await convertCategoryToBlurImages(
     query.staffFavorites
   );
+  const culture = await convertCategoryToBlurImages(query.culture);
   return {
     props: {
       data: {
@@ -99,6 +101,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
         popularArticles,
         secondHeroTile,
         staffFavorites,
+        culture,
       },
     },
   };
@@ -121,6 +124,7 @@ const NewsHome = ({ data }: Props) => {
     popularArticles,
     secondHeroTile,
     staffFavorites,
+    culture,
   } = data;
 
   return (
@@ -136,6 +140,7 @@ const NewsHome = ({ data }: Props) => {
             latestNews={latestNews.articles}
             popular={popularArticles.articles}
             centerArticle={midHero.articles}
+            culture={culture.articles}
           />
 
           <Carousel
