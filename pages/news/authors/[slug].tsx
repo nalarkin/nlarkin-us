@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo';
 
 import NewsLayout from 'components/layouts/NewsLayout';
 import LatestList from 'components/sections/latest/LatestList';
+import { convertImage } from 'components/shared/convertImage';
 import { ImageBuilder } from 'components/shared/ImageBuilder';
 import { authorQuery, AuthorQueryResult, authorSlugQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
@@ -43,10 +44,20 @@ export const getStaticProps: GetStaticProps = async ({
     authorQuery,
     queryParams
   );
+
+  // const image = await convertImage(result.picture);
+  const articles = await Promise.all(
+    result.articles.map(async (article) => ({
+      ...article,
+      image: await convertImage(article.image),
+    }))
+  );
+
   return {
     props: {
       preview,
-      data: result,
+      // data: { ...result, picture: image },
+      data: { ...result, articles },
     },
   };
 };

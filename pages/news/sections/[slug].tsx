@@ -7,7 +7,9 @@ import NewsLayout from 'components/layouts/NewsLayout';
 import SectionHero from 'components/sections/cards/SectionHero';
 import LatestList from 'components/sections/latest/LatestList';
 import { convertImage } from 'components/shared/convertImage';
+import Carousel from 'components/tiles/Carousel';
 import LargeArticleCard from 'components/tiles/LargeCard';
+import { ArticleDetailedImageAuthors } from 'lib/interfaces';
 import {
   sectionSlugsQuery,
   sectionArticlesQuery,
@@ -23,26 +25,25 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const queryParams = { slug: params?.slug };
-  const { title, articles, slug } = await getClient(
-    preview
-  ).fetch<SectionArticleProps>(sectionArticlesQuery, queryParams);
+  const query = await getClient(preview).fetch<SectionArticleProps>(
+    sectionArticlesQuery,
+    queryParams
+  );
+
   const transformedArticles = await Promise.all(
-    articles.map(async (src) => {
-      const image = await convertImage(src.image);
-      const transformed = {
-        ...src,
-        image,
+    query.articles.map(async (article) => {
+      return {
+        ...article,
+        image: await convertImage(article.image),
       };
-      return transformed;
     })
   );
 
   return {
     props: {
       data: {
+        ...query,
         articles: transformedArticles,
-        title,
-        slug,
       },
     },
   };
@@ -57,11 +58,52 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const NewsCategoryMain = ({
-  data,
+function getCarouselArticles(articles: ArticleDetailedImageAuthors[]) {
+  switch (articles.length) {
+    case 1:
+      throw new Error(
+        'Carousel format breaks when there is 1 item on carousel'
+      );
+    case 2:
+      return [...articles];
+    default:
+      return articles.slice(1, 5);
+  }
+}
+
+const SectionBody = ({
+  articles,
+  section,
 }: {
-  data: SectionArticlesResponse | undefined;
+  articles: ArticleDetailedImageAuthors[];
+  section: string;
 }) => {
+  // const carouselA = articles.slice(1, 5);
+  const carouselA = getCarouselArticles(articles);
+  const carouselB = articles.slice(0, 4);
+  return (
+    <>
+      <Carousel
+        articles={carouselA}
+        categoryHeader={`${section} News Latest Stories`}
+        tileLayout="row"
+      />
+      <LargeArticleCard article={articles[articles.length - 1]} />
+      <Carousel
+        articles={carouselB}
+        categoryHeader={`${section} News Developing Stories`}
+        tileLayout="column"
+      />
+      <Carousel
+        articles={[...carouselB].reverse()}
+        categoryHeader={`${section} News Opinion Pieces`}
+        tileLayout="row"
+      />
+    </>
+  );
+};
+
+const NewsCategoryMain = ({ data }: { data?: SectionArticlesResponse }) => {
   if (data === undefined) {
     return <div></div>;
   }
@@ -88,15 +130,11 @@ const NewsCategoryMain = ({
         {/* <div className='text-3xl font-bold'> {title}</div> */}
         <SectionHero articles={articles} />
         <div className={``}>
-          {articles.length === 0
-            ? handleNoArticles()
-            : articles.map((article) => {
-                return (
-                  // <div className='flex flex-row flex-wrap  ' key={article._id}>
-                  <LargeArticleCard article={article} key={article._id} />
-                  // </div>
-                );
-              })}
+          {articles.length === 0 ? (
+            handleNoArticles()
+          ) : (
+            <SectionBody articles={articles} section={title} />
+          )}
         </div>
         <LatestList articles={articles} />
       </div>

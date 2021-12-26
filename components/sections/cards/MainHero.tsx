@@ -31,6 +31,7 @@ type CardProps = {
 
 const HeroTile = ({ article }: CardProps) => {
   const { image, excerpt, slug, title } = article;
+  // console.log(`${JSON.stringify(image, null, 2)}`);
   return (
     // <div className={style.hero}>
     <>

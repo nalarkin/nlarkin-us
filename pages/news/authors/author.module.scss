@@ -1,5 +1,6 @@
 @import 'styles/news';
 .bioContainer {
+  // background-color: green;
   @include flex-row;
   align-items: flex-start;
   font-family: $font-serif;
