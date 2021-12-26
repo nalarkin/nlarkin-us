@@ -18,6 +18,24 @@ const articleFields = `
   "slug": slug.current,
   authors[]-> {name, "slug": slug.current, picture}
 `;
+
+const articleNoImage = `_id,
+  title,
+  "slug": slug.current,
+  date`;
+const articleWithImage = `_id,
+  title,
+  "slug": slug.current,
+  date,
+  image,
+  excerpt`;
+
+const getArticleAuthors = `authors[]-> {
+            name, 
+            "slug": slug.current, 
+            picture
+          }`;
+
 // 	authors[]-> {name, "slug": slug.current}
 
 //   "author": author->{name, picture},
@@ -137,25 +155,25 @@ const getSorted = ({ start = 0, desiredSize }: GetSortedProps) =>
 //           }
 // `;
 
-// export const authorQuery = groq`
-// *[_type == "author" && slug.current == $slug][0] {
-//   bio,
-//   picture,
-//   name,
-//   "articles": *[_type=="article" && references(^._id)] {
-//     ${articleNoImage},
-//     ${getArticleAuthors},
-//     excerpt,
-//     image
-//   } | order(date desc)
-// }
-// `;
-// export type AuthorQueryResult = {
-//   name: Schema.Author['name'];
-//   picture: Schema.Author['picture'];
-//   bio: Schema.Author['bio'];
-//   articles: ArticleDetailedImageAuthors[];
-// };
+export const authorQuery = groq`
+*[_type == "author" && slug.current == $slug][0] {
+  bio,
+  picture,
+  name,
+  "articles": *[_type=="article" && references(^._id)] {
+    ${articleNoImage},
+    ${getArticleAuthors},
+    excerpt,
+    image
+  } | order(date desc)
+}
+`;
+export type AuthorQueryResult = {
+  name: Schema.Author['name'];
+  picture: Schema.Author['picture'];
+  bio: Schema.Author['bio'];
+  articles: ArticleDetailedImageAuthors[];
+};
 
 // export const homeQuery = groq`
 // {
@@ -219,23 +237,6 @@ const getSorted = ({ start = 0, desiredSize }: GetSortedProps) =>
 //     }${getSorted({ desiredSize: 5 })}
 // 	}
 // }`;
-
-const articleNoImage = `_id,
-  title,
-  "slug": slug.current,
-  date`;
-const articleWithImage = `_id,
-  title,
-  "slug": slug.current,
-  date,
-  image,
-  excerpt`;
-
-const getArticleAuthors = `authors[]-> {
-            name, 
-            "slug": slug.current, 
-            picture
-          }`;
 
 interface GetSortedProps {
   start?: number;

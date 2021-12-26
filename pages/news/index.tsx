@@ -16,13 +16,6 @@ import { getClient } from 'lib/sanity.server';
 import style from './index.module.scss';
 
 async function convertCategoryToBlurImages(category: HomeCategory) {
-  console.log(
-    `Making BLUR IMAGE for category withinfo.... ${JSON.stringify(
-      category.uid,
-      null,
-      2
-    )}`
-  );
   switch (category.uid) {
     case 'diveDeeper':
     case 'latestNews':
