@@ -18,8 +18,6 @@ import {
 } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
-import style from './[slug].module.scss';
-
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
@@ -125,19 +123,18 @@ const NewsCategoryMain = ({ data }: { data?: SectionArticlesResponse }) => {
   return (
     <NewsLayout title={title} slug={slug}>
       <NextSeo {...seo} />
-      {/* <MinimalHeader sectionTitle={title} slug={slug} /> */}
-      <div className={style.heroContainer}>
-        {/* <div className='text-3xl font-bold'> {title}</div> */}
-        <SectionHero articles={articles} />
-        <div className={``}>
-          {articles.length === 0 ? (
-            handleNoArticles()
-          ) : (
-            <SectionBody articles={articles} section={title} />
-          )}
-        </div>
-        <LatestList articles={articles} />
+      {/* <div className={style.heroContainer}> */}
+      <SectionHero articles={articles} />
+      {/* </div> */}
+      <div className={``}>
+        {articles.length === 0 ? (
+          handleNoArticles()
+        ) : (
+          <SectionBody articles={articles} section={title} />
+        )}
       </div>
+      <LatestList articles={articles} />
+      {/* </div> */}
     </NewsLayout>
   );
 };
