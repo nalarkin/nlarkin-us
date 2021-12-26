@@ -49,10 +49,7 @@ async function convertCategoryToBlurImages(category: HomeCategory) {
     case 'secondHeroTile': {
       const sideArticles = await Promise.all(
         category.articles.sideArticles.map(async (article) => {
-          const image = await convertImage(article.image, {
-            height: 200,
-            width: 300,
-          });
+          const image = await convertImage(article.image);
           const transformed = {
             ...article,
             image,
@@ -88,25 +85,6 @@ async function convertCategoryToBlurImages(category: HomeCategory) {
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const query = await getClient(preview).fetch<HomeProps>(homeQuery);
-  // console.log(`${JSON.stringify(query, null, 2)}`);
-  // query.hero.articles.main.image = await convertImage(
-  //   query.hero.articles.main.image
-  // );
-  // const hero1 = {
-  //   ...query.opinionBody.articles[2],
-  //   image: await convertImage(query.opinionBody.articles[2].image),
-  // };
-  // const diveDeeper: ArticleDetailedImage[] = await Promise.all(
-  //   query.diveDeeper.articles.map(async (src) => {
-  //     const image = await convertImage(src.image, { height: 200, width: 300 });
-  //     const transformed = {
-  //       ...src,
-  //       image,
-  //     };
-  //     return transformed;
-  //   })
-  // );
-  // const diveDeeperQuery = await query.diveDeeper;
   const diveDeeper = await convertCategoryToBlurImages(query.diveDeeper);
   const hero = await convertCategoryToBlurImages(query.hero);
   const latestNews = await convertCategoryToBlurImages(query.latestNews);

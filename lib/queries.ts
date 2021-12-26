@@ -244,10 +244,16 @@ interface GetSortedProps {
 const getReversed = ({ start = 0, desiredSize }: GetSortedProps) =>
   `| order(date asc)[${start}..${desiredSize - 1 + start}]`;
 
-const getNewsCategory = (key: string, title: string, arraySelector: string) => {
+const getNewsCategory = (
+  key: string,
+  title: string,
+  arraySelector: string,
+  cropped: boolean
+) => {
   return `"${key}": {
     "uid": "${key}",
     "title": "${title}",
+    "cropped": ${cropped},
     "articles": *[_type=="article"]{
       ${articleWithImage},
 		}${arraySelector}
@@ -278,7 +284,8 @@ export const homeQuery = `
   ${getNewsCategory(
     'latestNews',
     'Latest News',
-    getSorted({ start: 4, desiredSize: 3 })
+    getSorted({ start: 4, desiredSize: 3 }),
+    true
   )}
   "midHero": {
     "uid": "MidHero",
@@ -289,12 +296,14 @@ export const homeQuery = `
     ${getNewsCategory(
       'popularArticles',
       'Popular Articles',
-      getSorted({ start: 8, desiredSize: 4 })
+      getSorted({ start: 8, desiredSize: 4 }),
+      true
     )}
     ${getNewsCategory(
       'staffFavorites',
       'Staff Favorites',
-      getSorted({ start: 12, desiredSize: 4 })
+      getSorted({ start: 12, desiredSize: 4 }),
+      true
     )}
 	"secondHeroTile": {
     "uid": "secondHeroTile",
@@ -311,7 +320,8 @@ export const homeQuery = `
   ${getNewsCategory(
     'diveDeeper',
     'Dive Deeper',
-    getSorted({ start: 20, desiredSize: 5 })
+    getSorted({ start: 20, desiredSize: 5 }),
+    true
   )}
 }`;
 

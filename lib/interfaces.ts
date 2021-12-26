@@ -44,6 +44,7 @@ export type PlaceholderImage = IGetImageReturn['img'] &
 
 interface CategoryArticles<T> {
   articles: T;
+  cropped?: boolean;
 }
 export type AuthorsArray = Array<
   Pick<Schema.Author, 'name' | 'picture'> & { slug: string }
@@ -95,6 +96,7 @@ export type Z = Omit<ArticleDetailedImageAuthors, keyof ArticleOpinion>;
 export type V = Extract<Article, keyof Y>;
 
 export interface CategoryHero {
+  cropped?: boolean;
   uid: 'Hero';
   articles: {
     main: ArticleDetailedImage;
@@ -102,6 +104,7 @@ export interface CategoryHero {
   };
 }
 export interface CategorySecondHeroTile {
+  cropped?: boolean;
   uid: 'secondHeroTile';
   articles: {
     main: ArticleDetailedImage;
@@ -111,6 +114,7 @@ export interface CategorySecondHeroTile {
 
 export interface CategoryOpinionColumn
   extends CategoryArticles<ArticleOpinion[]> {
+  cropped?: boolean;
   uid: 'Opinion Column';
   title: string;
 }
