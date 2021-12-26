@@ -123,53 +123,147 @@ interface GetSortedProps {
 const getSorted = ({ start = 0, desiredSize }: GetSortedProps) =>
   `| order(date desc)[${start}..${desiredSize - 1 + start}]`;
 
-const articleNoImage = `
-  _id,
+// const articleNoImage = `
+//   _id,
+//   title,
+//   "slug": slug.current,
+//   date
+// `;
+// const getArticleAuthors = `
+// authors[]-> {
+//             name,
+//             "slug": slug.current,
+//             picture
+//           }
+// `;
+
+// export const authorQuery = groq`
+// *[_type == "author" && slug.current == $slug][0] {
+//   bio,
+//   picture,
+//   name,
+//   "articles": *[_type=="article" && references(^._id)] {
+//     ${articleNoImage},
+//     ${getArticleAuthors},
+//     excerpt,
+//     image
+//   } | order(date desc)
+// }
+// `;
+// export type AuthorQueryResult = {
+//   name: Schema.Author['name'];
+//   picture: Schema.Author['picture'];
+//   bio: Schema.Author['bio'];
+//   articles: ArticleDetailedImageAuthors[];
+// };
+
+// export const homeQuery = groq`
+// {
+//   "hero": {
+//     "uid": "Hero",
+//     "articles": {
+//       "main": *[_type=="article" ] {
+//         ${articleNoImage},
+//         excerpt,
+//         image,
+//       }| order(date desc)[0],
+//       "sideArticles": *[_type=="article" ] {
+//         ${articleNoImage},
+//         excerpt
+//       }${getSorted({ start: 1, desiredSize: 3 })}
+//     }
+// 	},
+// 	"opinionColumn": {
+// 	  "uid": "Opinion Column",
+//     "title": "Opinion",
+//     "articles": *[_type=="article"]{
+//       ${articleNoImage},
+//       ${getArticleAuthors}
+//     }${getSorted({ start: 5, desiredSize: 14 })}
+// 	},
+// 	"opinionBody": {
+//     "uid": "OpinionBody",
+//     "articles": *[_type=="article"]{
+//       ${articleNoImage},
+//     	excerpt,
+//       image
+// 		}${getSorted({ start: 5, desiredSize: 14 })}
+//   },
+// 	"moreNews": {
+//     "uid": "More News",
+//     "title": "More News",
+//     "articles": {
+//       "main": *[_type=="article"] {
+//           ${articleNoImage},
+//           excerpt
+//        }${getSorted({ desiredSize: 4 })},
+//       "headlines": *[_type=="article"] {
+//         ${articleNoImage}
+//       }${getSorted({ desiredSize: 6 })}
+//   	}
+// 	},
+// 	"culture": {
+//     "uid": "Culture",
+//     "title": "Culture",
+//     "articles": *[_type=="article"] {
+//       ${articleNoImage},
+//       excerpt,
+//       image,
+//   	}${getSorted({ desiredSize: 5 })}
+// 	},
+// 	"cooking": {
+//     "uid": "Cooking",
+//     "title": "Cooking",
+//     "articles": *[_type=="article"] {
+//       ${articleNoImage}
+//     }${getSorted({ desiredSize: 5 })}
+// 	}
+// }`;
+
+const articleNoImage = `_id,
   title,
   "slug": slug.current,
-  date
-`;
-const getArticleAuthors = `
-authors[]-> {
+  date`;
+const articleWithImage = `_id,
+  title,
+  "slug": slug.current,
+  date,
+  image,
+  excerpt`;
+
+const getArticleAuthors = `authors[]-> {
             name, 
             "slug": slug.current, 
             picture
-          }
-`;
+          }`;
 
-export const authorQuery = groq`
-*[_type == "author" && slug.current == $slug][0] {
-  bio,
-  picture,
-  name,
-  "articles": *[_type=="article" && references(^._id)] {
-    ${articleNoImage},
-    ${getArticleAuthors},
-    excerpt,
-    image
-  } | order(date desc)
+interface GetSortedProps {
+  start?: number;
+  desiredSize: number;
 }
-`;
-export type AuthorQueryResult = {
-  name: Schema.Author['name'];
-  picture: Schema.Author['picture'];
-  bio: Schema.Author['bio'];
-  articles: ArticleDetailedImageAuthors[];
+const getReversed = ({ start = 0, desiredSize }: GetSortedProps) =>
+  `| order(date asc)[${start}..${desiredSize - 1 + start}]`;
+
+const getNewsCategory = (key: string, title: string, arraySelector: string) => {
+  return `"${key}": {
+    "uid": "${key}",
+    "title": "${title}",
+    "articles": *[_type=="article"]{
+      ${articleWithImage},
+		}${arraySelector}
+  },`;
 };
 
-export const homeQuery = groq`
+export const homeQuery = `
 {
   "hero": {
     "uid": "Hero",
     "articles": {
       "main": *[_type=="article" ] {
-        ${articleNoImage},
-        excerpt,
-        image,
+        ${articleWithImage},
       }| order(date desc)[0],
       "sideArticles": *[_type=="article" ] {
-        ${articleNoImage},
-        excerpt
+        ${articleWithImage},
       }${getSorted({ start: 1, desiredSize: 3 })}
     }
 	},
@@ -178,44 +272,113 @@ export const homeQuery = groq`
     "title": "Opinion",
     "articles": *[_type=="article"]{
       ${articleNoImage},
-      ${getArticleAuthors}
-    }${getSorted({ start: 5, desiredSize: 14 })}  
+      ${getArticleAuthors},
+    }${getReversed({ desiredSize: 14 })}  
 	},
-	"opinionBody": {
-    "uid": "OpinionBody",
+  ${getNewsCategory(
+    'latestNews',
+    'Latest News',
+    getSorted({ start: 4, desiredSize: 3 })
+  )}
+  "midHero": {
+    "uid": "MidHero",
     "articles": *[_type=="article"]{
-      ${articleNoImage},
-    	excerpt,
-      image
-		}${getSorted({ start: 5, desiredSize: 14 })}
+      ${articleWithImage},
+		}${getSorted({ start: 7, desiredSize: 1 })}[0]
   },
-	"moreNews": {
-    "uid": "More News",
-    "title": "More News",
+    ${getNewsCategory(
+      'popularArticles',
+      'Popular Articles',
+      getSorted({ start: 8, desiredSize: 4 })
+    )}
+    ${getNewsCategory(
+      'staffFavorites',
+      'Staff Favorites',
+      getSorted({ start: 12, desiredSize: 4 })
+    )}
+	"secondHeroTile": {
+    "uid": "secondHeroTile",
+    "title": "Second Hero Tile",
     "articles": {
-      "main": *[_type=="article"] {
-          ${articleNoImage},
-          excerpt
-       }${getSorted({ desiredSize: 4 })},
-      "headlines": *[_type=="article"] {
-        ${articleNoImage}
-      }${getSorted({ desiredSize: 6 })}
-  	}	
+      "main": *[_type=="article" ] {
+        ${articleWithImage},
+      }| order(date asc)[2],
+      "sideArticles": *[_type=="article" ] {
+        ${articleWithImage},
+      }${getSorted({ start: 16, desiredSize: 4 })}
+    }
 	},
-	"culture": {
-    "uid": "Culture",
-    "title": "Culture",
-    "articles": *[_type=="article"] {
-      ${articleNoImage},
-      excerpt,
-      image,
-  	}${getSorted({ desiredSize: 5 })}
-	},
-	"cooking": {
-    "uid": "Cooking",
-    "title": "Cooking",
-    "articles": *[_type=="article"] {
-      ${articleNoImage}
-    }${getSorted({ desiredSize: 5 })}
-	}
+  ${getNewsCategory(
+    'diveDeeper',
+    'Dive Deeper',
+    getSorted({ start: 20, desiredSize: 5 })
+  )}
 }`;
+
+// export const homeQuery = `
+// {
+//   "hero": {
+//     "uid": "Hero",
+//     "articles": {
+//       "main": *[_type=="article" ] {
+//         ${articleWithImage},
+//       }| order(date desc)[0],
+//       "sideArticles": *[_type=="article" ] {
+//         ${articleWithImage},
+//       }${getSorted({ start: 1, desiredSize: 3 })}
+//     }
+// 	},
+// 	"opinionColumn": {
+// 	  "uid": "Opinion Column",
+//     "title": "Opinion",
+//     "articles": *[_type=="article"]{
+//       ${articleNoImage},
+//       ${getArticleAuthors},
+//     }${getReversed({ desiredSize: 14 })}
+// 	},
+// 	"latestNews": {
+//     "uid": "LatestNews",
+//     "articles": *[_type=="article"]{
+//       ${articleWithImage},
+// 		}${getSorted({ start: 4, desiredSize: 3 })}
+//   },
+//   "midHero": {
+//     "uid": "MidHero",
+//     "articles": *[_type=="article"]{
+//       ${articleWithImage},
+// 		}${getSorted({ start: 7, desiredSize: 1 })}
+//   },
+// 	"popularArticles": {
+//     "uid": "PopularArticles",
+//     "title": "Popular Articles",
+//     "articles": *[_type=="article"] {
+//         ${articleWithImage},
+//     }${getSorted({ start: 8, desiredSize: 4 })},
+// 	},
+// 	"staffFavorites": {
+//     "uid": "staffFavorites",
+//     "title": "Staff Favorites",
+//     "articles": *[_type=="article"] {
+//       ${articleWithImage},
+//   	}${getSorted({ start: 12, desiredSize: 4 })}
+// 	},
+// 	"secondHeroTile": {
+//     "uid": "secondHeroTile",
+//     "title": "Second Hero Tile",
+//     "articles": {
+//       "main": *[_type=="article" ] {
+//         ${articleWithImage},
+//       }| order(date desc)[0],
+//       "sideArticles": *[_type=="article" ] {
+//         ${articleWithImage},
+//       }${getSorted({ start: 16, desiredSize: 4 })}
+//     }
+// 	},
+// 	"diveDeeper": {
+//     "uid": "diveDeeper",
+//     "title": "Dive Deeper",
+//     "articles": *[_type=="article"] {
+//       ${articleWithImage}
+//     }${getSorted({ start: 20, desiredSize: 5 })}
+// 	},
+// }`;

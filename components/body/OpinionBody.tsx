@@ -9,30 +9,32 @@ import style from './OpinionBody.module.scss';
 import OpinionColumn from './OpinionColumn';
 
 type Props = {
-  columnArticles: ArticleOpinion[];
-  bodyArticles: ArticleDetailedImage[];
+  opinionColumn: ArticleOpinion[];
+  latestNews: ArticleDetailedImage[];
+  popular: ArticleDetailedImage[];
   centerArticle: ArticleDetailedImage;
 };
 
 const OpinionBody = ({
-  columnArticles,
-  bodyArticles,
+  opinionColumn,
+  latestNews,
+  popular,
   centerArticle,
 }: Props) => {
-  const size3 = bodyArticles.slice(0, 3);
-  const size4 = bodyArticles.slice(0, 4);
+  // const size3 = bodyArticles.slice(0, 3);
+  // const size4 = bodyArticles.slice(0, 4);
   return (
     <main className={style.content}>
       {/* <NewsHero /> */}
       <div className={style.contentBody}>
-        <Carousel articles={size3} categoryHeader="Latest News" />
+        <Carousel articles={latestNews} categoryHeader="Latest News" />
         <LargeArticleCard article={centerArticle} />
-        <Carousel articles={size4} categoryHeader="Most Popular Articles" />
+        <Carousel articles={popular} categoryHeader="Most Popular Articles" />
       </div>
 
       <div className={style.opinionSpacer}>
         <div className={style.opinionBlock}>
-          <OpinionColumn articles={columnArticles} />
+          <OpinionColumn articles={opinionColumn} />
         </div>
       </div>
 

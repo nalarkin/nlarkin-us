@@ -26,6 +26,7 @@ export const getStaticProps: GetStaticProps = async ({
   const { title, articles, slug } = await getClient(
     preview
   ).fetch<SectionArticleProps>(sectionArticlesQuery, queryParams);
+
   const transformedArticles = await Promise.all(
     articles.map(async (src) => {
       const image = await convertImage(src.image);

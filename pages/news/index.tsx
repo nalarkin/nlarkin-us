@@ -9,72 +9,130 @@ import MainNewsHeader from 'components/headers/MainNewsHeader';
 import MainHero from 'components/sections/cards/MainHero';
 import { convertImage } from 'components/shared/convertImage';
 import Carousel from 'components/tiles/Carousel';
-import { HomeQuery, HomeProps, ArticleDetailedImage } from 'lib/interfaces';
+import { HomeProps, HomeCategory } from 'lib/interfaces';
 import { homeQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
-import { shuffle, shuffleCopy } from 'lib/utils';
 
 import style from './index.module.scss';
 
-// import NewsLayout from '../../components/layouts/NewsLayout3';
+async function convertCategoryToBlurImages(category: HomeCategory) {
+  console.log(
+    `Making BLUR IMAGE for category withinfo.... ${JSON.stringify(
+      category.uid,
+      null,
+      2
+    )}`
+  );
+  switch (category.uid) {
+    case 'diveDeeper':
+    case 'latestNews':
+    case 'popularArticles':
+    case 'staffFavorites': {
+      return {
+        ...category,
+        articles: await Promise.all(
+          category.articles.map(async (article) => {
+            const image = await convertImage(article.image, {
+              height: 200,
+              width: 300,
+            });
+            const transformed = {
+              ...article,
+              image,
+            };
+            return transformed;
+          })
+        ),
+      };
+    }
+    case 'Hero':
+    case 'secondHeroTile': {
+      const sideArticles = await Promise.all(
+        category.articles.sideArticles.map(async (article) => {
+          const image = await convertImage(article.image, {
+            height: 200,
+            width: 300,
+          });
+          const transformed = {
+            ...article,
+            image,
+          };
+          return transformed;
+        })
+      );
+      const main = {
+        ...category.articles.main,
+        image: await convertImage(category.articles.main.image),
+      };
+      // const result = { ...articles, main, sideArticles };
+      return { ...category, articles: { sideArticles, main } };
+    }
+    case 'MidHero': {
+      return {
+        ...category,
+        articles: {
+          ...category.articles,
+          image: await convertImage(category.articles.image),
+        },
+      };
+    }
+    case 'Opinion Column':
+      return {
+        ...category,
+      };
 
-// const NewsSEO = {
-//   description:
-//     'This is a purely educational attempt to clone of the New York Times. Disclaimer....',
-//   title: "Nathan's News",
-// };
+    default:
+      throw new Error('This should never happen');
+  }
+}
+
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const query = await getClient(preview).fetch<HomeQuery>(homeQuery);
-  query.hero.articles.main.image = await convertImage(
-    query.hero.articles.main.image
+  const query = await getClient(preview).fetch<HomeProps>(homeQuery);
+  // console.log(`${JSON.stringify(query, null, 2)}`);
+  // query.hero.articles.main.image = await convertImage(
+  //   query.hero.articles.main.image
+  // );
+  // const hero1 = {
+  //   ...query.opinionBody.articles[2],
+  //   image: await convertImage(query.opinionBody.articles[2].image),
+  // };
+  // const diveDeeper: ArticleDetailedImage[] = await Promise.all(
+  //   query.diveDeeper.articles.map(async (src) => {
+  //     const image = await convertImage(src.image, { height: 200, width: 300 });
+  //     const transformed = {
+  //       ...src,
+  //       image,
+  //     };
+  //     return transformed;
+  //   })
+  // );
+  // const diveDeeperQuery = await query.diveDeeper;
+  const diveDeeper = await convertCategoryToBlurImages(query.diveDeeper);
+  const hero = await convertCategoryToBlurImages(query.hero);
+  const latestNews = await convertCategoryToBlurImages(query.latestNews);
+  const midHero = await convertCategoryToBlurImages(query.midHero);
+  const opinionColumn = await convertCategoryToBlurImages(query.opinionColumn);
+  const popularArticles = await convertCategoryToBlurImages(
+    query.popularArticles
   );
-  const hero1 = {
-    ...query.opinionBody.articles[2],
-    image: await convertImage(query.opinionBody.articles[2].image),
-  };
-
-  const carouselColumn: ArticleDetailedImage[] = await Promise.all(
-    query.opinionBody.articles.map(async (src) => {
-      const image = await convertImage(src.image, { height: 200, width: 300 });
-      const transformed = {
-        ...src,
-        image,
-      };
-      return transformed;
-    })
+  const secondHeroTile = await convertCategoryToBlurImages(
+    query.secondHeroTile
   );
-  shuffle(carouselColumn);
-  const carouselRow: ArticleDetailedImage[] = await Promise.all(
-    query.opinionBody.articles.map(async (src) => {
-      const image = await convertImage(src.image, { height: 300, width: 300 });
-      const transformed = {
-        ...src,
-        image,
-      };
-      return transformed;
-    })
-  );
-  shuffle(carouselRow);
-
-  // const row1 = Array.from(carouselColumn);
-  const row1 = shuffleCopy(carouselColumn);
-  const row2 = shuffleCopy(carouselColumn);
-
-  // console.log(`hero1: ${JSON.stringify(hero1, null, 2)}`);
-
-  query.opinionBody.articles = await Promise.all(
-    query.opinionBody.articles.map(async (src) => {
-      const image = await convertImage(src.image);
-      const transformed = {
-        ...src,
-        image,
-      };
-      return transformed;
-    })
+  const staffFavorites = await convertCategoryToBlurImages(
+    query.staffFavorites
   );
   return {
     props: {
-      data: { ...query, carouselColumn, carouselRow, row1, row2, hero1 },
+      data: {
+        diveDeeper,
+        hero,
+        latestNews,
+        midHero,
+        opinionColumn,
+        popularArticles,
+        secondHeroTile,
+        staffFavorites,
+      },
     },
   };
 };
@@ -88,20 +146,16 @@ const NewsHome = ({ data }: Props) => {
     return <div></div>;
   }
   const {
+    diveDeeper,
     hero,
+    latestNews,
+    midHero,
     opinionColumn,
-    // opinionBody,
-    carouselColumn,
-    carouselRow,
-    row1,
-    hero1,
-    // culture
-    // grid4,
+    popularArticles,
+    secondHeroTile,
+    staffFavorites,
   } = data;
 
-  // const size3 = opinionBody.articles.slice(0, 3);
-  const size4 = carouselRow.slice(0, 4);
-  const size5 = carouselColumn.slice(0, 5);
   return (
     <div className={style.wrapper}>
       <div className={style.pageHeader}>
@@ -111,17 +165,24 @@ const NewsHome = ({ data }: Props) => {
         <div className={style.bodyContainer}>
           <MainHero data={hero} />
           <OpinionBody
-            columnArticles={opinionColumn.articles}
-            bodyArticles={row1}
-            centerArticle={hero1}
+            opinionColumn={opinionColumn.articles}
+            latestNews={latestNews.articles}
+            popular={popularArticles.articles}
+            centerArticle={midHero.articles}
           />
+
           <Carousel
-            articles={size4}
+            articles={staffFavorites.articles}
             tileLayout="row"
-            categoryHeader="Staff Favorites"
+            categoryHeader={staffFavorites.title}
           />
-          <MainHero data={hero} />
-          <Carousel articles={size5} categoryHeader="Dive Deeper" />
+
+          <MainHero data={secondHeroTile} />
+
+          <Carousel
+            articles={diveDeeper.articles}
+            categoryHeader={diveDeeper.title}
+          />
         </div>
       </div>
       <div className={style.pageFooter}>

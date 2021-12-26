@@ -76,6 +76,9 @@ export interface ArticleDetailedImageAuthors extends ArticleDetailedImage {
 export interface ArticleOpinion extends ArticleBasic {
   authors: AuthorsArray;
 }
+// export interface ArticleOpinion extends ArticleBasic {
+//   authors: AuthorsArray;
+// }
 
 export type Article =
   | ArticleBasic
@@ -95,59 +98,125 @@ export interface CategoryHero {
   uid: 'Hero';
   articles: {
     main: ArticleDetailedImage;
-    sideArticles: ArticleDetailed[];
+    sideArticles: ArticleDetailedImage[];
+  };
+}
+export interface CategorySecondHeroTile {
+  uid: 'secondHeroTile';
+  articles: {
+    main: ArticleDetailedImage;
+    sideArticles: ArticleDetailedImage[];
   };
 }
 
 export interface CategoryOpinionColumn
   extends CategoryArticles<ArticleOpinion[]> {
   uid: 'Opinion Column';
-  title?: string;
+  title: string;
 }
-export interface CategoryOpinionBody
+
+// export interface CategoryOpinionBody
+//   extends CategoryArticles<ArticleDetailedImage[]> {
+//   uid: 'Opinion Body';
+// }
+// export interface CategoryMoreNews {
+//   uid: 'More News';
+//   title?: string;
+//   articles: {
+//     main: ArticleDetailed[];
+//     headlines: ArticleBasic[];
+//   };
+// }
+export interface CategoryDiveDeeper
   extends CategoryArticles<ArticleDetailedImage[]> {
-  uid: 'Opinion Body';
+  uid: 'diveDeeper';
+  title: string;
 }
-export interface CategoryMoreNews {
-  uid: 'More News';
-  title?: string;
-  articles: {
-    main: ArticleDetailed[];
-    headlines: ArticleBasic[];
-  };
-}
-export interface CategoryCulture
+// export interface CategorySecondHeroTile
+//   extends CategoryArticles<ArticleDetailedImage[]> {
+//   uid: 'secondHeroTile';
+//   title: string;
+// }
+export interface CategoryStaffFavorites
   extends CategoryArticles<ArticleDetailedImage[]> {
-  uid: 'Culture';
-  title?: string;
+  uid: 'staffFavorites';
+  title: string;
 }
-export interface CategoryCooking extends CategoryArticles<ArticleBasic[]> {
-  uid: 'Cooking';
-  title?: string;
+export interface CategoryPopularArticles
+  extends CategoryArticles<ArticleDetailedImage[]> {
+  uid: 'popularArticles';
+  title: string;
+}
+export interface CategoryLatestNews
+  extends CategoryArticles<ArticleDetailedImage[]> {
+  uid: 'latestNews';
+  title: string;
+}
+export interface CategoryMidHero
+  extends CategoryArticles<ArticleDetailedImage> {
+  uid: 'MidHero';
+  title: string;
 }
 
 export type HomeCategory =
   | CategoryHero
   | CategoryOpinionColumn
-  | CategoryOpinionBody
-  | CategoryMoreNews
-  | CategoryCulture
-  | CategoryCooking;
-
-export type HomeQuery = {
+  | CategoryStaffFavorites
+  | CategorySecondHeroTile
+  | CategoryLatestNews
+  | CategoryPopularArticles
+  | CategoryMidHero
+  | CategoryDiveDeeper;
+export type HomeProps = {
   hero: CategoryHero;
   opinionColumn: CategoryOpinionColumn;
-  opinionBody: CategoryOpinionBody;
-  moreNews: CategoryMoreNews;
-  culture: CategoryCulture;
-  cooking: CategoryCooking;
+  staffFavorites: CategoryStaffFavorites;
+  secondHeroTile: CategoryHero;
+  latestNews: CategoryLatestNews;
+  popularArticles: CategoryPopularArticles;
+  midHero: CategoryMidHero;
+  diveDeeper: CategoryDiveDeeper;
 };
+// export interface CategoryCulture
+//   extends CategoryArticles<ArticleDetailedImage[]> {
+//   uid: 'Culture';
+//   title?: string;
+// }
+export interface CategoryCooking extends CategoryArticles<ArticleBasic[]> {
+  uid: 'Cooking';
+  title?: string;
+}
 
-export type HomeProps = HomeQuery & {
-  carouselRow: ArticleDetailedImage[];
-  carouselColumn: ArticleDetailedImage[];
-  hero1: ArticleDetailedImage;
-  hero2: ArticleDetailedImage;
-  row1: ArticleDetailedImage[];
-  row2: ArticleDetailedImage[];
-};
+// export type HomeCategory =
+//   | CategoryHero
+//   | CategoryOpinionColumn
+//   | CategoryOpinionBody
+//   | CategoryMoreNews
+//   | CategoryCulture
+//   | CategoryCooking;
+
+// export type HomeQuery = {
+//   hero: CategoryHero;
+//   opinionColumn: CategoryOpinionColumn;
+//   opinionBody: CategoryOpinionBody;
+//   moreNews: CategoryMoreNews;
+//   culture: CategoryCulture;
+//   cooking: CategoryCooking;
+// };
+
+// export type HomeProps = HomeQuery & {
+//   carouselRow: ArticleDetailedImage[];
+//   carouselColumn: ArticleDetailedImage[];
+//   hero1: ArticleDetailedImage;
+//   hero2: ArticleDetailedImage;
+//   row1: ArticleDetailedImage[];
+//   row2: ArticleDetailedImage[];
+// };
+// export type HomeQuery = {
+//   hero: CategoryHero;
+//   opinionColumn: CategoryOpinionColumn;
+//   opinionBody: CategoryOpinionBody;
+//   moreNews: CategoryMoreNews;
+//   culture: CategoryCulture;
+//   cooking: CategoryCooking;
+// };
