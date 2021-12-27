@@ -13,7 +13,7 @@ export default NewYorkTimesImage;
 
 export const newYorkTimesSummary: ProjectSummary = {
   title: 'New York Times Clone',
-  href: '/news',
+  href: 'https://www.nlarkin.us/news',
   bullets: newYorkTimesBulletsSummary,
   image: <NewYorkTimesImage />,
   slug: 'nyt-clone',

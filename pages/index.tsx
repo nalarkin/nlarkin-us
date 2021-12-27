@@ -39,6 +39,10 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
   const { title, href, bullets, image, slug, buttonText } = project;
   // const [buttonText, isDisabled] = getButtonTextFromLink(href);
   const isDisabled = false; // keeping this here in case I want to uncomment line above this
+  // const isMyWebsite = buttonText.includes('Website');
+  // if (isMyWebsite) {
+
+  // }
   return (
     <section className={style.tileContainer}>
       <div className={style.card}>
@@ -57,7 +61,11 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
         >
           <div className={style.learnMoreButton}>Learn More</div>
         </LinkWrapper>
-        <LinkWrapper href={href} classStyle={style.linkWrapperGithub}>
+        <LinkWrapper
+          href={href}
+          classStyle={style.linkWrapperGithub}
+          // openInNewTab={isMyWebsite}
+        >
           <div
             className={`${style.tileButton} ${
               isDisabled && style.disabledButton
