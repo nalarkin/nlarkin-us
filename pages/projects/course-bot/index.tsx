@@ -27,14 +27,16 @@ const CourseRegistrationPage = () => {
       <NextSeo {...seo} />
 
       <ProjectPage project={longerCourseRegistrationSummary}>
-        <div className="mx-auto w-max">
-          <LinkWrapper
-            href={'https://youtu.be/ymE4Cj72WnM'}
-            classStyle={styles.buttonFocusWrapper}
-          >
-            <div className={styles.primaryButton}>Watch Demo</div>
-          </LinkWrapper>
-        </div>
+        <LinkWrapper
+          href={'https://youtu.be/ymE4Cj72WnM'}
+          classStyle={styles.buttonFocusWrapperGithub}
+        >
+          <div className={styles.githubButton}>Watch Demo</div>
+        </LinkWrapper>
+        <p className={styles.private}>
+          unfortunately, I am unable to show source code due to the nature of
+          the application
+        </p>
       </ProjectPage>
     </>
   );

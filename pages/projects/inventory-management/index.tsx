@@ -27,17 +27,15 @@ const InventoryMagagementPage = () => {
     <>
       <NextSeo {...seo} />
       <ProjectPage project={longerInventorySummary}>
-        <div className="w-max mx-auto">
-          <LinkWrapper
-            href="https://github.com/nalarkin/prisma-morse"
-            classStyle={style.buttonFocusWrapperGithub}
-          >
-            <div className={style.githubButton}>
-              See Created API
-              {/* {getButtonTextFromLink('/news')} */}
-            </div>
-          </LinkWrapper>
-        </div>{' '}
+        <LinkWrapper
+          href="https://github.com/nalarkin/prisma-morse"
+          classStyle={style.buttonFocusWrapperGithub}
+        >
+          <div className={style.githubButton}>See API</div>
+        </LinkWrapper>
+        <p className={style.private}>
+          the front-end code has been requested to remain private, sorry
+        </p>
       </ProjectPage>
     </>
   );

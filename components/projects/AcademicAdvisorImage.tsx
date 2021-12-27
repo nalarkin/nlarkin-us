@@ -2,7 +2,11 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import { academicAdvisorBulletsSummary, ProjectSummary } from 'lib/projectInfo';
+import {
+  academicAdvisorBulletsSummary,
+  GITHUB_BUTTON_TEXT,
+  ProjectSummary,
+} from 'lib/projectInfo';
 import flutterImage from 'public/flutter_mini.png';
 
 const AcademicAdvisorImage = () => {
@@ -17,5 +21,6 @@ export const academicAdvisorSummary: ProjectSummary = {
   slug: 'academic-advisor',
   bullets: academicAdvisorBulletsSummary,
   image: <AcademicAdvisorImage />,
+  buttonText: GITHUB_BUTTON_TEXT,
   technologies: 'Flutter, Dart, NoSQL, Firebase, Authentication, Data Streams',
 };

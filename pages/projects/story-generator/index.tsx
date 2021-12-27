@@ -5,8 +5,12 @@ import { NextSeo } from 'next-seo';
 import Layout from 'components/layouts/layout';
 import ProjectPage from 'components/projects/ProjectPage';
 import { storyGenSummary } from 'components/projects/StoryGenImage';
+import { LinkWrapper } from 'components/shared/LinkWrapper';
 import { SEOProps } from 'components/shared/seo';
 import { storyGenBullets } from 'lib/projectInfo';
+import { getButtonTextFromLink } from 'lib/utils';
+
+import style from '../buttons.module.scss';
 
 const seo: SEOProps = {
   title: storyGenSummary.title,
@@ -20,7 +24,16 @@ const StoryGenerator = () => {
   return (
     <>
       <NextSeo {...seo} />
-      <ProjectPage project={longerStoryGenSummary} />
+      <ProjectPage project={longerStoryGenSummary}>
+        <LinkWrapper
+          href={storyGenSummary.href}
+          classStyle={style.buttonFocusWrapper}
+        >
+          <div className={style.githubButton}>
+            {getButtonTextFromLink(storyGenSummary.href)}
+          </div>
+        </LinkWrapper>
+      </ProjectPage>
     </>
   );
 };

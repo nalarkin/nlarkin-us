@@ -27,10 +27,26 @@ $footer-header-text-color: $nl-accent-background;
 
 .footer {
   color: $footer-header-text-color;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  // display: grid;
+  // grid-template-columns: auto 1fr auto;
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 1.5rem;
   padding: 2rem 0rem;
+  font-size: 0.8rem;
+  @include media('>phone') {
+    font-size: 1rem;
+  }
 }
+// .footer {
+//   color: $footer-header-text-color;
+//   display: grid;
+//   grid-template-columns: auto 1fr auto;
+//   padding: 2rem 0rem;
+//   font-size: 1rem;
+// }
 
 .logoText {
   // font-family: $nl-font-family;

@@ -2,6 +2,7 @@ export interface Project {
   title: string;
   subtitle: string;
   bullets: string[];
+  buttonText: string;
   technologies: string;
   href: string;
 }
@@ -12,6 +13,7 @@ export interface ProjectSummary {
   slug: string;
   bullets: string[];
   href: string;
+  buttonText: string;
   technologies: string;
 }
 
@@ -77,12 +79,16 @@ export const newYorkTimesBulletsSummary = newYorkTimesBullets.slice(0, 3);
 export const academicAdvisorBulletsSummary = academicAdvisorBullets.slice(0, 3);
 export const storyGenBulletsSummary = storyGenBullets.slice(0, 3);
 
+export const GITHUB_BUTTON_TEXT = 'See on GitHub';
+// const PRIVATE_BUTTON_TEXT = 'Private Code';
+
 export const allProjects: Project[] = [
   {
     title: 'Story Generator',
     subtitle: 'test subtitle',
     technologies: 'Rust, GitHub Pages, Grammar Parse Trees',
     href: 'https://github.com/nalarkin/story-generator',
+    buttonText: GITHUB_BUTTON_TEXT,
     bullets: storyGenBullets,
   },
   {
@@ -91,6 +97,7 @@ export const allProjects: Project[] = [
     technologies:
       'Flutter, Dart, NoSQL, Firebase, Authentication, Data Streams',
     href: 'https://github.com/nalarkin/school_notifier',
+    buttonText: GITHUB_BUTTON_TEXT,
     bullets: academicAdvisorBullets,
   },
   {
@@ -98,6 +105,7 @@ export const allProjects: Project[] = [
     subtitle: 'Python, Selenium, Sphinx',
     technologies: 'Python, Selenium, Sphinx',
     href: '',
+    buttonText: 'See Video Demo',
     bullets: registrationBullets,
   },
   {
@@ -107,6 +115,7 @@ export const allProjects: Project[] = [
     technologies:
       'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Headless CMS',
     href: '/news',
+    buttonText: 'View Website',
     bullets: newYorkTimesBullets,
   },
   {
@@ -116,6 +125,7 @@ export const allProjects: Project[] = [
     technologies:
       'TypeScript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Async Data Fetching',
     href: '',
+    buttonText: GITHUB_BUTTON_TEXT,
     bullets: inventoryBullets,
   },
 ];
