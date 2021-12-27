@@ -2,7 +2,11 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import { ProjectSummary, storyGenBulletsSummary } from 'lib/projectInfo';
+import {
+  GITHUB_BUTTON_TEXT,
+  ProjectSummary,
+  storyGenBulletsSummary,
+} from 'lib/projectInfo';
 import storyImage from 'public/rustacean_mini.png';
 
 const StoryGenImage = () => {
@@ -19,5 +23,6 @@ export const storyGenSummary: ProjectSummary = {
   bullets: storyGenBulletsSummary,
   image: <StoryGenImage />,
   slug: 'story-generator',
+  buttonText: GITHUB_BUTTON_TEXT,
   technologies: 'Rust, GitHub Pages, Grammar Parse Trees',
 };

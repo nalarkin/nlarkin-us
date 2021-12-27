@@ -28,13 +28,19 @@ const NewYorkTimesPage = () => {
     <>
       <NextSeo {...seo} />
       <ProjectPage project={longerNewYorkSummary}>
-        <div className="w-max mx-auto">
-          <LinkWrapper href="/news" classStyle={style.buttonFocusWrapper}>
-            <div className={style.primaryButton}>
-              {getButtonTextFromLink('/news')}
-            </div>
-          </LinkWrapper>
-        </div>
+        <LinkWrapper href="/news" classStyle={style.buttonFocusWrapper}>
+          <div className={style.githubButton}>
+            {getButtonTextFromLink('/news')}
+          </div>
+        </LinkWrapper>
+        <LinkWrapper
+          href="https://github.com/nalarkin/nlarkin-us"
+          classStyle={style.buttonFocusWrapper}
+        >
+          <div className={style.githubButton}>
+            {getButtonTextFromLink('https://github.com/nalarkin/nlarkin-us')}
+          </div>
+        </LinkWrapper>
       </ProjectPage>
     </>
   );

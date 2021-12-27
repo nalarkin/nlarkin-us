@@ -10,7 +10,6 @@ import { storyGenSummary } from 'components/projects/StoryGenImage';
 import { LinkWrapper } from 'components/shared/LinkWrapper';
 import SEO from 'components/shared/seo';
 import { ProjectSummary } from 'lib/projectInfo';
-import { getButtonTextFromLink } from 'lib/utils';
 
 import Layout from '../components/layouts/layout';
 import style from './index.module.scss';
@@ -37,8 +36,9 @@ interface ProjectTileProps {
 }
 
 const ProjectTile = ({ project }: ProjectTileProps) => {
-  const { title, href, bullets, image, slug } = project;
-  const [buttonText, isDisabled] = getButtonTextFromLink(href);
+  const { title, href, bullets, image, slug, buttonText } = project;
+  // const [buttonText, isDisabled] = getButtonTextFromLink(href);
+  const isDisabled = false; // keeping this here in case I want to uncomment line above this
   return (
     <section className={style.tileContainer}>
       <div className={style.card}>
@@ -50,14 +50,13 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
           <BuildList values={bullets} />
         </div>
       </div>
-      <div className="flex justify-evenly">
+      <div className="flex  justify-evenly">
         <LinkWrapper
           href={`/projects/${slug}`}
           classStyle={style.linkWrapperLearn}
         >
           <div className={style.learnMoreButton}>Learn More</div>
         </LinkWrapper>
-        {/* <div className={style.linkWrapper}> */}
         <LinkWrapper href={href} classStyle={style.linkWrapperGithub}>
           <div
             className={`${style.tileButton} ${
@@ -67,7 +66,6 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
             {buttonText}
           </div>
         </LinkWrapper>
-        {/* </div> */}
       </div>
     </section>
   );

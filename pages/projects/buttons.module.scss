@@ -1,6 +1,6 @@
 @import '../../styles/home';
 
-.primaryButton {
+.githubButton {
   @extend %homeButton;
   @include style-home-button(#ff9e9e, #000);
   margin: 0px auto 10px;
@@ -9,7 +9,7 @@
 }
 .secondaryButton {
   @extend %homeButton;
-  @include style-home-button(#c1ff88, #000);
+  @include style-home-button(#ff9b61, #000);
   margin: 0px auto 10px;
   font-size: 1.3rem;
   width: 250px;
@@ -35,4 +35,13 @@
 .buttonFocusWrapper {
   @include focus-wrapper(#ff9e9e);
   width: max-content;
+}
+
+.private {
+  font-style: italic;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }

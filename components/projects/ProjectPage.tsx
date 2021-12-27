@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { LinkWrapper } from 'components/shared/LinkWrapper';
 import { ProjectSummary } from 'lib/projectInfo';
-import { getButtonTextFromLink } from 'lib/utils';
 
 import styles from './ProjectPage.module.scss';
 
@@ -29,8 +27,8 @@ export const BuildList = ({ values }: BuildListProps) => {
 };
 
 const ProjectPage = ({ project, children = null }: ProjectPageProps) => {
-  const { title, image, bullets, href, technologies } = project;
-  const [buttonText, isDisabled] = getButtonTextFromLink(href);
+  const { title, image, bullets, technologies } = project;
+  // const [buttonText, isDisabled] = getButtonTextFromLink(href);
   return (
     <main className={styles.mainContainer}>
       <h1 className={styles.title}>{`${title} Project`}</h1>
@@ -40,7 +38,7 @@ const ProjectPage = ({ project, children = null }: ProjectPageProps) => {
         <div className={styles.technologyText}>{technologies}</div>
       </div>
       <BuildList values={bullets} />
-      <div className="w-max mx-auto">
+      {/* <div className="w-max mx-auto">
         <LinkWrapper href={href} classStyle={styles.buttonFocusWrapper}>
           <div
             className={`${styles.primaryButton} ${
@@ -50,8 +48,10 @@ const ProjectPage = ({ project, children = null }: ProjectPageProps) => {
             {buttonText}
           </div>
         </LinkWrapper>
+      </div> */}
+      <div className="mx-auto flex flex-col gap-4 justify-center">
+        {children}
       </div>
-      {children}
     </main>
   );
 };
