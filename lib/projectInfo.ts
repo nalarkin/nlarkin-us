@@ -114,7 +114,7 @@ export const allProjects: Project[] = [
       'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Sanity.io',
     technologies:
       'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Headless CMS',
-    href: '/news',
+    href: 'https://www.nlarkin.us/news',
     buttonText: 'View Website',
     bullets: newYorkTimesBullets,
   },

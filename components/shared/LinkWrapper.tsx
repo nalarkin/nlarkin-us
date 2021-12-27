@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 export interface LinkWrapperProps {
   href: string;
+  openInNewTab?: boolean;
   classStyle?: string;
   children: React.ReactNode;
 }
@@ -10,10 +11,11 @@ export interface LinkWrapperProps {
  * is within this domain, otherwise use a traditional <a> link */
 export const LinkWrapper = ({
   href,
+  openInNewTab = false,
   classStyle = '',
   children,
 }: LinkWrapperProps) => {
-  if (href.includes('https:')) {
+  if (href.includes('https:') || openInNewTab) {
     return (
       <a
         target="_blank"
