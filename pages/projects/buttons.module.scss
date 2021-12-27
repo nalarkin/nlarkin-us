@@ -38,8 +38,8 @@
 }
 
 .private {
+  @extend %bodyFont;
   font-style: italic;
-  font-size: 1.3rem;
   margin: 1rem 0;
   display: flex;
   flex-wrap: wrap;

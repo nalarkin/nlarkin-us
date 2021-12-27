@@ -31,7 +31,7 @@ const InventoryMagagementPage = () => {
           href="https://github.com/nalarkin/prisma-morse"
           classStyle={style.buttonFocusWrapperGithub}
         >
-          <div className={style.githubButton}>See Created API</div>
+          <div className={style.githubButton}>See API</div>
         </LinkWrapper>
         <p className={style.private}>
           the front-end code has been requested to remain private, sorry
