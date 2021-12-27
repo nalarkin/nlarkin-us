@@ -50,7 +50,7 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
           <BuildList values={bullets} />
         </div>
       </div>
-      <div className="flex  justify-evenly">
+      <div className="flex  justify-evenly flex-wrap gap-2 px-2">
         <LinkWrapper
           href={`/projects/${slug}`}
           classStyle={style.linkWrapperLearn}
@@ -63,7 +63,13 @@ const ProjectTile = ({ project }: ProjectTileProps) => {
               isDisabled && style.disabledButton
             } ${!isDisabled && style.enabledButton}`}
           >
-            {buttonText}
+            <div
+              className={`${
+                buttonText.includes('API') ? style.smallerText : ''
+              }`}
+            >
+              {buttonText}
+            </div>
           </div>
         </LinkWrapper>
       </div>
@@ -79,7 +85,7 @@ const HomeSEO = {
 const HomeContents = () => {
   return (
     <div>
-      <h2 className={style.welcomeMessage}>Personal Projects</h2>
+      <h1 className={style.welcomeMessage}>Personal Projects</h1>
       <div className={style.cards}>
         <ProjectTile project={inventoryManagementSummary} />
         <ProjectTile project={newYorkTimesSummary} />

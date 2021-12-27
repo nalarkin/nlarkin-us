@@ -31,6 +31,7 @@
   // margin: 20px 0px;
   border-radius: 30px;
   padding: 15px 0px;
+  // font-size: 1rem;
   @include flex-col;
   justify-content: space-between;
   .list {
@@ -58,18 +59,27 @@
 }
 .body {
   @extend %body;
+  // font-size: 1.125rem;
+  // @include media('>tablet') {
+  //   font-size: 1.5rem;
+  // }
+  @extend %bodyFont;
 }
 
 .welcomeMessage {
+  // @extend %title;
   color: $nl-text;
-  font-size: 2.2rem;
+  // font-size: 2.2rem;
   font-family: $nl-font-family;
   text-align: center;
   font-weight: 500;
-  margin-top: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
+  font-weight: 600;
+
   @include media('>tablet') {
     margin-bottom: 2rem;
+    font-size: 2rem;
   }
 }
 
@@ -97,7 +107,8 @@
   margin-top: 30px;
   display: grid;
   @include media('>phone') {
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    // grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   }
   gap: 50px;
 }
@@ -114,4 +125,11 @@
 
 .linkWrapperLearn {
   @include focus-wrapper($nl-learn-button);
+}
+
+.smallerText {
+  font-size: 1rem;
+  @include media('>phone') {
+    font-size: 1.125rem;
+  }
 }

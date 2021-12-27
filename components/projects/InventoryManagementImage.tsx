@@ -20,7 +20,7 @@ export default InventoryManagementImage;
 export const inventoryManagementSummary: ProjectSummary = {
   title: 'Inventory Management',
   href: 'https://github.com/nalarkin/prisma-morse',
-  buttonText: 'See Created API',
+  buttonText: 'See Back End',
   slug: 'inventory-management',
   bullets: inventoryBulletsSummary,
   image: <InventoryManagementImage />,
