@@ -2,11 +2,14 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import React from 'react';
 
-import { academicAdvisorSummary } from 'components/projects/AcademicAdvisorImage';
-import { courseRegistrationSummary } from 'components/projects/CourseRegistrationImage';
-import { inventoryManagementSummary } from 'components/projects/InventoryManagementImage';
-import { newYorkTimesSummary } from 'components/projects/NewYorkTimesImage';
-import { storyGenSummary } from 'components/projects/StoryGenImage';
+import { Container, Grid } from '@mui/material';
+
+import HomeHero from 'components/home/Hero';
+import { AcademicAdvisorCard } from 'components/projects/AcademicAdvisorImage';
+import { CourseRegistrationCard } from 'components/projects/CourseRegistrationImage';
+import { InventoryManagementCard } from 'components/projects/InventoryManagementImage';
+import { NewYorkTimesCard } from 'components/projects/NewYorkTimesImage';
+import { StoryGenCard } from 'components/projects/StoryGenImage';
 import { LinkWrapper } from 'components/shared/LinkWrapper';
 import SEO from 'components/shared/seo';
 import { ProjectSummary } from 'lib/projectInfo';
@@ -92,18 +95,35 @@ const HomeSEO = {
 
 const HomeContents = () => {
   return (
-    <div>
-      <h1 className={style.welcomeMessage}>Personal Projects</h1>
-      <div className={style.cards}>
-        <ProjectTile project={inventoryManagementSummary} />
-        <ProjectTile project={newYorkTimesSummary} />
-        <ProjectTile project={storyGenSummary} />
-        <ProjectTile project={courseRegistrationSummary} />
-        <ProjectTile project={academicAdvisorSummary} />
-      </div>
-    </div>
+    <Container maxWidth="lg">
+      {/* <Stack direction="row" flexWrap={'wrap'} spacing={2}> */}
+      <HomeHero />
+      {/* <Grid container xs={12} spacing={4}> */}
+      <Grid container spacing={4}>
+        <InventoryManagementCard />
+        <NewYorkTimesCard />
+        <StoryGenCard />
+        <CourseRegistrationCard />
+        <AcademicAdvisorCard />
+      </Grid>
+      {/* </Stack> */}
+    </Container>
   );
 };
+// const HomeContents = () => {
+//   return (
+//     <div>
+//       <h1 className={style.welcomeMessage}>Personal Projects</h1>
+//       <div className={style.cards}>
+//         <ProjectTile project={inventoryManagementSummary} />
+//         <ProjectTile project={newYorkTimesSummary} />
+//         <ProjectTile project={storyGenSummary} />
+//         <ProjectTile project={courseRegistrationSummary} />
+//         <ProjectTile project={academicAdvisorSummary} />
+//       </div>
+//     </div>
+//   );
+// };
 
 const Home = () => {
   return (

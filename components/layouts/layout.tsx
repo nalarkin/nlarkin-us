@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react';
 
-import Link from 'next/link';
-
 import SEO, { SEOProps } from 'components/shared/seo';
 
+import { HomeLayout } from './HomeLayout';
 import style from './layout.module.scss';
 
 type Props = {
@@ -50,24 +49,7 @@ const Layout = ({ seo, children }: Props) => (
     {seo !== undefined ? (
       <SEO description={seo.description} title={seo.title} />
     ) : null}
-    <div className={style.wrapper}>
-      <header className={style.nav}>
-        <nav className="flex flex-row">
-          <Link href="/">
-            {/* <a>Nathan&apos;s website</a> */}
-            <a className={style.logoText}>
-              <div>NL</div>
-              <div className={style.lowercase}>ARKIN</div>
-            </a>
-          </Link>
-          {/* <Link href="/about">
-            <a>About</a>
-          </Link> */}
-        </nav>
-      </header>
-      {children}
-      <Footer />
-    </div>
+    <HomeLayout>{children}</HomeLayout>
   </>
 );
 
