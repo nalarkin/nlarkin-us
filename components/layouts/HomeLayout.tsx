@@ -17,8 +17,21 @@ import Typography from '@mui/material/Typography';
 // import BottomNavigation from 'src/components/shared/BottomNavigation';
 // import { selectCurrentUser, selectIsAuth } from '../app/slices/authSlice';
 import { NAV_ICONS } from '../home/NavIcons';
-import { NextLinkComposed } from '../mui/Link';
+import Link, { NextLinkComposed } from '../mui/Link';
 import { theme as themeOptions } from '@/styles/theme';
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://www.nlarkin.us">
+        nlarkin.us
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 // import { StyledAppBarSearch } from './StyledSearch';
 
@@ -174,6 +187,75 @@ export function HomeLayout({ children }: HomeLayoutProps) {
             {/* <Toolbar /> */}
 
             {children}
+            {/* Footer */}
+            <Box
+              sx={{
+                pt: 6,
+                pb: 4,
+                backgroundColor: (theme) => theme.palette.grey[100],
+              }}
+              component="footer"
+              id="footer"
+            >
+              <Typography variant="h6" align="center" gutterBottom>
+                Contact Info
+              </Typography>
+              <Box component="address">
+                <Typography
+                  variant="subtitle2"
+                  align="center"
+                  color="text.secondary"
+                  component="p"
+                >
+                  Nathan Larkin
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  align="center"
+                  color="text.secondary"
+                  component="p"
+                >
+                  <Link
+                    color="inherit"
+                    href="mailto:nlarkin.us@gmail.com"
+                    sx={{ textDecorationLine: 'none' }}
+                  >
+                    nlarkin.us@gmail.com
+                  </Link>
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  align="center"
+                  color="text.secondary"
+                  component="p"
+                >
+                  <Link
+                    color="inherit"
+                    href="tel:7045334302"
+                    sx={{ textDecorationLine: 'none' }}
+                  >
+                    (704) 533-4302
+                  </Link>
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  align="center"
+                  color="text.secondary"
+                  component="p"
+                  gutterBottom
+                >
+                  <Link
+                    color="inherit"
+                    href="https://github.com/nalarkin"
+                    sx={{ textDecorationLine: 'none' }}
+                  >
+                    Link to my GitHub
+                  </Link>
+                </Typography>
+              </Box>
+              <Copyright />
+            </Box>
+            {/* End footer */}
             {/* <BottomNavigation /> */}
           </Box>
         </Box>
@@ -181,3 +263,19 @@ export function HomeLayout({ children }: HomeLayoutProps) {
     </ThemeProvider>
   );
 }
+
+const Footer = () => {
+  return (
+    <footer className={''}>
+      <div className="flex flex-col pl-5 pb-5">
+        <div>Designed and Created by Nathan Larkin</div>
+      </div>
+      <address className="flex flex-col pr-5 gap-2">
+        Nathan Larkin <br />
+        <a href="mailto:nlarkin.us@gmail.com">nlarkin.us@gmail.com </a>
+        <a href="tel:7045334302">(704) 533-4302</a>
+        <a href="https://github.com/nalarkin">Link to my GitHub</a>
+      </address>
+    </footer>
+  );
+};
