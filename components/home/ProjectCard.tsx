@@ -15,45 +15,17 @@ import Image from 'next/image';
 import { NextLinkComposed } from 'components/mui/Link';
 import { buildProjectSlug } from 'lib/utils';
 
-// const MuiListItem = ({
-//   primary,
-//   secondary,
-// }: {
-//   primary: ReactNode;
-//   secondary?: ReactNode;
-// }) => {
-//   return (
-//     <ListItem>
-//       <ListItemText primary={primary} secondary={secondary}></ListItemText>
-//     </ListItem>
-//   );
-// };
-
-// function BuildList({ bullets }: { bullets: string[] }) {
-//   return (
-//     <List>
-//       <MuiListItem primary="Test" />
-//       {/* <Divider /> */}
-//       <MuiListItem primary="Email" secondary="etisnriters" />
-//     </List>
-//   );
-// }
 function BuildList({ bullets }: { bullets: string[] }) {
   return (
     <>
-      {bullets.map((val, idx) => {
+      {bullets.map((content, idx) => {
         return (
-          <>
+          <React.Fragment key={idx}>
             {idx > 0 && <Divider sx={{ mb: '0.35em' }} />}
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              gutterBottom
-              key={idx}
-            >
-              {val}
+            <Typography variant="body2" color="text.secondary" gutterBottom>
+              {content}
             </Typography>
-          </>
+          </React.Fragment>
         );
       })}
     </>

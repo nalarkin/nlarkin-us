@@ -1,31 +1,24 @@
 import React from 'react';
 
-import {
-  Container,
-  Divider,
-  Paper,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
+import { Container, Divider, Paper, Stack, Typography } from '@mui/material';
+import { NextSeo } from 'next-seo';
 
 // import resume from '/public/Nathan_Larkin_Resume.pdf';
 import Layout from '../../components/layouts/layout';
+import style from './index.module.scss';
 
-const ResumeSEO = {
+const resumeSeo = {
   description:
     "This page contains Nathan's projects, experiences, and accomplishments.",
   title: "Nathan Larkin's Resume",
 };
 
-function BulletList({ bullets }: { bullets: string[] }) {}
-
 const Resume = () => {
-  const isPhoneSize = !useMediaQuery('(min-width:600px)');
   return (
-    <Layout seo={ResumeSEO}>
-      <Container maxWidth="md" id="#resume">
-        <Paper sx={{ p: 3 }}>
+    <>
+      <NextSeo {...resumeSeo} />
+      <Container maxWidth="md">
+        <Paper sx={{ p: 3 }} className={style.list}>
           {/* <Stack alignItems="center"> */}
           <Typography
             variant="h4"
@@ -38,7 +31,7 @@ const Resume = () => {
 
           <Stack
             direction="row"
-            spacing={isPhoneSize ? 2 : 2}
+            spacing={2}
             flexWrap={'wrap'}
             justifyContent={'center'}
           >
@@ -292,8 +285,12 @@ const Resume = () => {
           </ul>
         </Paper>
       </Container>
-    </Layout>
+    </>
   );
 };
 
 export default Resume;
+
+Resume.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>;
+};

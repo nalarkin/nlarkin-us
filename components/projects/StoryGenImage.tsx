@@ -12,9 +12,7 @@ import {
 import storyImage from 'public/rustacean_mini.png';
 
 const StoryGenImage = () => {
-  return (
-    <Image src={storyImage} alt="rust langauge icon" objectFit="contain" />
-  );
+  return <Image src={storyImage} alt="rust mascot" objectFit="contain" />;
 };
 
 export default StoryGenImage;

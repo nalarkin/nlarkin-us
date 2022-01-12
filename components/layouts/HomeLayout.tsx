@@ -127,7 +127,13 @@ export function HomeLayout({ children }: HomeLayoutProps) {
                   display: 'block',
                 }}
               >
-                NLarkin
+                <Link
+                  color="inherit"
+                  href="/"
+                  sx={{ textDecorationLine: 'none' }}
+                >
+                  NLarkin
+                </Link>
               </Typography>
               {/* {isAuth && <StyledAppBarSearch />} */}
             </Toolbar>
