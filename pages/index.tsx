@@ -5,7 +5,6 @@ import React from 'react';
 import { Container, Grid } from '@mui/material';
 
 import HomeHero from 'components/home/Hero';
-import { AcademicAdvisorCard } from 'components/projects/AcademicAdvisorImage';
 import { CourseRegistrationCard } from 'components/projects/CourseRegistrationImage';
 import { InventoryManagementCard } from 'components/projects/InventoryManagementImage';
 import { NewYorkTimesCard } from 'components/projects/NewYorkTimesImage';
@@ -28,7 +27,7 @@ const HomeContents = () => {
         <NewYorkTimesCard />
         <StoryGenCard />
         <CourseRegistrationCard />
-        <AcademicAdvisorCard />
+        {/* <AcademicAdvisorCard /> */}
       </Grid>
       {/* </Stack> */}
     </Container>
