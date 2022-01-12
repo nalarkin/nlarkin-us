@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Button, Container, Stack, Typography } from '@mui/material';
 
+import { NextLinkComposed } from 'components/mui/Link';
+
 const HomeHero = () => {
   return (
     <Container
@@ -29,7 +31,13 @@ const HomeHero = () => {
         <Button href="#footer" variant="contained" sx={{ textAlign: 'center' }}>
           {'Contact Me'}
         </Button>
-        <Button variant="outlined">{'See Résumé'}</Button>
+        <Button
+          component={NextLinkComposed}
+          to={{ pathname: '/resume' }}
+          variant="outlined"
+        >
+          {'See Résumé'}
+        </Button>
       </Stack>
     </Container>
   );
