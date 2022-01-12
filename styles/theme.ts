@@ -10,15 +10,31 @@ import { createTheme, responsiveFontSizes } from '@mui/material';
 // eslint-disable-next-line import/no-mutable-exports
 let theme = createTheme({
   palette: {
-    mode: 'light',
     primary: {
-      main: '#0039a6',
+      light: '#666ad1',
+      main: '#303f9f',
+      dark: '#001970',
+      contrastText: '#fff',
     },
     secondary: {
-      main: '#cc0000',
+      light: '#f9683a',
+      main: '#bf360c',
+      dark: '#870000',
+      contrastText: '#fff',
     },
   },
 });
+// let theme = createTheme({
+//   palette: {
+//     mode: 'light',
+//     primary: {
+//       main: '#0039a6',
+//     },
+//     secondary: {
+//       main: '#cc0000',
+//     },
+//   },
+// });
 
 theme = responsiveFontSizes(theme);
 

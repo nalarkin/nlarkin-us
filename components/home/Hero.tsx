@@ -35,6 +35,7 @@ const HomeHero = () => {
           component={NextLinkComposed}
           to={{ pathname: '/resume' }}
           variant="outlined"
+          color="secondary"
         >
           {'See Résumé'}
         </Button>

@@ -57,7 +57,9 @@ export function HomeLayout({ children }: HomeLayoutProps) {
 
   const drawer = (
     <>
-      <Toolbar />
+      <Toolbar
+        sx={{ backgroundColor: (theme) => theme.palette.secondary.light }}
+      />
       <Divider />
       <List>
         <ListItem
