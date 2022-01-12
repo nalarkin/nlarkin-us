@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { Button } from '@mui/material';
 import Image from 'next/image';
 
+import { ProjectCard, ProjectCardProps } from 'components/home/ProjectCard';
 import { inventoryBulletsSummary, ProjectSummary } from 'lib/projectInfo';
 import gsuImage from 'public/gsu_mini.png';
 
@@ -27,3 +29,29 @@ export const inventoryManagementSummary: ProjectSummary = {
   technologies:
     'TypeScript, React.js, Next.js, MySQL, Full Stack Development, API Creation, Redux, Async Data Fetching, HTML/CSS',
 };
+
+export const inventoryManagementCard: ProjectCardProps['project'] = {
+  title: 'Inventory Management',
+  bullets: inventoryBulletsSummary,
+  image: {
+    src: gsuImage,
+    alt: 'georgia state university logo',
+  },
+  slug: 'inventory',
+};
+
+export function InventoryManagementCard() {
+  return (
+    <ProjectCard project={inventoryManagementCard}>
+      <Button
+        size="small"
+        color="primary"
+        href="https://github.com/nalarkin/prisma-morse"
+        target="_blank"
+        rel="noopener"
+      >
+        Github
+      </Button>
+    </ProjectCard>
+  );
+}

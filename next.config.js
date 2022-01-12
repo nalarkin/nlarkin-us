@@ -23,6 +23,11 @@ module.exports = withPlaiceholder({
         destination: "/",
         permanent: false,
       },
+      {
+        source: "/projects/inventory-management",
+        destination: "/projects/inventory",
+        permanent: true,
+      },
     ];
   },
 });

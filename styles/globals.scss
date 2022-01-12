@@ -33,3 +33,24 @@
   min-height: 0;
   min-width: 0;
 }
+
+#resume > * {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+// #resume > ul,
+// li {
+//   list-style-type: disc;
+//   margin-left: 2em;
+//   @media screen and (min-width: 600px) {
+//     margin-left: 3em;
+//   }
+// }
+// #resume > .bulletList {
+//   &::before {
+//     content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+//     display: inline-block; /* Needed to add space between the bullet and the text */
+//     width: 1em; /* Also needed for space (tweak if needed) */
+//     margin-left: -1em; /* Also needed for space (tweak if needed) */
+//   }
+// }

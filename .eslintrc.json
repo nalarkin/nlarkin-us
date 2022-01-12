@@ -77,7 +77,7 @@
         "no-plusplus": "off",
         "no-console": "off", 
         "unused-imports/no-unused-vars": [
-          "error",
+          "warn",
           {
             "argsIgnorePattern": "^_"
           }
