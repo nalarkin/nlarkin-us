@@ -124,3 +124,5 @@ export const getButtonTextFromLink = (href: string): [string, boolean] => {
   }
   return [buttonText, isDisabled];
 };
+
+export const buildProjectSlug = (slug = '') => `/projects/${slug}`;

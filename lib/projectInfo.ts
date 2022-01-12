@@ -73,7 +73,7 @@ export const registrationBullets = [
   'Design patterns were developed using the classic `Design Patterns: Elements of Reusable Object-Oriented Software`',
   'During design I stressed the importance of communication through interface abstraction to improve the reusability, extensibility, and maintainability',
 ];
-export const registrationBulletsSummary = registrationBullets.slice(0, 2);
+export const registrationBulletsSummary = registrationBullets.slice(0, 3);
 export const inventoryBulletsSummary = inventoryBullets.slice(0, 3);
 export const newYorkTimesBulletsSummary = newYorkTimesBullets.slice(0, 3);
 export const academicAdvisorBulletsSummary = academicAdvisorBullets.slice(0, 3);
