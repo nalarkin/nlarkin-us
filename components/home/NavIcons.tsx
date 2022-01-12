@@ -56,7 +56,7 @@ export const NAV_ICONS: NavigationIcons = {
   Inventory: {
     icon: <Inventory />,
     label: 'Inventory App',
-    value: buildProjectSlug('inventory-management'),
+    value: buildProjectSlug('inventory'),
   },
   Registration: {
     icon: <FaRobot fontSize="1.5rem" height="1rem" width="1rem" />,

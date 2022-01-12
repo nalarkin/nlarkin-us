@@ -37,7 +37,7 @@ export const inventoryManagementCard: ProjectCardProps['project'] = {
     src: gsuImage,
     alt: 'georgia state university logo',
   },
-  slug: 'inventory-management',
+  slug: 'inventory',
 };
 
 export function InventoryManagementCard() {
