@@ -1,11 +1,10 @@
 import * as React from 'react';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import { ScopedCssBaseline, ThemeProvider } from '@mui/material';
+import { Drawer, ScopedCssBaseline, ThemeProvider } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -52,6 +51,7 @@ export function HomeLayout({ children }: HomeLayoutProps) {
   const drawerWidth = 0;
 
   const handleDrawerToggle = () => {
+    console.log('toggled drawer');
     setDrawer(!drawerOpen);
   };
 
@@ -102,7 +102,9 @@ export function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <ThemeProvider theme={themeOptions}>
       <ScopedCssBaseline>
-        <Box sx={{ display: 'flex' }}>
+        <Box
+          sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+        >
           <AppBar
             position="fixed"
             sx={{
@@ -115,7 +117,8 @@ export function HomeLayout({ children }: HomeLayoutProps) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: 'block' } }}
+                sx={{ mr: 2, display: 'block' }}
+                // sx={{ mr: 2, display: { sm: 'block' } }}
               >
                 <MenuIcon />
               </IconButton>
@@ -140,7 +143,6 @@ export function HomeLayout({ children }: HomeLayoutProps) {
               {/* {isAuth && <StyledAppBarSearch />} */}
             </Toolbar>
           </AppBar>
-
           <Box
             component="nav"
             sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -172,18 +174,18 @@ export function HomeLayout({ children }: HomeLayoutProps) {
             sx={{
               flexGrow: 1,
               width: '100%',
-              height: '100vh',
-              overflow: 'auto',
+              // minHeight: '100%',
+              // overflow: 'auto',
               backgroundColor: (theme) =>
                 theme.palette.mode === 'light'
                   ? theme.palette.grey[100]
                   : theme.palette.grey[900],
-              paddingBottom: {
-                // 7 = nav footer, 3 = bottom gutter
-                xs: 7 + 3,
-                // 3 = bottom gutter
-                sm: 3,
-              },
+              // paddingBottom: {
+              //   // 7 = nav footer, 3 = bottom gutter
+              //   xs: 7 + 3,
+              //   // 3 = bottom gutter
+              //   sm: 3,
+              // },
               paddingTop: {
                 // 7 = mobile app bar header, 3 = top gutter
                 xs: 7 + 3,
@@ -195,95 +197,79 @@ export function HomeLayout({ children }: HomeLayoutProps) {
             {/* <Toolbar /> */}
 
             {children}
-            {/* Footer */}
-            <Box
-              sx={{
-                pt: 6,
-                pb: 4,
-                backgroundColor: (theme) => theme.palette.grey[100],
-              }}
-              component="footer"
-              id="footer"
-            >
-              <Typography variant="h6" align="center" gutterBottom>
-                Contact Info
-              </Typography>
-              <Box component="address">
-                <Typography
-                  variant="subtitle2"
-                  align="center"
-                  color="text.secondary"
-                  component="p"
-                >
-                  Nathan Larkin
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  align="center"
-                  color="text.secondary"
-                  component="p"
-                >
-                  <Link
-                    color="inherit"
-                    href="mailto:nlarkin.us@gmail.com"
-                    sx={{ textDecorationLine: 'none' }}
-                  >
-                    nlarkin.us@gmail.com
-                  </Link>
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  align="center"
-                  color="text.secondary"
-                  component="p"
-                >
-                  <Link
-                    color="inherit"
-                    href="tel:7045334302"
-                    sx={{ textDecorationLine: 'none' }}
-                  >
-                    (704) 533-4302
-                  </Link>
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  align="center"
-                  color="text.secondary"
-                  component="p"
-                  gutterBottom
-                >
-                  <Link
-                    color="inherit"
-                    href="https://github.com/nalarkin"
-                    sx={{ textDecorationLine: 'none' }}
-                  >
-                    Link to my GitHub
-                  </Link>
-                </Typography>
-              </Box>
-              <Copyright />
-            </Box>
-            {/* End footer */}
             {/* <BottomNavigation /> */}
           </Box>
+          {/* Footer */}
+          <Box
+            sx={{
+              pt: 6,
+              pb: 4,
+              backgroundColor: (theme) => theme.palette.grey[100],
+            }}
+            component="footer"
+            id="footer"
+          >
+            <Typography variant="h6" align="center" gutterBottom>
+              Contact Info
+            </Typography>
+            <Box component="address">
+              <Typography
+                variant="subtitle2"
+                align="center"
+                color="text.secondary"
+                component="p"
+              >
+                Nathan Larkin
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                align="center"
+                color="text.secondary"
+                component="p"
+              >
+                <Link
+                  color="inherit"
+                  href="mailto:nlarkin.us@gmail.com"
+                  sx={{ textDecorationLine: 'none' }}
+                >
+                  nlarkin.us@gmail.com
+                </Link>
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                align="center"
+                color="text.secondary"
+                component="p"
+              >
+                <Link
+                  color="inherit"
+                  href="tel:7045334302"
+                  sx={{ textDecorationLine: 'none' }}
+                >
+                  (704) 533-4302
+                </Link>
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                align="center"
+                color="text.secondary"
+                component="p"
+                gutterBottom
+              >
+                <Link
+                  color="inherit"
+                  href="https://github.com/nalarkin"
+                  sx={{ textDecorationLine: 'none' }}
+                >
+                  Link to my GitHub
+                </Link>
+              </Typography>
+            </Box>
+            <Copyright />
+          </Box>
+          {/* End footer */}
         </Box>
       </ScopedCssBaseline>
     </ThemeProvider>
   );
 }
-
-const Footer = () => {
-  return (
-    <footer className={''}>
-      <div className="flex flex-col pl-5 pb-5">
-        <div>Designed and Created by Nathan Larkin</div>
-      </div>
-      <address className="flex flex-col pr-5 gap-2">
-        Nathan Larkin <br />
-        <a href="mailto:nlarkin.us@gmail.com">nlarkin.us@gmail.com </a>
-        <a href="tel:7045334302">(704) 533-4302</a>
-        <a href="https://github.com/nalarkin">Link to my GitHub</a>
-      </address>
-    </footer>
-  );
-};

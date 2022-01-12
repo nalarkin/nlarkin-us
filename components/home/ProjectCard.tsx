@@ -59,6 +59,7 @@ export function ProjectCard({ project, children }: ProjectCardProps) {
       >
         <CardActionArea
           component={NextLinkComposed}
+          // scroll={true}
           to={{ pathname: buildProjectSlug(slug) }}
           sx={{ flexGrow: 0 }}
         >

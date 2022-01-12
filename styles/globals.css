@@ -19,14 +19,4 @@
   .news-nav-link {
     @apply hover:bg-gray-100 focus:bg-gray-100 rounded-md;
   }
-
-  /* .hero-image {
-    background-image: url('../public/images/hero-image.webp');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-  } */
-
-  /* .swiper-slide:not(:first-child) {
-    background-color: red;
-  } */
 }

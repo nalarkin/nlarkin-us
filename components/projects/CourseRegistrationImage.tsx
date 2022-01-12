@@ -30,7 +30,7 @@ export const courseRegistrationCard: ProjectCardProps['project'] = {
   bullets: registrationBulletsSummary,
   image: {
     src: pythonImage,
-    alt: 'georgia state university logo',
+    alt: 'python logo',
   },
   slug: 'course-bot',
 };

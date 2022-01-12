@@ -76,72 +76,75 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
     description,
   } = projectData;
   return (
-    <>
+    <Container maxWidth="sm">
       <NextSeo {...{ title, description }} />
-
-      <Container maxWidth="sm">
-        <Paper>
-          <Box sx={{ height: '100px', position: 'relative' }}>
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              layout="fill"
-              objectFit="contain"
+      <Paper>
+        <Box sx={{ height: '100px', position: 'relative' }}>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            layout="fill"
+            objectFit="contain"
+          />
+        </Box>
+        <Box sx={{ p: { xs: 2, sm: 3 } }}>
+          <Typography
+            gutterBottom
+            variant="h4"
+            component="h1"
+            sx={{ mb: 3 }}
+            textAlign={'center'}
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h2"
+            gutterBottom
+            fontWeight={400}
+            textAlign={'center'}
+          >
+            {'Tech Stack & Concepts'}
+          </Typography>
+          <TechnologyList tech={technologies} />
+          <Divider variant="middle" />
+          <Typography variant="h6" component="h3" sx={{ mt: '0.35em' }}>
+            Description
+          </Typography>
+          <Typography variant="body1">
+            <div
+              dangerouslySetInnerHTML={{ __html: contentHtml }}
+              className={style.list}
             />
-          </Box>
-          <Box sx={{ p: { xs: 2, sm: 3 } }}>
-            <Typography
-              gutterBottom
-              variant="h4"
-              component="h1"
-              sx={{ mb: 3 }}
-              textAlign={'center'}
-            >
-              {title}
-            </Typography>
-            <Typography
-              variant="h6"
-              component="h2"
-              gutterBottom
-              fontWeight={400}
-              textAlign={'center'}
-            >
-              {'Tech Stack & Concepts'}
-            </Typography>
-            <TechnologyList tech={technologies} />
-            <Divider variant="middle" />
-            <Typography variant="h6" component="h3" sx={{ mt: '0.35em' }}>
-              Description
-            </Typography>
-            <Typography variant="body1">
-              <div
-                dangerouslySetInnerHTML={{ __html: contentHtml }}
-                className={style.list}
-              />
-            </Typography>
-          </Box>
-        </Paper>
-        <Stack direction="row" spacing={2} justifyContent={'center'} mt={4}>
-          {github && (
+          </Typography>
+        </Box>
+      </Paper>
+      <Stack
+        direction="row"
+        spacing={2}
+        justifyContent={'center'}
+        mt={4}
+        // sx={{ backgroundColor: (theme) => theme.palette.primary.main }}
+      >
+        {github && (
+          <BuildButton
+            href={github}
+            text={'Github'}
+            variant={extraButtonText.length === 0 ? 'contained' : 'outlined'}
+          />
+        )}
+        {extraButtonHrefs.map((href, idx) => {
+          return (
             <BuildButton
-              href={github}
-              text={'Github'}
-              variant={extraButtonText.length === 0 ? 'contained' : 'outlined'}
+              href={href}
+              text={extraButtonText[idx]}
+              key={href}
+              variant="contained"
             />
-          )}
-          {extraButtonHrefs.map((href, idx) => {
-            return (
-              <BuildButton
-                href={href}
-                text={extraButtonText[idx]}
-                key={href}
-                variant="contained"
-              />
-            );
-          })}
-        </Stack>
-      </Container>
-    </>
+          );
+        })}
+      </Stack>
+    </Container>
   );
 };
 
