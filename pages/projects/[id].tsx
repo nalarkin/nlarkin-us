@@ -41,7 +41,7 @@ function TechnologyList({ tech }: { tech: string[] }) {
 //   return internalUrlRegex.test(href);
 // }
 
-function BuildButton({
+export function BuildButton({
   href,
   text,
   variant,
@@ -79,12 +79,18 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
     <Container maxWidth="sm">
       <NextSeo {...{ title, description }} />
       <Paper>
-        <Box sx={{ height: '100px', position: 'relative' }}>
+        <Box
+          sx={{
+            height: '345px',
+            position: 'relative',
+          }}
+        >
           <Image
             src={imageSrc}
             alt={imageAlt}
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
+            className={style.image}
           />
         </Box>
         <Box sx={{ p: { xs: 2, sm: 3 } }}>

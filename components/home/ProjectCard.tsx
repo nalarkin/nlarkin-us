@@ -14,6 +14,7 @@ import Image from 'next/image';
 
 import { NextLinkComposed } from 'components/mui/Link';
 import { buildProjectSlug } from 'lib/utils';
+import { BuildButton } from 'pages/projects/[id]';
 
 function BuildList({ bullets }: { bullets: string[] }) {
   return (
@@ -38,15 +39,26 @@ export interface ProjectCardProps {
     slug: string;
     bullets: string[];
     image: {
-      src: StaticImageData;
+      src: string;
       alt: string;
     };
+    extraButtonHrefs: string[];
+    extraButtonText: string[];
+    github: string;
   };
   children?: React.ReactNode;
 }
-export function ProjectCard({ project, children }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   // const { title, href, bullets, image, slug, buttonText } = project;
-  const { title, slug, bullets, image } = project;
+  const {
+    title,
+    slug,
+    bullets,
+    image,
+    extraButtonHrefs,
+    extraButtonText,
+    github,
+  } = project;
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card
@@ -63,12 +75,12 @@ export function ProjectCard({ project, children }: ProjectCardProps) {
           to={{ pathname: buildProjectSlug(slug) }}
           sx={{ flexGrow: 0 }}
         >
-          <CardMedia sx={{ height: '100px', position: 'relative' }}>
+          <CardMedia sx={{ height: '200px', position: 'relative' }}>
             <Image
               src={image.src}
               alt={image.alt}
               layout="fill"
-              objectFit="contain"
+              objectFit="cover"
             />
           </CardMedia>
           <CardContent>
@@ -79,7 +91,19 @@ export function ProjectCard({ project, children }: ProjectCardProps) {
           </CardContent>
         </CardActionArea>
         {/* <Stack justifyContent="flex-end" sx={{ flexGrow: 1 }}> */}
-        <CardActions sx={{ mt: 'auto' }}>{children}</CardActions>
+        <CardActions sx={{ mt: 'auto' }}>
+          {github && (
+            <BuildButton href={github} text={'Github'} variant={'text'} />
+          )}
+          {extraButtonHrefs.map((href, idx) => (
+            <BuildButton
+              href={href}
+              text={extraButtonText[idx]}
+              key={href}
+              variant="text"
+            />
+          ))}
+        </CardActions>
         {/* </Stack> */}
       </Card>
     </Grid>

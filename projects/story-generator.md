@@ -2,7 +2,7 @@
 title: Story Generator
 technologies: Rust, GitHub Pages, Grammar Parse Trees, File Processing
 github: https://github.com/nalarkin/story-generator
-imageSrc: /rustacean_mini.png
+imageSrc: /rustacean.webp
 imageAlt: rust mascot
 order: 3
 ---
