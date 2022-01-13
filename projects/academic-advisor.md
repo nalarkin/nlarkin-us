@@ -6,6 +6,7 @@ github: https://github.com/nalarkin/school_notifier
 imageSrc: /flutter_mini.png
 imageAlt: flutter framework icon
 order: 5
+omitFromHome: true
 ---
 
 - Developed a Python application which routinely searches for desired college courses and registers when a course becomes available

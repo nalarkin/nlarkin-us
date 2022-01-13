@@ -25,7 +25,6 @@ const HomeHero = () => {
       <Typography variant="h5" align="center" color="text.secondary" paragraph>
         Here is a collection of extracurricular projects I&apos;ve completed.
         I&apos;m looking for a full time position as a software developer.
-        Please contact me if you know of any oppurtunities.
       </Typography>
       <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
         <Button href="#footer" variant="contained" sx={{ textAlign: 'center' }}>

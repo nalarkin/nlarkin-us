@@ -1,9 +1,9 @@
 ---
-title: Inventory Management Software
+title: Inventory Application
 description: A full-stack inventory management application for 30+ GSU graduate researchers.
 technologies: Express.js, TypeScript, Next.js, React.js, MySQL, Full Stack Development, API Creation, Redux, asynchronous data fetching
 github: https://github.com/nalarkin/prisma-morse
-imageSrc: /gsu_mini.png
+imageSrc: /gsu.webp
 imageAlt: gsu logo
 order: 1
 ---

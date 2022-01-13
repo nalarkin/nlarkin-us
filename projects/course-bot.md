@@ -2,11 +2,11 @@
 title: Course Registration Bot
 description: Application which automatically registers for courses.
 technologies: Python, Selenium, Sphinx, DOM interaction, OOP
-imageSrc: /python_mini.png
+imageSrc: /python.webp
 imageAlt: python language
 order: 4
 extraButtonHrefs: https://youtu.be/ymE4Cj72WnM
-extraButtonText: Watch Demo
+extraButtonText: Youtube Demo
 ---
 
 - Developed a Python application which routinely searches for desired college courses and registers when a course becomes available

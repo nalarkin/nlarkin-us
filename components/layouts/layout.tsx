@@ -48,9 +48,7 @@ type Props = {
 
 const Layout = ({ seo, children }: Props) => (
   <>
-    {seo !== undefined ? (
-      <SEO description={seo.description} title={seo.title} />
-    ) : null}
+    {seo && <SEO description={seo.description} title={seo.title} />}
     <HomeLayout>{children}</HomeLayout>
   </>
 );

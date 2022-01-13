@@ -22,6 +22,9 @@ let theme = createTheme({
       dark: '#870000',
       contrastText: '#fff',
     },
+    background: {
+      default: '#f5f5f5',
+    },
   },
 });
 // let theme = createTheme({
