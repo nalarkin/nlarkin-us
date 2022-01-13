@@ -3,7 +3,7 @@ title: Academic Advisor
 description: Android application that was designed to improve communication between parents, students, and teachers.
 technologies: Flutter, Dart, NoSQL, Firebase, Authentication, Data Streams
 github: https://github.com/nalarkin/school_notifier
-imageSrc: /flutter_mini.png
+imageSrc: /flutter.webp
 imageAlt: flutter framework icon
 order: 5
 omitFromHome: true
