@@ -9,7 +9,7 @@ const HomeHero = () => {
     <Container
       maxWidth="sm"
       sx={{
-        pt: 8,
+        pt: 6,
         pb: 6,
       }}
     >
@@ -20,14 +20,29 @@ const HomeHero = () => {
         color="text.primary"
         gutterBottom
       >
-        My Portfolio
+        Hi, I&apos;m Nathan.
       </Typography>
-      <Typography variant="h5" align="center" color="text.secondary" paragraph>
+      <Typography
+        component="h1"
+        variant="h4"
+        align="center"
+        color="text.secondary"
+        gutterBottom
+      >
+        I&apos;m <strong>passionate</strong> about designing, developing, and
+        maintaining high-quality software.
+      </Typography>
+      {/* <Typography variant="h5" align="center" color="text.secondary" paragraph>
         Here is a collection of extracurricular projects I&apos;ve completed.
         I&apos;m looking for a full time position as a software developer.
-      </Typography>
+      </Typography> */}
       <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
-        <Button href="#footer" variant="contained" sx={{ textAlign: 'center' }}>
+        <Button
+          component={NextLinkComposed}
+          to={{ pathname: '/contact' }}
+          variant="contained"
+          sx={{ textAlign: 'center' }}
+        >
           {'Contact Me'}
         </Button>
         <Button
