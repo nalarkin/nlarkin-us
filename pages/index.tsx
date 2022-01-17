@@ -39,12 +39,14 @@ const Home = ({ projects }: { projects: QueryAllProjects }) => {
               id,
               title,
               github,
+              imageProps,
             }) => {
               const props: ProjectCardProps['project'] = {
                 extraButtonHrefs,
                 extraButtonText,
                 title,
                 github,
+                imageProps,
                 slug: id,
                 bullets,
                 image: {
@@ -69,7 +71,7 @@ Home.getLayout = function getLayout(page: React.ReactElement) {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projects = getSortedProjectsOrder();
+  const projects = await getSortedProjectsOrder();
   return {
     props: {
       projects,

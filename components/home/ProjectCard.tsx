@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
 import { NextLinkComposed } from 'components/mui/Link';
+import { PlaiceholderImageProps } from 'lib/projects';
 import { buildProjectSlug } from 'lib/utils';
 import { BuildButton } from 'pages/projects/[id]';
 
@@ -45,6 +46,7 @@ export interface ProjectCardProps {
     extraButtonHrefs: string[];
     extraButtonText: string[];
     github: string;
+    imageProps: PlaiceholderImageProps;
   };
   children?: React.ReactNode;
 }
@@ -58,6 +60,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     extraButtonHrefs,
     extraButtonText,
     github,
+    imageProps,
   } = project;
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -77,7 +80,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         >
           <CardMedia sx={{ height: '200px', position: 'relative' }}>
             <Image
-              src={image.src}
+              {...imageProps}
+              placeholder="blur"
               alt={image.alt}
               layout="fill"
               objectFit="cover"
