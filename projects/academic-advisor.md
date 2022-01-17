@@ -9,9 +9,12 @@ order: 5
 omitFromHome: true
 ---
 
-- Developed a Python application which routinely searches for desired college courses and registers when a course becomes available
-- Application is implemented through CLI commands and uses browser automation to perform searches
-- Application can run completely in the background within a terminal. There is no browser window necessary
-- Refactored the code to incorporate various design patterns, such as the strategy pattern and subscribe/observe pattern, among others
-- Design patterns were developed using the classic `Design Patterns: Elements of Reusable Object-Oriented Software`
-- During design I stressed the importance of communication through interface abstraction to improve the reusability, extensibility, and maintainability
+- This is the only project in my portfolio that was developed as a school project
+- Part of team that developed an Android app which aimed to improve communication between students, parents, and teachers
+- Designed and implemented private messaging, message read receipts, event scheduling, notification tracking, and secure user signup pipeline
+- Created login process using Firebase authentication
+- Designed an implemented all backend database and db operations
+- Made the UI of application on most pages
+- Implemented most state management using an industry standard library named `Bloc`
+- Developed a reddit-like messaging board for discussions between application users
+- Helped develop the local notifications
