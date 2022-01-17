@@ -43,7 +43,7 @@ const HeroTile = ({ article }: CardProps) => {
           </div>
           <div className={style.heroImage}>
             {' '}
-            <Image {...image} />
+            <Image {...image} priority={true} />
             {/* <ImageBuilder image={image} /> */}
           </div>
         </div>

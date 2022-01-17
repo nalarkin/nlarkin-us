@@ -74,6 +74,7 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
     extraButtonHrefs,
     extraButtonText,
     description,
+    imageProps,
   } = projectData;
   return (
     <Container maxWidth="sm">
@@ -86,7 +87,9 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
           }}
         >
           <Image
-            src={imageSrc}
+            // src={imageSrc}
+            {...imageProps}
+            placeholder="blur"
             alt={imageAlt}
             layout="fill"
             objectFit="cover"

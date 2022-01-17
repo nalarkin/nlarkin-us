@@ -32,10 +32,6 @@ const HomeHero = () => {
         I&apos;m <strong>passionate</strong> about designing, developing, and
         maintaining high-quality software.
       </Typography>
-      {/* <Typography variant="h5" align="center" color="text.secondary" paragraph>
-        Here is a collection of extracurricular projects I&apos;ve completed.
-        I&apos;m looking for a full time position as a software developer.
-      </Typography> */}
       <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
         <Button
           component={NextLinkComposed}
