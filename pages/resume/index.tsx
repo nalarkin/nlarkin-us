@@ -1,6 +1,13 @@
 import React from 'react';
 
-import { Container, Divider, Paper, Stack, Typography } from '@mui/material';
+import {
+  Button,
+  Container,
+  Divider,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { NextSeo } from 'next-seo';
 
 // import resume from '/public/Nathan_Larkin_Resume.pdf';
@@ -56,12 +63,12 @@ const Resume = () => {
             </a>
             <div>
               <a
-                href="https://github.come/nalarkin"
+                href="https://github.com/nalarkin"
                 className="s3"
                 target="_blank"
                 rel="noreferrer"
               >
-                https://github.come/nalarkin
+                https://github.com/nalarkin
               </a>
             </div>
           </Stack>
@@ -196,7 +203,7 @@ const Resume = () => {
             <li>
               <p>
                 Will deploy application to a Raspberry Pi local web server,
-                estimated release is January 2022
+                estimated release is February 2022
               </p>
             </li>
             <Typography component="h3" fontSize={'1rem'} fontWeight={500}>
@@ -284,6 +291,16 @@ const Resume = () => {
             </li>
           </ul>
         </Paper>
+        <Stack>
+          <Button
+            variant="contained"
+            href="Nathan_Larkin_Resume.pdf"
+            download
+            sx={{ mx: 'auto', mt: 5 }}
+          >
+            {'Download Résumé'}
+          </Button>
+        </Stack>
       </Container>
     </>
   );

@@ -9,7 +9,7 @@ order: 1
 ---
 
 - Developing a full-stack inventory management website that will serve over 30 GSU researchers
-- Designed and implemented all critical back-end features of the custom REST API
+- Designed and created a custom REST API and all back-end features
 - Built the front-end features for item rental, user authentication, CRUD operations, QR code generation, and exporting data into Excel spreadsheets
 - Sole person responsible for the front-end development of the application
 - Developed mobile friendly application which allows QR code scanning to asynchronously fetch data from the backend database and display info about the scanned item
