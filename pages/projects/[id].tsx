@@ -57,6 +57,16 @@ export function BuildButton({
       target="_blank"
       rel="noopener"
       variant={variant}
+      sx={{
+        color: (theme) =>
+          variant !== 'contained' ? theme.palette.info.main : undefined,
+      }}
+      // sx={{
+      //   '&:hover': {
+      //     backgroundColor: 'primary.warning',
+      //     opacity: [0.9, 0.8, 0.7],
+      //   },
+      // }}
     >
       {text}
     </Button>
@@ -66,7 +76,7 @@ export function BuildButton({
 const Project = ({ projectData }: { projectData: ProjectData }) => {
   const {
     title,
-    imageSrc,
+    // imageSrc,
     imageAlt,
     technologies,
     contentHtml,

@@ -47,9 +47,11 @@ export interface ProjectCardProps {
     extraButtonText: string[];
     github: string;
     imageProps: PlaiceholderImageProps;
+    dataTest: string;
   };
   children?: React.ReactNode;
 }
+
 export function ProjectCard({ project }: ProjectCardProps) {
   // const { title, href, bullets, image, slug, buttonText } = project;
   const {
@@ -61,6 +63,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     extraButtonText,
     github,
     imageProps,
+    dataTest,
   } = project;
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -77,6 +80,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           // scroll={true}
           to={{ pathname: buildProjectSlug(slug) }}
           sx={{ flexGrow: 0 }}
+          data-test={dataTest}
         >
           <CardMedia sx={{ height: '200px', position: 'relative' }}>
             <Image

@@ -40,6 +40,7 @@ const Home = ({ projects }: { projects: QueryAllProjects }) => {
               title,
               github,
               imageProps,
+              dataTest,
             }) => {
               const props: ProjectCardProps['project'] = {
                 extraButtonHrefs,
@@ -49,6 +50,7 @@ const Home = ({ projects }: { projects: QueryAllProjects }) => {
                 imageProps,
                 slug: id,
                 bullets,
+                dataTest,
                 image: {
                   src: imageSrc,
                   alt: imageAlt,

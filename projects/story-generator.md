@@ -5,6 +5,7 @@ github: https://github.com/nalarkin/story-generator
 imageSrc: /rustacean.webp
 imageAlt: rust mascot
 order: 3
+dataTest: story-gen
 ---
 
 - Developed a binary executable that generates random sentences based off the user defined rules

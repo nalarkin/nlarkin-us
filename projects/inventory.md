@@ -6,6 +6,7 @@ github: https://github.com/nalarkin/prisma-morse
 imageSrc: /gsu.webp
 imageAlt: gsu logo
 order: 1
+dataTest: inventory
 ---
 
 - Developing a full-stack inventory management website that will serve over 30 GSU researchers

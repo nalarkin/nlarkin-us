@@ -11,6 +11,7 @@ module.exports = withPlaiceholder({
   images: {
     domains: ["cdn.sanity.io"],
   },
+  swcMinify: true,
   async redirects() {
     return [
       // {

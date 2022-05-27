@@ -36,3 +36,7 @@ yarn-error.log*
 
 /reference
 .eslintcache
+
+# ide
+.vscode
+.idea

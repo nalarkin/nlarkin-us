@@ -7,6 +7,7 @@ imageSrc: /flutter.webp
 imageAlt: flutter framework icon
 order: 5
 omitFromHome: true
+dataTest: academic-advisor
 ---
 
 - This is the only project in my portfolio that was developed as a school project

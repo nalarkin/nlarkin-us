@@ -104,7 +104,7 @@ export async function getProjectData(id: string) {
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
-  // process technlogies into a list
+  // process technologies into a list
   const technologies = matterResult.data.technologies.split(',') as string[];
   const extraButtonHrefs = (matterResult.data.extraButtonHrefs?.split(',') ??
     []) as string[];
@@ -175,6 +175,7 @@ export interface ProjectMetadata {
   extraButtonText?: string;
   belowButtonText?: string;
   omitFromHome?: boolean;
+  dataTest: string;
 }
 
 export interface ProjectData
