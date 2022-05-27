@@ -115,7 +115,12 @@ export function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <ScopedCssBaseline>
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+          backgroundColor: theme.palette.background.default,
+        }}
       >
         <AppBar
           position="fixed"
@@ -166,13 +171,12 @@ export function HomeLayout({ children }: HomeLayoutProps) {
                 <LightModeIcon data-test={'light-theme'} />
               )}
             </IconButton>
-            {/* {isAuth && <StyledAppBarSearch />} */}
           </Toolbar>
         </AppBar>
         <Box
           component="nav"
           sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-          aria-label="home items profile"
+          aria-label="home nav"
         >
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Drawer
@@ -206,7 +210,7 @@ export function HomeLayout({ children }: HomeLayoutProps) {
             width: '100%',
             // minHeight: '100%',
             // overflow: 'auto',
-            // backgroundColor:
+            // backgroundColor: theme.palette.background.default,
             //   theme.palette.mode === 'light'
             //     ? theme.palette.grey[100]
             //     : theme.palette.grey[900],

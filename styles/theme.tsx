@@ -140,11 +140,18 @@ export default function ToggleColorMode({ children }: { children: ReactNode }) {
   );
 
   const theme = React.useMemo(() => {
-    let newTheme = createTheme({
-      ...getDesignTokens(mode),
-    });
-    newTheme = responsiveFontSizes(newTheme);
-    return newTheme;
+    return responsiveFontSizes(
+      createTheme({
+        ...getDesignTokens(mode),
+      })
+    );
+    // newTheme = responsiveFontSizes(newTheme);
+    // return newTheme;
+    // let newTheme = createTheme({
+    //   ...getDesignTokens(mode),
+    // });
+    // newTheme = responsiveFontSizes(newTheme);
+    // return newTheme;
   }, [mode]);
 
   // this forces react to reload when window becomes defined, and we gain access to the local storage
