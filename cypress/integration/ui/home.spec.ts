@@ -21,6 +21,18 @@ const sideNavIsNotVisible = () => {
   sideNavVisibility(false);
 };
 
+const expectProjectPage = (slug: string) => {
+  // large delay for slow development compile speeds
+  cy.url({ timeout: 20000 }).should('include', slug);
+  cy.contains(/tech stack/i);
+};
+
+const expectHomePage = () => {
+  cy.url({ timeout: 15000 }).should('eq', `${Cypress.env('site_url')}/`);
+  cy.getBySel('contact-button');
+  cy.getBySel('resume-button');
+};
+
 describe('Home page', () => {
   beforeEach(() => {
     cy.visit('/');
@@ -28,10 +40,36 @@ describe('Home page', () => {
 
   it('has project cards', () => {
     cy.contains('passionate');
-    cy.contains(/inventory application/i);
-    cy.contains(/new york times clone/i);
-    cy.contains(/story generator/i);
-    cy.contains(/course registration bot/i);
+    cy.getBySel('nyt').scrollIntoView();
+
+    cy.getBySel('nyt');
+    cy.getBySel('card-footer-nyt')
+      .contains(/github/i)
+      .should('have.attr', 'href')
+      .and('eq', 'https://github.com/nalarkin/nlarkin-us');
+
+    cy.getBySel('card-footer-nyt')
+      .contains(/view site/i)
+      .should('have.attr', 'href')
+      .and('eq', 'https://www.nlarkin.us/news');
+
+    cy.getBySel('inventory');
+    cy.getBySel('card-footer-inventory')
+      .contains(/github/i)
+      .should('have.attr', 'href')
+      .and('eq', 'https://github.com/nalarkin/prisma-morse');
+
+    cy.getBySel('story-gen');
+    cy.getBySel('card-footer-story-gen')
+      .contains(/github/i)
+      .should('have.attr', 'href')
+      .and('eq', 'https://github.com/nalarkin/story-generator');
+
+    cy.getBySel('registration-bot');
+    cy.getBySel('card-footer-registration-bot')
+      .contains(/youtube/i)
+      .should('have.attr', 'href')
+      .and('eq', 'https://youtu.be/ymE4Cj72WnM');
 
     cy.getBySel('contact-button');
     cy.getBySel('resume-button');
@@ -39,7 +77,7 @@ describe('Home page', () => {
     cy.getBySel('inventory');
   });
 
-  it('side navigation appears then hides when click away', () => {
+  it('has side navigation that appears when clicked, and hides when click away', () => {
     sideNavIsNotVisible();
 
     cy.getBySel('side-nav-toggle').click();
@@ -51,38 +89,53 @@ describe('Home page', () => {
     sideNavIsNotVisible();
   });
 
-  it.only('navigates to other pages', () => {
+  it('can navigate to other pages using the side navigation', () => {
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-inventory').click();
-    cy.url({ timeout: 15000 }).should('include', '/inventory');
-    cy.contains(/tech stack/i);
+    expectProjectPage('/inventory');
+
+    // cy.getBySel('side-nav-toggle').click();
+    cy.getBySel('nav-home-link').click();
+    expectHomePage();
 
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-nyt').click();
-    cy.url({ timeout: 15000 }).should('include', '/nyt');
-    cy.contains(/tech stack/i);
+    expectProjectPage('/nyt');
 
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-story-gen').click();
-    cy.url({ timeout: 15000 }).should('include', '/story-gen');
-    cy.contains(/tech stack/i);
+    expectProjectPage('/story-gen');
 
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-registration-bot').click();
-    cy.url({ timeout: 15000 }).should('include', '/course-bot');
-    cy.contains(/tech stack/i);
+    expectProjectPage('/course-bot');
 
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-academic-advisor').click();
-    cy.url({ timeout: 15000 }).should('include', '/academic-advisor');
-    cy.contains(/tech stack/i);
 
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-home').click();
-    cy.url({ timeout: 15000 }).should('eq', `${Cypress.env('site_url')}/`);
+    expectHomePage();
+  });
 
-    cy.getBySel('contact-button');
-    cy.getBySel('resume-button');
+  it('can navigate to other pages using the project cards', () => {
+    cy.getBySel('nyt').click();
+    expectProjectPage('/nyt');
+
+    cy.go('back');
+
+    cy.getBySel('inventory').click();
+    expectProjectPage('/inventory');
+
+    cy.go('back');
+
+    cy.getBySel('story-gen').click();
+    expectProjectPage('/story-gen');
+
+    cy.go('back');
+
+    cy.getBySel('registration-bot').click();
+    expectProjectPage('/course-bot');
   });
 });
 

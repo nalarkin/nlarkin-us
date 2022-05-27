@@ -99,7 +99,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </CardContent>
         </CardActionArea>
         {/* <Stack justifyContent="flex-end" sx={{ flexGrow: 1 }}> */}
-        <CardActions sx={{ mt: 'auto' }}>
+        <CardActions sx={{ mt: 'auto' }} data-test={`card-footer-${dataTest}`}>
           {github && (
             <BuildButton href={github} text={'Github'} variant={'text'} />
           )}

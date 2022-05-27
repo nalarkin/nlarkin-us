@@ -50,7 +50,6 @@ export function HomeLayout({ children }: HomeLayoutProps) {
   const drawerWidth = 0;
 
   const handleDrawerToggle = () => {
-    console.log('toggled drawer');
     setDrawer(!drawerOpen);
   };
 
@@ -150,6 +149,7 @@ export function HomeLayout({ children }: HomeLayoutProps) {
                 color="inherit"
                 href="/"
                 sx={{ textDecorationLine: 'none' }}
+                data-test={'nav-home-link'}
               >
                 NLarkin
               </Link>
@@ -158,11 +158,12 @@ export function HomeLayout({ children }: HomeLayoutProps) {
               sx={{ ml: 1 }}
               onClick={colorMode.toggleColorMode}
               color="inherit"
+              data-test={'theme-toggle'}
             >
               {theme.palette.mode === 'dark' ? (
-                <DarkModeIcon />
+                <DarkModeIcon data-test={'dark-theme'} />
               ) : (
-                <LightModeIcon />
+                <LightModeIcon data-test={'light-theme'} />
               )}
             </IconButton>
             {/* {isAuth && <StyledAppBarSearch />} */}

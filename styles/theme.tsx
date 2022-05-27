@@ -5,6 +5,7 @@ import {
   PaletteMode,
   responsiveFontSizes,
   ThemeProvider,
+  useMediaQuery,
 } from '@mui/material';
 import { grey, indigo } from '@mui/material/colors';
 
@@ -86,12 +87,53 @@ export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
 });
 
+// function useDetermineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
+//   const [initialTheme, setInitialTheme] = React.useState<'light' | 'dark'>(
+//     'light'
+//   );
+//
+//   React.useEffect(() => {
+//     if (typeof window === 'undefined') return;
+//     const savedTheme = localStorage.getItem('theme');
+//     if (savedTheme === 'light' || savedTheme === 'dark') {
+//       setInitialTheme(savedTheme);
+//     }
+//     setInitialTheme(prefersDarkMode ? 'dark' : 'light');
+//   }, [prefersDarkMode, window]);
+//   return initialTheme;
+// }
+
+function determineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
+  const savedTheme =
+    typeof window === 'undefined' ? 'light' : localStorage.getItem('theme');
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    return savedTheme;
+  }
+  return prefersDarkMode ? 'dark' : 'light';
+}
+
+// function useWindowType() {
+//   const [windowExists, setWindowExists] = React.useState<boolean>(false);
+//   React.useEffect(() => {
+//     setWindowExists(typeof window !== 'undefined');
+//   }, [window]);
+//   return windowExists;
+// }
+
 export default function ToggleColorMode({ children }: { children: ReactNode }) {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [mode, setMode] = React.useState<'light' | 'dark'>(
+    determineInitialTheme(prefersDarkMode)
+  );
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+        // const themeMode =
+        setMode((prevMode) => {
+          const themeMode = prevMode === 'light' ? 'dark' : 'light';
+          localStorage.setItem('theme', themeMode);
+          return themeMode;
+        });
       },
     }),
     []
@@ -104,6 +146,18 @@ export default function ToggleColorMode({ children }: { children: ReactNode }) {
     newTheme = responsiveFontSizes(newTheme);
     return newTheme;
   }, [mode]);
+
+  // this forces react to reload when window becomes defined, and we gain access to the local storage
+  // there has to be a better solution than this...
+  // tried to with useEffect hook,and tried to include logic in function call, but neither of my solutions using these
+  // worked
+  if (typeof window === 'undefined') {
+    return <div />;
+  }
+  const initialMode = determineInitialTheme(prefersDarkMode);
+  if (initialMode !== mode) {
+    setMode(initialMode);
+  }
 
   return (
     <ColorModeContext.Provider value={colorMode}>
