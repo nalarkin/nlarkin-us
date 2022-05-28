@@ -81,12 +81,11 @@ const Resume = () => {
             the University of Washington. Unfortunately, it was too late for me
             to gain admission to the UW CS program, and my family had relocated
             to GA. Instead of staying at UW and earning a non-CS degree, my
-            passion led me to relocating to GA and pursing a formal CS
-            education. Since transferring to GSU, I am flourishing in the CS
-            program and will graduate <i>summa cum laude </i>in May 2022. In my
-            free time, I am constantly learning new CS skills, best practices,
-            and new technologies. Solving difficult problems is a space where I
-            thrive.
+            passion led me to relocate to GA and pursue a formal CS education. I
+            flourished in the CS program at GSU and graduated summa cum laude in
+            May 2022. In my free time, I am constantly learning new CS skills,
+            best practices, and new technologies. Solving complex problems is a
+            space where I thrive.
           </Typography>
           <Typography variant="h6" component="h2">
             EDUCATION
@@ -104,21 +103,20 @@ const Resume = () => {
           </Stack>
           <Stack direction="row" justifyContent={'space-between'}>
             <i>Bachelor of Science in Computer Science</i>
-            <i className="text-right">June 2020 - Expected May 2022</i>
+            <i className="text-right">June 2020 - May 2022</i>
           </Stack>
 
           <ul>
             <li>
-              <p className="bulletList">4.15 GPA on 4.30 scale (institution)</p>
+              <p>
+                Graduated <i>summa cum laude</i>
+              </p>
             </li>
             <li>
-              <p>4.27 GPA on 4.30 scale (CS department)</p>
+              <p className="bulletList">4.16 GPA on 4.30 scale (institution)</p>
             </li>
             <li>
-              <h4>
-                C<span className="p">urrently on the path to graduate </span>
-                <i>summa cum laude</i>
-              </h4>
+              <p>4.25 GPA on 4.30 scale (CS department)</p>
             </li>
           </ul>
           <ul>
@@ -177,8 +175,16 @@ const Resume = () => {
           <ul>
             <li>
               <p>
-                Designed and implemented all critical back-end features of the
-                custom REST API with Express.js
+                This application tracks research items and supplies, provides
+                rental service features, user authentication, role-based
+                permissions, item searching, multiple data views, and user
+                action history
+              </p>
+            </li>
+            <li>
+              <p>
+                Designed and created a custom REST API, all backend features,
+                and managed a MySQL database for persistent data storage
               </p>
             </li>
             <li>
@@ -189,21 +195,14 @@ const Resume = () => {
             </li>
             <li>
               <p>
-                Connected the back-end server to a MySQL database for persistent
-                data storage
+                Built the frontend features for item rental, user
+                authentication, CRUD operations, QR code generation
               </p>
             </li>
             <li>
               <p>
-                Built the front-end features for item rental, user
-                authentication, CRUD operations, QR code generation, and
-                exporting data into Excel spreadsheets
-              </p>
-            </li>
-            <li>
-              <p>
-                Will deploy application to a Raspberry Pi local web server,
-                estimated release is February 2022
+                Deployed the first release of the application on a Raspberry Pi
+                local web server on February 17th, 2022
               </p>
             </li>
             <Typography component="h3" fontSize={'1rem'} fontWeight={500}>

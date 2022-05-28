@@ -91,7 +91,21 @@ export function getAllProjectIds() {
   });
 }
 
-export async function getProjectData(id: string) {
+export type GetProjectDataReturn = {
+  id: string;
+  contentHtml: string;
+  technologies: string[];
+  extraButtonHrefs: string[];
+  extraButtonText: string[];
+  imageProps: { blurDataURL: string; src: string; type?: string | undefined };
+} & Omit<
+  ProjectMetadata,
+  'technologies' | 'extraButtonHrefs' | 'extraButtonText'
+>;
+
+export async function getProjectData(
+  id: string
+): Promise<GetProjectDataReturn> {
   const fullPath = path.join(projectsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -104,7 +118,7 @@ export async function getProjectData(id: string) {
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
-  // process technlogies into a list
+  // process technologies into a list
   const technologies = matterResult.data.technologies.split(',') as string[];
   const extraButtonHrefs = (matterResult.data.extraButtonHrefs?.split(',') ??
     []) as string[];
@@ -175,6 +189,7 @@ export interface ProjectMetadata {
   extraButtonText?: string;
   belowButtonText?: string;
   omitFromHome?: boolean;
+  dataTest: string;
 }
 
 export interface ProjectData

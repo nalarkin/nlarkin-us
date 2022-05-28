@@ -36,3 +36,11 @@ yarn-error.log*
 
 /reference
 .eslintcache
+
+# ide
+.vscode
+.idea
+
+# cypress
+cypress/videos
+cypress/screenshots

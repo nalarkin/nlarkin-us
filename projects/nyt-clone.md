@@ -9,6 +9,7 @@ order: 2
 extraButtonHrefs: https://www.nlarkin.us/news
 extraButtonText: View Site
 omitFromHome: false
+dataTest: nyt
 ---
 
 - Developed a fully responsive New York Times website clone from scratch

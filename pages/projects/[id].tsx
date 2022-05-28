@@ -57,6 +57,16 @@ export function BuildButton({
       target="_blank"
       rel="noopener"
       variant={variant}
+      sx={{
+        color: (theme) =>
+          variant !== 'contained' ? theme.palette.info.main : undefined,
+      }}
+      // sx={{
+      //   '&:hover': {
+      //     backgroundColor: 'primary.warning',
+      //     opacity: [0.9, 0.8, 0.7],
+      //   },
+      // }}
     >
       {text}
     </Button>
@@ -66,7 +76,7 @@ export function BuildButton({
 const Project = ({ projectData }: { projectData: ProjectData }) => {
   const {
     title,
-    imageSrc,
+    // imageSrc,
     imageAlt,
     technologies,
     contentHtml,
@@ -158,15 +168,15 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllProjectIds();
   return {
-    paths,
+    paths: getAllProjectIds(),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const projectData = await getProjectData(params?.id as string);
+
   if (
     projectData.extraButtonHrefs.length !== projectData.extraButtonText.length
   ) {

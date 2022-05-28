@@ -38,6 +38,8 @@ const HomeHero = () => {
           to={{ pathname: '/contact' }}
           variant="contained"
           sx={{ textAlign: 'center' }}
+          data-test={'contact-button'}
+          color={'primary'}
         >
           {'Contact Me'}
         </Button>
@@ -45,7 +47,8 @@ const HomeHero = () => {
           component={NextLinkComposed}
           to={{ pathname: '/resume' }}
           variant="outlined"
-          color="secondary"
+          color="info"
+          data-test={'resume-button'}
         >
           {'See Résumé'}
         </Button>

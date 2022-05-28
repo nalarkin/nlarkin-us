@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react';
 import SEO, { SEOProps } from 'components/shared/seo';
 
 import { HomeLayout } from './HomeLayout';
+import ToggleColorMode from '@/styles/theme';
 
 // import style from './layout.module.scss';
 
@@ -49,7 +50,9 @@ type Props = {
 const Layout = ({ seo, children }: Props) => (
   <>
     {seo && <SEO description={seo.description} title={seo.title} />}
-    <HomeLayout>{children}</HomeLayout>
+    <ToggleColorMode>
+      <HomeLayout>{children}</HomeLayout>
+    </ToggleColorMode>
   </>
 );
 

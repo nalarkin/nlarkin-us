@@ -25,7 +25,12 @@ const Home = ({ projects }: { projects: QueryAllProjects }) => {
       <Container maxWidth="lg">
         <HomeHero />
         <Divider />
-        <Typography variant="h4" sx={{ mb: 3, mt: 3 }} textAlign={'center'}>
+        <Typography
+          variant="h4"
+          sx={{ mb: 3, mt: 3 }}
+          textAlign={'center'}
+          color={'text.primary'}
+        >
           Extracurricular Projects
         </Typography>
         <Grid container spacing={4}>
@@ -40,6 +45,7 @@ const Home = ({ projects }: { projects: QueryAllProjects }) => {
               title,
               github,
               imageProps,
+              dataTest,
             }) => {
               const props: ProjectCardProps['project'] = {
                 extraButtonHrefs,
@@ -49,6 +55,7 @@ const Home = ({ projects }: { projects: QueryAllProjects }) => {
                 imageProps,
                 slug: id,
                 bullets,
+                dataTest,
                 image: {
                   src: imageSrc,
                   alt: imageAlt,
@@ -71,10 +78,9 @@ Home.getLayout = function getLayout(page: React.ReactElement) {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projects = await getSortedProjectsOrder();
   return {
     props: {
-      projects,
+      projects: await getSortedProjectsOrder(),
     },
   };
 };
