@@ -243,7 +243,12 @@ export function HomeLayout({ children }: HomeLayoutProps) {
           component="footer"
           id="footer"
         >
-          <Typography variant="h6" align="center" gutterBottom>
+          <Typography
+            variant="h6"
+            align="center"
+            color="text.secondary"
+            gutterBottom
+          >
             Contact Info
           </Typography>
           <Box component="address">

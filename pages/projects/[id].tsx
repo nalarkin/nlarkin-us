@@ -168,15 +168,15 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllProjectIds();
   return {
-    paths,
+    paths: getAllProjectIds(),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const projectData = await getProjectData(params?.id as string);
+
   if (
     projectData.extraButtonHrefs.length !== projectData.extraButtonText.length
   ) {

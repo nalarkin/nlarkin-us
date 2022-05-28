@@ -12,7 +12,9 @@
     "build-types": "tsc --noEmit --pretty",
     "prepare": "husky install",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
+    "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",

@@ -19,6 +19,7 @@ export function shuffle(a: any[]) {
   }
   return a;
 }
+
 /**
  * Shuffles array in place.
  * @param {Array} a items An array containing the items.

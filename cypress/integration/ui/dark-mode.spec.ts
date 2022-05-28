@@ -13,7 +13,7 @@ export const expectDarkModeEnabled = () => {
   cy.getBySel('light-theme').should('not.exist');
 };
 
-describe('Dark mode', () => {
+describe('Dark mode', { defaultCommandTimeout: 20000 }, () => {
   beforeEach(() => {
     cy.visit('/');
   });

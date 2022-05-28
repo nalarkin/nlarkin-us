@@ -91,7 +91,21 @@ export function getAllProjectIds() {
   });
 }
 
-export async function getProjectData(id: string) {
+export type GetProjectDataReturn = {
+  id: string;
+  contentHtml: string;
+  technologies: string[];
+  extraButtonHrefs: string[];
+  extraButtonText: string[];
+  imageProps: { blurDataURL: string; src: string; type?: string | undefined };
+} & Omit<
+  ProjectMetadata,
+  'technologies' | 'extraButtonHrefs' | 'extraButtonText'
+>;
+
+export async function getProjectData(
+  id: string
+): Promise<GetProjectDataReturn> {
   const fullPath = path.join(projectsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 

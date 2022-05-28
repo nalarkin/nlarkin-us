@@ -163,6 +163,7 @@ export default function ToggleColorMode({ children }: { children: ReactNode }) {
   }
   const initialMode = determineInitialTheme(prefersDarkMode);
   if (initialMode !== mode) {
+    // colorMode.toggleColorMode();
     setMode(initialMode);
   }
 
