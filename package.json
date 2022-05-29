@@ -81,6 +81,7 @@
     "eslint-plugin-unused-imports": "^1.1.5",
     "husky": "^7.0.0",
     "lint-staged": "^11.2.0",
+    "msw": "^0.41.1",
     "postcss": "^8.3.6",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",

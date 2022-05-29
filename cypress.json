@@ -1,5 +1,6 @@
 {
   "baseUrl": "http://localhost:3000",
+  "integrationFolder": "cypress/tests",
   "env": {
     "site_url": "http://localhost:3000",
     "mobileViewportWidthBreakpoint": 414

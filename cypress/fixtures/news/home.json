@@ -1,0 +1,1085 @@
+{
+  "culture": {
+    "articles": [
+      {
+        "_id": "d0dd50ae-7ec4-4b63-b0b2-8bc70b9bfba3",
+        "date": "2021-09-27T00:05:00.000Z",
+        "excerpt": "She walked over to the window and reflected on her beautiful surroundings. She had always loved cold Moscow with its jittery, jealous jungle. It was a place that encouraged her tendency to feel sleepy.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "tornado",
+          "asset": {
+            "_ref": "image-3710e7a475486e59757cd304b37944dc2aea8303-1074x805-webp",
+            "_type": "reference"
+          }
+        },
+        "slug": "local-man-set-to-fly-out-and-help-with-tornado-relief-effort",
+        "title": "Local man Set to Fly Out and Help With Tornado Relief Effort"
+      },
+      {
+        "_id": "2d9f057a-952e-41d2-a084-c150123af6a6",
+        "date": "2021-09-26T23:26:00.000Z",
+        "excerpt": "Once upon a time there was a virtuous girl called Sally Thunder. She was on the way to see her Clarke Blast, when she decided to take a short cut through Snotchester Forest.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "shirts on coat rack",
+          "asset": {
+            "_ref": "image-05f1c4eeabdcc69673d6d3d2404fec150660d73f-1740x1161-webp",
+            "_type": "reference"
+          }
+        },
+        "slug": "blue-t-shirts-are-the-latest-big-trend-says-top-fashion-designer",
+        "title": "Blue T-shirts Are the Latest Big Trend Says Top Fashion Designer"
+      },
+      {
+        "_id": "f10ba8d1-980f-49e0-a5e7-a8b7bedee360",
+        "date": "2021-09-23T22:47:00.000Z",
+        "excerpt": "Once upon a time there was a understanding boy called Robert Butterscotch. He was on the way to see his Charity Godfrey, when he decided to take a short cut through Kensington Gardens.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "forest highway",
+          "asset": {
+            "_ref": "image-8526451d1b2fdcefb4494a3d3342b439f5cfd714-1074x805-webp",
+            "_type": "reference"
+          },
+          "caption": "Butterscotch Road"
+        },
+        "slug": "robert-butterscotch-and-the-two-fluffy-flamingoes",
+        "title": "Robert Butterscotch and the Two Fluffy Flamingoes"
+      }
+    ],
+    "cropped": true,
+    "title": "Culture",
+    "uid": "culture"
+  },
+  "diveDeeper": {
+    "articles": [
+      {
+        "_id": "2bf6ed02-d53b-4962-a055-4ce3d88a0f38",
+        "date": "2021-10-07T02:12:00.000Z",
+        "excerpt": " Once, he had even helped a terrible owl recover from a flying accident.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "elephant in the Savanna",
+          "asset": {
+            "_ref": "image-c2bcbd44fbe8b903b0ac2bd82b9f3a17fa4cba99-5184x3456-jpg",
+            "_type": "reference"
+          },
+          "crop": {
+            "_type": "sanity.imageCrop",
+            "bottom": 0,
+            "left": 0,
+            "right": 0.006849315068493178,
+            "top": 0
+          },
+          "hotspot": {
+            "_type": "sanity.imageHotspot",
+            "height": 0.645725082664147,
+            "width": 0.4863013698630124,
+            "x": 0.5393835616438362,
+            "y": 0.5641802386477991
+          }
+        },
+        "slug": "who-else-wants-to-know-the-mystery-behind-elephant",
+        "title": "Who Else Wants To Know The Mystery Behind Elephant?"
+      },
+      {
+        "_id": "6d163808-52b5-4eaf-8a5e-cf0183d359c6",
+        "date": "2021-09-28T23:52:17.226Z",
+        "excerpt": "He was a bold, deranged, whiskey drinker with skinny legs and dirty eyes. His friends saw him as an alert, ancient angel. Once, he had even saved a knobby baby flamingo that was stuck in a drain. That's the sort of man he was.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "baby koala in tree",
+          "asset": {
+            "_ref": "image-00d38d2ea0e389ae181409fd38b296a01f7ce472-1169x780-webp",
+            "_type": "reference"
+          }
+        },
+        "slug": "viral-photo-of-koala-had-been-photoshopped",
+        "title": "Viral Photo of Koala Had Been Photoshopped"
+      },
+      {
+        "_id": "069c3f63-5edf-42b3-ba1c-4fba66ac04bf",
+        "date": "2021-09-28T00:05:00.000Z",
+        "excerpt": "They looked at each other with barmy feelings, like two faint, funny foxes talking at a very smart disco, which had R & B music playing in the background and two hilarious uncles jogging to the beat.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "sprouts growing in soil",
+          "asset": {
+            "_ref": "image-1400005fac53ca2eb1d169d7bb9a25ee9869f11f-1170x780-webp",
+            "_type": "reference"
+          }
+        },
+        "slug": "new-variety-of-sprout-set-to-revolutionise-our-eating-habits",
+        "title": "New Variety of Sprout Set to Revolutionise Our Eating Habits"
+      },
+      {
+        "_id": "0e118e04-c763-47f7-9e7e-8ec7d47cdefb",
+        "date": "2021-09-27T23:28:02.280Z",
+        "excerpt": "Once upon a time there was a spiteful boy called Andy Pitt. He was on the way to see his Felicity Connor, when he decided to take a short cut through Hampstead Heath.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "new york skyline",
+          "asset": {
+            "_ref": "image-f579902f78586788f0fdd3be529057185258b0da-1740x1160-webp",
+            "_type": "reference"
+          }
+        },
+        "slug": "new-york-voted-nicest-place-to-live-in-the-world",
+        "title": "New York Voted Nicest Place to Live in the World"
+      }
+    ],
+    "cropped": true,
+    "title": "Dive Deeper",
+    "uid": "diveDeeper"
+  },
+  "hero": {
+    "articles": {
+      "main": {
+        "_id": "77eeda02-62fc-4020-908f-2c36399e2d57",
+        "date": "2021-12-26T20:56:00.000Z",
+        "excerpt": "The crippled supply chain and international ripple effect have led to a large shortage of mobile phones. Here's why it's worth waiting till next year for that hefty purchase.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "person using phone during a coffee break",
+          "asset": {
+            "_ref": "image-f7389663570b38d0e75202e61ac1ad702c0a3401-4928x3264-jpg",
+            "_type": "reference"
+          },
+          "crop": {
+            "_type": "sanity.imageCrop",
+            "bottom": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0
+          },
+          "hotspot": {
+            "_type": "sanity.imageHotspot",
+            "height": 0.47750693208624817,
+            "width": 0.3527397260273963,
+            "x": 0.5017123287671241,
+            "y": 0.6112237718826306
+          }
+        },
+        "slug": "why-it-might-be-better-to-buy-your-phone-next-year",
+        "title": "Why It Might Be Better to Buy Your Phone Next Year"
+      },
+      "sideArticles": [
+        {
+          "_id": "73e9012d-1e38-4044-a2f7-4ff947fcf02e",
+          "date": "2021-12-26T20:22:00.000Z",
+          "excerpt": "Our analysts reveal what makes the NBA so effective in terms of revenue and longevity.  Click this article to learn more about this timeless sport.",
+          "image": {
+            "_type": "articleImage",
+            "alt": "nba street art",
+            "asset": {
+              "_ref": "image-c228e60f976e6585245005e58dc5e367f58a508d-2960x2027-jpg",
+              "_type": "reference"
+            },
+            "crop": {
+              "_type": "sanity.imageCrop",
+              "bottom": 0,
+              "left": 0,
+              "right": 0,
+              "top": 0
+            },
+            "hotspot": {
+              "_type": "sanity.imageHotspot",
+              "height": 0.7750224977502247,
+              "width": 0.49999999999999944,
+              "x": 0.4589041095890411,
+              "y": 0.5599940005999398
+            }
+          },
+          "slug": "the-secrets-to-the-nba",
+          "title": "The Secrets To The NBA"
+        },
+        {
+          "_id": "946b5316-8163-42db-a4ef-b6285d22b591",
+          "date": "2021-12-25T20:42:00.000Z",
+          "excerpt": "The recent decades have been filled with John von Neumann architecture ideas. However, upcoming releases might allow us to break through the nearing process speed ceiling.",
+          "image": {
+            "_type": "articleImage",
+            "alt": "central processing unit",
+            "asset": {
+              "_ref": "image-cccc1e1cec770f3072bdf0c752f791a3aef360d0-5571x3714-jpg",
+              "_type": "reference"
+            },
+            "crop": {
+              "_type": "sanity.imageCrop",
+              "bottom": 0,
+              "left": 0,
+              "right": 0,
+              "top": 0
+            },
+            "hotspot": {
+              "_type": "sanity.imageHotspot",
+              "height": 0.6559939208477947,
+              "width": 0.49999999999999833,
+              "x": 0.4948630136986305,
+              "y": 0.564180238647799
+            }
+          },
+          "slug": "cpu-architecture-is-about-to-get-a-lot-more-interesting",
+          "title": "CPU Architecture is About To Get A Lot More Interesting"
+        },
+        {
+          "_id": "eb37bdc8-312c-4aec-8e7c-0a85c0da1690",
+          "date": "2021-12-25T20:30:00.000Z",
+          "excerpt": "Discover the recently leaked info about the upcoming Super Bowl, and gain insight on our analysts predictions. You aren't going to want to miss this.",
+          "image": {
+            "_type": "articleImage",
+            "alt": "nfl logo surrounded by footballs",
+            "asset": {
+              "_ref": "image-0a58a7085f1b4a5d429d127e17f9711a6a77114c-6000x3376-jpg",
+              "_type": "reference"
+            },
+            "crop": {
+              "_type": "sanity.imageCrop",
+              "bottom": 0,
+              "left": 0,
+              "right": 0,
+              "top": 0
+            },
+            "hotspot": {
+              "_type": "sanity.imageHotspot",
+              "height": 0.9148397771235303,
+              "width": 0.4931506849315068,
+              "x": 0.5205479452054794,
+              "y": 0.47566850774958036
+            }
+          },
+          "slug": "proof-that-this-year-s-super-bowl-will-shatter-previous-viewing-records",
+          "title": "Proof That This Year's Super Bowl Will Shatter Previous Viewing Records"
+        }
+      ]
+    },
+    "uid": "Hero"
+  },
+  "latestNews": {
+    "articles": [
+      {
+        "_id": "82ea38cc-f2b4-4d25-94df-9cf1f137996f",
+        "date": "2021-11-27T04:33:00.000Z",
+        "excerpt": "The technology industry has faced increased scrutiny from both political and public media outlets. Will the industries adapt to the new landscape or will they fall due to their own hubris?",
+        "image": {
+          "_type": "articleImage",
+          "alt": "laptop closing",
+          "asset": {
+            "_ref": "image-d35355eaf8f6d88cce4357700a3b1724aa795fad-5184x3456-jpg",
+            "_type": "reference"
+          },
+          "crop": {
+            "_type": "sanity.imageCrop",
+            "bottom": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0
+          },
+          "hotspot": {
+            "_type": "sanity.imageHotspot",
+            "height": 0.7227413690415073,
+            "width": 0.8356164383561642,
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        "slug": "is-the-technology-industry-on-the-verge-of-collapse",
+        "title": "Is the Technology Industry on the Verge of Collapse?"
+      },
+      {
+        "_id": "6ffb0727-2fab-4c8d-96e4-6a2ac65a205d",
+        "date": "2021-11-27T04:24:00.000Z",
+        "excerpt": "Becoming a style influencer is easier than you think. Read more to learn how to quickly become a full time style influencer.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "influencer selfie",
+          "asset": {
+            "_ref": "image-0f98585a1662e5f772659b18174643e5d94dc1fd-5850x3291-jpg",
+            "_type": "reference"
+          },
+          "crop": {
+            "_type": "sanity.imageCrop",
+            "bottom": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0
+          },
+          "hotspot": {
+            "_type": "sanity.imageHotspot",
+            "height": 1,
+            "width": 0.7054794520547946,
+            "x": 0.44691780821917804,
+            "y": 0.5
+          }
+        },
+        "slug": "how-to-become-a-style-influencer-in-three-easy-steps",
+        "title": "How to Become a Style Influencer in Three Easy Steps"
+      },
+      {
+        "_id": "5c272614-4be7-4f4a-8484-675541a64f8e",
+        "date": "2021-11-27T01:59:00.000Z",
+        "excerpt": "You can't miss these new attractions that have popped up in NYC recently. NYC locals give us secret spots to explore during your next trip to NYC.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "new york city bridge and skyline",
+          "asset": {
+            "_ref": "image-3541623103ed1e41645b27b690a371af4315fc33-6000x4000-jpg",
+            "_type": "reference"
+          }
+        },
+        "slug": "the-ultimate-new-york-checklist",
+        "title": "The Ultimate New York Checklist"
+      }
+    ],
+    "cropped": true,
+    "title": "Latest News",
+    "uid": "latestNews"
+  },
+  "midHero": {
+    "articles": {
+      "_id": "7d4056ca-6813-42b8-9164-90523058a990",
+      "date": "2021-11-26T20:03:00.000Z",
+      "excerpt": "Our experts agree that these are the best travel products of 2021. Use these in your next trip to make your life easier.",
+      "image": {
+        "_type": "articleImage",
+        "alt": "travel tools",
+        "asset": {
+          "_ref": "image-71bf2ee423c2db697ccedd8ac955b5d191bc8391-4356x3442-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.9975516000293808,
+          "width": 1,
+          "x": 0.5,
+          "y": 0.4987758000146904
+        }
+      },
+      "slug": "the-best-15-travel-products-period",
+      "title": "The Best 15 Travel Products, Period"
+    },
+    "uid": "MidHero"
+  },
+  "opinionColumn": {
+    "articles": [
+      {
+        "_id": "9c50bfc4-d6ea-466d-982f-c27cce82718d",
+        "authors": [
+          {
+            "name": "Arly Matteoni",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Arly's profile picture",
+              "asset": {
+                "_ref": "image-b7bbc0cbe4d1b9eef07e847eb59dfed38fb34977-1024x1024-jpg",
+                "_type": "reference"
+              },
+              "crop": {
+                "_type": "sanity.imageCrop",
+                "bottom": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0
+              },
+              "hotspot": {
+                "_type": "sanity.imageHotspot",
+                "height": 0.9607843137254903,
+                "width": 0.8529411764705884,
+                "x": 0.5220588235294117,
+                "y": 0.49264705882352944
+              }
+            },
+            "slug": "arly-matteoni"
+          }
+        ],
+        "date": "2021-09-10T23:51:00.000Z",
+        "slug": "the-world-s-biggest-potato-measuring-over-1m",
+        "title": "The World's Biggest Potato Measuring Over 1m"
+      },
+      {
+        "_id": "ce5cf543-6395-4665-ad93-eef1cb6a38fa",
+        "authors": [
+          {
+            "name": "Sally Smith",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Sally Smith",
+              "asset": {
+                "_ref": "image-29412d937cf4b31c930457d2cb0e7513ac167ef7-1024x1024-jpg",
+                "_type": "reference"
+              }
+            },
+            "slug": "sally-smith"
+          }
+        ],
+        "date": "2021-09-22T15:52:00.000Z",
+        "slug": "beautiful-chicago",
+        "title": "Beautiful Chicago"
+      },
+      {
+        "_id": "f10ba8d1-980f-49e0-a5e7-a8b7bedee360",
+        "authors": [
+          {
+            "name": "Gabrielle Rule",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Gabrielle's profile picture",
+              "asset": {
+                "_ref": "image-9deb2afba72685b52d61d2392d4f9a70c03b2547-1024x1024-jpg",
+                "_type": "reference"
+              },
+              "crop": {
+                "_type": "sanity.imageCrop",
+                "bottom": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0
+              },
+              "hotspot": {
+                "_type": "sanity.imageHotspot",
+                "height": 0.8921568627450974,
+                "width": 0.843137254901961,
+                "x": 0.47549019607843124,
+                "y": 0.5147058823529411
+              }
+            },
+            "slug": "gabrielle-rule"
+          }
+        ],
+        "date": "2021-09-23T22:47:00.000Z",
+        "slug": "robert-butterscotch-and-the-two-fluffy-flamingoes",
+        "title": "Robert Butterscotch and the Two Fluffy Flamingoes"
+      },
+      {
+        "_id": "2d9f057a-952e-41d2-a084-c150123af6a6",
+        "authors": [
+          {
+            "name": "Malcolm Burgoin",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Malcolm's profile image",
+              "asset": {
+                "_ref": "image-3c2d831bfbef44b3c03a6a685e925b8228ad7e23-1024x1024-jpg",
+                "_type": "reference"
+              },
+              "crop": {
+                "_type": "sanity.imageCrop",
+                "bottom": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0
+              },
+              "hotspot": {
+                "_type": "sanity.imageHotspot",
+                "height": 0.9362745098039218,
+                "width": 0.8774509803921572,
+                "x": 0.5367647058823529,
+                "y": 0.4852941176470588
+              }
+            },
+            "slug": "malcolm-burgoin"
+          }
+        ],
+        "date": "2021-09-26T23:26:00.000Z",
+        "slug": "blue-t-shirts-are-the-latest-big-trend-says-top-fashion-designer",
+        "title": "Blue T-shirts Are the Latest Big Trend Says Top Fashion Designer"
+      },
+      {
+        "_id": "d0dd50ae-7ec4-4b63-b0b2-8bc70b9bfba3",
+        "authors": [
+          {
+            "name": "Mervin Levitt",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Mervin's profile picture",
+              "asset": {
+                "_ref": "image-d9972e894f25d8119febfef0fedbca42eb82413d-1024x1024-jpg",
+                "_type": "reference"
+              }
+            },
+            "slug": "mervin-levitt"
+          }
+        ],
+        "date": "2021-09-27T00:05:00.000Z",
+        "slug": "local-man-set-to-fly-out-and-help-with-tornado-relief-effort",
+        "title": "Local man Set to Fly Out and Help With Tornado Relief Effort"
+      },
+      {
+        "_id": "0e118e04-c763-47f7-9e7e-8ec7d47cdefb",
+        "authors": [
+          {
+            "name": "Hal Shannon",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "hal's profile image",
+              "asset": {
+                "_ref": "image-fd7070f63c356c32d789626380e1a712cebb3c7e-1024x1024-jpg",
+                "_type": "reference"
+              }
+            },
+            "slug": "hal-shannon"
+          }
+        ],
+        "date": "2021-09-27T23:28:02.280Z",
+        "slug": "new-york-voted-nicest-place-to-live-in-the-world",
+        "title": "New York Voted Nicest Place to Live in the World"
+      },
+      {
+        "_id": "069c3f63-5edf-42b3-ba1c-4fba66ac04bf",
+        "authors": [
+          {
+            "name": "Charissa Bosence",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Charissa's profile picture",
+              "asset": {
+                "_ref": "image-e0062c195872dfd6fafca566fc49393287770c14-1024x1024-jpg",
+                "_type": "reference"
+              },
+              "crop": {
+                "_type": "sanity.imageCrop",
+                "bottom": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0
+              },
+              "hotspot": {
+                "_type": "sanity.imageHotspot",
+                "height": 0.8676470588235297,
+                "width": 0.8627450980392158,
+                "x": 0.5392156862745096,
+                "y": 0.4877450980392156
+              }
+            },
+            "slug": "charissa-bosence"
+          }
+        ],
+        "date": "2021-09-28T00:05:00.000Z",
+        "slug": "new-variety-of-sprout-set-to-revolutionise-our-eating-habits",
+        "title": "New Variety of Sprout Set to Revolutionise Our Eating Habits"
+      },
+      {
+        "_id": "6d163808-52b5-4eaf-8a5e-cf0183d359c6",
+        "authors": [
+          {
+            "name": "Ericha Naton",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Erica's profile picture",
+              "asset": {
+                "_ref": "image-18b7105ed89c1bec6095f0f6f77a79dbb2e1ddab-1024x1024-jpg",
+                "_type": "reference"
+              },
+              "crop": {
+                "_type": "sanity.imageCrop",
+                "bottom": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0
+              },
+              "hotspot": {
+                "_type": "sanity.imageHotspot",
+                "height": 0.9754901960784319,
+                "width": 0.8088235294117652,
+                "x": 0.4044117647058826,
+                "y": 0.512254901960784
+              }
+            },
+            "slug": "ericha-naton"
+          }
+        ],
+        "date": "2021-09-28T23:52:17.226Z",
+        "slug": "viral-photo-of-koala-had-been-photoshopped",
+        "title": "Viral Photo of Koala Had Been Photoshopped"
+      },
+      {
+        "_id": "2bf6ed02-d53b-4962-a055-4ce3d88a0f38",
+        "authors": [
+          {
+            "name": "Sally Smith",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Sally Smith",
+              "asset": {
+                "_ref": "image-29412d937cf4b31c930457d2cb0e7513ac167ef7-1024x1024-jpg",
+                "_type": "reference"
+              }
+            },
+            "slug": "sally-smith"
+          }
+        ],
+        "date": "2021-10-07T02:12:00.000Z",
+        "slug": "who-else-wants-to-know-the-mystery-behind-elephant",
+        "title": "Who Else Wants To Know The Mystery Behind Elephant?"
+      },
+      {
+        "_id": "cd37d63f-b8d1-4c8a-9c36-17eead3e4f50",
+        "authors": [
+          {
+            "name": "Charissa Bosence",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Charissa's profile picture",
+              "asset": {
+                "_ref": "image-e0062c195872dfd6fafca566fc49393287770c14-1024x1024-jpg",
+                "_type": "reference"
+              },
+              "crop": {
+                "_type": "sanity.imageCrop",
+                "bottom": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0
+              },
+              "hotspot": {
+                "_type": "sanity.imageHotspot",
+                "height": 0.8676470588235297,
+                "width": 0.8627450980392158,
+                "x": 0.5392156862745096,
+                "y": 0.4877450980392156
+              }
+            },
+            "slug": "charissa-bosence"
+          }
+        ],
+        "date": "2021-11-05T14:44:00.000Z",
+        "slug": "13-things-leaders-in-the-investment-industry-want-you-to-know",
+        "title": "13 Things Leaders in the Investment Industry Want You to Know"
+      },
+      {
+        "_id": "add2d4c7-8766-4b00-8cc6-9f667f2331e6",
+        "authors": [
+          {
+            "name": "Mervin Levitt",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Mervin's profile picture",
+              "asset": {
+                "_ref": "image-d9972e894f25d8119febfef0fedbca42eb82413d-1024x1024-jpg",
+                "_type": "reference"
+              }
+            },
+            "slug": "mervin-levitt"
+          }
+        ],
+        "date": "2021-11-05T22:34:00.000Z",
+        "slug": "what-the-future-of-school-work-looks-like-after-coronavirus",
+        "title": "What the Future of School Work Looks Like After Coronavirus"
+      },
+      {
+        "_id": "8394c9a1-b61b-4bbd-ac01-9fe0468c2827",
+        "authors": [
+          {
+            "name": "Ericha Naton",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Erica's profile picture",
+              "asset": {
+                "_ref": "image-18b7105ed89c1bec6095f0f6f77a79dbb2e1ddab-1024x1024-jpg",
+                "_type": "reference"
+              },
+              "crop": {
+                "_type": "sanity.imageCrop",
+                "bottom": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0
+              },
+              "hotspot": {
+                "_type": "sanity.imageHotspot",
+                "height": 0.9754901960784319,
+                "width": 0.8088235294117652,
+                "x": 0.4044117647058826,
+                "y": 0.512254901960784
+              }
+            },
+            "slug": "ericha-naton"
+          }
+        ],
+        "date": "2021-11-09T03:28:00.000Z",
+        "slug": "conquer-your-fear-of-bears-in-3-simple-steps",
+        "title": "Conquer Your Fear of Bears in 3 Simple Steps"
+      },
+      {
+        "_id": "0e7bef7a-246a-4263-8f9a-869b32cc33ca",
+        "authors": [
+          {
+            "name": "Roland Fiddian",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Roland's profile picture",
+              "asset": {
+                "_ref": "image-2d4e7ab5193d253b744a5fc1f42fbbe2a24d4f89-1024x1024-jpg",
+                "_type": "reference"
+              }
+            },
+            "slug": "roland-fiddian"
+          }
+        ],
+        "date": "2021-11-10T03:18:00.000Z",
+        "slug": "10-things-only-die-hard-fans-get-about-snow",
+        "title": "10 Things Only Die-Hard Fans Get About Snow"
+      },
+      {
+        "_id": "0ede20d7-0105-4473-9071-835cd643dd1c",
+        "authors": [
+          {
+            "name": "Malcolm Burgoin",
+            "picture": {
+              "_type": "articleImage",
+              "alt": "Malcolm's profile image",
+              "asset": {
+                "_ref": "image-3c2d831bfbef44b3c03a6a685e925b8228ad7e23-1024x1024-jpg",
+                "_type": "reference"
+              },
+              "crop": {
+                "_type": "sanity.imageCrop",
+                "bottom": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0
+              },
+              "hotspot": {
+                "_type": "sanity.imageHotspot",
+                "height": 0.9362745098039218,
+                "width": 0.8774509803921572,
+                "x": 0.5367647058823529,
+                "y": 0.4852941176470588
+              }
+            },
+            "slug": "malcolm-burgoin"
+          }
+        ],
+        "date": "2021-11-25T03:15:54.307Z",
+        "slug": "everything-you-ever-wanted-to-know-about-toad-but-were-afraid-to-ask",
+        "title": "Everything You Ever Wanted to Know About Toad but Were Afraid to Ask"
+      }
+    ],
+    "title": "Opinion",
+    "uid": "Opinion Column"
+  },
+  "popularArticles": {
+    "articles": [
+      {
+        "_id": "20428916-ef25-4a45-adc7-5908077290cd",
+        "date": "2021-11-26T17:50:00.000Z",
+        "excerpt": "The political divide is growing larger and the polarized views are changing how society functions. Read more see the revealed secrets to avoid the increased stress caused by politics.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "ballot box",
+          "asset": {
+            "_ref": "image-33871a11d854ccd4f06ef38a397d4c676807be1e-4000x2667-jpg",
+            "_type": "reference"
+          }
+        },
+        "slug": "politics-burnout-is-real-here-s-how-to-avoid-it",
+        "title": "Politics Burnout Is Real. Here’s How to Avoid It"
+      },
+      {
+        "_id": "a06353b4-0c4f-41c6-bec7-c163a571821a",
+        "date": "2021-11-26T04:56:00.000Z",
+        "excerpt": "COVID-19 has caused the entertainment to rapidly evolve to meet the demands of at home entertainment. Here are some big changes that you might see on TV soon.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "sports stadium",
+          "asset": {
+            "_ref": "image-7c1f2b9eb5ee0d56f3bbcf70fd71bdbf7aa1493e-7686x4358-jpg",
+            "_type": "reference"
+          },
+          "crop": {
+            "_type": "sanity.imageCrop",
+            "bottom": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0
+          },
+          "hotspot": {
+            "_type": "sanity.imageHotspot",
+            "height": 1,
+            "width": 0.7054794520547939,
+            "x": 0.36301369863013705,
+            "y": 0.5
+          }
+        },
+        "slug": "the-sports-industry-is-changing-fast-here-s-how-to-keep-pace",
+        "title": "The Sports Industry Is Changing Fast. Here's How to Keep Pace"
+      },
+      {
+        "_id": "e5b11faf-40b1-4a3e-b74e-4f62af1371e1",
+        "date": "2021-11-26T04:18:00.000Z",
+        "excerpt": "The demand for at home entertainment has risen in the past decade. How has art fared during this economic recession?",
+        "image": {
+          "_type": "articleImage",
+          "alt": "street art",
+          "asset": {
+            "_ref": "image-580d7a8bf8b94717402d1b6cf8ef7e9c14899e4e-5845x3590-jpg",
+            "_type": "reference"
+          },
+          "crop": {
+            "_type": "sanity.imageCrop",
+            "bottom": 0,
+            "left": 0,
+            "right": 0.09760273972602751,
+            "top": 0
+          },
+          "hotspot": {
+            "_type": "sanity.imageHotspot",
+            "height": 1,
+            "width": 0.8886986301369861,
+            "x": 0.45119863013698625,
+            "y": 0.5
+          }
+        },
+        "slug": null,
+        "title": "Will Art Survive the Recession?"
+      },
+      {
+        "_id": "b31f2651-d3cc-4955-b958-d991ee7f52cd",
+        "date": "2021-11-26T03:23:00.000Z",
+        "excerpt": "You won't believe the amount of money made by these space jobs. Some don't every require a college degree!",
+        "image": {
+          "_type": "articleImage",
+          "alt": "spacex rocket launch",
+          "asset": {
+            "_ref": "image-b999a66a9334b16a6daa9c4761ad81d8ecbbec86-3000x2000-jpg",
+            "_type": "reference"
+          },
+          "crop": {
+            "_type": "sanity.imageCrop",
+            "bottom": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0
+          },
+          "hotspot": {
+            "_type": "sanity.imageHotspot",
+            "height": 0.9281181327144641,
+            "width": 1,
+            "x": 0.5,
+            "y": 0.49486558090817606
+          }
+        },
+        "slug": "the-most-lucrative-space-jobs-of-2021",
+        "title": "The Most Lucrative Space Jobs of 2021"
+      }
+    ],
+    "cropped": true,
+    "title": "Popular Articles",
+    "uid": "popularArticles"
+  },
+  "secondHeroTile": {
+    "articles": {
+      "main": {
+        "_id": "f10ba8d1-980f-49e0-a5e7-a8b7bedee360",
+        "date": "2021-09-23T22:47:00.000Z",
+        "excerpt": "Once upon a time there was a understanding boy called Robert Butterscotch. He was on the way to see his Charity Godfrey, when he decided to take a short cut through Kensington Gardens.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "forest highway",
+          "asset": {
+            "_ref": "image-8526451d1b2fdcefb4494a3d3342b439f5cfd714-1074x805-webp",
+            "_type": "reference"
+          },
+          "caption": "Butterscotch Road"
+        },
+        "slug": "robert-butterscotch-and-the-two-fluffy-flamingoes",
+        "title": "Robert Butterscotch and the Two Fluffy Flamingoes"
+      },
+      "sideArticles": [
+        {
+          "_id": "0e7bef7a-246a-4263-8f9a-869b32cc33ca",
+          "date": "2021-11-10T03:18:00.000Z",
+          "excerpt": "Raymond Barker was thinking about Graham MacDonald again. Graham was a peculiar doctor with slimy fingers and brown eyes.",
+          "image": {
+            "_type": "articleImage",
+            "alt": "snowy road",
+            "asset": {
+              "_ref": "image-5bea4f8365cec2843cbc96bf94b5ea8f27d52d4a-4288x2848-jpg",
+              "_type": "reference"
+            },
+            "crop": {
+              "_type": "sanity.imageCrop",
+              "bottom": 0,
+              "left": 0,
+              "right": 0,
+              "top": 0
+            },
+            "hotspot": {
+              "_type": "sanity.imageHotspot",
+              "height": 0.6389668262089455,
+              "width": 0.4606164383561637,
+              "x": 0.5128424657534255,
+              "y": 0.4484238323155638
+            }
+          },
+          "slug": "10-things-only-die-hard-fans-get-about-snow",
+          "title": "10 Things Only Die-Hard Fans Get About Snow"
+        },
+        {
+          "_id": "8394c9a1-b61b-4bbd-ac01-9fe0468c2827",
+          "date": "2021-11-09T03:28:00.000Z",
+          "excerpt": "Before she could reply, three spiky monkeys rushed in from a footpath on the other side of the clearing. Sonya recognised the one in the red jacket that she'd seen earlier.",
+          "image": {
+            "_type": "articleImage",
+            "alt": "bear lying down in woods",
+            "asset": {
+              "_ref": "image-e9fc7d5359df657da924e2488c6bb7731e09acf7-2796x1867-jpg",
+              "_type": "reference"
+            },
+            "crop": {
+              "_type": "sanity.imageCrop",
+              "bottom": 0,
+              "left": 0,
+              "right": 0,
+              "top": 0
+            },
+            "hotspot": {
+              "_type": "sanity.imageHotspot",
+              "height": 1,
+              "width": 1,
+              "x": 0.5,
+              "y": 0.5
+            }
+          },
+          "slug": "conquer-your-fear-of-bears-in-3-simple-steps",
+          "title": "Conquer Your Fear of Bears in 3 Simple Steps"
+        },
+        {
+          "_id": "add2d4c7-8766-4b00-8cc6-9f667f2331e6",
+          "date": "2021-11-05T22:34:00.000Z",
+          "excerpt": "Nadine walked over to the window and reflected on her idyllic surroundings. The drizzle rained like singing elephants.",
+          "image": {
+            "_type": "articleImage",
+            "alt": "empty classroom",
+            "asset": {
+              "_ref": "image-ec594134e2f02930552c5af31d8a450d448cb3f0-3648x2736-jpg",
+              "_type": "reference"
+            }
+          },
+          "slug": "what-the-future-of-school-work-looks-like-after-coronavirus",
+          "title": "What the Future of School Work Looks Like After Coronavirus"
+        },
+        {
+          "_id": "cd37d63f-b8d1-4c8a-9c36-17eead3e4f50",
+          "date": "2021-11-05T14:44:00.000Z",
+          "excerpt": "Eventually, after several sittings, Dolly was down to the final piece of the door made from butternut squashes. Carefully, she toasted it and allowed it to cool just a little. She finished her final course.",
+          "image": {
+            "_type": "articleImage",
+            "alt": "stock trends",
+            "asset": {
+              "_ref": "image-c361f0d6d038666175b158d45a73c83dfd0f6e51-3999x2666-jpg",
+              "_type": "reference"
+            },
+            "crop": {
+              "_type": "sanity.imageCrop",
+              "bottom": 0,
+              "left": 0,
+              "right": 0,
+              "top": 0
+            },
+            "hotspot": {
+              "_type": "sanity.imageHotspot",
+              "height": 0.960136370171079,
+              "width": 0.6849315068493156,
+              "x": 0.508561643835617,
+              "y": 0.4800681850855395
+            }
+          },
+          "slug": "13-things-leaders-in-the-investment-industry-want-you-to-know",
+          "title": "13 Things Leaders in the Investment Industry Want You to Know"
+        }
+      ]
+    },
+    "title": "Second Hero Tile",
+    "uid": "secondHeroTile"
+  },
+  "staffFavorites": {
+    "articles": [
+      {
+        "_id": "f602d1ce-7ed1-43ca-b61d-30d85bb7ed2c",
+        "date": "2021-11-26T03:13:00.000Z",
+        "excerpt": "World Renowned food specialist shares the paradigm shift that has occured in food science. You mind will change forever.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "vegetable platters",
+          "asset": {
+            "_ref": "image-8b087e2c62fc74ad10790ff9c204bce70b0dbc40-5512x3675-jpg",
+            "_type": "reference"
+          },
+          "crop": {
+            "_type": "sanity.imageCrop",
+            "bottom": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0
+          },
+          "hotspot": {
+            "_type": "sanity.imageHotspot",
+            "height": 1,
+            "width": 1,
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        "slug": "why-you-should-forget-everything-you-learned-about-food",
+        "title": "Why You Should Forget Everything You Learned About Food"
+      },
+      {
+        "_id": "61e01eb4-2c35-475c-8757-d5443b2e4e10",
+        "date": "2021-11-26T02:08:00.000Z",
+        "excerpt": "Scientists break down the latest research on what social media does to our brain. Read more to find out how to live happier.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "ubiquitous nature of phones",
+          "asset": {
+            "_ref": "image-a16b49665f3040df33e3191996d54f1e7e31dc1c-3600x2400-jpg",
+            "_type": "reference"
+          }
+        },
+        "slug": "the-connection-between-social-media-and-happiness",
+        "title": "The Connection Between Social Media and Happiness"
+      },
+      {
+        "_id": "784d6a29-5f8d-470f-afd9-750e61870ea2",
+        "date": "2021-11-26T01:37:00.000Z",
+        "excerpt": "A top marketing insider reveals the industry secrets that are used to keep you addicted to money.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "many hundred dollar bills",
+          "asset": {
+            "_ref": "image-5b8e26f0835f1cfbee6e7499dee66437bdd3ebf9-5274x3516-jpg",
+            "_type": "reference"
+          }
+        },
+        "slug": "5-ways-marketers-are-making-you-addicted-to-money",
+        "title": "5 Ways Marketers Are Making You Addicted to Money"
+      },
+      {
+        "_id": "0ede20d7-0105-4473-9071-835cd643dd1c",
+        "date": "2021-11-25T03:15:54.307Z",
+        "excerpt": "Helen began to panic. She felt sure she had packed Laura. To make matters worse, she was starting to feel hungry.",
+        "image": {
+          "_type": "articleImage",
+          "alt": "face of toad",
+          "asset": {
+            "_ref": "image-9b6f8eb9ed6ccdc92c3dac8e7acb83531ab7d842-5621x3162-jpg",
+            "_type": "reference"
+          }
+        },
+        "slug": "everything-you-ever-wanted-to-know-about-toad-but-were-afraid-to-ask",
+        "title": "Everything You Ever Wanted to Know About Toad but Were Afraid to Ask"
+      }
+    ],
+    "cropped": true,
+    "title": "Staff Favorites",
+    "uid": "staffFavorites"
+  }
+}
