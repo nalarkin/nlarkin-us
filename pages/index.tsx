@@ -30,6 +30,7 @@ const Home = ({ projects }: { projects: QueryAllProjects }) => {
           sx={{ mb: 3, mt: 3 }}
           textAlign={'center'}
           color={'text.primary'}
+          component={'h2'}
         >
           Extracurricular Projects
         </Typography>

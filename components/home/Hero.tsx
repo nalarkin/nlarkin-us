@@ -23,7 +23,7 @@ const HomeHero = () => {
         Hi, I&apos;m Nathan.
       </Typography>
       <Typography
-        component="h1"
+        component="div"
         variant="h4"
         align="center"
         color="text.secondary"

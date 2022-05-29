@@ -4,10 +4,11 @@ import {
   createTheme,
   PaletteMode,
   responsiveFontSizes,
+  ThemeOptions,
   ThemeProvider,
   useMediaQuery,
 } from '@mui/material';
-import { grey, indigo } from '@mui/material/colors';
+import { grey, indigo, teal } from '@mui/material/colors';
 
 // gsu color scheme: https://commkit.gsu.edu/website-management/web-color-guidelines/
 // gsu typography: https://commkit.gsu.edu/visual-communication/typography-color/
@@ -38,7 +39,7 @@ import { grey, indigo } from '@mui/material/colors';
 //   },
 // });
 
-const getDesignTokens = (mode: PaletteMode) => ({
+const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
   palette: {
     mode,
     primary: {
@@ -52,10 +53,17 @@ const getDesignTokens = (mode: PaletteMode) => ({
       background: {
         default: '#18191a',
         paper: '#242526',
-        // default: grey[900],
-        // paper: grey[800],
+        // default: grey[800],
+        // paper: grey[700],
       },
     }),
+    ...(mode === 'light' &&
+      {
+        // background: {
+        //   default: grey[200],
+        //   paper: grey[100],
+        // },
+      }),
     text: {
       ...(mode === 'light'
         ? {
@@ -69,6 +77,15 @@ const getDesignTokens = (mode: PaletteMode) => ({
             secondary: '#AFAFAF',
           }),
     },
+    ...(mode === 'light' && {
+      info: {
+        // ...teal,
+        // ...lightGreen,
+
+        main: teal[800],
+        // light: teal[500]
+      },
+    }),
   },
 });
 // let theme = createTheme({
