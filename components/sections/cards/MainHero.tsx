@@ -31,9 +31,7 @@ type CardProps = {
 
 const HeroTile = ({ article }: CardProps) => {
   const { image, excerpt, slug, title } = article;
-  // console.log(`${JSON.stringify(image, null, 2)}`);
   return (
-    // <div className={style.hero}>
     <>
       <ArticleLinkWrapper slug={slug}>
         <div className={style.heroGrid}>
@@ -42,7 +40,6 @@ const HeroTile = ({ article }: CardProps) => {
             <div className={style.excerpt}>{excerpt}</div>
           </div>
           <div className={style.heroImage}>
-            {' '}
             <Image {...image} priority={true} />
             {/* <ImageBuilder image={image} /> */}
           </div>
@@ -68,6 +65,7 @@ const SecondTile = ({ article }: SideArticleProps) => {
     </div>
   );
 };
+
 const ThirdTile = ({ article }: SideArticleProps) => {
   const { slug, title } = article;
   return (

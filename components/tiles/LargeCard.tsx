@@ -27,7 +27,6 @@ type ArticleCardProps = {
 
 const LargeArticleCard = ({ article }: ArticleCardProps) => {
   const { slug, title, excerpt, image } = article;
-  // console.log(`${JSON.stringify(image)}`);
   return (
     <div className={style.container}>
       <ArticleLinkWrapper slug={slug ?? ''}>
@@ -38,7 +37,6 @@ const LargeArticleCard = ({ article }: ArticleCardProps) => {
           </article>
           <div className={style.image}>
             <Image {...image} placeholder="blur" />
-            {/* <ImageBuilder image={image} /> */}
           </div>
         </div>
       </ArticleLinkWrapper>

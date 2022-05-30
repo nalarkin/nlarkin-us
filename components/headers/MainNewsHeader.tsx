@@ -26,7 +26,7 @@ const CurrentDate = () => {
   );
 };
 
-/** View transforms between screensize xl and lg */
+/** View transforms between screen size xl and lg */
 const TopNavigationBar = () => {
   const [searchIsOpen, changeSearchStatus] = useState(false);
   const btnClass = classNames([
@@ -42,9 +42,7 @@ const TopNavigationBar = () => {
     'font-serif',
   ]);
 
-  // const imgClass = classNames(['mr-3', 'p-2', style.hideIfSmall]);
   const headerBanners = classNames(['justify-self-center', style.hideIfSmall]);
-  // const profileClass = classNames(['flex', 'justify-end', style.hideIfLarge]);
   return (
     <>
       <div className={style.topNav}>

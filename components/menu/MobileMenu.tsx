@@ -13,8 +13,6 @@ import style from './MobileMenu.module.scss';
 const MobileMenu = () => {
   const [isActive, setMenu] = useState<boolean>(false);
 
-  // const btnClass = classNames([{ btn: isActive }, { btn: !isActive }]);
-
   const handleClick = () => {
     setMenu(!isActive);
   };

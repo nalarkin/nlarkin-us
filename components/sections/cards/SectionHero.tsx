@@ -32,7 +32,6 @@ type CardProps = {
 const HeroTile = ({ article }: CardProps) => {
   const { slug, title, excerpt, image } = article;
   return (
-    // <div className={style.hero}>
     <>
       <ArticleLinkWrapper slug={slug}>
         <div className={style.heroGrid}>

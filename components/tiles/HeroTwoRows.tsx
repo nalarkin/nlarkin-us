@@ -32,7 +32,6 @@ const RowBuilder = ({ articles }: Props) => {
                     <div className={style.textContent}>
                       <h3 className={style.title}>{title}</h3>
                       <p className={style.excerpt}>
-                        {' '}
                         {editExcerptToSize(excerpt)}
                       </p>
                     </div>
@@ -82,9 +81,7 @@ const HeroTwoRows = ({ articles }: Props) => {
         </div>
       </div>
       <div className={style.carousel}>
-        {/* <div className={style.container}> */}
         <Carousel articles={carouselArticles} />
-        {/* </div> */}
       </div>
     </section>
   );

@@ -82,25 +82,15 @@ export default function SearchPage({ data }: SearchProps) {
     }
     // possibly unnecessary render of nav bar after search results have loaded
     return (
-      // <div>
-      //   <MinimalHeader />
-      //   {/* {savedHeader} */}
       <SearchBody
         query={query.all as string}
         fuse={fuse}
         initialResult={initialResult}
       />
-      // </div>
     );
   }
 
-  return (
-    // <div>
-    //   <MinimalHeader />
-    //   {/* {savedHeader} */}
-    <Spinner />
-    // </div>
-  );
+  return <Spinner />;
 }
 
 SearchPage.getLayout = function getLayout(page: React.ReactElement) {

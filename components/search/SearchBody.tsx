@@ -15,8 +15,6 @@ type BodyProps = {
   initialResult: Fuse.FuseResult<ArticleDetailedImageAuthors>[];
 };
 
-// type SortMethod = 'relevance' | 'newest' | 'oldest';
-
 export default function SearchBody({
   query = '',
   fuse,
@@ -25,7 +23,7 @@ export default function SearchBody({
   const [result, changeResult] =
     useState<Fuse.FuseResult<ArticleDetailedImageAuthors>[]>(initialResult);
   const [text, changeText] = useState(query);
-  // const [sortMethod, changeSortMethod] = useState<SortMethod>('relevance');
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const searchResults = fuse.search(text);
@@ -82,12 +80,3 @@ export default function SearchBody({
     </div>
   );
 }
-
-// function isFuseResult(
-//   value: unknown
-// ): value is Fuse.FuseResult<ArticleResultAll> {
-//   if (typeof value === 'object' && value !== null && 'refIndex' in value) {
-//     return true;
-//   }
-//   return false;
-// }
