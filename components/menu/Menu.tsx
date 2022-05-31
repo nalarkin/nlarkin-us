@@ -20,16 +20,6 @@ const Menu = () => {
     </button>
   );
 
-  // function handleClosing(this: Document, ev: MouseEvent) {
-  //   // if (e.target) {
-  //   // }
-  //   console.log(ev.target);
-  // }
-
-  // useEffect
-  // useEffect(() => {
-  //   document.addEventListener('click', handleClosing);
-  // });
   const content = (
     <OutsideClickHandler
       onOutsideClick={() => {

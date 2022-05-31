@@ -13,6 +13,14 @@ import { SEO } from '../appConfig';
 import '../styles/globals.css';
 import '../styles/globals.scss';
 
+if (
+  process.env.NEXT_PUBLIC_API_MOCKING !== undefined &&
+  typeof process.env.NEXT_PUBLIC_API_MOCKING === 'string'
+) {
+  // console.log('enabled mocks 1');
+  // require('../mocks');
+  // console.log('enabled mocks 2');
+}
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -32,4 +40,5 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     ));
   return getLayout(<Component {...pageProps} />);
 }
+
 export default MyApp;

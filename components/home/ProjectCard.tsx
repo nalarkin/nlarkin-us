@@ -53,7 +53,6 @@ export interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  // const { title, href, bullets, image, slug, buttonText } = project;
   const {
     title,
     slug,
@@ -77,7 +76,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         <CardActionArea
           component={NextLinkComposed}
-          // scroll={true}
           to={{ pathname: buildProjectSlug(slug) }}
           sx={{ flexGrow: 0 }}
           data-test={dataTest}
@@ -98,7 +96,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <BuildList bullets={bullets} />
           </CardContent>
         </CardActionArea>
-        {/* <Stack justifyContent="flex-end" sx={{ flexGrow: 1 }}> */}
         <CardActions sx={{ mt: 'auto' }} data-test={`card-footer-${dataTest}`}>
           {github && (
             <BuildButton href={github} text={'Github'} variant={'text'} />
@@ -117,7 +114,3 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </Grid>
   );
 }
-
-// export function ProjectCard({ project }: ProjectCardProps) {
-//   const { title, href, bullets, image, slug, buttonText } = project;
-// }

@@ -100,18 +100,4 @@ const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
   );
 };
 
-// const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
-//   return (
-//     <>
-//       <div className={style.siteHeader}>
-//         <NavigationBar
-//           submit={submit}
-//           sectionTitle={sectionTitle}
-//           slug={slug}
-//         />
-//       </div>
-//     </>
-//   );
-// };
-
 export default MinimalHeader;

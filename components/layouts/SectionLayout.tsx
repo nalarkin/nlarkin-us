@@ -16,9 +16,6 @@ const SectionLayout = ({ children }: Props) => {
   return (
     <>
       <div className={style.wrapper}>
-        {/* SEO */}
-        {/* <SEO description={seo.description} title={seo.title} /> */}
-
         {children}
         <Footer />
         <SmallFooter />

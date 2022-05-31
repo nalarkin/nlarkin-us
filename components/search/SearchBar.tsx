@@ -25,18 +25,6 @@ const SearchBar = ({ submit }: SearchProps) => {
 
   const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // router.push({
-    //   pathname: '/news/search',
-    //   query: { all: text },
-    // });
-    // if (submit !== undefined) {
-    //   // submit(text);
-    //   router.push({
-    //     pathname: '/news/search',
-    //     query: { all: text },
-    //   });
-    // } else {
-
     if (submit !== undefined) {
       submit();
     }
@@ -45,8 +33,6 @@ const SearchBar = ({ submit }: SearchProps) => {
       query: { all: text },
     });
   };
-  //   }
-  // };
 
   return (
     <form className={style.searchContainer} onSubmit={performSearch}>

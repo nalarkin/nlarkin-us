@@ -28,13 +28,9 @@ const ColumnTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
     <section className="h-full">
       <Link href={buildArticleSlug(slug ?? '')}>
         <a className={style.tileContainer}>
-          {/* <div className={style.image}> */}
           <div className="w-full">
             <Image {...image} />
-            {/* <Image {...image} width={300} height={200} /> */}
-            {/* <ImageCropBuilder image={image} width={300} height={200} /> */}
           </div>
-          {/* </div> */}
 
           <h3 className={style.title}>{title}</h3>
         </a>
@@ -57,8 +53,6 @@ const RowTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
             </div>
             <div className="w-full">
               <Image {...image} placeholder="blur" />
-              {/* <Image {...image} width={300} height={300} /> */}
-              {/* <ImageCropBuilder image={image} width={300} height={300} /> */}
             </div>
           </div>
         </a>
@@ -179,19 +173,6 @@ const Carousel = ({
                 <BuildTile article={articles[3]} tileLayout={tileLayout} />
               </SwiperSlide>
             )}
-            {/* <div className='swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight'>
-          <div className='swiper-wrapper'>
-            <List
-              items={articles}
-              renderItem={(item) => (
-                <SwiperSlide key={item._id}>
-                  <TileBuilder article={item} />
-                </SwiperSlide>
-              )}
-            />
-          </div>
-        </div> */}
-
             {n > 4 && (
               <SwiperSlide key={articles[4]._id}>
                 <BuildTile article={articles[4]} tileLayout={tileLayout} />

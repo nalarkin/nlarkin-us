@@ -38,10 +38,6 @@ export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
     return <div></div>;
   }
 
-  // const getUrlFromSanity = (image: Schema.ArticleImage | undefined) => {
-  //   return imageUrl;
-  // };
-
   const imageUrl = urlForImage(image).url();
   if (imageUrl === null) {
     console.error(
@@ -52,17 +48,19 @@ export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
     return <div></div>;
   }
   if (blurURL.length > 0) {
-    <Image
-      src={imageUrl}
-      alt={image?.alt ?? ''}
-      // layout="responsive"
-      width={imageWidth}
-      height={imageHeight}
-      className={classes}
-      quality={50}
-      placeholder="blur"
-      blurDataURL={blurURL}
-    />;
+    return (
+      <Image
+        src={imageUrl}
+        alt={image?.alt ?? ''}
+        // layout="responsive"
+        width={imageWidth}
+        height={imageHeight}
+        className={classes}
+        quality={50}
+        placeholder="blur"
+        blurDataURL={blurURL}
+      />
+    );
   }
 
   return (

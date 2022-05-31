@@ -164,6 +164,8 @@ export function HomeLayout({ children }: HomeLayoutProps) {
               onClick={colorMode.toggleColorMode}
               color="inherit"
               data-test={'theme-toggle'}
+              aria-pressed={theme.palette.mode === 'dark'}
+              aria-label={'dark-mode'}
             >
               {theme.palette.mode === 'dark' ? (
                 <DarkModeIcon data-test={'dark-theme'} />
@@ -247,6 +249,7 @@ export function HomeLayout({ children }: HomeLayoutProps) {
             variant="h6"
             align="center"
             color="text.secondary"
+            component={'div'}
             gutterBottom
           >
             Contact Info
