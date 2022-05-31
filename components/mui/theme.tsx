@@ -1,9 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useMemo } from 'react';
 
 import {
   createTheme,
   PaletteMode,
   responsiveFontSizes,
+  Theme,
   ThemeOptions,
   ThemeProvider,
   useMediaQuery,
@@ -17,7 +18,7 @@ import { grey, indigo, teal } from '@mui/material/colors';
 
 // how to implement dark mode https://mui.com/customization/dark-mode/#dark-mode-with-custom-palette
 
-// ignore following eslint becuase this is the recommended way stated in the documentation
+// ignore following eslint because this is the recommended way stated in the documentation
 // eslint-disable-next-line import/no-mutable-exports
 // const theme = createTheme({
 //   palette: {
@@ -38,6 +39,17 @@ import { grey, indigo, teal } from '@mui/material/colors';
 //     },
 //   },
 // });
+
+const ColorModes = {
+  light: 'light',
+  dark: 'dark',
+} as const;
+
+const ColorModeStorageKey = 'theme';
+
+// Ensure to always return a valid colorMode even if input is invalid
+const coerceToColorMode = (paletteMode?: string | null): PaletteMode =>
+  paletteMode === ColorModes.dark ? ColorModes.dark : ColorModes.light;
 
 const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
   palette: {
@@ -100,9 +112,9 @@ const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
 //   },
 // });
 
-export const ColorModeContext = React.createContext({
-  toggleColorMode: () => {},
-});
+export const ColorModeContext = React.createContext<ContextValue | undefined>(
+  undefined
+);
 
 // function useDetermineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
 //   const [initialTheme, setInitialTheme] = React.useState<'light' | 'dark'>(
@@ -121,76 +133,78 @@ export const ColorModeContext = React.createContext({
 // }
 
 function determineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
-  const savedTheme =
-    typeof window === 'undefined' ? 'light' : localStorage.getItem('theme');
-  if (savedTheme === 'light' || savedTheme === 'dark') {
-    return savedTheme;
+  if (typeof window !== 'undefined') {
+    const storedTheme = localStorage.getItem(ColorModeStorageKey);
+    if (storedTheme) {
+      return coerceToColorMode(storedTheme);
+    }
   }
   return prefersDarkMode ? 'dark' : 'light';
 }
 
-// function useWindowType() {
-//   const [windowExists, setWindowExists] = React.useState<boolean>(false);
-//   React.useEffect(() => {
-//     setWindowExists(typeof window !== 'undefined');
-//   }, [window]);
-//   return windowExists;
+// function determineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
+//   const savedTheme =
+//     typeof window === 'undefined'
+//       ? 'light'
+//       : localStorage.getItem(ColorModeStorageKey);
+//   if (savedTheme === 'light' || savedTheme === 'dark') {
+//     return savedTheme;
+//   }
+//   return prefersDarkMode ? 'dark' : 'light';
 // }
 
-export default function ToggleColorMode({ children }: { children: ReactNode }) {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [mode, setMode] = React.useState<'light' | 'dark'>(
-    determineInitialTheme(prefersDarkMode)
+type ContextValue = {
+  colorMode: PaletteMode;
+  theme: Theme;
+  toggleColorMode: () => void;
+};
+
+const createColorTheme = (colorMode: PaletteMode): Theme => {
+  return responsiveFontSizes(
+    createTheme({
+      ...getDesignTokens(colorMode),
+    })
   );
-  const colorMode = React.useMemo(
+};
+
+function useContextValue(): ContextValue {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [colorMode, setColorMode] = React.useState<'light' | 'dark'>('light');
+
+  // used to update the webpage once window is defined
+  useEffect(() => {
+    const storedTheme = localStorage.getItem(ColorModeStorageKey);
+    if (storedTheme) {
+      setColorMode(coerceToColorMode(storedTheme));
+    } else {
+      setColorMode(prefersDarkMode ? 'dark' : 'light');
+    }
+  }, [prefersDarkMode, setColorMode]);
+
+  return useMemo(
     () => ({
+      colorMode,
+      theme: createColorTheme(colorMode),
       toggleColorMode: () => {
-        // const themeMode =
-        setMode((prevMode) => {
+        setColorMode((prevMode) => {
           const themeMode = prevMode === 'light' ? 'dark' : 'light';
-          localStorage.setItem('theme', themeMode);
+          localStorage.setItem(ColorModeStorageKey, themeMode);
           return themeMode;
         });
       },
     }),
-    []
-  );
-
-  const theme = React.useMemo(() => {
-    return responsiveFontSizes(
-      createTheme({
-        ...getDesignTokens(mode),
-      })
-    );
-    // newTheme = responsiveFontSizes(newTheme);
-    // return newTheme;
-    // let newTheme = createTheme({
-    //   ...getDesignTokens(mode),
-    // });
-    // newTheme = responsiveFontSizes(newTheme);
-    // return newTheme;
-  }, [mode]);
-
-  // this forces react to reload when window becomes defined, and we gain access to the local storage
-  // there has to be a better solution than this...
-  // tried to with useEffect hook,and tried to include logic in function call, but neither of my solutions using these
-  // worked
-  if (typeof window === 'undefined') {
-    return <div />;
-  }
-  const initialMode = determineInitialTheme(prefersDarkMode);
-  if (initialMode !== mode) {
-    // colorMode.toggleColorMode();
-    setMode(initialMode);
-  }
-
-  return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </ColorModeContext.Provider>
+    [colorMode]
   );
 }
 
-// theme = responsiveFontSizes(theme);
-//
-// export { theme };
+export default function ToggleColorMode({ children }: { children: ReactNode }) {
+  const contextValue = useContextValue();
+  // console.log(
+  //   `ToggleColorMode theme palette: ${contextValue.theme.palette.mode}, colorMode: ${contextValue.colorMode}`
+  // );
+  return (
+    <ColorModeContext.Provider value={contextValue}>
+      <ThemeProvider theme={contextValue.theme}>{children}</ThemeProvider>
+    </ColorModeContext.Provider>
+  );
+}
