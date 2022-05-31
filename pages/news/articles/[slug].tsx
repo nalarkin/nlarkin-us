@@ -110,7 +110,7 @@ export default function ArticlePage({
       <div className="flex flex-col ">
         {/* optional hero here with title over image */}
         <div className={style.image}>
-          <Image {...image} placeholder="blur" />
+          <Image {...image} placeholder="blur" priority={true} />
           {/* <ImageBuilder image={image} blurURL={image.blurDataURL} /> */}
         </div>
         <h1 className="text-xl font-bold mt-5 mb-5 mx-auto">{title}</h1>

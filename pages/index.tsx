@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable unused-imports/no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography, useTheme } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { GetStaticProps } from 'next';
 
@@ -12,6 +12,7 @@ import SEO from 'components/shared/seo';
 import { getSortedProjectsOrder, QueryAllProjects } from 'lib/projects';
 
 import Layout from '../components/layouts/layout';
+import { ColorModeContext } from '../components/mui/theme';
 
 const HomeSEO = {
   description: "Welcome to Nathan Larkin's Personal Website.",
@@ -19,6 +20,8 @@ const HomeSEO = {
 };
 
 const Home = ({ projects }: { projects: QueryAllProjects }) => {
+  const theme = useTheme();
+  const colorContext = useContext(ColorModeContext);
   return (
     <>
       <SEO description={HomeSEO.description} title={HomeSEO.title} />{' '}

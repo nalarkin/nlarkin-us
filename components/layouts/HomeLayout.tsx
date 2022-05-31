@@ -16,9 +16,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 
+import { ColorModeContext } from 'components/mui/theme';
+
 import { NAV_ICONS } from '../home/NavIcons';
 import Link, { NextLinkComposed } from '../mui/Link';
-import { ColorModeContext } from '@/styles/theme';
 
 function Copyright() {
   return (
@@ -161,7 +162,7 @@ export function HomeLayout({ children }: HomeLayoutProps) {
             </Typography>
             <IconButton
               sx={{ ml: 1 }}
-              onClick={colorMode.toggleColorMode}
+              onClick={colorMode?.toggleColorMode}
               color="inherit"
               data-test={'theme-toggle'}
               aria-pressed={theme.palette.mode === 'dark'}
