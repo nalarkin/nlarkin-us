@@ -45,19 +45,21 @@ describe('Mock article', () => {
     const section = getMockSection();
     const sectionsMatchingId = (a: SanityKeyedReference<Schema.Section>) =>
       a._ref === section._id;
-    expect(article.sections.filter(sectionsMatchingId).length).toEqual(0);
+    expect(article.sections).toBeDefined();
+    expect(article.sections!.filter(sectionsMatchingId).length).toEqual(0);
 
     const newArticle = addSectionToArticle(article, section);
-    expect(newArticle.sections.filter(sectionsMatchingId).length).toEqual(1);
+    expect(newArticle.sections!.filter(sectionsMatchingId).length).toEqual(1);
   });
   it('addSectionToArticleMutate appends section to existing article', () => {
     const article = getMockArticle();
     const section = getMockSection();
     const sectionsMatchingId = (a: SanityKeyedReference<Schema.Section>) =>
       a._ref === section._id;
-    expect(article.sections.filter(sectionsMatchingId).length).toEqual(0);
+    expect(article.sections).toBeDefined();
+    expect(article.sections!.filter(sectionsMatchingId).length).toEqual(0);
 
     addSectionToArticleMutate(article, section);
-    expect(article.sections.filter(sectionsMatchingId).length).toEqual(1);
+    expect(article.sections!.filter(sectionsMatchingId).length).toEqual(1);
   });
 });
