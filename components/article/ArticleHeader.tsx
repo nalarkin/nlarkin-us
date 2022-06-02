@@ -13,7 +13,6 @@ const ArticleHeader = ({ authors }: Props) => {
     <div className="flex flex-col ">
       <div className="mb-10 mx-auto">
         <div className={style.author}>
-          {' '}
           {authors.map((author) => (
             <div key={author.slug}>{`${author.name} for The Nathan Times`}</div>
           ))}
