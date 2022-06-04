@@ -24,7 +24,7 @@ const Home = ({ projects }: { projects: QueryAllProjects }) => {
   const colorContext = useContext(ColorModeContext);
   return (
     <>
-      <SEO description={HomeSEO.description} title={HomeSEO.title} />{' '}
+      <SEO description={HomeSEO.description} title={HomeSEO.title} />
       <Container maxWidth="lg">
         <HomeHero />
         <Divider />

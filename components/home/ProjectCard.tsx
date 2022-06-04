@@ -87,6 +87,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               alt={image.alt}
               layout="fill"
               objectFit="cover"
+              sizes={'500'}
               // set gsu inventory application to be a priority load to improve largest contentful paint
               priority={
                 title.toLowerCase().includes('inventory') ? true : undefined

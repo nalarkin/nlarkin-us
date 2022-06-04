@@ -116,17 +116,6 @@ const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
     }),
   },
 });
-// let theme = createTheme({
-//   palette: {
-//     mode: 'light',
-//     primary: {
-//       main: '#0039a6',
-//     },
-//     secondary: {
-//       main: '#cc0000',
-//     },
-//   },
-// });
 
 export const ColorModeContext = React.createContext<ContextValue | undefined>(
   undefined
@@ -148,27 +137,6 @@ export const ColorModeContext = React.createContext<ContextValue | undefined>(
 //   return initialTheme;
 // }
 
-function determineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
-  if (typeof window !== 'undefined') {
-    const storedTheme = localStorage.getItem(ColorModeStorageKey);
-    if (storedTheme) {
-      return coerceToColorMode(storedTheme);
-    }
-  }
-  return prefersDarkMode ? 'dark' : 'light';
-}
-
-// function determineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
-//   const savedTheme =
-//     typeof window === 'undefined'
-//       ? 'light'
-//       : localStorage.getItem(ColorModeStorageKey);
-//   if (savedTheme === 'light' || savedTheme === 'dark') {
-//     return savedTheme;
-//   }
-//   return prefersDarkMode ? 'dark' : 'light';
-// }
-
 type ContextValue = {
   colorMode: PaletteMode;
   theme: Theme;
@@ -179,6 +147,13 @@ const createColorTheme = (colorMode: PaletteMode): Theme => {
   return responsiveFontSizes(
     createTheme({
       ...getDesignTokens(colorMode),
+      components: {
+        MuiUseMediaQuery: {
+          defaultProps: {
+            noSsr: true,
+          },
+        },
+      },
     })
   );
 };
@@ -199,6 +174,18 @@ function useGetDefaultTheme(): GetDefaultTheme {
   );
 }
 
+// function useGetDefaultTheme(): GetDefaultTheme {
+//   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+//   console.log(`useGetDefaultTheme(), prefersDarkMode: ${prefersDarkMode}`);
+//   return useMemo(
+//     () => ({
+//       prefersDarkMode,
+//       defaultMode: prefersDarkMode ? 'dark' : 'light',
+//     }),
+//     [prefersDarkMode]
+//   );
+// }
+
 function useContextValue(): ContextValue {
   const { defaultMode } = useGetDefaultTheme();
   const [colorMode, setColorMode] = React.useState<'light' | 'dark'>(
@@ -209,10 +196,11 @@ function useContextValue(): ContextValue {
   useEffect(() => {
     const storedTheme = ColorModeStorage.get();
     if (storedTheme === null) {
+      setColorMode(defaultMode);
       return;
     }
     setColorMode(coerceToColorMode(storedTheme));
-  }, [setColorMode]);
+  }, [setColorMode, defaultMode]);
 
   // unnecessary for MUI style, but leaving in code because it can be used to provide dark mode for NON-MUI components
   // see: https://docusaurus.io/docs/styling-layout#dark-mode to style dark mode for non-MUI components
@@ -256,7 +244,6 @@ function useContextValue(): ContextValue {
 
 export default function ToggleColorMode({ children }: { children: ReactNode }) {
   const contextValue = useContextValue();
-
   return (
     <ColorModeContext.Provider value={contextValue}>
       <ThemeProvider theme={contextValue.theme}>{children}</ThemeProvider>
