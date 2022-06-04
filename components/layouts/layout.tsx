@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react';
 import ToggleColorMode from 'components/mui/theme';
 import SEO, { SEOProps } from 'components/shared/seo';
 
+import ClientOnly from '../mui/ClientOnly';
 import { HomeLayout } from './HomeLayout';
 
 type Props = {
@@ -15,7 +16,9 @@ const Layout = ({ seo, children }: Props) => (
   <>
     {seo && <SEO description={seo.description} title={seo.title} />}
     <ToggleColorMode>
-      <HomeLayout>{children}</HomeLayout>
+      <ClientOnly>
+        <HomeLayout>{children}</HomeLayout>
+      </ClientOnly>
     </ToggleColorMode>
   </>
 );

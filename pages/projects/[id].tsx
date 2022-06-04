@@ -2,8 +2,6 @@ import React from 'react';
 
 import {
   Box,
-  Button,
-  ButtonProps,
   Chip,
   Container,
   Divider,
@@ -18,6 +16,7 @@ import Image from 'next/image';
 import Layout from 'components/layouts/layout';
 import { getAllProjectIds, getProjectData, ProjectData } from 'lib/projects';
 
+import { ProjectButton } from '../../components/home/ProjectButton';
 import style from './[id].module.scss';
 
 function TechnologyList({ tech }: { tech: string[] }) {
@@ -40,38 +39,6 @@ function TechnologyList({ tech }: { tech: string[] }) {
 // function isInternalLink(href: string) {
 //   return internalUrlRegex.test(href);
 // }
-
-export function BuildButton({
-  href,
-  text,
-  variant,
-}: {
-  href: string;
-  text: string;
-  variant: ButtonProps['variant'];
-}) {
-  return (
-    <Button
-      color="primary"
-      href={href}
-      target="_blank"
-      rel="noopener"
-      variant={variant}
-      sx={{
-        color: (theme) =>
-          variant !== 'contained' ? theme.palette.info.main : undefined,
-      }}
-      // sx={{
-      //   '&:hover': {
-      //     backgroundColor: 'primary.warning',
-      //     opacity: [0.9, 0.8, 0.7],
-      //   },
-      // }}
-    >
-      {text}
-    </Button>
-  );
-}
 
 const Project = ({ projectData }: { projectData: ProjectData }) => {
   const {
@@ -146,7 +113,7 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
         // sx={{ backgroundColor: (theme) => theme.palette.primary.main }}
       >
         {github && (
-          <BuildButton
+          <ProjectButton
             href={github}
             text={'Github'}
             variant={extraButtonText.length === 0 ? 'contained' : 'outlined'}
@@ -154,7 +121,7 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
         )}
         {extraButtonHrefs.map((href, idx) => {
           return (
-            <BuildButton
+            <ProjectButton
               href={href}
               text={extraButtonText[idx]}
               key={href}

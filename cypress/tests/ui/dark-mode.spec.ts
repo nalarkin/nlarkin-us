@@ -31,19 +31,6 @@ describe('Dark mode', { defaultCommandTimeout: 20000 }, () => {
     cy.getBySel('theme-toggle')
       .click()
       .should(() => {
-        expect(localStorage.getItem('theme')).to.be.eq('light');
-      });
-
-    expectLightModeEnabled();
-
-    // theme persists on reload
-    cy.reload();
-    expectLightModeEnabled();
-
-    // toggle to light mode
-    cy.getBySel('theme-toggle')
-      .click()
-      .should(() => {
         expect(localStorage.getItem('theme')).to.be.eq('dark');
       });
 
@@ -52,6 +39,19 @@ describe('Dark mode', { defaultCommandTimeout: 20000 }, () => {
     // theme persists on reload
     cy.reload();
     expectDarkModeEnabled();
+
+    // toggle to light mode
+    cy.getBySel('theme-toggle')
+      .click()
+      .should(() => {
+        expect(localStorage.getItem('theme')).to.be.eq('light');
+      });
+
+    expectLightModeEnabled();
+
+    // theme persists on reload
+    cy.reload();
+    expectLightModeEnabled();
   });
 
   it('theme persists during navigation between pages', () => {
@@ -59,43 +59,43 @@ describe('Dark mode', { defaultCommandTimeout: 20000 }, () => {
     cy.getBySel('theme-toggle')
       .click()
       .should(() => {
-        expect(localStorage.getItem('theme')).to.be.eq('light');
+        expect(localStorage.getItem('theme')).to.be.eq('dark');
       });
 
-    expectLightModeEnabled();
+    expectDarkModeEnabled();
 
     cy.getBySel('contact-button').click();
 
     cy.contains(/phone/i);
-    expectLightModeEnabled();
+    expectDarkModeEnabled();
 
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-inventory').click();
 
     cy.url().should('include', '/inventory');
     cy.contains(/tech stack/i);
-    expectLightModeEnabled();
+    expectDarkModeEnabled();
 
     cy.getBySel('theme-toggle')
       .click()
       .should(() => {
-        expect(localStorage.getItem('theme')).to.be.eq('dark');
+        expect(localStorage.getItem('theme')).to.be.eq('light');
       });
 
-    expectDarkModeEnabled();
+    expectLightModeEnabled();
 
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-nyt').click();
 
     cy.url().should('include', '/nyt');
     cy.contains(/tech stack/i);
-    expectDarkModeEnabled();
+    expectLightModeEnabled();
 
     cy.getBySel('side-nav-toggle').click();
     cy.getBySel('side-nav-registration-bot').click();
 
     cy.url().should('include', '/course-bot');
     cy.contains(/tech stack/i);
-    expectDarkModeEnabled();
+    expectLightModeEnabled();
   });
 });

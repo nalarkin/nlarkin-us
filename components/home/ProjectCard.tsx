@@ -12,10 +12,10 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
+import { ProjectButton } from 'components/home/ProjectButton';
 import { NextLinkComposed } from 'components/mui/Link';
-import { PlaiceholderImageProps } from 'lib/projects';
+import type { PlaiceholderImageProps } from 'lib/projects';
 import { buildProjectSlug } from 'lib/utils';
-import { BuildButton } from 'pages/projects/[id]';
 
 function BuildList({ bullets }: { bullets: string[] }) {
   return (
@@ -87,6 +87,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               alt={image.alt}
               layout="fill"
               objectFit="cover"
+              sizes={'500'}
               // set gsu inventory application to be a priority load to improve largest contentful paint
               priority={
                 title.toLowerCase().includes('inventory') ? true : undefined
@@ -102,10 +103,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </CardActionArea>
         <CardActions sx={{ mt: 'auto' }} data-test={`card-footer-${dataTest}`}>
           {github && (
-            <BuildButton href={github} text={'Github'} variant={'text'} />
+            <ProjectButton href={github} text={'Github'} variant={'text'} />
           )}
           {extraButtonHrefs.map((href, idx) => (
-            <BuildButton
+            <ProjectButton
               href={href}
               text={extraButtonText[idx]}
               key={href}

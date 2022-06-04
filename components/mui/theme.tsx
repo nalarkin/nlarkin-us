@@ -11,6 +11,9 @@ import {
 } from '@mui/material';
 import { grey, indigo, teal } from '@mui/material/colors';
 
+import ExecutionEnvironment from './ExecutionEnvironment';
+import { createStorageSlot } from './storageUtils';
+
 // gsu color scheme: https://commkit.gsu.edu/website-management/web-color-guidelines/
 // gsu typography: https://commkit.gsu.edu/visual-communication/typography-color/
 // https://material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=0039a6&secondary.color=cc0000
@@ -47,9 +50,22 @@ const ColorModes = {
 
 const ColorModeStorageKey = 'theme';
 
+const ColorModeStorage = createStorageSlot(ColorModeStorageKey);
+
 // Ensure to always return a valid colorMode even if input is invalid
 const coerceToColorMode = (paletteMode?: string | null): PaletteMode =>
   paletteMode === ColorModes.dark ? ColorModes.dark : ColorModes.light;
+
+const storeColorMode = (newColorMode: PaletteMode) => {
+  ColorModeStorage.set(coerceToColorMode(newColorMode));
+};
+
+const getInitialColorMode = (
+  defaultMode: PaletteMode | undefined
+): PaletteMode =>
+  ExecutionEnvironment.canUseDOM
+    ? coerceToColorMode(document.documentElement.getAttribute('data-theme'))
+    : coerceToColorMode(defaultMode);
 
 const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
   palette: {
@@ -100,17 +116,6 @@ const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
     }),
   },
 });
-// let theme = createTheme({
-//   palette: {
-//     mode: 'light',
-//     primary: {
-//       main: '#0039a6',
-//     },
-//     secondary: {
-//       main: '#cc0000',
-//     },
-//   },
-// });
 
 export const ColorModeContext = React.createContext<ContextValue | undefined>(
   undefined
@@ -132,27 +137,6 @@ export const ColorModeContext = React.createContext<ContextValue | undefined>(
 //   return initialTheme;
 // }
 
-function determineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
-  if (typeof window !== 'undefined') {
-    const storedTheme = localStorage.getItem(ColorModeStorageKey);
-    if (storedTheme) {
-      return coerceToColorMode(storedTheme);
-    }
-  }
-  return prefersDarkMode ? 'dark' : 'light';
-}
-
-// function determineInitialTheme(prefersDarkMode: boolean): 'light' | 'dark' {
-//   const savedTheme =
-//     typeof window === 'undefined'
-//       ? 'light'
-//       : localStorage.getItem(ColorModeStorageKey);
-//   if (savedTheme === 'light' || savedTheme === 'dark') {
-//     return savedTheme;
-//   }
-//   return prefersDarkMode ? 'dark' : 'light';
-// }
-
 type ContextValue = {
   colorMode: PaletteMode;
   theme: Theme;
@@ -163,23 +147,84 @@ const createColorTheme = (colorMode: PaletteMode): Theme => {
   return responsiveFontSizes(
     createTheme({
       ...getDesignTokens(colorMode),
+      components: {
+        MuiUseMediaQuery: {
+          defaultProps: {
+            noSsr: true,
+          },
+        },
+      },
     })
   );
 };
 
-function useContextValue(): ContextValue {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [colorMode, setColorMode] = React.useState<'light' | 'dark'>('light');
+type GetDefaultTheme = {
+  prefersDarkMode: boolean;
+  defaultMode: PaletteMode;
+};
 
-  // used to update the webpage once window is defined
+function useGetDefaultTheme(): GetDefaultTheme {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  return useMemo(
+    () => ({
+      prefersDarkMode,
+      defaultMode: prefersDarkMode ? 'dark' : 'light',
+    }),
+    [prefersDarkMode]
+  );
+}
+
+// function useGetDefaultTheme(): GetDefaultTheme {
+//   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+//   console.log(`useGetDefaultTheme(), prefersDarkMode: ${prefersDarkMode}`);
+//   return useMemo(
+//     () => ({
+//       prefersDarkMode,
+//       defaultMode: prefersDarkMode ? 'dark' : 'light',
+//     }),
+//     [prefersDarkMode]
+//   );
+// }
+
+function useContextValue(): ContextValue {
+  const { defaultMode } = useGetDefaultTheme();
+  const [colorMode, setColorMode] = React.useState<'light' | 'dark'>(
+    getInitialColorMode(defaultMode)
+  );
+
+  // update the webpage once window is defined
   useEffect(() => {
-    const storedTheme = localStorage.getItem(ColorModeStorageKey);
-    if (storedTheme) {
-      setColorMode(coerceToColorMode(storedTheme));
-    } else {
-      setColorMode(prefersDarkMode ? 'dark' : 'light');
+    const storedTheme = ColorModeStorage.get();
+    if (storedTheme === null) {
+      setColorMode(defaultMode);
+      return;
     }
-  }, [prefersDarkMode, setColorMode]);
+    setColorMode(coerceToColorMode(storedTheme));
+  }, [setColorMode, defaultMode]);
+
+  // unnecessary for MUI style, but leaving in code because it can be used to provide dark mode for NON-MUI components
+  // see: https://docusaurus.io/docs/styling-layout#dark-mode to style dark mode for non-MUI components
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      'data-theme',
+      coerceToColorMode(colorMode)
+    );
+  }, [colorMode]);
+
+  // changes all tabs to match the newly toggled theme
+  useEffect(() => {
+    const onChange = (e: StorageEvent) => {
+      if (e.key !== ColorModeStorageKey) {
+        return;
+      }
+      const storedColorMode = ColorModeStorage.get();
+      if (storedColorMode !== null) {
+        setColorMode(coerceToColorMode(storedColorMode));
+      }
+    };
+    window.addEventListener('storage', onChange);
+    return () => window.removeEventListener('storage', onChange);
+  }, [setColorMode]);
 
   return useMemo(
     () => ({
@@ -188,7 +233,7 @@ function useContextValue(): ContextValue {
       toggleColorMode: () => {
         setColorMode((prevMode) => {
           const themeMode = prevMode === 'light' ? 'dark' : 'light';
-          localStorage.setItem(ColorModeStorageKey, themeMode);
+          ColorModeStorage.set(themeMode);
           return themeMode;
         });
       },
@@ -199,9 +244,6 @@ function useContextValue(): ContextValue {
 
 export default function ToggleColorMode({ children }: { children: ReactNode }) {
   const contextValue = useContextValue();
-  // console.log(
-  //   `ToggleColorMode theme palette: ${contextValue.theme.palette.mode}, colorMode: ${contextValue.colorMode}`
-  // );
   return (
     <ColorModeContext.Provider value={contextValue}>
       <ThemeProvider theme={contextValue.theme}>{children}</ThemeProvider>
