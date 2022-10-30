@@ -34,9 +34,7 @@ const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
     );
     if (slug) {
       possibleSectionTitle = (
-        <Link href={buildSectionSlug(slug)}>
-          <a>{possibleSectionTitle}</a>
-        </Link>
+        <Link href={buildSectionSlug(slug)}>{possibleSectionTitle}</Link>
       );
     }
   }
@@ -70,9 +68,7 @@ const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
 
           <div className={style.title}>
             <Link href="/news">
-              <a>
-                <h1 className="">The Nathan Times</h1>
-              </a>
+              <h1 className="">The Nathan Times</h1>
             </Link>
           </div>
 
@@ -83,17 +79,15 @@ const MinimalHeader = ({ submit, sectionTitle, slug }: NavProps) => {
               </NewsButton>
             </div>
 
-            <Link href="/news/profile">
-              <a className={style.profile}>
-                <IoMdPerson size={25} />
-              </a>
+            <Link href="/news/profile" className={style.profile}>
+              <IoMdPerson size={25} />
             </Link>
           </div>
         </section>
       </div>
       <section className={style.rowTwoContainer}>
-        <Link href={'/news/login'}>
-          <a className={style.tabletLogin}>log in</a>
+        <Link href={'/news/login'} className={style.tabletLogin}>
+          log in
         </Link>
       </section>
     </header>

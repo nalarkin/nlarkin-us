@@ -26,14 +26,11 @@ const ColumnTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
   // const croppedSrc =urlForImage(image).width(width).height(height).url();
   return (
     <section className="h-full">
-      <Link href={buildArticleSlug(slug ?? '')}>
-        <a className={style.tileContainer}>
-          <div className="w-full">
-            <Image {...image} />
-          </div>
-
-          <h3 className={style.title}>{title}</h3>
-        </a>
+      <Link href={buildArticleSlug(slug ?? '')} className={style.tileContainer}>
+        <div className="w-full">
+          <Image {...image} />
+        </div>
+        <h3 className={style.title}>{title}</h3>
       </Link>
     </section>
   );
@@ -44,18 +41,16 @@ const RowTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
 
   return (
     <section className="h-full">
-      <Link href={buildArticleSlug(slug ?? '')}>
-        <a className={style.hover}>
-          <div className={style.tileRowContainer}>
-            <div className={style.rowTileContent}>
-              <h3 className={style.rowTileTitle}>{title}</h3>
-              <p className={style.rowTileExcerpt}>{shortenedExcerpt}</p>
-            </div>
-            <div className="w-full">
-              <Image {...image} placeholder="blur" />
-            </div>
+      <Link href={buildArticleSlug(slug ?? '')} className={style.hover}>
+        <div className={style.tileRowContainer}>
+          <div className={style.rowTileContent}>
+            <h3 className={style.rowTileTitle}>{title}</h3>
+            <p className={style.rowTileExcerpt}>{shortenedExcerpt}</p>
           </div>
-        </a>
+          <div className="w-full">
+            <Image {...image} placeholder="blur" />
+          </div>
+        </div>
       </Link>
     </section>
   );
@@ -107,21 +102,19 @@ const PhoneTileBuilder = ({
       renderItem={({ title, _id, slug, excerpt, image }) => {
         return (
           <section key={_id} className={style.phoneTile}>
-            <Link href={buildArticleSlug(slug ?? '')}>
-              <a className={style.hover}>
-                <div className={style.phoneGrid}>
-                  <div>
-                    <div className={style.phoneTileTitle}>{title}</div>
-                    <div className={style.phoneTileExcerpt}>
-                      {editExcerptToSize(excerpt)}
-                    </div>
-                  </div>
-                  <div className="w-full">
-                    <Image {...image} placeholder="blur" />
-                    {/* <ImageCropBuilder image={image} width={300} height={300} /> */}
+            <Link href={buildArticleSlug(slug ?? '')} className={style.hover}>
+              <div className={style.phoneGrid}>
+                <div>
+                  <div className={style.phoneTileTitle}>{title}</div>
+                  <div className={style.phoneTileExcerpt}>
+                    {editExcerptToSize(excerpt)}
                   </div>
                 </div>
-              </a>
+                <div className="w-full">
+                  <Image {...image} placeholder="blur" />
+                  {/* <ImageCropBuilder image={image} width={300} height={300} /> */}
+                </div>
+              </div>
             </Link>
           </section>
         );

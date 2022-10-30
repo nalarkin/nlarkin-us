@@ -64,6 +64,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     imageProps,
     dataTest,
   } = project;
+
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card
@@ -85,8 +86,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {...imageProps}
               placeholder="blur"
               alt={image.alt}
-              layout="fill"
-              objectFit="cover"
+              // layout="fill"
+              fill={true}
+              // objectFit="cover"
               sizes={'500'}
               // set gsu inventory application to be a priority load to improve largest contentful paint
               priority={

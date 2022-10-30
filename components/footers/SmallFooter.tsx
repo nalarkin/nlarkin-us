@@ -16,13 +16,13 @@ type Props = {
 
 const FooterLink = ({ text, url, onClick }: Props) => {
   return (
-    <Link href={url} key={text}>
-      <a
-        onClick={() => onClick()}
-        className=" text-sm  flex hover:underline focus:underline text-black "
-      >
-        {text}
-      </a>
+    <Link
+      href={url}
+      key={text}
+      onClick={() => onClick()}
+      className=" text-sm  flex hover:underline focus:underline text-black "
+    >
+      {text}
     </Link>
   );
 };

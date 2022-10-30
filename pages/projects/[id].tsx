@@ -53,6 +53,9 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
     description,
     imageProps,
   } = projectData;
+
+  console.log(JSON.stringify(imageProps, null, 2));
+
   return (
     <Container maxWidth="sm">
       <NextSeo {...{ title, description }} />
@@ -68,8 +71,9 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
             {...imageProps}
             placeholder="blur"
             alt={imageAlt}
-            layout="fill"
-            objectFit="cover"
+            // layout="fill"
+            // objectFit="cover"
+            fill={true}
             className={style.image}
           />
         </Box>

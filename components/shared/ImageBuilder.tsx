@@ -32,11 +32,6 @@ export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
     );
     return <div></div>;
   }
-  const imageWidth = parseInt(match[1], 10);
-  const imageHeight = parseInt(match[2], 10);
-  if (!imageWidth || !imageHeight) {
-    return <div></div>;
-  }
 
   const imageUrl = urlForImage(image).url();
   if (imageUrl === null) {
@@ -46,6 +41,22 @@ export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
       )}`
     );
     return <div></div>;
+  }
+
+  const imageWidth = parseInt(match[1], 10);
+  const imageHeight = parseInt(match[2], 10);
+  if (!imageWidth || !imageHeight) {
+    return (
+      <Image
+        src={imageUrl}
+        alt={image?.alt ?? ''}
+        fill={true}
+        className={classes}
+        quality={50}
+        placeholder="blur"
+        blurDataURL={blurURL}
+      />
+    );
   }
   if (blurURL.length > 0) {
     return (

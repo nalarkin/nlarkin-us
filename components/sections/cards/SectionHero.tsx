@@ -15,8 +15,8 @@ type ArticleWrapperProps = {
 
 const ArticleLinkWrapper = ({ slug, children }: ArticleWrapperProps) => {
   return (
-    <Link href={buildArticleSlug(slug ?? '')}>
-      <a className={style.articleLink}>{children}</a>
+    <Link href={buildArticleSlug(slug ?? '')} className={style.articleLink}>
+      {children}
     </Link>
   );
 };

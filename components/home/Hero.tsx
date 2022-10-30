@@ -50,7 +50,7 @@ const HomeHero = () => {
           color="info"
           data-test={'resume-button'}
         >
-          {'See Résumé'}
+          {'See Resume'}
         </Button>
       </Stack>
     </Container>

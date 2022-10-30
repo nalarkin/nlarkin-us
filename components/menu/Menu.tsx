@@ -32,13 +32,13 @@ const Menu = () => {
           renderItem={([text, url]): JSX.Element => {
             return (
               <li key={url} className="list-none font-semibold font-sans ">
-                <Link href={url} key={text}>
-                  <a
-                    className=" py-1 flex hover:bg-gray-100 "
-                    onClick={() => handleClick()}
-                  >
-                    {text}
-                  </a>
+                <Link
+                  href={url}
+                  key={text}
+                  className=" py-1 flex hover:bg-gray-100 "
+                  onClick={() => handleClick()}
+                >
+                  {text}
                 </Link>
               </li>
             );

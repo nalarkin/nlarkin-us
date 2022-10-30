@@ -6,7 +6,9 @@
 }
 
 .image {
-  display: block;
+  display: flex;
+  justify-content: center;
+  // display: block;
   position: static;
   /* position: relative; */
   /* background-color: blue; */

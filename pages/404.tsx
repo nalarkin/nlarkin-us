@@ -27,8 +27,8 @@ interface SectionRowProps {
 
 const SectionRow = ({ title, slug }: SectionRowProps) => {
   return (
-    <Link href={buildSectionSlug(slug)}>
-      <a className="flex hover:bg-gray-200 p-2">{title}</a>
+    <Link href={buildSectionSlug(slug)} className="flex hover:bg-gray-200 p-2">
+      {title}
     </Link>
   );
 };

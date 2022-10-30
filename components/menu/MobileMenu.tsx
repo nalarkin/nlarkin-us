@@ -51,13 +51,13 @@ const MobileMenu = () => {
                       items={categoryLinks}
                       renderItem={([text, url]) => (
                         <li key={url} className="list-none font-sans ">
-                          <Link href={url} key={text}>
-                            <a
-                              className={style.sectionLink}
-                              onClick={() => handleClick()}
-                            >
-                              {text}
-                            </a>
+                          <Link
+                            href={url}
+                            key={text}
+                            className={style.sectionLink}
+                            onClick={() => handleClick()}
+                          >
+                            {text}
                           </Link>
                         </li>
                       )}
