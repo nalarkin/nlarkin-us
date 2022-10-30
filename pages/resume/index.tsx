@@ -11,6 +11,8 @@ import {
 import { NextSeo } from 'next-seo';
 
 // import resume from '/public/Nathan_Larkin_Resume.pdf';
+import { DOMAIN } from 'lib/constants';
+
 import Layout from '../../components/layouts/layout';
 import style from './index.module.scss';
 
@@ -42,14 +44,14 @@ const Resume = () => {
             flexWrap={'wrap'}
             justifyContent={'center'}
           >
-            <div className="ml-2">Atlanta, GA</div>
+            <div className="ml-2">Sunnyvale, CA</div>
             <div>P: 704-533-4302</div>
             <a
-              href="mailto:nlarkin1@student.gsu.edu"
+              href="mailto:nlarkin.us@gmail.com"
               target="_blank"
               rel="noreferrer"
             >
-              nlarkin1@student.gsu.edu
+              nlarkin.us@gmail.com
             </a>
             <a
               href="http://www.linkedin.com/in/nalarkin"
@@ -58,8 +60,8 @@ const Resume = () => {
             >
               www.linkedin.com/in/nalarkin
             </a>
-            <a href="https://nlarkin.us/" target="_blank" rel="noreferrer">
-              Portfolio Website: https://nlarkin.us
+            <a href={`https://${DOMAIN}/`} target="_blank" rel="noreferrer">
+              {`Portfolio Website: https://${DOMAIN}`}
             </a>
             <div>
               <a
@@ -215,7 +217,7 @@ const Resume = () => {
                 Created a fully responsive New York Times website clone from
                 scratch{' '}
                 <a
-                  href="https://nlarkin.us/projects/nyt-clone"
+                  href={`https://${DOMAIN}/projects/nyt-clone`}
                   className="a"
                   target="_blank"
                   rel="noreferrer"
@@ -223,7 +225,7 @@ const Resume = () => {
                   (
                 </a>
                 <span className="s7">
-                  https://nlarkin.us/projects/nyt-clone)
+                  {`https://${DOMAIN}/projects/nyt-clone`})
                 </span>
               </p>
             </li>
@@ -258,7 +260,7 @@ const Resume = () => {
               <p>
                 Video demo available on my portfolio website{' '}
                 <a
-                  href="https://nlarkin.us/projects/course-bot"
+                  href={`https://${DOMAIN}/projects/course-bot`}
                   className="a"
                   target="_blank"
                   rel="noreferrer"
@@ -266,7 +268,7 @@ const Resume = () => {
                   (
                 </a>
                 <span className="s7">
-                  https://nlarkin.us/projects/course-bot)
+                  {`https://${DOMAIN}/projects/course-bot`})
                 </span>
               </p>
             </li>
@@ -297,7 +299,7 @@ const Resume = () => {
             download
             sx={{ mx: 'auto', mt: 5 }}
           >
-            {'Download Résumé'}
+            {'Download Resume'}
           </Button>
         </Stack>
       </Container>

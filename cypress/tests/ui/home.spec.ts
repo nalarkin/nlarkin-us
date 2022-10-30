@@ -51,7 +51,7 @@ describe('Home page', () => {
     cy.getBySel('card-footer-nyt')
       .contains(/view site/i)
       .should('have.attr', 'href')
-      .and('eq', 'https://www.nlarkin.us/news');
+      .and('eq', `https://www.nlarkin.dev/news`);
 
     cy.getBySel('inventory');
     cy.getBySel('card-footer-inventory')

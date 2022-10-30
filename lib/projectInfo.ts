@@ -1,3 +1,5 @@
+import { DOMAIN } from './constants';
+
 export interface Project {
   title: string;
   subtitle: string;
@@ -114,7 +116,7 @@ export const allProjects: Project[] = [
       'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Sanity.io',
     technologies:
       'TypeScript, React.js, Next.js, Sass, HTML, JavaScript, Headless CMS',
-    href: 'https://www.nlarkin.us/news',
+    href: `https://www.${DOMAIN}/news`,
     buttonText: 'View Website',
     bullets: newYorkTimesBullets,
   },

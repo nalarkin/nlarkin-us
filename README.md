@@ -1,4 +1,4 @@
-# nlarkin.us - Nathan's Personal Website
+# nlarkin.dev - Nathan's Personal Website
 
 ## TODO
 
@@ -10,7 +10,7 @@
 
 - There won't be a lot of documentation because the website is only intended to be interacted with through the browser.
 - Also there is probably a lot of dead code in the components folder. It's not a high priority for me to remove this, as the unused code gets removed at build time.
-- The main branch of this GitHub repository is what gets deployed to https://www.nlarkin.us (deployed through Varcel).
+- The main branch of this GitHub repository is what gets deployed to https://www.nlarkin.dev (deployed through Varcel).
 
 ## Things that were difficult
 

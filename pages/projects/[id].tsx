@@ -35,7 +35,7 @@ function TechnologyList({ tech }: { tech: string[] }) {
   );
 }
 
-// const internalUrlRegex = new RegExp('^(https://)?(www.)?nlarkin.us.*$');
+// const internalUrlRegex = new RegExp('^(https://)?(www.)?nlarkin.dev.*$');
 // function isInternalLink(href: string) {
 //   return internalUrlRegex.test(href);
 // }

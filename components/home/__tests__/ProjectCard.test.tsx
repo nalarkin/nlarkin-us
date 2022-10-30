@@ -3,6 +3,8 @@ import React from 'react';
 import { describe, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 
+import { DOMAIN } from 'lib/constants';
+
 import { ProjectCardProps, ProjectCard } from '../ProjectCard';
 
 describe('Project Card', () => {
@@ -25,8 +27,8 @@ describe('Project Card', () => {
       type: 'webp',
     },
     slug: 'nyt-clone',
-    github: 'https://github.com/nalarkin/nlarkin-us',
-    extraButtonHrefs: ['https://www.nlarkin.us/news'],
+    github: `https://github.com/nalarkin/${DOMAIN}`,
+    extraButtonHrefs: [`https://www.${DOMAIN}/news`],
     extraButtonText: ['View Site'],
   };
 

@@ -1,4 +1,3 @@
-// lib/config.js
 export const sanityConfig = {
   /**
    * Find your project ID and dataset in `sanity.json` in your studio project.
