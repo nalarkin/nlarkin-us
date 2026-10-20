@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 
 import Fuse from 'fuse.js';
 import { GetStaticProps } from 'next';
@@ -23,74 +23,34 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   };
 };
 
-const queryIsSingleString = (query: string | string[]): query is string => {
-  if (typeof query === 'string') {
-    return true;
-  }
-  return false;
-};
-
 type SearchProps = {
   data: ArticleDetailedImageAuthors[];
 };
 
-// type ResultInitial = undefined | Fuse.FuseResult<ArticleResultAll>;
-
 export default function SearchPage({ data }: SearchProps) {
-  const { query } = useRouter();
-  const [isLoading, setLoading] = useState(true);
-  const [queryParams, setQueryParams] = useState<string | string[]>('');
-  useEffect(() => {
-    // console.log(queryParams);
-    if ('all' in query) {
-      const { all } = query;
-      setQueryParams(all as string);
-      setLoading(false);
-    }
-  }, [query, queryParams]);
+  const { query, isReady } = useRouter();
+  const search = query.all;
+  const text = (Array.isArray(search) ? search.join(' ') : search ?? '').trim();
+  const fuse = useMemo(
+    () =>
+      new Fuse(data, {
+        includeScore: true,
+        threshold: 0.3,
+        distance: 500,
+        keys: ['title', 'excerpt', 'authors.name'],
+      }),
+    [data]
+  );
 
-  // const myIndex = Fuse.createIndex(['title', 'author.firstName'], mockData);
-  const options: Fuse.IFuseOptions<ArticleDetailedImageAuthors> = {
-    // isCaseSensitive: false,
-    includeScore: true,
-    // shouldSort: true,
-    // includeMatches: false,
-    // findAllMatches: false,
-    // minMatchCharLength: 1,
-    // location: 0,
-    threshold: 0.3,
-    distance: 500,
-    // useExtendedSearch: false,
-    // ignoreLocation: true,
-    // ignoreFieldNorm: false,
-    keys: ['title', 'excerpt', 'authors.name'],
-  };
-  const fuse = new Fuse(data, options);
-  // const { all } = query;
-  // const savedHeader = <MinimalHeader />;
+  if (!isReady) return <Spinner />;
 
-  if (!isLoading && queryParams) {
-    // let initial = '';
-    let initialResult: Fuse.FuseResult<ArticleDetailedImageAuthors>[] = [];
-    if (queryIsSingleString(queryParams)) {
-      // initial = queryParams;
-      initialResult = fuse.search(queryParams);
-    } else {
-      const joinedQueryString = queryParams.join(' ');
-      // initial = joinedQueryString;
-      initialResult = fuse.search(joinedQueryString);
-    }
-    // possibly unnecessary render of nav bar after search results have loaded
-    return (
-      <SearchBody
-        query={query.all as string}
-        fuse={fuse}
-        initialResult={initialResult}
-      />
-    );
-  }
-
-  return <Spinner />;
+  return (
+    <SearchBody
+      query={text}
+      fuse={fuse}
+      initialResult={text ? fuse.search(text) : []}
+    />
+  );
 }
 
 SearchPage.getLayout = function getLayout(page: React.ReactElement) {

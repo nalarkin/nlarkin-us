@@ -24,10 +24,12 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const queryParams = { slug: params?.slug };
-  const query = await getClient(preview).fetch<SectionArticleProps>(
+  const query = await getClient(preview).fetch<SectionArticleProps | null>(
     sectionArticlesQuery,
     queryParams
   );
+
+  if (!query) return { notFound: true };
 
   const transformedArticles = await Promise.all(
     query.articles.map(async (article) => {

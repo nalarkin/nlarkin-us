@@ -10,7 +10,7 @@ interface SpinnerProps {
 export const Spinner = ({
   text = '',
   size = '5em',
-}: SpinnerProps): JSX.Element => {
+}: SpinnerProps): React.JSX.Element => {
   const header = text ? <h4>{text}</h4> : null;
   return (
     <div className={style.spinner}>

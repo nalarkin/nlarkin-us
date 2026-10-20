@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 import classNames from 'classnames';
 import Fuse from 'fuse.js';
@@ -44,7 +44,6 @@ const GenerateList = ({ articles }: GenerateProps) => {
     <List
       items={articles}
       renderItem={({ item }) => {
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         const { _id, excerpt, image, title, authors, slug, date } = item;
         return (
           <div key={_id}>
@@ -66,6 +65,7 @@ const GenerateList = ({ articles }: GenerateProps) => {
 };
 
 const LatestList = ({ articles }: Props) => {
+  const searchId = useId();
   const fuse = new Fuse(articles, options);
   const [userHasSearched, setUserHasSearched] = useState(false);
   const [text, changeText] = useState('');
@@ -134,13 +134,14 @@ const LatestList = ({ articles }: Props) => {
                   <ImSearch size={16} />
                 </div>
                 <label
-                  htmlFor="search"
+                  htmlFor={searchId}
                   aria-label="Search articles"
                   className={style.visuallyHidden}
                 >
                   search{' '}
                 </label>
                 <input
+                  id={searchId}
                   type="text"
                   onChange={handleChange}
                   value={text}

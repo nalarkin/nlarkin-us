@@ -17,7 +17,7 @@ const SearchBar = ({ submit }: SearchProps) => {
   };
 
   const isDisabled = () => {
-    if (text) {
+    if (text.trim()) {
       return false;
     }
     return true;
@@ -25,12 +25,13 @@ const SearchBar = ({ submit }: SearchProps) => {
 
   const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!text.trim()) return;
     if (submit !== undefined) {
       submit();
     }
     router.push({
       pathname: '/news/search',
-      query: { all: text },
+      query: { all: text.trim() },
     });
   };
 
@@ -40,6 +41,7 @@ const SearchBar = ({ submit }: SearchProps) => {
         <input
           className={style.input}
           type="text"
+          aria-label="Search articles"
           placeholder="SEARCH"
           value={text}
           onChange={handleChange}

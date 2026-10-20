@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ImSearch } from 'react-icons/im';
 import { IoMdPerson } from 'react-icons/io';
 
+import ClientOnly from 'components/mui/ClientOnly';
 import SearchBar from 'components/search/SearchBar';
 import { headerCategoryLinks } from 'lib/links';
 import { buildSectionSlug } from 'lib/utils';
@@ -21,7 +22,9 @@ const CurrentDate = () => {
 
   return (
     <div className=" font-bold text-xs ">
-      <DateComponent dateString={currentDate.toISOString()} />
+      <ClientOnly>
+        <DateComponent dateString={currentDate.toISOString()} />
+      </ClientOnly>
     </div>
   );
 };
@@ -67,20 +70,27 @@ const TopNavigationBar = () => {
         </div>
         <div>
           <Link href="/news">
-            <a>
-              <h1 className={bigTitleClass}>The Nathan Times</h1>
-            </a>
+            <h1 className={bigTitleClass}>The Nathan Times</h1>
           </Link>
           <div className={headerBanners}>
             <div className="w-80 flex justify-between font-sans">
-              <Link href={buildSectionSlug('u-s')}>
-                <a className="px-2 py-1 news-nav-link text-xs">U.S</a>
+              <Link
+                href={buildSectionSlug('u-s')}
+                className="px-2 py-1 news-nav-link text-xs"
+              >
+                U.S
               </Link>
-              <Link href={buildSectionSlug('international')}>
-                <a className="px-2 py-1 news-nav-link text-xs">INTERNATIONAL</a>
+              <Link
+                href={buildSectionSlug('international')}
+                className="px-2 py-1 news-nav-link text-xs"
+              >
+                INTERNATIONAL
               </Link>
-              <Link href={buildSectionSlug('canada')}>
-                <a className="px-2 py-1 news-nav-link text-xs">CANADA</a>
+              <Link
+                href={buildSectionSlug('canada')}
+                className="px-2 py-1 news-nav-link text-xs"
+              >
+                CANADA
               </Link>
             </div>
           </div>
@@ -93,10 +103,8 @@ const TopNavigationBar = () => {
             </NewsButton>
           </div>
           <div className={style.profile}>
-            <Link href="/news/profile">
-              <a className="">
-                <IoMdPerson size={25} className="" />
-              </a>
+            <Link href="/news/profile" className="">
+              <IoMdPerson size={25} className="" />
             </Link>
           </div>
         </div>
@@ -134,9 +142,7 @@ const MiddleNavigationBar = () => {
           </div>
         </div>
         <Link href="/news">
-          <a>
-            <h1 className={bigTitleClass}>The Nathan Times</h1>
-          </a>
+          <h1 className={bigTitleClass}>The Nathan Times</h1>
         </Link>
 
         <div className="">
@@ -152,8 +158,8 @@ const MiddleNavigationBar = () => {
 
 const LoginButton = () => {
   return (
-    <Link href="news/login">
-      <a className={style.loginBtn}>log in</a>
+    <Link href="news/login" className={style.loginBtn}>
+      log in
     </Link>
   );
 };
@@ -168,13 +174,15 @@ const BottomNavigationBar = () => {
             <ul className={navList}>
               <List
                 items={headerCategoryLinks}
-                renderItem={([text, url]): JSX.Element => {
+                renderItem={([text, url]): React.JSX.Element => {
                   return (
                     <li key={url}>
-                      <Link href={url} key={text}>
-                        <a className="px-1 py-2 news-nav-link text-xxs">
-                          {text}
-                        </a>
+                      <Link
+                        href={url}
+                        key={text}
+                        className="px-1 py-2 news-nav-link text-xxs"
+                      >
+                        {text}
                       </Link>
                     </li>
                   );

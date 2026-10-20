@@ -28,11 +28,7 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   if (params === undefined || params.slug === undefined) {
-    throw Error(
-      `getStaticProps is given params with undefined in AuthorPage. params was: ${JSON.stringify(
-        params
-      )}`
-    );
+    return { notFound: true };
   }
   let { slug } = params;
   if (Array.isArray(slug)) {
@@ -40,10 +36,12 @@ export const getStaticProps: GetStaticProps = async ({
   }
   const queryParams = { slug };
 
-  const result = await getClient(preview).fetch<AuthorQueryResult>(
+  const result = await getClient(preview).fetch<AuthorQueryResult | null>(
     authorQuery,
     queryParams
   );
+
+  if (!result) return { notFound: true };
 
   // const image = await convertImage(result.picture);
   const articles = await Promise.all(

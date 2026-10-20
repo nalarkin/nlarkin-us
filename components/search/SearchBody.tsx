@@ -61,11 +61,12 @@ export default function SearchBody({
               <input
                 className={style.textInput}
                 type="text"
+                aria-label="Search articles"
                 placeholder="search"
                 value={text}
                 onChange={handleChange}
               />
-              <button type="submit" className={style.btn}>
+              <button type="submit" className={style.btn} aria-label="Search">
                 <ImSearch size={20} />
               </button>
             </div>

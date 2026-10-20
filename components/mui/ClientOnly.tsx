@@ -10,7 +10,7 @@ export default function ClientOnly({
   children,
 }: {
   children: ReactNode;
-}): JSX.Element | null {
+}): React.JSX.Element | null {
   const [hasMounted, setHasMounted] = React.useState<boolean>(false);
   React.useEffect(() => {
     setHasMounted(true);

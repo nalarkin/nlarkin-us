@@ -1,5 +1,22 @@
 # nlarkin.us - Nathan's Personal Website
 
+## Development
+
+Use Node.js 26 and Corepack-enabled Yarn (version pinned in `package.json`).
+
+```sh
+yarn install         # Install dependencies
+yarn dev             # Start at http://localhost:3000
+yarn lint            # Lint
+yarn build-types     # Type-check
+yarn test            # Run Jest in watch mode
+yarn cypress:open    # Open browser tests (requires running app)
+yarn build           # Production build
+yarn start           # Serve production build
+yarn clean           # Remove build output
+yarn deploy          # Build a static export in out/ (no upload)
+```
+
 ## TODO
 
 1. Change home page to not reuse the same 5 articles, and instead us all articles on the page (now that I have enough)

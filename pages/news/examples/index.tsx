@@ -48,7 +48,7 @@ type Props = {
 // };
 
 const ExamplePage = ({ data }: Props) => {
-  let content: string | JSX.Element = '';
+  let content: string | React.JSX.Element = '';
   if (data !== undefined && data.length > 4) {
     // const example = data.slice(3);
     // console.log(example);

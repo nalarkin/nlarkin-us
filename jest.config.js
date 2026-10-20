@@ -15,6 +15,7 @@ const customJestConfig = {
   testEnvironment: "jest-environment-jsdom",
   testPathIgnorePatterns: ["/node_modules/", "<rootDir>/cypress/"],
   moduleNameMapper: {
+    "^swiper/css(?:/.*)?$": "<rootDir>/__mocks__/styleMock.js",
     "^@/styles/(.*)$": "<rootDir>/styles/$1",
     // "^(.*)$": "<rootDir>/$1",
   },

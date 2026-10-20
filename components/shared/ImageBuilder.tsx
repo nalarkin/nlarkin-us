@@ -20,7 +20,18 @@ const isPlaceholderImage = (
 
 export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
   if (image === undefined) return null;
-  if (isPlaceholderImage(image)) return null;
+  if (isPlaceholderImage(image)) {
+    return (
+      <Image
+        {...image}
+        alt={image.alt}
+        className={classes}
+        style={{ maxWidth: '100%', height: 'auto' }}
+        quality={50}
+        blurDataURL={blurURL || image.blurDataURL}
+      />
+    );
+  }
   const imageRefWithSize = image?.asset?._ref;
   if (imageRefWithSize === undefined) {
     return <div></div>;
@@ -52,7 +63,7 @@ export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
       <Image
         src={imageUrl}
         alt={image?.alt ?? ''}
-        // layout="responsive"
+        style={{ maxWidth: '100%', height: 'auto' }}
         width={imageWidth}
         height={imageHeight}
         className={classes}
@@ -67,7 +78,7 @@ export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
     <Image
       src={imageUrl}
       alt={image?.alt ?? ''}
-      // layout="responsive"
+      style={{ maxWidth: '100%', height: 'auto' }}
       width={imageWidth}
       height={imageHeight}
       className={classes}

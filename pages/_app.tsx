@@ -30,15 +30,13 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout =
-    Component.getLayout ??
-    ((page) => (
-      <>
-        <DefaultSeo {...SEO} />
-        {page}
-      </>
-    ));
-  return getLayout(<Component {...pageProps} />);
+  const getLayout = Component.getLayout ?? ((page) => page);
+  return (
+    <>
+      <DefaultSeo {...SEO} />
+      {getLayout(<Component {...pageProps} />)}
+    </>
+  );
 }
 
 export default MyApp;

@@ -68,8 +68,9 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
             {...imageProps}
             placeholder="blur"
             alt={imageAlt}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="(max-width: 599px) calc(100vw - 32px), 552px"
+            style={{ objectFit: 'cover' }}
             className={style.image}
           />
         </Box>
@@ -97,7 +98,7 @@ const Project = ({ projectData }: { projectData: ProjectData }) => {
           <Typography variant="h6" component="h3" sx={{ mt: '0.35em' }}>
             Description
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" component="div">
             <div
               dangerouslySetInnerHTML={{ __html: contentHtml }}
               className={style.list}

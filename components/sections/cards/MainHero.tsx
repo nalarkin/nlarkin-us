@@ -15,8 +15,8 @@ type ArticleWrapperProps = {
 
 const ArticleLinkWrapper = ({ slug = '', children }: ArticleWrapperProps) => {
   return (
-    <Link href={`/news/articles/${slug}`}>
-      <a className={style.articleLink}>{children}</a>
+    <Link href={`/news/articles/${slug}`} className={style.articleLink}>
+      {children}
     </Link>
   );
 };
@@ -40,7 +40,12 @@ const HeroTile = ({ article }: CardProps) => {
             <div className={style.excerpt}>{excerpt}</div>
           </div>
           <div className={style.heroImage}>
-            <Image {...image} priority={true} />
+            <Image
+              {...image}
+              alt={image.alt}
+              style={{ maxWidth: '100%', height: 'auto' }}
+              preload
+            />
             {/* <ImageBuilder image={image} /> */}
           </div>
         </div>

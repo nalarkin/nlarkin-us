@@ -24,11 +24,9 @@ const ResultTile = ({ article }: Props) => {
           </div>
           <div className={style.content}>
             <Link href={`/news/articles/${article.slug}`}>
-              <a>
-                <div className={style.title}>{article.title}</div>
-                <div className={style.body}>{article.excerpt}</div>
-                <div className={style.authors}>{formattedAuthorNames}</div>
-              </a>
+              <div className={style.title}>{article.title}</div>
+              <div className={style.body}>{article.excerpt}</div>
+              <div className={style.authors}>{formattedAuthorNames}</div>
             </Link>
           </div>
         </div>

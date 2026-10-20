@@ -11,7 +11,7 @@ export function BrowserContextProvider({
   children,
 }: {
   children: ReactNode;
-}): JSX.Element {
+}): React.JSX.Element {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {

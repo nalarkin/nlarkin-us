@@ -40,12 +40,15 @@ export const getStaticProps: GetStaticProps = async ({
   if (slug === undefined) {
     slug = '';
   }
+  if (!slug) return { notFound: true };
   const queryParams = { slug };
 
-  const result = await getClient(preview).fetch<ArticleQueryResult>(
+  const result = await getClient(preview).fetch<ArticleQueryResult | null>(
     articleQuery,
     queryParams
   );
+  if (!result) return { notFound: true };
+
   // const imageUrl = urlForImage(result.image).url();
   // const { base64, img } = await getPlaiceholder(imageUrl ?? '');
   // console.log(`BASE64 Placeholder: ${base64}`);
@@ -55,7 +58,10 @@ export const getStaticProps: GetStaticProps = async ({
   //   alt: result.image?.alt ?? '',
   // };
   const transformedImage = await convertImage(result.image);
-  const completeResponse: ArticleProps = { ...result, image: transformedImage };
+  const completeResponse: ArticleProps = {
+    ...result,
+    image: transformedImage,
+  };
   // result.image = { ...result.image, blurDataURL: base64 };
   // console.log(`slug: ${slug}  result: ${JSON.stringify(result)}`);
 
@@ -110,7 +116,13 @@ export default function ArticlePage({
       <div className="flex flex-col ">
         {/* optional hero here with title over image */}
         <div className={style.image}>
-          <Image {...image} placeholder="blur" priority={true} />
+          <Image
+            {...image}
+            alt={image.alt}
+            style={{ maxWidth: '100%', height: 'auto' }}
+            placeholder="blur"
+            preload
+          />
           {/* <ImageBuilder image={image} blurURL={image.blurDataURL} /> */}
         </div>
         <h1 className="text-xl font-bold mt-5 mb-5 mx-auto">{title}</h1>

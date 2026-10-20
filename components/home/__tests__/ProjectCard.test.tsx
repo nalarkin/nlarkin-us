@@ -38,9 +38,25 @@ describe('Project Card', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByAltText(project.image.alt)).toBeInTheDocument();
+    expect(screen.getByAltText(project.image.alt)).toHaveStyle({
+      position: 'absolute',
+      objectFit: 'cover',
+    });
+    expect(screen.getByAltText(project.image.alt)).toHaveAttribute(
+      'sizes',
+      expect.stringContaining('50vw')
+    );
     expect(screen.getByText(project.title)).toBeInTheDocument();
     expect(screen.getByText(project.bullets[0])).toBeInTheDocument();
     expect(screen.getByText(project.bullets[1])).toBeInTheDocument();
     expect(screen.getByText(project.bullets[2])).toBeInTheDocument();
+    expect(screen.getByText(project.title).closest('a')).toHaveAttribute(
+      'href',
+      `/projects/${project.slug}`
+    );
+    expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute(
+      'href',
+      project.github
+    );
   });
 });

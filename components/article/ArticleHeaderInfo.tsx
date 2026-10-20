@@ -16,10 +16,11 @@ const ArticleHeaderInfo = ({ authors, date }: Props) => {
     return (
       <div>
         and
-        <Link href={`/news/authors/${authors[1].slug}`}>
-          <a className="underline hover:no-underline focus:no-underline">
-            {authors[1].name}
-          </a>
+        <Link
+          href={`/news/authors/${authors[1].slug}`}
+          className="underline hover:no-underline focus:no-underline"
+        >
+          {authors[1].name}
         </Link>
       </div>
     );
@@ -29,10 +30,11 @@ const ArticleHeaderInfo = ({ authors, date }: Props) => {
     <div>
       <div className="font-bold ">
         {`By `}
-        <Link href={`/news/authors/${authors[0].slug}`}>
-          <a className="underline hover:no-underline focus:no-underline ">
-            {authors[0].name}
-          </a>
+        <Link
+          href={`/news/authors/${authors[0].slug}`}
+          className="underline hover:no-underline focus:no-underline "
+        >
+          {authors[0].name}
         </Link>
         <div className="w-20 p-2">
           <ImageBuilder image={authors[0].picture} classes={'rounded-full'} />
