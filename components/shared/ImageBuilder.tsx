@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from './NewsImage';
 
 import { PlaceholderImage } from 'lib/interfaces';
 import { imageSizeRegex } from 'lib/utils';
@@ -10,6 +10,7 @@ type Props = {
   image?: Schema.ArticleImage | PlaceholderImage;
   classes?: string;
   blurURL?: string;
+  sizes?: string;
 };
 
 const isPlaceholderImage = (
@@ -18,12 +19,18 @@ const isPlaceholderImage = (
   return !('_type' in image);
 };
 
-export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
+export const ImageBuilder = ({
+  image,
+  blurURL = '',
+  classes = '',
+  sizes,
+}: Props) => {
   if (image === undefined) return null;
   if (isPlaceholderImage(image)) {
     return (
       <Image
         {...image}
+        sizes={sizes}
         alt={image.alt}
         className={classes}
         style={{ maxWidth: '100%', height: 'auto' }}
@@ -62,6 +69,7 @@ export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
     return (
       <Image
         src={imageUrl}
+        sizes={sizes}
         alt={image?.alt ?? ''}
         style={{ maxWidth: '100%', height: 'auto' }}
         width={imageWidth}
@@ -77,6 +85,7 @@ export const ImageBuilder = ({ image, blurURL = '', classes = '' }: Props) => {
   return (
     <Image
       src={imageUrl}
+      sizes={sizes}
       alt={image?.alt ?? ''}
       style={{ maxWidth: '100%', height: 'auto' }}
       width={imageWidth}

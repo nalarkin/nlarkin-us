@@ -19,12 +19,11 @@ describe('Dark mode', { defaultCommandTimeout: 20000 }, () => {
   });
   it.skip('initially is dependent on users system settings ', () => {
     //
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
     expect(true).to.be.true;
   });
 
   it('allows user to switch modes', () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     expect(localStorage.getItem('theme')).to.be.null;
 
     // toggle to light mode
@@ -66,7 +65,8 @@ describe('Dark mode', { defaultCommandTimeout: 20000 }, () => {
 
     cy.getBySel('contact-button').click();
 
-    cy.contains(/phone/i);
+    cy.contains(/personal email/i);
+    cy.get('a[href^="tel:"]').should('not.exist');
     expectDarkModeEnabled();
 
     cy.getBySel('side-nav-toggle').click();

@@ -283,20 +283,6 @@ export function HomeLayout({ children }: HomeLayoutProps) {
               align="center"
               color="text.secondary"
               component="p"
-            >
-              <Link
-                color="inherit"
-                href="tel:7045334302"
-                sx={{ textDecorationLine: 'none' }}
-              >
-                (704) 533-4302
-              </Link>
-            </Typography>
-            <Typography
-              variant="subtitle2"
-              align="center"
-              color="text.secondary"
-              component="p"
               gutterBottom
             >
               <Link

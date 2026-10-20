@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Image from 'next/image';
+import Image from 'components/shared/NewsImage';
 import Link from 'next/link';
 
 import { ArticleDetailedImage } from 'lib/interfaces';
@@ -44,6 +44,7 @@ const HeroTile = ({ article }: CardProps) => {
             <Image
               {...image}
               alt={image.alt}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 57vw, 480px"
               style={{ maxWidth: '100%', height: 'auto' }}
             />
             {/* <ImageBuilder image={image} /> */}

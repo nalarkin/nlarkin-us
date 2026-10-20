@@ -28,7 +28,7 @@ const expectProjectPage = (slug: string) => {
 };
 
 const expectHomePage = () => {
-  cy.url({ timeout: 15000 }).should('eq', `${Cypress.env('site_url')}/`);
+  cy.url({ timeout: 15000 }).should('eq', `${Cypress.expose('site_url')}/`);
   cy.getBySel('contact-button');
   cy.getBySel('resume-button');
 };
@@ -51,7 +51,7 @@ describe('Home page', () => {
     cy.getBySel('card-footer-nyt')
       .contains(/view site/i)
       .should('have.attr', 'href')
-      .and('eq', 'https://www.nlarkin.us/news');
+      .and('eq', '/news');
 
     cy.getBySel('inventory');
     cy.getBySel('card-footer-inventory')

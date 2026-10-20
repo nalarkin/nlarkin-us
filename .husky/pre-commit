@@ -1,8 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# yarn types
-# npx lint-staged
-
-# Disable concurent to run build-types after ESLint in lint-staged
-npx lint-staged --concurrent false
+# Use the package manager pinned in package.json for staged-file checks.
+corepack yarn exec lint-staged --concurrent false

@@ -4,7 +4,7 @@
 
 const StorageTypes = ['localStorage', 'sessionStorage', 'none'] as const;
 
-export type StorageType = typeof StorageTypes[number];
+export type StorageType = (typeof StorageTypes)[number];
 
 const DefaultStorageType: StorageType = 'localStorage';
 
@@ -28,7 +28,6 @@ function getBrowserStorage(
   try {
     return window[storageType];
   } catch (err) {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     logOnceBrowserStorageNotAvailableWarning(err as Error);
     return null;
   }

@@ -29,7 +29,10 @@ const RowBuilder = ({ articles }: Props) => {
                   className={style.hover}
                 >
                   <div className="w-full">
-                    <ImageBuilder image={image} />
+                    <ImageBuilder
+                      image={image}
+                      sizes="(max-width: 768px) 45vw, 200px"
+                    />
                   </div>
                   <div className={style.textContent}>
                     <h3 className={style.title}>{title}</h3>
@@ -69,7 +72,10 @@ const HeroTwoRows = ({ articles }: Props) => {
             className={style.heroTileLink}
           >
             <div className="w-full">
-              <ImageBuilder image={firstArticle.image} />
+              <ImageBuilder
+                image={firstArticle.image}
+                sizes="(max-width: 768px) 100vw, 400px"
+              />
             </div>
             <div className={style.heroContent}>
               <div className={style.heroTitle}>{firstArticle.title}</div>

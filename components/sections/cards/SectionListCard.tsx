@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Image from 'next/image';
+import Image from 'components/shared/NewsImage';
 import Link from 'next/link';
 
 import { PlaceholderImage } from 'lib/interfaces';
@@ -51,6 +51,7 @@ const SectionListCard = ({
             <Image
               {...image}
               alt={image.alt}
+              sizes="(max-width: 768px) 25vw, 200px"
               style={{ maxWidth: '100%', height: 'auto' }}
             />
             {/* <ImageBuilder image={image} /> */}

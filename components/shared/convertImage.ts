@@ -41,7 +41,8 @@ export const convertImage = async (
   if (size !== undefined) {
     return convertCroppedImage(image, size);
   }
-  const imageUrl = urlForImage(image).url();
+  // Bound source downloads used for placeholders; responsive delivery uses the CDN loader.
+  const imageUrl = urlForImage(image).width(1600).fit('max').url();
   const { base64, img } = await getPlaiceholder(imageUrl ?? '');
   const transformedImage: PlaceholderImage = {
     ...img,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Image from 'next/image';
+import Image from 'components/shared/NewsImage';
 import Link from 'next/link';
 
 import type { ArticleDetailedImage, CategoryHero } from 'lib/interfaces';
@@ -23,13 +23,15 @@ const ArticleLinkWrapper = ({ slug = '', children }: ArticleWrapperProps) => {
 
 type Props = {
   data: CategoryHero;
+  preload?: boolean;
 };
 
 type CardProps = {
   article: ArticleDetailedImage;
+  preload: boolean;
 };
 
-const HeroTile = ({ article }: CardProps) => {
+const HeroTile = ({ article, preload }: CardProps) => {
   const { image, excerpt, slug, title } = article;
   return (
     <>
@@ -44,7 +46,8 @@ const HeroTile = ({ article }: CardProps) => {
               {...image}
               alt={image.alt}
               style={{ maxWidth: '100%', height: 'auto' }}
-              preload
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 57vw, 480px"
+              preload={preload}
             />
             {/* <ImageBuilder image={image} /> */}
           </div>
@@ -96,14 +99,14 @@ const FourthChild = ({ article }: SideArticleProps) => {
   );
 };
 
-const MainHero = ({ data }: Props) => {
+const MainHero = ({ data, preload = false }: Props) => {
   const { main, sideArticles } = data.articles;
   const [second, third, fourth] = sideArticles;
   return (
     <div className={style.outerContainer}>
       <div className={style.container}>
         <div className={style.hero}>
-          <HeroTile article={main} />
+          <HeroTile article={main} preload={preload} />
         </div>
         <div className={style.groupTwo}>
           <div className={style.groupThree}>

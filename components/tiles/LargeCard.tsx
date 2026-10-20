@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Image from 'next/image';
+import Image from 'components/shared/NewsImage';
 import Link from 'next/link';
 
 import type { ArticleDetailedImage } from 'lib/interfaces';
@@ -39,6 +39,7 @@ const LargeArticleCard = ({ article }: ArticleCardProps) => {
             <Image
               {...image}
               alt={image.alt}
+              sizes="(max-width: 768px) 100vw, 400px"
               style={{ maxWidth: '100%', height: 'auto' }}
               placeholder="blur"
             />

@@ -5,3 +5,6 @@
 // Learn more: https://github.com/testing-library/jest-dom
 // import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
+
+// Fixture-based tests initialize the CMS client but do not need a live project.
+process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ??= 'test';

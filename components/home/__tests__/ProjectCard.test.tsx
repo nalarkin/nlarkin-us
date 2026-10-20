@@ -26,9 +26,21 @@ describe('Project Card', () => {
     },
     slug: 'nyt-clone',
     github: 'https://github.com/nalarkin/nlarkin-us',
-    extraButtonHrefs: ['https://www.nlarkin.us/news'],
+    extraButtonHrefs: ['/news'],
     extraButtonText: ['View Site'],
   };
+
+  it.each(['http://localhost:3000', 'https://preview.example.com'])(
+    'keeps View Site on the current origin (%s)',
+    (origin) => {
+      render(<ProjectCard project={project} />);
+      const link = screen.getByRole('link', { name: 'View Site' });
+      expect(link).toHaveAttribute('href', '/news');
+      expect(new URL(link.getAttribute('href')!, origin).href).toBe(
+        `${origin}/news`
+      );
+    }
+  );
 
   it('displays props', () => {
     render(<ProjectCard project={project} />);

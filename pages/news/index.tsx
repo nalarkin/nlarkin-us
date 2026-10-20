@@ -134,7 +134,7 @@ const NewsHome = ({ data }: Props) => {
       </div>
       <div className={style.pageBody}>
         <div className={style.bodyContainer}>
-          <MainHero data={hero} />
+          <MainHero data={hero} preload />
           <OpinionBody
             opinionColumn={opinionColumn.articles}
             latestNews={latestNews.articles}

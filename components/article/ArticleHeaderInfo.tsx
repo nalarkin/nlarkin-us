@@ -37,7 +37,11 @@ const ArticleHeaderInfo = ({ authors, date }: Props) => {
           {authors[0].name}
         </Link>
         <div className="w-20 p-2">
-          <ImageBuilder image={authors[0].picture} classes={'rounded-full'} />
+          <ImageBuilder
+            image={authors[0].picture}
+            classes={'rounded-full'}
+            sizes="64px"
+          />
         </div>
         {authors.length < 2 ? null : secondAuthor()}
       </div>

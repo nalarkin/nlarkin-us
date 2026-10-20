@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Image from 'next/image';
+import Image from 'components/shared/NewsImage';
 import Link from 'next/link';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -32,6 +32,7 @@ const ColumnTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
           <Image
             {...image}
             alt={image.alt}
+            sizes="(max-width: 768px) 45vw, (max-width: 992px) 30vw, 220px"
             style={{ maxWidth: '100%', height: 'auto' }}
           />
         </div>
@@ -57,6 +58,7 @@ const RowTileBuilder = ({ article }: { article: ArticleDetailedImage }) => {
             <Image
               {...image}
               alt={image.alt}
+              sizes="91px"
               style={{ maxWidth: '100%', height: 'auto' }}
               placeholder="blur"
             />
@@ -84,7 +86,7 @@ const buildSwiperOptionsBasedOnSize = (size: number, tileLayout: string) => {
     spaceBetween: 31,
     navigation: true,
     modules: [Navigation],
-    preloadImages: true,
+    preloadImages: false,
     // autoHeight: true,
   };
   return options;
@@ -125,6 +127,7 @@ const PhoneTileBuilder = ({
                   <Image
                     {...image}
                     alt={image.alt}
+                    sizes="91px"
                     style={{ maxWidth: '100%', height: 'auto' }}
                     placeholder="blur"
                   />

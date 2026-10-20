@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import { NextSeo } from 'next-seo';
+import Link from 'next/link';
 
 // import resume from '/public/Nathan_Larkin_Resume.pdf';
 import Layout from '../../components/layouts/layout';
@@ -43,7 +44,6 @@ const Resume = () => {
             justifyContent={'center'}
           >
             <div className="ml-2">Atlanta, GA</div>
-            <div>P: 704-533-4302</div>
             <a
               href="mailto:nlarkin1@student.gsu.edu"
               target="_blank"
@@ -213,18 +213,13 @@ const Resume = () => {
             <li>
               <p>
                 Created a fully responsive New York Times website clone from
-                scratch{' '}
-                <a
-                  href="https://nlarkin.us/projects/nyt-clone"
-                  className="a"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  (
-                </a>
-                <span className="s7">
-                  https://nlarkin.us/projects/nyt-clone)
-                </span>
+                scratch (
+                <Link href="/projects/nyt-clone" className="a">
+                  <span className="s7">
+                    https://nlarkin.us/projects/nyt-clone
+                  </span>
+                </Link>
+                )
               </p>
             </li>
             <li>
@@ -256,18 +251,13 @@ const Resume = () => {
             </li>
             <li>
               <p>
-                Video demo available on my portfolio website{' '}
-                <a
-                  href="https://nlarkin.us/projects/course-bot"
-                  className="a"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  (
-                </a>
-                <span className="s7">
-                  https://nlarkin.us/projects/course-bot)
-                </span>
+                Video demo available on my portfolio website (
+                <Link href="/projects/course-bot" className="a">
+                  <span className="s7">
+                    https://nlarkin.us/projects/course-bot
+                  </span>
+                </Link>
+                )
               </p>
             </li>
           </ul>

@@ -15,6 +15,8 @@ const customJestConfig = {
   testEnvironment: "jest-environment-jsdom",
   testPathIgnorePatterns: ["/node_modules/", "<rootDir>/cypress/"],
   moduleNameMapper: {
+    // jsdom tests should use Sanity's browser client, not its Node fetch transport.
+    "^@sanity/client$": "<rootDir>/node_modules/@sanity/client/dist/index.js",
     "^swiper/css(?:/.*)?$": "<rootDir>/__mocks__/styleMock.js",
     "^@/styles/(.*)$": "<rootDir>/styles/$1",
     // "^(.*)$": "<rootDir>/$1",

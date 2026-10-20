@@ -25,7 +25,6 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 // from here: https://docs.cypress.io/guides/tooling/typescript-support
-// @ts-expect-error from official docs
 Cypress.Commands.add('getBySel', (selector: string, ...args) => {
   return cy.get(`[data-test=${selector}]`, ...args);
 });

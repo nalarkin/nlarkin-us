@@ -61,6 +61,10 @@ export default [
         beforeEach: 'readonly',
       },
     },
-    rules: { '@typescript-eslint/no-unused-expressions': 'off' },
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
+      // Cypress custom commands extend its global namespace through declarations.
+      '@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
+    },
   },
 ];

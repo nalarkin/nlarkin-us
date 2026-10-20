@@ -33,7 +33,7 @@ declare global {
       getBySel(
         dataTestAttribute: string,
         args?: Partial<Loggable & Timeoutable & Withinable & Shadow>
-      ): Chainable<Element>;
+      ): Chainable<JQuery<HTMLElement>>;
     }
   }
 }

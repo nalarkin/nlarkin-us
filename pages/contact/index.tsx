@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { Email, GitHub, LinkedIn, Phone } from '@mui/icons-material';
+import { Email, GitHub, LinkedIn } from '@mui/icons-material';
 import {
   Card,
   CardHeader,
@@ -61,12 +61,6 @@ const ContactPage = () => {
         <CardHeader title={'Nathan Larkin'} />
         <Divider />
         <List>
-          <ListItemButton href={'tel:7045334302'} component="a">
-            <ListItemIcon>
-              <Phone />
-            </ListItemIcon>
-            <ListItemText primary={'Phone'} secondary={'704-533-4302'} />
-          </ListItemButton>
           <ListItemButton
             href={'mailto:nlarkin1@student.gsu.edu'}
             component="a"
@@ -136,7 +130,6 @@ ContactPage.getLayout = function getLayout(page: React.ReactElement) {
 
 /**
  * name
- * phone
  * email
  * linkedin
  * github

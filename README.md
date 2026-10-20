@@ -17,6 +17,13 @@ yarn clean           # Remove build output
 yarn deploy          # Build a static export in out/ (no upload)
 ```
 
+## Vercel
+
+`vercel.json` runs installation and builds through Corepack, using the Yarn version
+pinned in `package.json` and the committed lockfile (`--immutable`). Use Node.js 24.
+Do not override these commands with Yarn Classic or `yarn deploy` in the dashboard;
+`deploy` is for static exports and disables Next.js image optimization.
+
 ## TODO
 
 1. Change home page to not reuse the same 5 articles, and instead us all articles on the page (now that I have enough)

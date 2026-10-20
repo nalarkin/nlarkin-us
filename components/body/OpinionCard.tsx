@@ -25,7 +25,11 @@ const OpinionCard = ({ slug, title, excerpt, authors }: OpinionProps) => {
           <div>{excerpt || null}</div>
         </div>
         <div className="w-12 flex-none mb-auto ml-auto ">
-          <ImageBuilder image={authors[0].picture} classes="rounded-full" />
+          <ImageBuilder
+            image={authors[0].picture}
+            classes="rounded-full"
+            sizes="48px"
+          />
         </div>
       </div>
     </Link>

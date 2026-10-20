@@ -31,7 +31,10 @@ const ResultTile = ({ article }: Props) => {
           </div>
         </div>
         <div className={style.img}>
-          <ImageBuilder image={article.image} />
+          <ImageBuilder
+            image={article.image}
+            sizes="(max-width: 768px) 25vw, 200px"
+          />
         </div>
       </div>
     </div>

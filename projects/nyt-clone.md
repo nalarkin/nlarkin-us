@@ -6,7 +6,7 @@ github: https://github.com/nalarkin/nlarkin-us
 imageSrc: /nextjs-cover.webp
 imageAlt: next js icon
 order: 2
-extraButtonHrefs: https://www.nlarkin.us/news
+extraButtonHrefs: /news
 extraButtonText: View Site
 omitFromHome: false
 dataTest: nyt
