@@ -91,7 +91,7 @@
     "*.ts": "eslint --cache --fix"
   },
   "engines": {
-    "node": "26.x"
+    "node": "24.x"
   },
   "resolutions": {
     "@types/react": "^19.0.0"

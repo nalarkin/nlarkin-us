@@ -2,7 +2,7 @@
 
 ## Development
 
-Use Node.js 26 and Corepack-enabled Yarn (version pinned in `package.json`).
+Use Node.js 24 and Corepack-enabled Yarn (version pinned in `package.json`).
 
 ```sh
 yarn install         # Install dependencies
